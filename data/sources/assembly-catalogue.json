@@ -1,0 +1,352 @@
+{
+  "catalogue_version": "0.1.0",
+  "retrieved_on": "2026-11-19",
+  "purpose": "装配资料的适用性索引，不是已核验的楚车步骤",
+  "target_specific_complete_manual_found": false,
+  "records": [
+    {
+      "id": "assembly-source:001",
+      "title": "北大考古与“百年百大考古发现”——甘肃张家川马家塬遗址",
+      "authors": [
+        "陈建立",
+        "王辉"
+      ],
+      "organization": "北京大学考古文博学院",
+      "urls": [
+        "https://archaeology.pku.edu.cn/info/1030/3489.htm"
+      ],
+      "locator": "五、车舆复原",
+      "support": "assembly_research_project_summary",
+      "read_status": "relevant_web_section_read",
+      "complete_process_obtained": false,
+      "use": "追查古代车辆装配、复制与三维展示的实际项目成果",
+      "scope": "马家塬西戎车辆",
+      "limitation": "介绍成果但未公开完整工序表，不自动适用于楚车",
+      "download_status": "validated_text",
+      "local_copy": {
+        "source_url": "https://archaeology.pku.edu.cn/info/1030/3489.htm",
+        "coverage": "article_body_text_without_images_or_video",
+        "original_html": {
+          "path": "assets/references/local/web/originals/pku-majiayuan.html",
+          "bytes": 100494,
+          "sha256": "a75a6c2383e1c8017ee2cd5c6a8b4e27ffdd97d87532666bc0a39e5c6661cbed"
+        },
+        "path": "assets/references/local/web/pku-majiayuan.html",
+        "bytes": 17910,
+        "sha256": "e52c864e3fd08e4fe7e25a54b3b87252d0995d473d4843159e8a804c401d49db",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "assembly-source:001",
+        "assessed_on": "2026-11-19",
+        "priority": "method_reference"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "section": "五、车舆复原",
+            "paragraph_starts_with": "在车辆结构、力学性能的认识以及原工艺",
+            "support": "project_reports_assembly_research_replication_and_3D_display"
+          }
+        ]
+      }
+    },
+    {
+      "id": "assembly-source:002",
+      "title": "陕西传统木轮大车制作技艺调查",
+      "authors": [
+        "李兵",
+        "关晓武"
+      ],
+      "journal": "工程研究——跨学科视野中的工程",
+      "year": 2019,
+      "volume": 11,
+      "issue": 1,
+      "pages": "83-93",
+      "doi": "10.3724/SP.J.1224.2019.00083",
+      "urls": [
+        "https://www.geores.com.cn/gcyj/CN/abstract/article/1674-4969/81288",
+        "https://dds.sciengine.com/cfs/files/pdfs/view/1674-4969/C27433386D8E4B2695A9A9B591159A34.pdf"
+      ],
+      "support": "traditional_craft_process_analogue",
+      "read_status": "indexed_journal_metadata_and_abstract_checked",
+      "complete_process_obtained": false,
+      "use": "获取全文后整理工具、原料、制造与装配操作",
+      "scope": "近现代传统木轮大车",
+      "limitation": "只有书目/摘要，具体工序未精读；与先秦独辀车不能直接等同",
+      "download_status": "not_downloaded_http404_and_endpoint_errors"
+    },
+    {
+      "id": "assembly-source:003",
+      "reference_id": "ref:004",
+      "title": "中国古代车舆马具公开样章",
+      "authors": [
+        "刘永华"
+      ],
+      "year": 2013,
+      "urls": [
+        "https://www.tup.com.cn/upload/books/yz/043859-03.pdf"
+      ],
+      "local_path": "assets/references/local/liu-2013-chariot-excerpt.pdf",
+      "locator": {
+        "pdf_page": 9,
+        "printed_pages": "20-21",
+        "relevant_printed_page": "21",
+        "region": "右页中部轴、軎、辖说明"
+      },
+      "support": "connection_and_limited_local_precedence",
+      "read_status": "relevant_text_and_rendered_pages_checked_for_task_relevance",
+      "complete_process_obtained": false,
+      "use": "轴端固定局部连接演示的候选依据",
+      "scope": "书中商车结构讨论",
+      "limitation": "不是九连墩实物记录，不证明整车装配顺序或三维路径",
+      "download_status": "validated",
+      "local_copy": {
+        "source_url": "https://www.tup.com.cn/upload/books/yz/043859-03.pdf",
+        "coverage": "excerpt",
+        "pdf_pages": 9,
+        "visual_pages_checked": [
+          2,
+          8,
+          9
+        ],
+        "path": "assets/references/local/liu-2013-chariot-excerpt.pdf",
+        "bytes": 1362404,
+        "sha256": "74d6d83b57cdac073a5c6b7ef5bdcd300d4f90ec9e0a15c413a60341c96c91d4",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:004",
+        "assessed_on": "2026-11-19",
+        "priority": "core_reading"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "pdf_page": 8,
+            "printed_pages": "18-19",
+            "region": "印刷18页下部辀轴连接；19页辀与轭讨论",
+            "support": "shaft_axle_position_and_groove_join_as_comparative_candidate"
+          },
+          {
+            "pdf_page": 9,
+            "printed_pages": "20-21",
+            "region": "20页衡轭；21页上部轴端固定",
+            "support": "harness_part_connections_and_limited_axle_end_precedence"
+          }
+        ]
+      }
+    },
+    {
+      "id": "assembly-source:004",
+      "reference_id": "ref:003",
+      "title": "先秦辐式双轮马车轮辋制作技艺研究",
+      "authors": [
+        "张万辉"
+      ],
+      "year": 2022,
+      "doi": "10.3724/j.issn.1674-4969.22062003",
+      "urls": [
+        "https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22062003?viewType=HTML"
+      ],
+      "support": "rim_manufacturing_research",
+      "read_status": "relevant_text_and_rendered_pages_checked_for_task_relevance",
+      "complete_process_obtained": false,
+      "use": "轮辋加工与拼合研究",
+      "scope": "先秦工艺研究",
+      "limitation": "已核对轮辋制造相关正文与图1-2；含现代工艺类比、研究推断和淮安个案，不证明六号车分段或整车装配",
+      "download_status": "validated",
+      "local_copy": {
+        "source_url": "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22062003.pdf",
+        "coverage": "full_article",
+        "pdf_pages": 7,
+        "visual_pages_checked": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "path": "assets/references/local/zhang-2022-wheel-rim.pdf",
+        "bytes": 9530419,
+        "sha256": "a5c2aa6e88865870724190907e5f8e8795828a07fde96a6641cb1221aa378dfb",
+        "redistribution": "not_assessed"
+      },
+      "full_text_obtained": true,
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:003",
+        "assessed_on": "2026-11-19",
+        "priority": "core_reading"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "pdf_pages": [
+              3,
+              4
+            ],
+            "printed_pages": "165-166",
+            "section": "2",
+            "figures": [
+              "1",
+              "2"
+            ],
+            "support": "modern_saw_cutting_and_bending_craft_comparison"
+          },
+          {
+            "pdf_pages": [
+              4,
+              5
+            ],
+            "printed_pages": "166-167",
+            "section": "3",
+            "support": "secondary_citation_of_Huaian_restoration_report"
+          },
+          {
+            "pdf_pages": [
+              5,
+              6
+            ],
+            "printed_pages": "167-168",
+            "section": "4-5",
+            "support": "research_inferences_and_uncertainty_about_rim_segment_counts"
+          }
+        ]
+      }
+    },
+    {
+      "id": "assembly-source:005",
+      "reference_id": "ref:005",
+      "title": "既远却近的背影——孙机先生与系驾法研究",
+      "organization": "中国国家博物馆",
+      "urls": [
+        "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml"
+      ],
+      "support": "harness_research_locator",
+      "read_status": "relevant_research_history_read",
+      "complete_process_obtained": false,
+      "use": "追查马与车连接的原始系驾文献",
+      "scope": "跨时代研究回顾",
+      "limitation": "不是原始系驾图或逐条绳索穿引教程",
+      "download_status": "validated_text",
+      "local_copy": {
+        "source_url": "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml",
+        "coverage": "article_body_text_without_images_or_video",
+        "original_html": {
+          "path": "assets/references/local/web/originals/national-museum-harness.html",
+          "bytes": 41771,
+          "sha256": "29e9d9fd7492bd18d37001908f314f015030b3b2102fd904157e72369fc643b4"
+        },
+        "path": "assets/references/local/web/national-museum-harness.html",
+        "bytes": 14820,
+        "sha256": "a8e1cb8e343b61394a00f6ff173e517656073619fc38512dca3bb5bf9ab067c7",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:005",
+        "assessed_on": "2026-11-19",
+        "priority": "original_paper_locator"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "section": "研究初创、成型、推广阶段",
+            "figure_caption": "图一：1984年孙机系驾法比较图及原论文页码",
+            "support": "research_history_and_original_source_location_not_actual_rope_path"
+          }
+        ]
+      }
+    },
+    {
+      "id": "assembly-source:006",
+      "title": "探微《考工记》中的工匠精神——以“轮”的制造为例",
+      "authors": [
+        "邵朋飞"
+      ],
+      "journal": "工程研究",
+      "year": 2022,
+      "volume": 14,
+      "issue": 3,
+      "pages": "247-255",
+      "doi": "10.3724/j.issn.1674-4969.22060201",
+      "urls": [
+        "https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22060201"
+      ],
+      "support": "textual_manufacturing_norms",
+      "read_status": "relevant_text_and_rendered_pages_checked_for_task_relevance",
+      "complete_process_obtained": false,
+      "use": "制轮规范和检验的补充阅读",
+      "scope": "古籍技术解释",
+      "limitation": "已核对PDF第5-6页检验及功能内容；十项为作者论述分类，不是十步装配，也不是六号车材料或尺寸记录",
+      "download_status": "validated",
+      "local_copy": {
+        "source_url": "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22060201.pdf",
+        "coverage": "full_article",
+        "pdf_pages": 9,
+        "visual_pages_checked": [
+          1,
+          5,
+          6,
+          9
+        ],
+        "path": "assets/references/local/shao-2022-wheel-craft.pdf",
+        "bytes": 666842,
+        "sha256": "cddb47b78326284187f0172f07a3793e4f31bbfd6f0defe0545031695f832b4f",
+        "redistribution": "not_assessed"
+      },
+      "full_text_obtained": true,
+      "website_title": "探微《考工记》中“轮”的制造——以“轮”的制造为例",
+      "title_note": "题名以已渲染核对的PDF第1页为准；期刊HTML题名不同，保留网站题名备查",
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "assembly-source:006",
+        "assessed_on": "2026-11-19",
+        "priority": "supplementary"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "pdf_pages": [
+              5,
+              6
+            ],
+            "printed_pages": "251-252",
+            "section": "3.3.1-3.3.10",
+            "support": "inspection_topics_and_part_functions"
+          }
+        ]
+      }
+    }
+  ],
+  "leads": [
+    {
+      "id": "assembly-lead:001",
+      "title": "殷车的复原与古车制作的若干工艺试探",
+      "authors_hint": [
+        "张彦煌",
+        "张岱海",
+        "胡良仙",
+        "等"
+      ],
+      "journal_hint": "文物季刊",
+      "year_hint": 1994,
+      "issue_hint": 4,
+      "pages_hint": "32-41",
+      "verification": "secondary_bibliography_only_original_not_obtained",
+      "urls": [
+        "https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22062003?viewType=HTML"
+      ],
+      "next_step": "取得原刊后复核作者、刊名、页码和具体复原方法"
+    }
+  ]
+}

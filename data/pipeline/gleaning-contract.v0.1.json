@@ -1,0 +1,15 @@
+{
+  "contract_version": "0.1.0",
+  "implementation_status": "contract_only",
+  "default_max_additional_rounds": 1,
+  "required_input": ["run_id", "fragment_id", "source_locator", "ontology_version", "first_pass_records"],
+  "required_output": ["added_candidates", "rejected_records", "conflicts", "stop_reason"],
+  "required_run_fields": ["run_id", "fragment_ids", "evidence_ids", "model", "prompt_version", "ontology_version", "round", "status", "new_records", "rejected_records", "conflicts", "error", "usage", "duration_ms"],
+  "rules": [
+    "没有来源定位的新增内容不能自动进入正式知识",
+    "无新增有效候选停止；失败保留首轮结果",
+    "所有输出仍需规范化、去重与审核",
+    "不记录密钥；未知的用量或耗时使用空值",
+    "未来执行器须实际实现并测试轮次上限；当前文件不等于执行器"
+  ]
+}

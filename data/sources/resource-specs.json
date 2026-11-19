@@ -1,0 +1,12 @@
+{
+  "resources": [
+    {"id": "res:001", "filename": "KE6Pn-1787891792160-楚国战车复原需求.docx", "kind": "requirements", "sharing": "unconfirmed"},
+    {"id": "res:002", "filename": "obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf", "kind": "source_compilation", "sharing": "unconfirmed"},
+    {"id": "res:003", "filename": "原始要求.md", "kind": "course_requirements", "sharing": "unconfirmed"},
+    {"id": "res:004", "filename": "原始要求.pdf", "kind": "course_requirements", "sharing": "unconfirmed"},
+    {"id": "res:005", "filename": "九连墩六号车·动画模型.glb", "kind": "digital_reconstruction", "sharing": "unconfirmed"},
+    {"id": "res:006", "filename": "九连墩六号车·交互展件.html", "kind": "legacy_web_exhibit", "sharing": "unconfirmed"},
+    {"id": "res:007", "filename": "九连墩六号车·结构爆炸图.png", "kind": "digital_reconstruction_image", "sharing": "unconfirmed"},
+    {"id": "res:008", "filename": "isprs-archives-XLIX-B4-2026-745-2026.pdf", "kind": "reference_paper", "sharing": "unconfirmed"}
+  ]
+}

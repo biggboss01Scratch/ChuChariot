@@ -1,0 +1,28 @@
+{
+  "run_id": "run:20261119-wheel-glean",
+  "first_pass": "data/run-summaries/2026-11-19-wheel-axle-first-pass.json",
+  "fragment_ids": ["teacher-wheel", "liu-wheel", "zhang-wheel", "shao-wheel"],
+  "evidence_ids": ["evidence:011", "evidence:012", "evidence:013", "evidence:014"],
+  "model": null,
+  "provider": "Codex subagent /root/gleaning",
+  "prompt_version": "wheel-source-gleaning-1",
+  "ontology_version": "0.1.0",
+  "round": 1,
+  "status": "completed",
+  "new_records": [
+    {"id": "fact:016", "subject_id": "specimen:003", "fragment_id": "teacher-wheel", "pdf_page": 5, "figure": "图二四〇", "value": "教师汇编图二四〇将 M1：201-1 标为一号墓出土的铜双箍云纹圆筒形车軎。", "quote": "一号墓出土车器——铜双箍云纹圆筒形车軎", "locator": "图二四〇图注，括号内为标本号", "scope_note": "范围限于图注所指器物；与九连墩六号车的对应未核。"},
+    {"id": "fact:017", "subject_id": "type:003", "fragment_id": "liu-wheel", "pdf_page": 9, "printed_page": "21", "value": "刘永华在商车讨论中将车毂两端分别称为贤端和轵端。", "quote": "孔径大处称“贤端”，孔径小处称“轵端”", "locator": "右页图2-20上方毂的说明段", "scope_note": "用于商车部件术语说明。"},
+    {"id": "fact:018", "subject_id": "type:001", "fragment_id": "shao-wheel", "pdf_page": 6, "printed_page": "252", "value": "邵朋飞将《考工记》制轮语境中的“三材”解释为毂、辐、牙的用材。", "quote": "是指毂、辐、牙三者的材料", "locator": "第3.3.10节“判定耐久”左栏下部", "scope_note": "作者对古籍用语的解释，适合工艺导览。"},
+    {"id": "fact:019", "subject_id": "type:005", "fragment_id": "zhang-wheel", "pdf_page": 5, "printed_page": "167", "value": "张万辉讨论了考古研究者利用轮辋外铜枒饰的对称分布推测轮辋拼合情况的做法。", "quote": "铜枒饰构件的对称性来推测", "locator": "第3节左栏最后一段，第4节上方", "scope_note": "仅记录论文转述的研究线索；具体标本的轮辋分段需要独立证据。"}
+  ],
+  "rejected_records": [
+    {"fragment_id": "teacher-wheel", "pdf_page": 4, "issue": "承载图示箭头及编号无法支持六号车的唯一工序。"},
+    {"fragment_id": "teacher-wheel", "pdf_page": 4, "issue": "上方未注明标本的轴记录和下方 CH1：3 参考段需要独立归属。"},
+    {"fragment_id": "teacher-wheel", "pdf_page": 6, "issue": "下半页部分图注另列遗址与车号，不归入上方 CH1：5。"}
+  ],
+  "conflicts": [],
+  "stop_reason": "completed_one_additional_round",
+  "error": null,
+  "usage": null,
+  "duration_ms": null
+}

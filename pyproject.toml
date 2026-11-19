@@ -1,0 +1,9 @@
+[project]
+name = "chuchariot"
+version = "0.1.0"
+description = "Evidence-aware knowledge layer for the Chu chariot exhibit"
+requires-python = ">=3.11"
+dependencies = []
+
+# Run from the repository root with `python -m chuchariot`.
+# This phase uses only the standard library; no installation step is required.

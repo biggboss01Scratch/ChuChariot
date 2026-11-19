@@ -1,0 +1,44 @@
+# Local credentials. Commit only sanitized examples.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Python / frontend environments and caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+.vite/
+dist/
+build/
+coverage/
+.coverage
+htmlcov/
+
+# Local databases, runtime logs, and temporary output.
+.local/
+data/local/
+data/runs/
+assets/references/local/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+tmp/
+temp/
+
+# Editor / operating-system files.
+.idea/
+.DS_Store
+Thumbs.db
+~$*
+
+# Original documents and GLB files are intentionally not blanket-ignored.
+# Decide Git / LFS / external preparation per resource before sharing.

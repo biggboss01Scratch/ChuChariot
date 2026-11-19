@@ -1,0 +1,470 @@
+{
+  "catalogue_version": "0.1.0",
+  "retrieved_on": "2026-11-19",
+  "purpose": "补充来源与借阅线索，不是已导入图谱的知识或已确认事实",
+  "records": [
+    {
+      "id": "ref:001",
+      "title": "九连墩楚墓",
+      "type": "excavation_report",
+      "priority": "high",
+      "authors": [
+        "湖北省文物考古研究院",
+        "湖北省博物馆",
+        "襄阳市文物考古研究所",
+        "枣阳市博物馆"
+      ],
+      "publisher": "文物出版社",
+      "year": 2025,
+      "publication_month": "2025-12",
+      "volumes": 4,
+      "isbn": "9787501085583",
+      "urls": [
+        "https://www.hbww.org.cn/xwdt/p/12718.html",
+        "https://ci.nii.ac.jp/ncid/BD20526978"
+      ],
+      "read_status": "bibliography_and_institutional_announcement_checked",
+      "full_text_obtained": false,
+      "use": "主展品和车马坑原始资料的优先获取目标",
+      "scope": "九连墩个案",
+      "caution": "未取得正文，未核六号车尺寸或CH1标本归属；2026年4月是公告日期"
+    },
+    {
+      "id": "ref:002",
+      "title": "“九连墩的故事——湖北九连墩墓出土文物”展览在辽宁省博物馆开幕",
+      "type": "institutional_exhibition_article",
+      "priority": "medium",
+      "organization": "湖北省博物馆",
+      "date": "2018-01-04",
+      "urls": [
+        "https://hbww.org.cn/gnjl/p/6071.html"
+      ],
+      "read_status": "web_article_read",
+      "full_text_obtained": true,
+      "use": "展览叙事和遗址背景",
+      "scope": "九连墩背景",
+      "caution": "展览说明不能替代发掘报告",
+      "download_status": "validated_text",
+      "local_copy": {
+        "source_url": "https://hbww.org.cn/gnjl/p/6071.html",
+        "coverage": "article_body_text_without_images_or_video",
+        "original_html": {
+          "path": "assets/references/local/web/originals/hubei-jiuliandun-exhibition.html",
+          "bytes": 35035,
+          "sha256": "effe628e10ae78381df4b81d0a2c4f9a66f977c88239fe9b3539000ac987bab8"
+        },
+        "path": "assets/references/local/web/hubei-jiuliandun-exhibition.html",
+        "bytes": 2580,
+        "sha256": "bd2e44f6df50089d63dd828a186ad526f7b34056bfe0e4ad542a507256d48338",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:002",
+        "assessed_on": "2026-11-19",
+        "priority": "exhibition_context"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "paragraphs": [
+              2,
+              3
+            ],
+            "support": "site_background_and_exhibition_theme_organization"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref:003",
+      "title": "先秦辐式双轮马车轮辋制作技艺研究",
+      "type": "journal_article",
+      "priority": "high",
+      "authors": [
+        "张万辉"
+      ],
+      "journal": "工程研究",
+      "year": 2022,
+      "volume": 14,
+      "issue": 2,
+      "pages": "163-169",
+      "doi": "10.3724/j.issn.1674-4969.22062003",
+      "urls": [
+        "https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22062003?viewType=HTML",
+        "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22062003.pdf"
+      ],
+      "read_status": "relevant_text_and_rendered_pages_checked_for_task_relevance",
+      "full_text_obtained": true,
+      "download_status": "validated",
+      "use": "轮辋制作、木材弯曲及拼合工艺",
+      "scope": "先秦工艺研究",
+      "caution": "摘要不是逐事实证据；不能推广为所有楚车或模型采用的段数",
+      "local_copy": {
+        "source_url": "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22062003.pdf",
+        "coverage": "full_article",
+        "pdf_pages": 7,
+        "visual_pages_checked": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "path": "assets/references/local/zhang-2022-wheel-rim.pdf",
+        "bytes": 9530419,
+        "sha256": "a5c2aa6e88865870724190907e5f8e8795828a07fde96a6641cb1221aa378dfb",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:003",
+        "assessed_on": "2026-11-19",
+        "priority": "core_reading"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "pdf_pages": [
+              3,
+              4
+            ],
+            "printed_pages": "165-166",
+            "section": "2",
+            "figures": [
+              "1",
+              "2"
+            ],
+            "support": "modern_saw_cutting_and_bending_craft_comparison"
+          },
+          {
+            "pdf_pages": [
+              4,
+              5
+            ],
+            "printed_pages": "166-167",
+            "section": "3",
+            "support": "secondary_citation_of_Huaian_restoration_report"
+          },
+          {
+            "pdf_pages": [
+              5,
+              6
+            ],
+            "printed_pages": "167-168",
+            "section": "4-5",
+            "support": "research_inferences_and_uncertainty_about_rim_segment_counts"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref:004",
+      "title": "中国古代车舆马具",
+      "type": "book_with_public_excerpt",
+      "priority": "high",
+      "authors": [
+        "刘永华"
+      ],
+      "publisher": "清华大学出版社",
+      "year": 2013,
+      "isbn": "9787302329534",
+      "urls": [
+        "https://www.tup.com.cn/bookscenter/book_04385903.html",
+        "https://www.tup.com.cn/upload/books/yz/043859-03.pdf"
+      ],
+      "read_status": "relevant_text_and_rendered_pages_checked_for_task_relevance",
+      "full_text_obtained": false,
+      "local_copy": {
+        "source_url": "https://www.tup.com.cn/upload/books/yz/043859-03.pdf",
+        "coverage": "excerpt",
+        "pdf_pages": 9,
+        "visual_pages_checked": [
+          2,
+          8,
+          9
+        ],
+        "path": "assets/references/local/liu-2013-chariot-excerpt.pdf",
+        "bytes": 1362404,
+        "sha256": "74d6d83b57cdac073a5c6b7ef5bdcd300d4f90ec9e0a15c413a60341c96c91d4",
+        "redistribution": "not_assessed",
+        "source_page_mapping": {
+          "pdf_page_2": "印刷第6-7页",
+          "pdf_page_9": "印刷第20-21页"
+        }
+      },
+      "use": "通用术语、个案结构与复原图的阅读基础",
+      "scope": "多时代；当前样章包含商代实例",
+      "caution": "须区分出土图、作者复原和后世推想图，不能自动套用楚车",
+      "download_status": "validated",
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:004",
+        "assessed_on": "2026-11-19",
+        "priority": "core_reading"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "pdf_page": 8,
+            "printed_pages": "18-19",
+            "region": "印刷18页下部辀轴连接；19页辀与轭讨论",
+            "support": "shaft_axle_position_and_groove_join_as_comparative_candidate"
+          },
+          {
+            "pdf_page": 9,
+            "printed_pages": "20-21",
+            "region": "20页衡轭；21页上部轴端固定",
+            "support": "harness_part_connections_and_limited_axle_end_precedence"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref:005",
+      "title": "既远却近的背影——孙机先生与系驾法研究",
+      "type": "institutional_research_article",
+      "priority": "high",
+      "organization": "中国国家博物馆",
+      "date": "2023-08-23",
+      "urls": [
+        "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml"
+      ],
+      "read_status": "main_research_history_sections_read",
+      "full_text_obtained": true,
+      "use": "系驾研究、观点修订与原论文定位",
+      "scope": "多时代研究回顾",
+      "caution": "不是孙机原始论文全文，具体复原需回查原始证据",
+      "download_status": "validated_text",
+      "local_copy": {
+        "source_url": "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml",
+        "coverage": "article_body_text_without_images_or_video",
+        "original_html": {
+          "path": "assets/references/local/web/originals/national-museum-harness.html",
+          "bytes": 41771,
+          "sha256": "29e9d9fd7492bd18d37001908f314f015030b3b2102fd904157e72369fc643b4"
+        },
+        "path": "assets/references/local/web/national-museum-harness.html",
+        "bytes": 14820,
+        "sha256": "a8e1cb8e343b61394a00f6ff173e517656073619fc38512dca3bb5bf9ab067c7",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:005",
+        "assessed_on": "2026-11-19",
+        "priority": "original_paper_locator"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "section": "研究初创、成型、推广阶段",
+            "figure_caption": "图一：1984年孙机系驾法比较图及原论文页码",
+            "support": "research_history_and_original_source_location_not_actual_rope_path"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref:006",
+      "title": "中国古代设计思想研究——以先秦独辀马车设计为例",
+      "type": "book",
+      "priority": "medium",
+      "authors": [
+        "胡伟峰"
+      ],
+      "publisher": "中国轻工业出版社",
+      "year": 2017,
+      "date": "2017-12-01",
+      "isbn": "9787518417261",
+      "urls": [
+        "https://www.chlip.com.cn/book/show.php/id-10558.html"
+      ],
+      "read_status": "publisher_description_and_contents_checked",
+      "full_text_obtained": false,
+      "use": "结构、功能及使用情境的组织参考",
+      "scope": "商至秦独辀车研究",
+      "caution": "未读取正文，不据简介填具体关系"
+    },
+    {
+      "id": "ref:007",
+      "title": "双兔车軎",
+      "type": "museum_collection_record",
+      "priority": "medium",
+      "organization": "故宫博物院",
+      "collection_id": "新00018833",
+      "urls": [
+        "https://www.dpm.org.cn/collection/bronze/233246.html"
+      ],
+      "read_status": "collection_description_read",
+      "full_text_obtained": true,
+      "use": "部件说明及带稳定编号的对照器物",
+      "scope": "西周具体藏品",
+      "caution": "不是九连墩出土件，尺寸不能转给主展品",
+      "download_status": "validated_text",
+      "local_copy": {
+        "source_url": "https://www.dpm.org.cn/collection/bronze/233246.html",
+        "coverage": "article_body_text_without_images_or_video",
+        "original_html": {
+          "path": "assets/references/local/web/originals/palace-museum-axle-cap.html",
+          "bytes": 88980,
+          "sha256": "6a22af72be983155a29caf3e4b111b2fac78c19018ca87456b932b23213c9524"
+        },
+        "path": "assets/references/local/web/palace-museum-axle-cap.html",
+        "bytes": 1127,
+        "sha256": "6f233fd2214b7218752c1ac7b95dbb7c5963e8eb58c26fdfae9c5cbdc9d0aceb",
+        "redistribution": "not_assessed"
+      },
+      "relevance_assessment": {
+        "path": "data/sources/source-relevance.json",
+        "source_id": "ref:007",
+        "assessed_on": "2026-11-19",
+        "priority": "comparative_object"
+      },
+      "content_review": {
+        "scope": "task_relevant_sections_only_not_all_claims_independently_verified",
+        "locators": [
+          {
+            "paragraphs": [
+              1,
+              3
+            ],
+            "support": "item_period_dimensions_and_axle_end_function"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ref:008",
+      "title": "西周时期车马埋葬中的礼制意涵",
+      "alternate_title": "西周时期车马埋葬的礼制意涵",
+      "type": "journal_article",
+      "priority": "medium",
+      "authors": [
+        "吴晓筠"
+      ],
+      "journal": "故宫学术季刊",
+      "year": 2005,
+      "volume": 22,
+      "issue": 4,
+      "pages": null,
+      "urls": [
+        "https://www.npm.gov.tw/Research-Content.aspx?a=5522&l=1&sno=03012666&type=2005",
+        "https://www.npm.gov.tw/NewChineseArtDownload.ashx?bid=3662"
+      ],
+      "read_status": "institutional_index_and_indexed_abstract_only",
+      "full_text_obtained": false,
+      "download_status": "challenge_html_not_pdf",
+      "use": "车马随葬与礼制背景",
+      "scope": "西周及比较研究",
+      "caution": "原站访问不稳定，页码和最终题名待原文核实；不能直接套用战国楚制"
+    },
+    {
+      "id": "ref:009",
+      "title": "略论《考工记》车的制造规范",
+      "type": "journal_article",
+      "priority": "medium",
+      "authors": [
+        "李民",
+        "王星光"
+      ],
+      "journal": "河南师范大学学报（哲学社会科学版）",
+      "year": 1987,
+      "issue": 1,
+      "pages": "57-61",
+      "doi": "10.16366/j.cnki.1000-2359.1987.01.011",
+      "urls": [
+        "https://hnsk.cbpt.cnki.net/portal/journal/portal/client/paper/1e9ecaea57e4febd0bdc19a23abbd169"
+      ],
+      "read_status": "journal_metadata_abstract_and_references_checked",
+      "full_text_obtained": false,
+      "use": "典籍车制规范的研究路径",
+      "scope": "古代文献解释",
+      "caution": "全文需机构数据库获取；不与1985年另一篇论文混同"
+    },
+    {
+      "id": "ref:010",
+      "title": "考工司南：中国古代科技名物论集",
+      "type": "book",
+      "priority": "medium",
+      "authors": [
+        "闻人军"
+      ],
+      "publisher": "上海古籍出版社",
+      "year": 2017,
+      "urls": [
+        "https://www.fdgwz.org.cn/Web/Show/2998"
+      ],
+      "read_status": "academic_announcement_preface_and_contents_checked",
+      "full_text_obtained": false,
+      "use": "名物、车辅、古代尺度的精读线索",
+      "scope": "古代技术与文献解释",
+      "caution": "章节题名不是具体结构事实的证据"
+    }
+  ],
+  "leads": [
+    {
+      "id": "ref:011",
+      "title": "中国古独辀马车的结构",
+      "authors": [
+        "孙机"
+      ],
+      "year": 1985,
+      "journal": "文物",
+      "issue_hint": "8，待原刊复核",
+      "verification": "secondary_reference_only",
+      "urls": [
+        "https://www.tup.com.cn/upload/books/yz/043859-03.pdf",
+        "https://www.sckg.com/uploads/soft/20230509/2-230509155336449.pdf"
+      ],
+      "next_step": "找原刊或作者论文集核对图示与书目"
+    },
+    {
+      "id": "ref:012",
+      "title": "中国古代马车的系驾法",
+      "authors": [
+        "孙机"
+      ],
+      "year": 1984,
+      "verification": "institutional_research_history_reference_only",
+      "urls": [
+        "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml"
+      ],
+      "next_step": "取得原文并核期次、页码和图示"
+    },
+    {
+      "id": "ref:013",
+      "title": "湖北枣阳市九连墩楚墓",
+      "journal": "考古",
+      "year": 2003,
+      "issue_hint": "7",
+      "authors": null,
+      "pages": null,
+      "verification": "secondary_reference_only",
+      "urls": [
+        "https://www.npm.gov.tw/NewChineseArtDownload.ashx?bid=3662"
+      ],
+      "next_step": "按题名/期刊检索原文，核作者和原刊页码，不照抄冲突引文"
+    },
+    {
+      "id": "ref:014",
+      "title": "考工记译注",
+      "authors": [
+        "闻人军"
+      ],
+      "publisher": "上海古籍出版社",
+      "edition_year_hint": 2008,
+      "verification": "research_bibliography_and_author_preface_reference_only",
+      "urls": [
+        "https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22062003?viewType=HTML",
+        "https://www.fdgwz.org.cn/Web/Show/2998"
+      ],
+      "next_step": "借阅注明版本的注译本，保留原文尺度与比例"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "run_id": "run:20261119-wheel-review",
+  "reviewer": "Codex subagent /root/fact_review",
+  "method": "independent_source_page_pre_review",
+  "dataset": "data/candidates/wheel-axle.v0.2.json",
+  "reviewed_on": "2026-11-19",
+  "result_counts": {"supported": 16, "needs_review": 3, "unsupported": 0},
+  "formal_review_status": "pending",
+  "records": [
+    {"fact_id": "fact:001", "evidence_id": "evidence:001", "verdict": "needs_review", "reason": "汇编 PDF 第5页（四）轮的示意图支持图中毂的组成位置，通用类别关系的适用范围需复核。"},
+    {"fact_id": "fact:002", "evidence_id": "evidence:001", "verdict": "needs_review", "reason": "同一示意图支持图中辐的组成位置，通用类别关系的适用范围需复核。"},
+    {"fact_id": "fact:003", "evidence_id": "evidence:001", "verdict": "needs_review", "reason": "同一示意图支持图中牙的组成位置，通用类别关系的适用范围需复核。"},
+    {"fact_id": "fact:004", "evidence_id": "evidence:002", "verdict": "supported", "reason": "汇编 PDF 第6页上半部标本段明确 CH1：5 是轮，车号仍未证实。"},
+    {"fact_id": "fact:005", "evidence_id": "evidence:003", "verdict": "supported", "reason": "汇编 PDF 第4页参考段明确 CH1：3 是轴，车号仍未证实。"},
+    {"fact_id": "fact:006", "evidence_id": "evidence:002", "verdict": "supported", "reason": "汇编 PDF 第6页同一标本段中的右轮横径与字段对应。"},
+    {"fact_id": "fact:007", "evidence_id": "evidence:002", "verdict": "supported", "reason": "汇编 PDF 第6页同一标本段中的右轮竖径与字段对应。"},
+    {"fact_id": "fact:008", "evidence_id": "evidence:003", "verdict": "supported", "reason": "汇编 PDF 第4页 CH1：3 段末的通长与字段对应，需保持与上方记录分开。"},
+    {"fact_id": "fact:009", "evidence_id": "evidence:004", "verdict": "supported", "reason": "汇编 PDF 第6页 CH1：5 段开头支持木质与残存漆皮的描述。"},
+    {"fact_id": "fact:010", "evidence_id": "evidence:005", "verdict": "supported", "reason": "汇编 PDF 第4页 CH1：3 段开头支持木质与残存漆皮的描述。该记录与 fact:009 的标本不同。"},
+    {"fact_id": "fact:011", "evidence_id": "evidence:006", "verdict": "supported", "reason": "刘永华样章 PDF 第9页、印刷21页右页的车轴段支持商车承载功能解释。"},
+    {"fact_id": "fact:012", "evidence_id": "evidence:007", "verdict": "supported", "reason": "刘永华样章同段末支持商车轴端车軎的功能。"},
+    {"fact_id": "fact:013", "evidence_id": "evidence:008", "verdict": "supported", "reason": "邵朋飞论文 PDF 第5页、印刷251页第3.3.3节首句支持辐的定义。"},
+    {"fact_id": "fact:014", "evidence_id": "evidence:009", "verdict": "supported", "reason": "邵朋飞论文同页第3.3.1、3.3.2和3.3.4节标题支持对作者检验主题的归纳。"},
+    {"fact_id": "fact:015", "evidence_id": "evidence:010", "verdict": "supported", "reason": "张万辉论文 PDF 第6页、印刷168页第5节将运河村出土车辆列为研究案例。"},
+    {"fact_id": "fact:016", "evidence_id": "evidence:011", "verdict": "supported", "reason": "汇编 PDF 第5页图二四〇支持标本号和器名。该器物与主展品关系未核，单列对照标本。"},
+    {"fact_id": "fact:017", "evidence_id": "evidence:012", "verdict": "supported", "reason": "刘永华样章 PDF 第9页、印刷21页右页，图2-20上方的毂段支持两端术语。"},
+    {"fact_id": "fact:018", "evidence_id": "evidence:013", "verdict": "supported", "reason": "邵朋飞论文 PDF 第6页、印刷252页第3.3.10节明确列出作者对三材的解释。"},
+    {"fact_id": "fact:019", "evidence_id": "evidence:014", "verdict": "supported", "reason": "张万辉论文 PDF 第5页、印刷167页第3节末转述学界推测，语境为西周车辆。", "applied_edit": "合并时补明西周车辆，并明确是论文转述的研究推测。"}
+  ],
+  "duplicate_findings": [],
+  "unresolved": ["图示组成关系的适用范围", "CH1：3、CH1：5、M1：201-1 与九连墩六号车的对应关系", "六号车直接结构证据"]
+}

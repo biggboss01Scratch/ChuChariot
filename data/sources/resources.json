@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1.0",
+  "path_policy": "文件名相对于显式指定的资源目录；不保存本机绝对路径。",
+  "resources": [
+    {
+      "id": "res:001",
+      "filename": "KE6Pn-1787891792160-楚国战车复原需求.docx",
+      "kind": "requirements",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 398953,
+      "sha256": "03dc75cbf291e375ea6f66948d6d27e1ba27b29ab74225d9d62c9ded4c84846a"
+    },
+    {
+      "id": "res:002",
+      "filename": "obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf",
+      "kind": "source_compilation",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 15872065,
+      "sha256": "23d79ba68d0935ac26e439dede14c611a47556af8bdebc7b0f26a83bcc4a36e5"
+    },
+    {
+      "id": "res:003",
+      "filename": "原始要求.md",
+      "kind": "course_requirements",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 168,
+      "sha256": "8e2d97807708b07fb9cc6fb8273f7d9ae85cb82c269586d0e464391057653261"
+    },
+    {
+      "id": "res:004",
+      "filename": "原始要求.pdf",
+      "kind": "course_requirements",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 30782,
+      "sha256": "78b0e0bfca2b5303f11da8f17bf4b0a6e6712ed1afc586c7d53a2a57b504fa0a"
+    },
+    {
+      "id": "res:005",
+      "filename": "九连墩六号车·动画模型.glb",
+      "kind": "digital_reconstruction",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 5248620,
+      "sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "res:006",
+      "filename": "九连墩六号车·交互展件.html",
+      "kind": "legacy_web_exhibit",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 608989,
+      "sha256": "e5e29fee6924eaec6514c7cc934bead3fc488e9fc730fcf5edda4aa77ce6350a"
+    },
+    {
+      "id": "res:007",
+      "filename": "九连墩六号车·结构爆炸图.png",
+      "kind": "digital_reconstruction_image",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 269699,
+      "sha256": "2e260292f3f625509ca36d9c9a96b9b3f6d89da6175c8ebbd9919d30f40295e0"
+    },
+    {
+      "id": "res:008",
+      "filename": "isprs-archives-XLIX-B4-2026-745-2026.pdf",
+      "kind": "reference_paper",
+      "sharing": "unconfirmed",
+      "availability": "present",
+      "bytes": 11902334,
+      "sha256": "2e311195972764dd44c31f34e19ad098441a6510f66299d6370eadc731d9abec"
+    }
+  ]
+}

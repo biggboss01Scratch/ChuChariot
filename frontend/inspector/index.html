@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>楚车 · 知识图谱检查台</title>
+  <meta name="description" content="浏览当前楚国战车知识层中的实体、候选事实、证据与模型映射。">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="楚车知识检查台首页"><span class="brand-mark" aria-hidden="true">楚</span><span>楚车<span class="brand-divider">/</span><span class="brand-sub">知识工作台</span></span></a>
+    <div class="top-actions"><span class="local-label">本地 · 只读预览</span><button class="button" id="reload-button">重新加载</button></div>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <div><p class="eyebrow">CHU CHARIOT · KNOWLEDGE EXPLORER</p><h1>知识图谱检查台</h1><p class="intro-copy">浏览已整理的部件与尺寸，沿着每一条关系，回到它的资料依据。</p></div>
+      <div class="dataset-note"><span class="small-label">当前数据集</span><code id="dataset-id">正在读取…</code><span id="dataset-version">知识层初版 / 本地数据</span></div>
+    </section>
+    <section class="stats" aria-label="数据集概况">
+      <div class="stat"><span>实体目录</span><strong id="stat-entities">—</strong><small>类别、标本与数字资源</small></div>
+      <div class="stat"><span>已确认事实</span><strong id="stat-confirmed">—</strong><small>通过项目内容审核</small></div>
+      <div class="stat pending-stat"><span>待审核事实</span><strong id="stat-pending">—</strong><small>已整理，尚待组员复核</small></div>
+      <div class="stat"><span>证据片段</span><strong id="stat-evidence">—</strong><small>可定位到来源页与原文</small></div>
+    </section>
+    <section class="view-bar" aria-label="查询模式">
+      <div class="segmented" role="group" aria-label="知识可见范围"><button id="review-mode" class="active" aria-pressed="true">候选检查</button><button id="confirmed-mode" aria-pressed="false">已确认知识</button></div>
+      <p id="mode-description">正在读取当前候选…</p><span class="readonly">只读</span>
+    </section>
+    <div id="error-box" class="error-box" role="alert" hidden></div>
+    <div class="workspace" id="workspace" aria-busy="true">
+      <aside class="panel directory">
+        <div class="panel-title"><h2>实体目录</h2><span id="entity-count" class="count-badge">—</span></div>
+        <div class="directory-tools"><label for="search" class="sr-only">搜索名称、别名或ID</label><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索名称、别名或 ID" autocomplete="off"></div><label for="kind-filter" class="sr-only">筛选实体类型</label><select id="kind-filter"><option value="">全部类型</option></select></div>
+        <div class="entity-list" id="entity-list" aria-label="实体列表"></div>
+        <p class="directory-footer">目录存在，不代表相关事实已确认。</p>
+      </aside>
+      <section class="panel graph-panel" aria-label="知识关系图">
+        <div class="panel-title"><div><h2>知识关系</h2><span class="panel-subtitle" id="graph-summary">正在加载…</span></div><label class="neighbor-toggle"><input id="neighbors-only" type="checkbox">仅看关联</label></div>
+        <div class="graph-wrap" id="graph-wrap"><svg id="graph" viewBox="0 0 980 820" aria-label="实体与关系交互图"></svg><div id="graph-empty" class="graph-empty" hidden><span class="empty-icon" aria-hidden="true">◇</span><strong>当前没有已确认的关系</strong><p>已有候选仍待复核，可切换“候选检查”查看。</p></div><div class="graph-controls"><button id="zoom-out" aria-label="缩小关系图">−</button><span id="zoom-value">100%</span><button id="zoom-in" aria-label="放大关系图">+</button><button id="zoom-reset">适应画布</button></div></div>
+        <div class="graph-footer"><div class="legend"><span><i class="type-dot"></i>部件类别</span><span><i class="specimen-dot"></i>对照标本</span><span><i class="measure-dot"></i>尺寸</span><span><i class="resource-dot"></i>其他目录</span></div><span>点击节点查看 · 拖动画布 · 滚轮缩放</span></div>
+      </section>
+      <aside class="panel detail-panel" aria-label="实体详情">
+        <div class="detail-heading"><div id="detail-kind" class="kind-label">部件类别</div><h2 id="detail-name">正在加载…</h2><code id="detail-id"></code><div id="detail-status" class="detail-status"></div></div>
+        <div class="tabs" role="tablist" aria-label="详情内容"><button role="tab" id="tab-detail" data-tab="detail" aria-controls="detail-content" aria-selected="true" class="active">知识详情</button><button role="tab" id="tab-evidence" data-tab="evidence" aria-controls="detail-content" aria-selected="false">来源证据</button><button role="tab" id="tab-mappings" data-tab="mappings" aria-controls="detail-content" aria-selected="false">模型映射</button></div>
+        <div id="detail-content" class="detail-content" role="tabpanel" aria-labelledby="tab-detail"></div>
+      </aside>
+    </div>
+    <footer class="page-footer"><span>基于现有 JSON 知识层实时读取 · 校验通过不等于历史事实已证实</span><span id="load-status" role="status">正在连接本地数据</span></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "run_id": "run:20261119-local01",
+  "date": "2026-11-19",
+  "method": "local_image_transcription",
+  "dataset_id": "dataset:wheel-axle-001",
+  "ontology_version": "0.1.0",
+  "fragment_ids": ["source:001/pdf-page-4", "source:001/pdf-page-5", "source:001/pdf-page-6"],
+  "evidence_ids": ["evidence:001", "evidence:002", "evidence:003", "evidence:004"],
+  "new_candidate_fact_ids": ["fact:001", "fact:002", "fact:003", "fact:004", "fact:005", "fact:006", "fact:007", "fact:008", "fact:009"],
+  "review_status": "pending",
+  "gleaning": {
+    "status": "skipped",
+    "reason": "本轮仅本地阅读与转录，没有配置或执行外部AI调用。",
+    "round": 0,
+    "model": null,
+    "prompt_version": null,
+    "new_records": [],
+    "rejected_records": [],
+    "conflicts": [],
+    "error": null,
+    "usage": null,
+    "duration_ms": null
+  },
+  "limitations": ["直接来源是汇编，不是原始发掘报告", "尚未组员复核", "模型只检查结构元数据"]
+}

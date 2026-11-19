@@ -1,0 +1,190 @@
+{
+  "retrieved_on": "2026-11-19",
+  "purpose": "本地阅读下载记录；不代表内容已审核或已入图谱",
+  "pdf_count": 3,
+  "web_article_count": 4,
+  "new_pdf_count": 2,
+  "reused_pdf_count": 1,
+  "records": [
+    {
+      "source_id": "ref:004",
+      "title": "中国古代车舆马具（出版社公开样章）",
+      "format": "pdf",
+      "status": "validated",
+      "source_url": "https://www.tup.com.cn/upload/books/yz/043859-03.pdf",
+      "coverage": "excerpt",
+      "pdf_pages": 9,
+      "visual_pages_checked": [
+        2,
+        8,
+        9
+      ],
+      "path": "assets/references/local/liu-2013-chariot-excerpt.pdf",
+      "bytes": 1362404,
+      "sha256": "74d6d83b57cdac073a5c6b7ef5bdcd300d4f90ec9e0a15c413a60341c96c91d4"
+    },
+    {
+      "source_id": "ref:003",
+      "title": "先秦辐式双轮马车轮辋制作技艺研究",
+      "format": "pdf",
+      "status": "validated",
+      "source_url": "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22062003.pdf",
+      "coverage": "full_article",
+      "pdf_pages": 7,
+      "visual_pages_checked": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "path": "assets/references/local/zhang-2022-wheel-rim.pdf",
+      "bytes": 9530419,
+      "sha256": "a5c2aa6e88865870724190907e5f8e8795828a07fde96a6641cb1221aa378dfb"
+    },
+    {
+      "source_id": "assembly-source:006",
+      "title": "探微《考工记》中的工匠精神——以“轮”的制造为例",
+      "format": "pdf",
+      "status": "validated",
+      "source_url": "https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22060201.pdf",
+      "coverage": "full_article",
+      "pdf_pages": 9,
+      "visual_pages_checked": [
+        1,
+        5,
+        6,
+        9
+      ],
+      "path": "assets/references/local/shao-2022-wheel-craft.pdf",
+      "bytes": 666842,
+      "sha256": "cddb47b78326284187f0172f07a3793e4f31bbfd6f0defe0545031695f832b4f"
+    },
+    {
+      "source_id": "assembly-source:001",
+      "title": "北大考古与“百年百大考古发现”——甘肃张家川马家塬遗址",
+      "format": "html_text_snapshot",
+      "status": "validated_text",
+      "source_url": "https://archaeology.pku.edu.cn/info/1030/3489.htm",
+      "coverage": "article_body_text_without_images_or_video",
+      "text_characters": 5873,
+      "original_html": {
+        "path": "assets/references/local/web/originals/pku-majiayuan.html",
+        "bytes": 100494,
+        "sha256": "a75a6c2383e1c8017ee2cd5c6a8b4e27ffdd97d87532666bc0a39e5c6661cbed"
+      },
+      "path": "assets/references/local/web/pku-majiayuan.html",
+      "bytes": 17910,
+      "sha256": "e52c864e3fd08e4fe7e25a54b3b87252d0995d473d4843159e8a804c401d49db"
+    },
+    {
+      "source_id": "ref:005",
+      "title": "既远却近的背影——孙机先生与系驾法研究",
+      "format": "html_text_snapshot",
+      "status": "validated_text",
+      "source_url": "https://www.chnmuseum.cn/yj/kydt/202308/t20230824_259233.shtml",
+      "coverage": "article_body_text_without_images_or_video",
+      "text_characters": 4821,
+      "original_html": {
+        "path": "assets/references/local/web/originals/national-museum-harness.html",
+        "bytes": 41771,
+        "sha256": "29e9d9fd7492bd18d37001908f314f015030b3b2102fd904157e72369fc643b4"
+      },
+      "path": "assets/references/local/web/national-museum-harness.html",
+      "bytes": 14820,
+      "sha256": "a8e1cb8e343b61394a00f6ff173e517656073619fc38512dca3bb5bf9ab067c7"
+    },
+    {
+      "source_id": "ref:002",
+      "title": "“九连墩的故事——湖北九连墩墓出土文物”展览在辽宁省博物馆开幕",
+      "format": "html_text_snapshot",
+      "status": "validated_text",
+      "source_url": "https://hbww.org.cn/gnjl/p/6071.html",
+      "coverage": "article_body_text_without_images_or_video",
+      "text_characters": 645,
+      "original_html": {
+        "path": "assets/references/local/web/originals/hubei-jiuliandun-exhibition.html",
+        "bytes": 35035,
+        "sha256": "effe628e10ae78381df4b81d0a2c4f9a66f977c88239fe9b3539000ac987bab8"
+      },
+      "path": "assets/references/local/web/hubei-jiuliandun-exhibition.html",
+      "bytes": 2580,
+      "sha256": "bd2e44f6df50089d63dd828a186ad526f7b34056bfe0e4ad542a507256d48338"
+    },
+    {
+      "source_id": "ref:007",
+      "title": "双兔车軎",
+      "format": "html_text_snapshot",
+      "status": "validated_text",
+      "source_url": "https://www.dpm.org.cn/collection/bronze/233246.html",
+      "coverage": "article_body_text_without_images_or_video",
+      "text_characters": 180,
+      "original_html": {
+        "path": "assets/references/local/web/originals/palace-museum-axle-cap.html",
+        "bytes": 88980,
+        "sha256": "6a22af72be983155a29caf3e4b111b2fac78c19018ca87456b932b23213c9524"
+      },
+      "path": "assets/references/local/web/palace-museum-axle-cap.html",
+      "bytes": 1127,
+      "sha256": "6f233fd2214b7218752c1ac7b95dbb7c5963e8eb58c26fdfae9c5cbdc9d0aceb"
+    }
+  ],
+  "unavailable": [
+    {
+      "source_id": "assembly-source:002",
+      "title": "陕西传统木轮大车制作技艺调查",
+      "status": "not_downloaded",
+      "reason": "ScienceEngine原PDF入口返回404；期刊平台连接重置，旧期刊站证书过期；未绕过验证或关闭证书校验",
+      "urls": [
+        "https://www.geores.com.cn/gcyj/CN/abstract/article/1674-4969/81288",
+        "https://dds.sciengine.com/cfs/files/pdfs/view/1674-4969/C27433386D8E4B2695A9A9B591159A34.pdf"
+      ]
+    },
+    {
+      "source_id": "ref:008",
+      "title": "西周时期车马埋葬中的礼制意涵",
+      "status": "not_downloaded",
+      "reason": "院方入口返回Challenge Validation HTML，未取得PDF",
+      "urls": [
+        "https://www.npm.gov.tw/NewChineseArtDownload.ashx?bid=3662"
+      ]
+    },
+    {
+      "source_id": "ref:009",
+      "title": "略论《考工记》车的制造规范",
+      "status": "institutional_access_needed",
+      "reason": "原站只提供书目摘要，全文指向CNKI"
+    },
+    {
+      "source_id": "ref:001",
+      "title": "九连墩楚墓",
+      "status": "no_public_fulltext_found",
+      "reason": "仅找到出版消息与馆藏书目，待借阅"
+    },
+    {
+      "source_id": "ref:006",
+      "title": "中国古代设计思想研究——以先秦独辀马车设计为例",
+      "status": "no_public_fulltext_found",
+      "reason": "出版社仅公开简介和目录"
+    },
+    {
+      "source_id": "ref:010",
+      "title": "考工司南：中国古代科技名物论集",
+      "status": "no_public_fulltext_found",
+      "reason": "所见页面为书讯、序言和目录"
+    },
+    {
+      "source_ids": [
+        "ref:011",
+        "ref:012",
+        "ref:013",
+        "ref:014",
+        "assembly-lead:001"
+      ],
+      "status": "original_not_obtained",
+      "reason": "仍为待追查原刊/图书线索；没有将引文来源当成原文下载"
+    }
+  ],
+  "relevance_assessment": "data/sources/source-relevance.json"
+}

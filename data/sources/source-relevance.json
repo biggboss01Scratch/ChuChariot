@@ -1,0 +1,91 @@
+{
+  "assessment_version": "0.1.0",
+  "assessed_on": "2026-11-19",
+  "scope": "seven_downloaded_sources",
+  "assessment_kind": "content_to_requirement_relevance_not_full_historical_validation",
+  "baseline": ["teacher_chariot_restoration_docx", "docs/AGENT_BUILD_BRIEF.md", "docs/software-plan.md:R01-R12"],
+  "direct_target_component_evidence_found": false,
+  "knowledge_data_modified": false,
+  "records": [
+    {
+      "source_id": "ref:004",
+      "priority": "core_reading",
+      "relevance": "high_for_general_structure_and_comparative_connections",
+      "scope": "Shang_chariots_in_available_excerpt_not_target_Chu_chariot",
+      "requirements": ["R01", "R05", "R06", "R07", "R10"],
+      "locators": [
+        {"pdf_page": 8, "printed_pages": "18-19", "region": "印刷18页下部辀轴连接；19页辀与轭讨论", "support": "shaft_axle_position_and_groove_join_as_comparative_candidate"},
+        {"pdf_page": 9, "printed_pages": "20-21", "region": "20页衡轭；21页上部轴端固定", "support": "harness_part_connections_and_limited_axle_end_precedence"}
+      ],
+      "visual_pages_checked_this_assessment": [8, 9],
+      "not_supported": ["target_dimensions", "complete_assembly_order", "target_rope_routes", "target_materials_without_correspondence"]
+    },
+    {
+      "source_id": "ref:003",
+      "priority": "core_reading",
+      "relevance": "high_for_wheel_rim_manufacturing_topic",
+      "scope": "pre_Qin_research_with_modern_craft_analogues_and_Huaian_case",
+      "requirements": ["R01", "R05", "R10"],
+      "locators": [
+        {"pdf_pages": [3, 4], "printed_pages": "165-166", "section": "2", "figures": ["1", "2"], "support": "modern_saw_cutting_and_bending_craft_comparison"},
+        {"pdf_pages": [4, 5], "printed_pages": "166-167", "section": "3", "support": "secondary_citation_of_Huaian_restoration_report"},
+        {"pdf_pages": [5, 6], "printed_pages": "167-168", "section": "4-5", "support": "research_inferences_and_uncertainty_about_rim_segment_counts"}
+      ],
+      "visual_pages_checked_this_assessment": [3, 4, 5, 6],
+      "not_supported": ["target_rim_segment_count", "target_dimensions", "complete_chariot_assembly", "automatic_animation_parameters"]
+    },
+    {
+      "source_id": "assembly-source:006",
+      "priority": "supplementary",
+      "relevance": "medium_for_wheel_inspection_and_craftsmanship_story",
+      "scope": "interpretation_of_Kao_Gong_Ji_not_target_excavation_report",
+      "requirements": ["R01", "R10"],
+      "locators": [{"pdf_pages": [5, 6], "printed_pages": "251-252", "section": "3.3.1-3.3.10", "support": "inspection_topics_and_part_functions"}],
+      "visual_pages_checked_this_assessment": [5, 6],
+      "not_supported": ["ten_step_assembly_sequence", "target_material_list", "target_geometry", "validated_mechanical_simulation"]
+    },
+    {
+      "source_id": "assembly-source:001",
+      "priority": "method_reference",
+      "relevance": "medium_for_restoration_workflow_and_exhibition_method",
+      "scope": "Majiayuan_Xirong_vehicles_not_Jiuliandun",
+      "requirements": ["R05", "R10", "R12"],
+      "locators": [{"section": "五、车舆复原", "paragraph_starts_with": "在车辆结构、力学性能的认识以及原工艺", "support": "project_reports_assembly_research_replication_and_3D_display"}],
+      "not_supported": ["published_step_by_step_assembly_table", "downloaded_3D_video", "target_joinery", "target_motion_parameters"]
+    },
+    {
+      "source_id": "ref:005",
+      "priority": "original_paper_locator",
+      "relevance": "medium_for_harness_research_context_and_leads",
+      "scope": "retrospective_on_evolving_research_views_across_periods",
+      "requirements": ["R01", "R07", "R08", "R10"],
+      "locators": [{"section": "研究初创、成型、推广阶段", "figure_caption": "图一：1984年孙机系驾法比较图及原论文页码", "support": "research_history_and_original_source_location_not_actual_rope_path"}],
+      "not_supported": ["original_1984_paper_fulltext", "offline_figure_image", "target_rope_anchors", "target_threading_order"]
+    },
+    {
+      "source_id": "ref:002",
+      "priority": "exhibition_context",
+      "relevance": "high_for_site_context_low_for_component_reconstruction",
+      "scope": "Jiuliandun_site_and_exhibition_not_number_six_chariot_description",
+      "requirements": ["R01", "R10"],
+      "locators": [{"paragraphs": [2, 3], "support": "site_background_and_exhibition_theme_organization"}],
+      "not_supported": ["target_component_measurements", "target_part_ids", "assembly_sequence", "GLB_accuracy"]
+    },
+    {
+      "source_id": "ref:007",
+      "priority": "comparative_object",
+      "relevance": "medium_for_axle_cap_function_and_museum_record_example",
+      "scope": "specific_Western_Zhou_collection_item_not_Jiuliandun",
+      "requirements": ["R01", "R10"],
+      "locators": [{"paragraphs": [1, 3], "support": "item_period_dimensions_and_axle_end_function"}],
+      "not_supported": ["target_dimensions", "target_decoration", "target_part_identity", "complete_axle_end_assembly_sequence"]
+    }
+  ],
+  "remaining_critical_gaps": [
+    "target_excavation_report_and_CH1_specimen_attribution",
+    "target_wheel_segment_count_dimensions_and_joinery",
+    "target_body_shaft_axle_connections",
+    "target_harness_configuration_and_rope_routes",
+    "model_geometry_mapping_and_motion_validation"
+  ]
+}

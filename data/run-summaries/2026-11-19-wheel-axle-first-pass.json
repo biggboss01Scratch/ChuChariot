@@ -1,0 +1,20 @@
+{
+  "run_id": "run:20261119-wheel-first",
+  "ontology_version": "0.1.0",
+  "method": "source_page_review",
+  "baseline": "data/candidates/wheel-axle.v0.1.json",
+  "fragments": {
+    "teacher-wheel": "教师资料汇编 PDF 第4—6页",
+    "liu-wheel": "刘永华公开样章 PDF 第8—9页",
+    "zhang-wheel": "张万辉轮辋论文 PDF 第5—6页",
+    "shao-wheel": "邵朋飞制轮论文 PDF 第5—6页"
+  },
+  "candidates": [
+    {"id": "fact:010", "subject_id": "specimen:002", "fragment_id": "teacher-wheel", "pdf_page": 4, "value": "汇编将 CH1：3 轴描述为木质，木质已腐朽，仅见表面深褐色漆皮。", "quote": "轴为木质，木质已腐烂，现仅存表面深褐色漆皮", "locator": "“参考”下方 CH1：3 轴标本段开头", "scope_note": "仅为 CH1：3 对照标本的保存描述，遗址和车号未核。"},
+    {"id": "fact:011", "subject_id": "type:002", "fragment_id": "liu-wheel", "pdf_page": 9, "printed_page": "21", "value": "刘永华在商车讨论中将车轴解释为承载车上重量的关键部件。", "quote": "是承受车载重量的所在", "locator": "右页“车轴是车舆的关键部件”段", "scope_note": "作者对商车结构的解释，用于部件功能讲解。"},
+    {"id": "fact:012", "subject_id": "type:006", "fragment_id": "liu-wheel", "pdf_page": 9, "printed_page": "21", "value": "刘永华在商车讨论中将车軎描述为轴端防止车毂脱落的部件。", "quote": "为了不使毂掉落", "locator": "右页“车轴是车舆的关键部件”段末", "scope_note": "只概括商车讨论中的轴端部件功能。"},
+    {"id": "fact:013", "subject_id": "type:004", "fragment_id": "shao-wheel", "pdf_page": 5, "printed_page": "251", "value": "邵朋飞将辐解释为车轮中连接毂与轮圈的木质部件。", "quote": "辐是车轮中连接毂与轮圈的直木条", "locator": "第3.3.3节“判定辐条”开头", "scope_note": "古籍解释论文中的部件术语，用作类别讲解。"},
+    {"id": "fact:014", "subject_id": "type:001", "fragment_id": "shao-wheel", "pdf_page": 5, "printed_page": "251", "value": "邵朋飞把车轮的正圆、平整与均衡分别作为《考工记》制轮质量的解释主题。", "quote": "判定正圆；判定平整；判定均衡", "locator": "第3.3.1、3.3.2和3.3.4节标题（分隔符为整理所加）", "scope_note": "记录作者划分的检验主题，适合工艺导览。"},
+    {"id": "fact:015", "subject_id": "type:005", "fragment_id": "zhang-wheel", "pdf_page": 6, "printed_page": "168", "value": "张万辉将江苏淮安运河村出土的战国中晚期车辆列为先秦木质轮辋研究的实物案例。", "quote": "江苏淮安运河村出土的战国中晚期车辆", "locator": "第5节“结语”中段", "scope_note": "记录论文选用的对照案例，不将其形制或参数归给九连墩。"}
+  ]
+}

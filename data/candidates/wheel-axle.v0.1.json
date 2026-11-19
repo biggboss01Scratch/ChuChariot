@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "ontology_version": "0.1.0",
+  "dataset_id": "dataset:wheel-axle-001",
+  "stage": "candidate",
+  "description": "从本地尺寸汇编 PDF 转录的知识层启动样例；已做原文/图像对应检查，全部事实和模型映射仍待组员复核，不是正式已确认知识。",
+  "sources": [
+    {
+      "id": "source:001",
+      "title": "马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫",
+      "resource_id": "res:002",
+      "filename": "obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf",
+      "format": "pdf",
+      "page_count": 10,
+      "note": "当前直接来源为资料汇编，不冒充原始发掘报告；引文中的原报告页码与对照标本归属尚未追查。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:001", "source_id": "source:001", "pdf_page": 5,
+      "locator": "页面下半部“（四）轮”下方的结构示意图，轮、毂、辐、牙标注",
+      "quote": "轮；毂；辐；牙",
+      "transcription": "image_transcription", "check_status": "source_checked",
+      "scope_note": "记录图示的部件组成，不由此证明全部楚国车轮具有同一结构，也不推出装配顺序。"
+    },
+    {
+      "id": "evidence:002", "source_id": "source:001", "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落，右轮横径与竖径",
+      "quote": "右轮横径132、竖径119厘米",
+      "transcription": "image_transcription", "check_status": "source_checked",
+      "scope_note": "只归属于所引 CH1：5 轮标本；该段不足以证明它属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:003", "source_id": "source:001", "pdf_page": 4,
+      "locator": "“参考：”下方“标本 CH1：3-轴”段落末尾",
+      "quote": "轴通长272、粗径9.7、细径2.6厘米",
+      "transcription": "image_transcription", "check_status": "source_checked",
+      "scope_note": "只归属于参考段的 CH1：3 轴标本；不能与该页上方未注明标本的276厘米记录混为一条。",
+      "figure": "原文括注图二八七；当前只核对汇编页面，未找到原报告"
+    },
+    {
+      "id": "evidence:004", "source_id": "source:001", "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落开头",
+      "quote": "轮为木质，木质已腐烂，现仅存表面深褐色漆皮",
+      "transcription": "image_transcription", "check_status": "source_checked",
+      "scope_note": "CH1：5 标本描述，不推广为所有车轮，也不归属于数字模型材质。"
+    }
+  ],
+  "entities": [
+    {"id": "type:001", "kind": "ComponentType", "label": "车轮", "aliases": ["轮"], "note": "本样例的组成知识限于资料图示，不宣称部件清单完整。"},
+    {"id": "type:002", "kind": "ComponentType", "label": "车轴", "aliases": ["轴"]},
+    {"id": "type:003", "kind": "ComponentType", "label": "毂", "aliases": ["轮毂"]},
+    {"id": "type:004", "kind": "ComponentType", "label": "辐", "aliases": ["辐条"]},
+    {"id": "type:005", "kind": "ComponentType", "label": "牙", "aliases": ["轮牙"]},
+    {"id": "type:006", "kind": "ComponentType", "label": "軎", "aliases": []},
+    {"id": "type:007", "kind": "ComponentType", "label": "辖", "aliases": []},
+    {"id": "object:001", "kind": "Chariot", "label": "九连墩一号车马坑6号车", "aliases": ["九连墩六号车"], "note": "按现有资料登记的拟定主研究对象；本批没有向它归入未经证实的尺寸。最终展陈范围尚待组内确认。"},
+    {"id": "specimen:001", "kind": "ReferenceSpecimen", "label": "CH1：5轮标本", "aliases": ["CH1:5"], "note": "汇编引用的对照标本；具体遗址、墓坑和与主研究对象的关系未核实。"},
+    {"id": "specimen:002", "kind": "ReferenceSpecimen", "label": "CH1：3轴标本", "aliases": ["CH1:3"], "note": "汇编“参考”段落中的对照标本，不能默认当作主展品的轴。"},
+    {"id": "measurement:001", "kind": "Measurement", "label": "CH1：5右轮横径", "aliases": [], "scope_id": "specimen:001", "measurement": {"quantity": "右轮横径", "value": 132, "unit": "cm", "raw": "右轮横径132、竖径119厘米", "approximate": false}},
+    {"id": "measurement:002", "kind": "Measurement", "label": "CH1：5右轮竖径", "aliases": [], "scope_id": "specimen:001", "measurement": {"quantity": "右轮竖径", "value": 119, "unit": "cm", "raw": "右轮横径132、竖径119厘米", "approximate": false}},
+    {"id": "measurement:003", "kind": "Measurement", "label": "CH1：3轴通长", "aliases": [], "scope_id": "specimen:002", "measurement": {"quantity": "通长", "value": 272, "unit": "cm", "raw": "轴通长272、粗径9.7、细径2.6厘米", "approximate": false}},
+    {"id": "model:001", "kind": "ModelVersion", "label": "已有教学复原GLB初始版本", "aliases": [], "resource_id": "res:005", "content_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00", "note": "本版本未验证考古准确性、模型采用单位及动画效果。"}
+  ],
+  "facts": [
+    {"id": "fact:001", "subject_id": "type:001", "predicate": "HAS_PART", "object_id": "type:003", "evidence_ids": ["evidence:001"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:002", "subject_id": "type:001", "predicate": "HAS_PART", "object_id": "type:004", "evidence_ids": ["evidence:001"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:003", "subject_id": "type:001", "predicate": "HAS_PART", "object_id": "type:005", "evidence_ids": ["evidence:001"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:004", "subject_id": "specimen:001", "predicate": "INSTANCE_OF", "object_id": "type:001", "evidence_ids": ["evidence:002"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:005", "subject_id": "specimen:002", "predicate": "INSTANCE_OF", "object_id": "type:002", "evidence_ids": ["evidence:003"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:006", "subject_id": "specimen:001", "predicate": "HAS_MEASUREMENT", "object_id": "measurement:001", "evidence_ids": ["evidence:002"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:007", "subject_id": "specimen:001", "predicate": "HAS_MEASUREMENT", "object_id": "measurement:002", "evidence_ids": ["evidence:002"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:008", "subject_id": "specimen:002", "predicate": "HAS_MEASUREMENT", "object_id": "measurement:003", "evidence_ids": ["evidence:003"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}},
+    {"id": "fact:009", "subject_id": "specimen:001", "predicate": "DESCRIPTION", "value": "资料记载该轮为木质，木质已腐烂，现仅存表面深褐色漆皮。", "evidence_ids": ["evidence:004"], "origin": "documented", "review_status": "pending", "extraction": {"method": "local_image_transcription", "run_id": "run:20261119-local01"}}
+  ],
+  "model_mappings": [
+    {"id": "mapping:001", "entity_id": "type:002", "model_version_id": "model:001", "node_indices": [2], "review_status": "pending", "note": "根据节点名“轴”登记的类别映射线索；尚未渲染核对，不代表确认的实物部件实例。"},
+    {"id": "mapping:002", "entity_id": "type:001", "model_version_id": "model:001", "node_indices": [246, 326], "review_status": "pending", "note": "节点名为右轮旋转轴、左轮旋转轴，子节点组成待几何核对；不能按名称直接确认。"},
+    {"id": "mapping:003", "entity_id": "type:003", "model_version_id": "model:001", "node_indices": [188, 268], "review_status": "pending", "note": "两个同名毂组，必须按模型版本及节点索引区分。"},
+    {"id": "mapping:004", "entity_id": "type:004", "model_version_id": "model:001", "node_indices": [241, 321], "review_status": "pending", "note": "两个辐组的候选类别映射，不推断实际辐条数量。"},
+    {"id": "mapping:005", "entity_id": "type:005", "model_version_id": "model:001", "node_indices": [245, 325], "review_status": "pending", "note": "两个牙组的候选类别映射，不把三维分段数当作考古事实。"},
+    {"id": "mapping:006", "entity_id": "type:006", "model_version_id": "model:001", "node_indices": [250, 330], "review_status": "pending", "note": "依据GLB节点名登记，几何对应和历史解释待核验。"},
+    {"id": "mapping:007", "entity_id": "type:007", "model_version_id": "model:001", "node_indices": [253, 333], "review_status": "pending", "note": "依据GLB节点名登记，几何对应和历史解释待核验。"}
+  ]
+}
