@@ -1,6 +1,6 @@
 # 当前架构与代码入口
 
-更新：2026-11-19。仅 P1 知识层初版已实现；整体四层方案见软件计划设计书。
+更新：2026-11-19。当前为 P1 知识层、第三批候选和本地临时融合检查页。总体分层与阶段见[计划设计书](software-plan.md)。
 
 ## 已实现模块
 
@@ -14,12 +14,13 @@
 | `chuchariot/resources.py` | 资源大小/哈希登记、GLB 节点与动画元数据检查、映射哈希和索引检查 |
 | `chuchariot/__main__.py` | 命令行入口、JSON 输出和退出码 |
 | `chuchariot/preview.py` | 本地只读 HTTP 检查服务，复用知识校验与查询，按明确资源目录提供登记 PDF |
+| `chuchariot/media.py` | 将带页码的图块和带版本的模型节点图关联到实体，跟随查询审核状态 |
 | `frontend/inspector/` | 无构建、无 CDN 的临时检查页：实体检索、SVG关系图、证据和映射 |
 | `data/ontology/ontology.v0.1.json` | 类型、单位、关系方向、端点组合及无环约束 |
-| `data/candidates/wheel-axle.v0.1.json`、`wheel-axle.v0.2.json` | 默认启动样例及第二批完整候选包 |
+| `data/candidates/wheel-axle.v0.1.json` 至 `wheel-axle.v0.3.json` | 初版默认样例、第二批预审候选、第三批融合候选 |
 | `data/sources/` | 资源规格与本次本地检查快照 |
 | `data/scenes/model-inspection.json` | 模型版本内容哈希、命名节点、重名和动画初查结果 |
-| `tests/test_knowledge.py` | 证据、归属、审核边界、循环、导入和资源处理的必要检查 |
+| `tests/` | 验证事实、导入、资源、临时 HTTP 接口和媒体审核视图 |
 
 ## 实际数据流
 
@@ -70,7 +71,7 @@ Git 提交与交接基线状态见 [交接记录](handover.md)。
 
 ## 尚未实现
 
-正式后端业务 API、三维运行时、正式模型语义绑定、专题导览、AI 调用、OCR/批量抽取、Neo4j 均未实现。当前只增加临时检查服务，不代表完成 P2/P3。Gleaning 只定义交接契约并记录跳过状态。
+待实现工作包括生产 API、正式展陈前端和三维运行时、实例级语义核验、专题导览、OCR/批量抽取、Neo4j 和项目内 AI 接入。第二、三批在 Codex 会话中已执行拾遗和预审，应用中的 Gleaning 自动执行器仍处于契约阶段。详见[构建管线](pipeline.md)。
 
 ## 临时检查服务
 
@@ -79,5 +80,7 @@ Git 提交与交接基线状态见 [交接记录](handover.md)。
 `/api/preview` 默认输出已确认视图；`?review=1` 才返回候选。尺寸实体通过 `KnowledgeStore` 输出，保持未审核尺寸隔离。每次请求重新读取并校验 JSON，文件变更后点击重新加载即可，不缓存另一套知识。前端的默认候选视图通过显式参数请求，并持续展示审核提示。
 
 窗口中没有外部字体、JS 库或 CDN 请求；普通检查可断网进行。原文 PDF 是本机文件，是否可用由显式资源目录决定。
+
+第三批可通过 `--media-manifest` 和 `--media-dir` 启用媒体。`/api/preview` 返回当前视图可见的 `media` 记录，`/api/media/{id}` 读取已登记图像。知识、图块和模型映射各有单独的数据文件，展示时按稳定 ID 查询。构建与使用见 [融合检查](fusion.md)。
 
 资源盘点不证明模型几何正确；页码/引用格式校验不证明引文真实或推导成立。知识和内容审核仍需独立进行。

@@ -2,7 +2,7 @@
 
 检索日期：2026-11-19。用途：为组内借阅、精读和后续候选抽取提供来源入口。本文记录10项主要来源和4条待追查文献线索，不代表已经读完全部正文或将其导入知识图谱。
 
-机器可读目录：[research-catalogue.json](../data/sources/research-catalogue.json)。当前知识样例仍为14个实体、9条候选事实；本轮没有自动新增或确认历史事实。
+机器可读目录见 [research-catalogue.json](../data/sources/research-catalogue.json)。当前有三份补充 PDF 的部分页进入候选包，详见[知识覆盖](coverage.md)。
 
 已取得的本地资料见[下载索引](downloads.md)：3份PDF（含1份公开样章）和4篇机构网页正文。下载记录与内容审核状态分别管理。
 
@@ -41,7 +41,7 @@
 - 《工程研究》，2022，14(2)：163—169。DOI：**10.3724/j.issn.1674-4969.22062003**。
 - [期刊原站与摘要](https://pubs.cstam.org.cn/article/doi/10.3724/j.issn.1674-4969.22062003?viewType=HTML)、[原站PDF入口](https://pubs.cstam.org.cn/data/article/gcyj/preview/pdf/22062003.pdf)。
 - 用途：研究轮辋加工、木材弯曲与分段拼合，适合扩展“车轮如何制作”的知识专题。
-- 阅读状态：已取得[完整7页PDF](../assets/references/local/zhang-2022-wheel-rim.pdf)，全部页可解析并已渲染核对首末页；尚未逐段精读或抽取事实。此前下载超时的截断文件未采用。
+- 阅读状态：已取得完整 7 页 PDF，第 5—6 页已用于比较研究候选。阅读定位见[资料索引](downloads.md)。
 - 边界：工艺结论依赖作者研究范围，不能推出所有楚车采用同一拼合段数；尤其不能因现有模型轮圈分三段，就认定六号车也是三段。
 
 ### R04｜刘永华：《中国古代车舆马具》

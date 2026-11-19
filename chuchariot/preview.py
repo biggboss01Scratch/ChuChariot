@@ -10,6 +10,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from .dataset_io import DEFAULT_DATASET, DEFAULT_ONTOLOGY, ROOT, read_json
+from .media import image_path, project_media
 from .queries import KnowledgeStore
 
 FRONTEND = ROOT / "frontend/inspector"
@@ -17,9 +18,10 @@ ResourceDirectories = Path | list[Path] | tuple[Path, ...] | None
 
 
 def preview_data(dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, review=False,
-                 resource_dir: ResourceDirectories = None) -> dict:
+                 resource_dir: ResourceDirectories = None, *, media_manifest=None, media_dir=None) -> dict:
     definitions = read_json(ontology)
-    store = KnowledgeStore(read_json(dataset), definitions)
+    data = read_json(dataset)
+    store = KnowledgeStore(data, definitions)
     snapshot = store.snapshot(include_pending=review)
     for source in snapshot["sources"]:
         source["available"] = source_path(source, resource_dir) is not None
@@ -27,6 +29,8 @@ def preview_data(dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, review=Fals
     snapshot["meta"].update(review_mode=review, validation="passed")
     snapshot["ontology"] = definitions
     snapshot["model_report"] = read_json(model) if model.exists() else None
+    if media_manifest is not None:
+        snapshot["media"] = project_media(data, snapshot, read_json(media_manifest), media_dir)
     return snapshot
 
 
@@ -43,9 +47,13 @@ def source_path(source: dict, resource_dir: ResourceDirectories) -> Path | None:
 
 
 def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
-                resource_dir: ResourceDirectories = None) -> ThreadingHTTPServer:
+                resource_dir: ResourceDirectories = None, *, media_manifest=None, media_dir=None) -> ThreadingHTTPServer:
     # Validate before starting, then reload data on each request for manual review.
-    KnowledgeStore.load(dataset, ontology)
+    def snapshot(review):
+        return preview_data(dataset, ontology, review, resource_dir,
+                            media_manifest=media_manifest, media_dir=media_dir)
+
+    snapshot(False)
 
     class Handler(BaseHTTPRequestHandler):
         def respond(self, body: bytes, status=200, content_type="application/json; charset=utf-8"):
@@ -63,12 +71,20 @@ def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
         def do_GET(self):
             parsed = urlsplit(self.path)
             path = unquote(parsed.path)
+            review = parse_qs(parsed.query).get("review", ["0"]) == ["1"]
             try:
                 if path == "/api/health":
                     self.json_response({"status": "ok", "mode": "local_read_only_preview"})
                 elif path == "/api/preview":
-                    review = parse_qs(parsed.query).get("review", ["0"]) == ["1"]
-                    self.json_response(preview_data(dataset, ontology, review, resource_dir))
+                    self.json_response(snapshot(review))
+                elif path.startswith("/api/media/") and media_manifest is not None:
+                    ident = path.removeprefix("/api/media/")
+                    item = next((entry for entry in snapshot(review)["media"] if entry["id"] == ident), None)
+                    file = image_path(item["filename"], media_dir) if item else None
+                    if file is None:
+                        self.json_response({"error": "媒体未登记、未配置或当前视图不可用"}, 404)
+                    else:
+                        self.respond(file.read_bytes(), content_type="image/png")
                 elif path.startswith("/api/sources/"):
                     source_id = path.removeprefix("/api/sources/")
                     source = KnowledgeStore.load(dataset, ontology).source(source_id)
@@ -101,8 +117,9 @@ def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
     return ThreadingHTTPServer(("127.0.0.1", port), Handler)
 
 
-def serve(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, resource_dir=None):
-    server = make_server(port, dataset, ontology, resource_dir)
+def serve(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, resource_dir=None, *,
+          media_manifest=None, media_dir=None):
+    server = make_server(port, dataset, ontology, resource_dir, media_manifest=media_manifest, media_dir=media_dir)
     print(f"Knowledge preview: http://127.0.0.1:{server.server_port}", flush=True)
     print("Local read-only preview. Stop with Ctrl+C.", flush=True)
     try:

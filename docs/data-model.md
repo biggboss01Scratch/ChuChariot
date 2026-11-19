@@ -1,12 +1,12 @@
 # 知识数据规范 v0.1.0
 
-更新：2026-11-19。适用于知识层启动样例。机器约束由 `chuchariot/knowledge.py` 与 `data/ontology/ontology.v0.1.json` 共同实现，不宣称支持通用 JSON Schema 或 OWL 推理。
+更新：2026-11-19。适用于当前三批候选数据。项目约束由 `chuchariot/validation.py` 与 `data/ontology/ontology.v0.1.json` 共同定义。
 
 ## 数据集与 ID
 
 根字段：`schema_version`、`ontology_version`、`dataset_id`、`stage`、`description`，以及 `sources`、`evidence`、`entities`、`facts`、`model_mappings` 五个数组。
 
-第二批候选包名 `wheel-axle.v0.2.json` 表示数据批次，包内契约与本体版本仍为 `0.1.0`。新增内容沿用 `DESCRIPTION` 并在断言文字和证据范围中保留作者、年代或标本。预审结论按事实 ID 保存在运行摘要，正式事实状态仍由 `review_status` 表达。校验代码按规则组位于 `chuchariot/validation.py`。
+最新候选包名 `wheel-axle.v0.3.json` 表示数据批次，包内契约与本体版本仍为 `0.1.0`。实际入库关系和描述数量见[当前覆盖](coverage.md)。预审结论按事实 ID 保存在运行摘要，正式事实状态由 `review_status` 表达。
 
 当前版本均为 `0.1.0`。`stage` 为 `candidate` 或 `reviewed`；后者不得含待审核事实或映射。未知字段报错，以避免拼写错误被忽略。导入包必须是完整、引用闭合的数据集，不接受孤立事实片段直接入库。
 
@@ -53,13 +53,15 @@ ID 格式为 `命名空间:稳定编号`，例如 `type:001`、`fact:001`；只�
 
 证据包含 `source_id`、从 1 开始的 `pdf_page`、`locator`、`quote`、`transcription`、`check_status`、`scope_note`，可选印刷页码和图号。PDF 页码、图号、印刷页码互不替代。
 
-`embedded_text` 表示文本层抽取，`image_transcription` 表示依据页面图像转录。`source_checked` 只表示本轮对照过来源，不等于组员已审核对应事实。当前四段证据来自 PDF 第 4—6 页，图号尚未回查到原始报告。
+`embedded_text` 表示文本层抽取，`image_transcription` 表示依据页面图像转录或观察。`source_checked` 表示已对照来源，正式审核见对应事实的 `review_status`。第三批共登记 4 份 PDF 和 22 段证据，部分汇编图号待回查至原始报告。
 
 ## 模型映射与查询视图
 
 映射保存 `id`、`entity_id`、`model_version_id`、`node_indices`、`review_status`、`note`；非待审核映射另附 `review`。允许一对多；类别映射不能冒充实物部件实例映射。
 
 索引是绑定内容哈希的 glTF 节点数组下标，不是 Three.js 运行时对象 ID。模型中存在重名节点，不能只按名称绑定。索引/哈希检查只验证格式对应，不能确认几何语义。
+
+检查页的图像索引位于 `data/sources/fusion-media.v0.1.json`，与候选包并列管理。资料裁片按实体、证据页和像素矩形定位，模型图按实体、映射 ID、节点索引和 GLB 哈希定位。关联须经过校验，并遵循事实或映射的审核可见性。查看[融合格式与重建](fusion.md)。
 
 默认事实、关系、证据、映射查询仅返回 `confirmed`；审核视图 `--include-pending` 同时返回待审核及争议记录。实体目录始终可以浏览，但会附带 `fact_review_summary`；未确认尺寸值默认隐藏，返回 `measurement_visibility: hidden_until_reviewed`。目录元数据不能被前端直接包装成已确认解说。
 

@@ -1,0 +1,35 @@
+{
+  "run_id": "run:20261119-fusion-glean",
+  "baseline": "data/candidates/wheel-axle.v0.2.json",
+  "output": "data/candidates/wheel-axle.v0.3.json",
+  "ontology_version": "0.1.0",
+  "round": 1,
+  "status": "completed",
+  "provider": "Codex subagent /root/gleaning",
+  "model": null,
+  "prompt_version": "teacher-compilation-coverage-1",
+  "fragment_ids": ["teacher-p1-3", "teacher-p7-10"],
+  "evidence_ids": ["evidence:015", "evidence:016", "evidence:017", "evidence:018", "evidence:019"],
+  "new_records": ["fact:020", "fact:021", "fact:022", "fact:023", "fact:024"],
+  "rejected_records": [
+    "第2页图中的7、8号车各有标号。",
+    "第8页出现 M2：432 的推测复原图和未定对象的线图，保留原有归属。",
+    "第9页有若干小节标题，第10页没有本轮可提取的内容。",
+    "CH1：4 的保存描述可供下一个专题筛选，本批优先选与图像有关的条目。"
+  ],
+  "conflicts": [],
+  "stop_reason": "completed_one_expanded_source_round",
+  "error": null,
+  "usage": null,
+  "duration_ms": null,
+  "local_indexing": {"run_id": "run:20261119-fusion-index", "facts": ["fact:025", "fact:026", "fact:027", "fact:028"]},
+  "independent_pre_review": {
+    "reviewer": "Codex subagent /root/fact_review",
+    "reviewed_fact_ids": ["fact:020", "fact:021", "fact:022", "fact:023", "fact:024", "fact:025", "fact:026", "fact:027", "fact:028"],
+    "result": "9 条有对应页依据；引文和图像观察标记的修改已合并，正式审核仍为 pending。",
+    "applied_edits": [
+      {"fact_id": "fact:023", "change": "摘录补上同段黑漆用语，标明非连续摘录。"},
+      {"fact_id": "fact:027", "change": "标记为图像观察并说明无独立图题。裁片左缘扩至完整轮廓。"}
+    ]
+  }
+}

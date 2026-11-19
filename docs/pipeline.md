@@ -1,6 +1,6 @@
 # 知识构建与重跑
 
-更新：2026-11-19。当前实现资源登记、候选格式、校验、查询和幂等导入。第二批已执行来源页提取、一次 Codex 子 Agent 拾遗和独立预审，结果保存在可查询的 JSON 候选包中。
+更新：2026-11-19。当前实现资源登记、候选格式、校验、查询和幂等导入。第二、三批已执行来源页提取、Codex 子 Agent 拾遗与独立预审，结果保存在可查询的 JSON 候选包中。
 
 ## 1. 环境和来源
 
@@ -40,7 +40,7 @@ python -X utf8 -m unittest discover -s tests -v
 
 ## 4. 审核与正式知识
 
-第二批全部事实维持 `pending`。独立预审支持其中 16 条的表述，图示组成关系的 3 条仍需复核适用范围。正式审核时逐条填写 `review` 和状态，争议保留为 `disputed`，并检查正式包的引用闭合。
+第三批的 28 条事实均为 `pending`，含旧版 19 条和 9 条经新增预审的候选。第二批独立预审支持 16 条表述，另外 3 条图示组成关系仍需复核适用范围。正式审核时逐条填写 `review` 和状态，争议保留为 `disputed`，并检查正式包的引用闭合。
 
 默认查询只显示已确认事实；审核视图显式开启待审核和争议内容。事实被确认不代表推导/假设变成原始记载，也不表示模型几何获得核验。
 
@@ -54,12 +54,14 @@ python -X utf8 -m unittest discover -s tests -v
 
 第二批使用同一批固定来源页。教师资料汇编第 4—6 页用于复核旧记录及补充保存状态与对照器物，刘永华样章第 8—9 页、张万辉论文第 5—6 页、邵朋飞论文第 5—6 页用于术语、功能和研究解释。所有新增断言附来源和定位，其中作者的观点保留归因。
 
-在仓库根目录可导入第二批并检查幂等性。包编号独立于旧样例，派生快照使用单独路径。
+第三批开展了扩展页拾遗，新增 5 条文献候选和 4 条媒体索引候选，随后对照原页独立预审。详见[第三批摘要](../data/run-summaries/2026-11-19-fusion-gleaning.json)。
+
+在仓库根目录可导入第三批并检查幂等性。批次编号独立，派生快照使用单独路径。
 
 ```powershell
-python -m chuchariot import --input data/candidates/wheel-axle.v0.2.json --output data/local/wheel-axle.v0.2.json
-python -m chuchariot --dataset data/local/wheel-axle.v0.2.json validate --model-report data/scenes/model-inspection.json
-python -m chuchariot --dataset data/local/wheel-axle.v0.2.json evidence type:003 --include-pending
+python -m chuchariot import --input data/candidates/wheel-axle.v0.3.json --output data/local/wheel-axle.v0.3.json
+python -m chuchariot --dataset data/local/wheel-axle.v0.3.json validate --model-report data/scenes/model-inspection.json
+python -m chuchariot --dataset data/local/wheel-axle.v0.3.json evidence type:003 --include-pending
 ```
 
 ## 6. 批次记录与交接

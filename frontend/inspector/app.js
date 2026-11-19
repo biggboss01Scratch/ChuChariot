@@ -84,7 +84,7 @@ function selectEntity(id) {
   renderDetail();
 }
 
-function graphPosition(entity, index) {
+function graphPositions(entities) {
   const initial = {
     "type:001": [330, 215], "type:002": [385, 590], "type:003": [105, 90],
     "type:004": [85, 235], "type:005": [125, 385], "type:006": [125, 745],
@@ -92,7 +92,19 @@ function graphPosition(entity, index) {
     "measurement:001": [770, 240], "measurement:002": [770, 430], "measurement:003": [850, 590],
     "object:001": [585, 745], "model:001": [820, 745],
   };
-  return initial[entity.id] || [120 + (index % 4) * 225, 110 + Math.floor(index / 4) * 150];
+  const positions = new Map(entities.filter((entity) => initial[entity.id])
+    .map((entity) => [entity.id, initial[entity.id]]));
+  let slot = 0;
+  for (const entity of entities) {
+    if (positions.has(entity.id)) continue;
+    let point;
+    do {
+      point = [110 + (slot % 5) * 180, 90 + Math.floor(slot / 5) * 140];
+      slot += 1;
+    } while ([...positions.values()].some(([x, y]) => Math.abs(x - point[0]) < 150 && Math.abs(y - point[1]) < 105));
+    positions.set(entity.id, point);
+  }
+  return positions;
 }
 
 function graphCaption(entity) {
@@ -133,7 +145,7 @@ function renderGraph() {
   const marker = svgElement("marker", { id: "arrow-head", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
   marker.append(svgElement("path", { d: "M 1 1 L 9 5 L 1 9", fill: "none", stroke: "#92af9b", "stroke-width": 1.3 }));
   defs.append(marker); svg.append(defs);
-  const positions = new Map(entities.map((e, i) => [e.id, graphPosition(e, i)]));
+  const positions = graphPositions(entities);
   const edgeLayer = svgElement("g"), labelLayer = svgElement("g"), nodeLayer = svgElement("g");
   for (const fact of connections) {
     if (state.neighbors && (!adjacent.has(fact.subject_id) || !adjacent.has(fact.object_id))) continue;
@@ -204,12 +216,33 @@ function renderKnowledge(entity) {
   } else if (entity.measurement_visibility) {
     content += '<div class="empty-state"><strong>未确认尺寸已隐藏</strong>切换“候选检查”可以查看候选数值及其来源。</div>';
   }
+  content += renderMedia(entity);
   const facts = relatedFacts(entity.id);
   content += `<h3 class="section-label">关联事实 · ${facts.length}</h3>`;
   content += facts.length ? facts.map((fact) => `<article class="fact-card"><div class="fact-meta"><code>${escapeHtml(fact.id)}</code>${badge(fact.review_status)}</div><p class="fact-statement">${entityLink(fact.subject_id)}<span class="relation-word">${escapeHtml(relationNames[fact.predicate] || fact.predicate)}</span>${fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value)}</p><div class="fact-origin">${escapeHtml(origins[fact.origin] || fact.origin)} · ${fact.evidence_ids.length} 段证据</div><button class="text-button" data-proof="${escapeHtml(fact.id)}">查看事实依据</button></article>`).join("")
     : `<div class="empty-state"><strong>${state.review ? "暂未整理关联事实" : "暂无已确认事实"}</strong>${state.review ? "该对象目前仅在目录中登记，缺少关系不代表历史上不存在。" : "当前候选仍待组员复核，普通知识视图不会显示它们。"}</div>`;
   content += `<details><summary>查看当前实体记录</summary><pre>${escapeHtml(JSON.stringify(entity, null, 2))}</pre></details>`;
   $("#detail-content").innerHTML = content;
+}
+
+function renderMedia(entity, { kind, evidenceId } = {}) {
+  const items = (state.data.media || []).filter((item) => item.entity_ids.includes(entity.id) &&
+    (!kind || item.kind === kind) && (!evidenceId || item.evidence_id === evidenceId));
+  if (!items.length) return "";
+
+  const cards = items.map((item) => {
+    const url = `/api/media/${encodeURIComponent(item.id)}?review=${state.review ? "1" : "0"}`;
+    const evidence = state.data.evidence.find((record) => record.id === item.evidence_id);
+    const source = state.data.sources.find((record) => record.id === evidence?.source_id);
+    const lookup = source?.available
+      ? `<a class="pdf-link" href="/api/sources/${encodeURIComponent(source.id)}#page=${evidence.pdf_page}" target="_blank" rel="noopener">PDF 第 ${evidence.pdf_page} 页</a>`
+      : item.kind === "model_view" ? `<small>节点 ${item.node_indices.join("、")}</small>` : "";
+    return `<figure class="media-card">
+      ${item.available ? `<a href="${url}" target="_blank" rel="noopener"><img loading="lazy" src="${url}" alt="${escapeHtml(item.label)}"></a>` : '<p class="media-missing">本地文件待生成</p>'}
+      <figcaption><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.context)}</small>${lookup}</figcaption>
+    </figure>`;
+  });
+  return `<section class="media-section" aria-label="部件图像"><h3 class="section-label">部件图像</h3><div class="media-grid">${cards.join("")}</div></section>`;
 }
 
 function renderEvidence(entity) {
@@ -221,16 +254,17 @@ function renderEvidence(entity) {
     return;
   }
   const selectedEvidence = new Set(state.data.facts.find((f) => f.id === state.selectedFact)?.evidence_ids || []);
-  $("#detail-content").innerHTML = '<p class="note">证据定位到资料汇编。原文对应检查与组员审核分别记录。</p>' + evidence.map((e) => {
+  $("#detail-content").innerHTML = '<p class="note">证据链接到原始 PDF。相关段落和部件图见下方。</p>' + evidence.map((e) => {
     const source = state.data.sources.find((s) => s.id === e.source_id);
     const factIds = facts.filter((f) => f.evidence_ids.includes(e.id)).map((f) => f.id);
-    return `<article class="evidence-card ${selectedEvidence.has(e.id) ? "focused" : ""}"><div class="source-page"><strong>PDF 第 ${e.pdf_page} 页</strong><code>${escapeHtml(e.id)}</code></div><blockquote>${escapeHtml(e.quote)}</blockquote><p>${escapeHtml(e.locator)}</p><p class="scope-note">${escapeHtml(e.scope_note)}</p><p>对应事实：${factIds.map(escapeHtml).join("、")}</p><p>来源：${escapeHtml(source?.title || e.source_id)}</p><p>${e.check_status === "source_checked" ? "已本地对照原文；尚不代表组员审核" : "原文对应待核对"}</p>${source?.available ? `<a class="pdf-link" href="/api/sources/${encodeURIComponent(source.id)}#page=${e.pdf_page}" target="_blank" rel="noopener">打开原 PDF 第 ${e.pdf_page} 页</a>` : '<p>原 PDF 未配置。启动时可通过 --resource-dir 指定资料目录。</p>'}</article>`;
+    return `<article class="evidence-card ${selectedEvidence.has(e.id) ? "focused" : ""}"><div class="source-page"><strong>PDF 第 ${e.pdf_page} 页</strong><code>${escapeHtml(e.id)}</code></div><blockquote>${escapeHtml(e.quote)}</blockquote><p>${escapeHtml(e.locator)}</p><p class="scope-note">${escapeHtml(e.scope_note)}</p><p>对应事实：${factIds.map(escapeHtml).join("、")}</p><p>来源：${escapeHtml(source?.title || e.source_id)}</p><p>${e.check_status === "source_checked" ? "已本地对照原文；尚不代表组员审核" : "原文对应待核对"}</p>${source?.available ? `<a class="pdf-link" href="/api/sources/${encodeURIComponent(source.id)}#page=${e.pdf_page}" target="_blank" rel="noopener">打开原 PDF 第 ${e.pdf_page} 页</a>` : '<p>原 PDF 未配置。启动时可通过 --resource-dir 指定资料目录。</p>'}${renderMedia(entity, { kind: "source_clip", evidenceId: e.id })}</article>`;
   }).join("");
 }
 
 function renderMappings(entity) {
   const mappings = state.data.mappings.filter((m) => m.entity_id === entity.id);
   let html = mappings.length ? '<p class="note">以下是模型节点映射线索，尚未通过几何语义核验。此页不播放三维模型。</p>' : '<div class="empty-state"><strong>当前视图没有模型映射</strong>对象可能尚未映射；待审核映射只在候选检查模式中显示。</div>';
+  html += renderMedia(entity, { kind: "model_view" });
   html += mappings.map((m) => `<article class="mapping-card"><div class="fact-meta"><code>${escapeHtml(m.id)}</code>${badge(m.review_status)}</div><h3>${escapeHtml(getEntity(m.model_version_id)?.label || m.model_version_id)}</h3><div>${m.node_indices.map((n) => `<code class="node-index">node ${n}</code>`).join("")}</div><p>${escapeHtml(m.note)}</p><p>绑定版本：${escapeHtml(m.model_version_id)}</p></article>`).join("");
   const report = state.data.model_report;
   if (report?.node_count) html += `<div class="model-summary"><h3 class="section-label">已有模型结构初查</h3><p>${report.node_count} 个节点 · ${report.mesh_count} 个 mesh · ${report.animations.length} 段动画</p><p>${report.animations.map((a) => escapeHtml(a.name)).join("、")}</p><p>这里只展示结构元数据，几何正确性、单位和动画播放效果仍待检查。</p></div>`;

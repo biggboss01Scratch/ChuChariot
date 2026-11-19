@@ -42,11 +42,14 @@ def main(argv=None):
     preview.add_argument("--port", type=int, default=8765)
     preview.add_argument("--resource-dir", type=Path, action="append",
                          help="可重复指定原始PDF目录，只提供已登记的PDF")
+    preview.add_argument("--media-manifest", type=Path, help="截图与模型图像关联清单")
+    preview.add_argument("--media-dir", type=Path, help="从原件生成的本地图像目录")
     args = parser.parse_args(argv)
     try:
         if args.command == "preview":
             from .preview import serve
-            serve(args.port, args.dataset, args.ontology, args.resource_dir)
+            serve(args.port, args.dataset, args.ontology, args.resource_dir,
+                  media_manifest=args.media_manifest, media_dir=args.media_dir)
             return 0
         elif args.command == "inventory":
             specs = read_json(args.specs)

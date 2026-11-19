@@ -2,7 +2,7 @@
 
 更新：2026-11-19。资源规格见 `data/sources/resource-specs.json`，本轮实际大小与 SHA256 快照见 `data/sources/resources.json`。快照不保证其他组员机器上的资源可用，需重新运行 inventory。
 
-补充网络检索结果单独登记于[研究资料清单](research-sources.md)和 `data/sources/research-catalogue.json`：10项主要来源、4条待追查线索。它们尚未加入当前知识样例的 `sources/evidence/facts`；“找到资料”不等于“读过全文”或“事实已确认”。本轮仅将一份出版社公开样章完整保存到 `assets/references/local/`，文件和哈希见目录。
+补充检索汇总见[研究资料清单](research-sources.md)。本地缓存含两份期刊论文、一份出版社样章和四篇网页副本，获取方式与哈希见[下载索引](downloads.md)。候选包引用老师汇编及三份补充 PDF 的部分页。其余来源依用途供进一步核查。
 
 ## 资源位置和共享
 
@@ -13,10 +13,10 @@
 | 资源 ID | 文件 | 用途与本轮检查范围 |
 |---|---|---|
 | `res:001` | `KE6Pn-1787891792160-楚国战车复原需求.docx` | 文字需求段落初读；未做 DOCX 全页排版/图片核验，不以其产生历史尺寸事实 |
-| `res:002` | `obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf` | 10 页汇编；抽取文本；渲染并查看第 4、5、6 页，形成候选证据 |
+| `res:002` | `obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf` | 10 页汇编。当前批次引用第 1、3、4、5、6、7、9 页，图块来自第 3、5、6 页 |
 | `res:003` | `原始要求.md` | 课程要求文件；已核对存在和内容 |
 | `res:004` | `原始要求.pdf` | 已登记存在和哈希，未在本轮逐页阅读 |
-| `res:005` | `九连墩六号车·动画模型.glb` | GLB 结构检查；未渲染核验 |
+| `res:005` | `九连墩六号车·动画模型.glb` | 已完成元数据、七组静态几何及部分动画轨道核对。见[模型核对](fusion.md#模型核对) |
 | `res:006` | `九连墩六号车·交互展件.html` | 静态查看部件面板、模式按钮、资料与示意范围说明；未浏览器交互检查 |
 | `res:007` | `九连墩六号车·结构爆炸图.png` | 已登记存在和哈希，未在本轮作为事实证据使用 |
 | `res:008` | `isprs-archives-XLIX-B4-2026-745-2026.pdf` | 已登记存在和哈希，尚未阅读其方法内容 |
@@ -35,13 +35,13 @@
 
 `data/scenes/model-inspection.json` 记录完整命名节点索引、重名和动画元数据：709 个节点、633 个 mesh、3 段动画。动画名为“行进与轮轴运动”“部件拼装”“拆解与复位”。
 
-发现轴组节点 2，右/左轮组 246/326，以及毂、辐、牙、軎、辖的组节点。部分节点同名，7 组候选映射仅为下一阶段线索。模型生成器标记为 `THREE.GLTFExporter r170`；不能据此推断其浏览器实现、部件尺寸或历史正确性。
+发现轴组节点 2，右/左轮组 246/326，以及毂、辐、牙、軎、辖的组节点。部分节点同名，7 组映射以候选状态登记。当前已用静态图核对映射类别，完整模型准确性和实时交互待核。详见[融合检查](fusion.md)。
 
 ## 重新登记
 
 ```powershell
 python -m chuchariot inventory --resource-dir .. --output data/sources/resources.json --model-report data/scenes/model-inspection.json
-python -m chuchariot validate --model-report data/scenes/model-inspection.json
+python -m chuchariot --dataset data/candidates/wheel-axle.v0.3.json validate --model-report data/scenes/model-inspection.json
 ```
 
 普通 CLI 查询不依赖原件；做内容复核则必须打开原 PDF，不能只看转录文字。复核通过后由负责组员填写审核者、日期和判断，更新源候选并记录决策，不直接修改派生快照。
