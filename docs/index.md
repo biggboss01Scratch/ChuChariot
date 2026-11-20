@@ -2,7 +2,7 @@
 
 2026-11-20 · P1 知识层与本地临时检查原型，当前数据批次为 `wheel-axle.v0.4`。
 
-第一次接手建议按顺序阅读 [README 与启动命令](../README.md)、[当前交接与 GitHub 准备](handover.md)、[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
+第一次接手建议按顺序阅读 [README 与启动命令](../README.md)、[项目交接索引](handover.md)、[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
 
 ## 这一版交付到哪里
 
@@ -22,7 +22,7 @@
 | 我想做什么 | 打开哪里 |
 |---|---|
 | 了解老师和小组的项目要求 | [原始构建说明](AGENT_BUILD_BRIEF.md) · [软件计划与验收](software-plan.md) · [决策记录](decisions.md) |
-| 本地启动、交给下一位或准备 GitHub | [README](../README.md) · [最新交接](handover.md) · [项目进度](progress.md) |
+| 本地启动、交给下一位或准备 GitHub | [README](../README.md) · [项目交接索引](handover.md) · [项目进度](progress.md) |
 | 写代码、扩字段或接后端 | [实际架构](architecture.md) · [数据规范](data-model.md) · [接口和 Python 调用](api.md) |
 | 复核事实、补提取或导入候选 | [覆盖与待核问题](coverage.md) · [教师原件逐项核查](source-coverage-audit.md) · [构建管线](pipeline.md) · [拾遗契约 v0.2](../data/pipeline/gleaning-contract.v0.2.json) |
 | 查截图、证据页和三维节点对应 | [融合检查](fusion.md) · [媒体清单](../data/sources/fusion-media.v0.1.json) |

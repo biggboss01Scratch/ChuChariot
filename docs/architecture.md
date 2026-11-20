@@ -1,6 +1,6 @@
 # 当前架构与代码入口
 
-更新：2026-11-19。当前为 P1 知识层、第三批候选和本地临时融合检查页。总体分层与阶段见[计划设计书](software-plan.md)。
+2026-11-20 · 当前为 P1 知识层、第四批候选和本地临时融合检查页。`frontend/inspector/` 通过 HTTP 调用 `chuchariot/preview.py`。正式服务的 `backend/` 目录将在后端实现时建立，正式前端继续放在 `frontend/`。前后端分离要求见[计划设计书](software-plan.md#32-需求追踪)。
 
 ## 已实现模块
 
