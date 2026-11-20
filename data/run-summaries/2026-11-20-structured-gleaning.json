@@ -1,0 +1,69 @@
+{
+  "run_id": "run:20261120-structured-gleaning",
+  "dataset": "data/candidates/wheel-axle.v0.4.json",
+  "contract_version": "0.2.0",
+  "model": null,
+  "method": "in_session_source_passage_review",
+  "source_evidence_ids": [
+    "evidence:004",
+    "evidence:005",
+    "evidence:018",
+    "evidence:019"
+  ],
+  "existing_facts_compared": [
+    "fact:009",
+    "fact:010",
+    "fact:023",
+    "fact:024",
+    "fact:029",
+    "fact:030"
+  ],
+  "passage_coverage": [
+    {"evidence_id": "evidence:004", "already_structured": ["fact:029"], "added": ["fact:032"], "retained_in_description": "基材腐朽见 fact:009"},
+    {"evidence_id": "evidence:005", "already_structured": ["fact:030"], "added": ["fact:033"], "retained_in_description": "基材腐朽见 fact:010"},
+    {"evidence_id": "evidence:018", "added": ["fact:036", "fact:037"], "retained_as_evidence_qualifier": "红漆在辀首，中后段记黑漆"},
+    {"evidence_id": "evidence:019", "added": ["fact:034", "fact:035", "fact:038"], "retained_as_evidence_qualifier": "髹饰与勾连云纹限于马镳骨帽，残存一只"}
+  ],
+  "added_facts": [
+    {
+      "fact_id": "fact:032",
+      "evidence_id": "evidence:004"
+    },
+    {
+      "fact_id": "fact:033",
+      "evidence_id": "evidence:005"
+    },
+    {
+      "fact_id": "fact:034",
+      "evidence_id": "evidence:019"
+    },
+    {
+      "fact_id": "fact:035",
+      "evidence_id": "evidence:019"
+    },
+    {
+      "fact_id": "fact:036",
+      "evidence_id": "evidence:018"
+    },
+    {
+      "fact_id": "fact:037",
+      "evidence_id": "evidence:018"
+    },
+    {
+      "fact_id": "fact:038",
+      "evidence_id": "evidence:019"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate": "用残存漆皮改写木材材质",
+      "reason": "原文描述的保存特征与器物基材分别追溯。"
+    },
+    {
+      "candidate": "将勾连云纹归给整组马具或六号车",
+      "reason": "原文只述马具组内一件残存马镳的骨帽。"
+    }
+  ],
+  "stop_reason": "selected_passages_checked_and_resolved",
+  "review_status": "pending"
+}

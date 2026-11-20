@@ -1,0 +1,207 @@
+{
+  "version": "0.2.0",
+  "entity_kinds": {
+    "ComponentType": "通用部件类别，不代表具体战车上的一个实例",
+    "Chariot": "具体战车或主研究对象",
+    "Component": "具体部件，必须声明所属对象",
+    "ReferenceSpecimen": "资料引用的对照标本，不能默认归属于主展品",
+    "Measurement": "尺寸记录，其归属必须与尺寸关系主体一致",
+    "Connection": "连接记录",
+    "ModelVersion": "数字模型版本，不是历史实物",
+    "Pose": "预留位姿实体；具体变换字段待场景阶段定义",
+    "AssemblyStep": "装配演示步骤，不是结构关系或导览顺序",
+    "Material": "资料记载的材质类别，保留原文用词和适用标本",
+    "PreservationFeature": "考古资料记载的保存特征",
+    "SurfaceFinish": "资料记录的表面髹饰类别",
+    "DecorationMotif": "资料记载的纹饰图案"
+  },
+  "units": [
+    "mm",
+    "cm",
+    "m"
+  ],
+  "predicates": {
+    "SUBCLASS_OF": {
+      "label": "子类别属于父类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ]
+      ],
+      "acyclic": true
+    },
+    "INSTANCE_OF": {
+      "label": "实例属于类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "ComponentType"
+        ],
+        [
+          "ReferenceSpecimen",
+          "ComponentType"
+        ]
+      ]
+    },
+    "HAS_PART": {
+      "label": "主体直接包含部件；类别层关系不代表实例清单完整",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ],
+        [
+          "Chariot",
+          "Component"
+        ],
+        [
+          "Component",
+          "Component"
+        ],
+        [
+          "ReferenceSpecimen",
+          "Component"
+        ]
+      ],
+      "acyclic": true
+    },
+    "HAS_MEASUREMENT": {
+      "label": "主体具有尺寸记录",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Measurement"
+        ],
+        [
+          "ReferenceSpecimen",
+          "Measurement"
+        ],
+        [
+          "Chariot",
+          "Measurement"
+        ],
+        [
+          "ModelVersion",
+          "Measurement"
+        ]
+      ]
+    },
+    "PARTICIPATES_IN_CONNECTION": {
+      "label": "部件参与连接",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Connection"
+        ]
+      ]
+    },
+    "HAS_POSE": {
+      "label": "具体部件具有位姿",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Pose"
+        ]
+      ]
+    },
+    "INVOLVES_COMPONENT": {
+      "label": "步骤涉及具体部件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "AssemblyStep",
+          "Component"
+        ]
+      ]
+    },
+    "DEPENDS_ON": {
+      "label": "步骤依赖前置步骤",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "AssemblyStep",
+          "AssemblyStep"
+        ]
+      ],
+      "acyclic": true
+    },
+    "DESCRIPTION": {
+      "label": "有证据的文字描述",
+      "object_kind": "text",
+      "subject_kinds": [
+        "ComponentType",
+        "Chariot",
+        "Component",
+        "ReferenceSpecimen",
+        "Connection"
+      ]
+    },
+    "HAS_MATERIAL": {
+      "label": "标本记载的材质",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "Material"
+        ],
+        [
+          "Component",
+          "Material"
+        ]
+      ]
+    },
+    "HAS_PRESERVED_FEATURE": {
+      "label": "残存特征",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "PreservationFeature"
+        ],
+        [
+          "Component",
+          "PreservationFeature"
+        ]
+      ]
+    },
+    "HAS_SURFACE_FINISH": {
+      "label": "表面髹饰",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "SurfaceFinish"
+        ],
+        [
+          "Component",
+          "SurfaceFinish"
+        ]
+      ]
+    },
+    "HAS_DECORATION_MOTIF": {
+      "label": "纹饰",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "DecorationMotif"
+        ],
+        [
+          "Component",
+          "DecorationMotif"
+        ]
+      ]
+    }
+  },
+  "derived_relations": {
+    "SUPPORTED_BY": "Fact.evidence_ids 投影为 Fact → Evidence，不重复维护独立事实",
+    "REPRESENTED_BY": "model_mappings 投影为实体 → 模型版本与节点"
+  }
+}

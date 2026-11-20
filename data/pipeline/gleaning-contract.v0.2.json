@@ -1,0 +1,19 @@
+{
+  "contract_version": "0.2.0",
+  "implementation_status": "manual_workflow_and_contract",
+  "required_input": ["run_id", "fragment_id", "source_locator", "ontology_version", "first_pass_records", "existing_entities"],
+  "required_output": ["passage_coverage", "added_candidates", "duplicates", "rejected_records", "conflicts", "stop_reason"],
+  "review_steps": [
+    "逐句对照原文和已有记录，定位主语、实体身份、可独立核对的属性、关系及限定词。",
+    "同时检查名词和断言。重点检查归类、组成、材质、髹饰、纹饰、保存状态、尺寸归属、年代和出土语境。只有原文支持时才建立关系。",
+    "遇到多项内容的描述时逐项核对。可复用的对象与关系优先结构化，并检查能否反查原有实体和证据。",
+    "按本体检查关系两端、对象归属和证据定位。保留标本、时代、来源、否定、近似和不确定性。无法消歧的内容记录为待核。",
+    "对每个已读片段记录新增、已有、歧义或范围外。现有本体无法表达的内容记录为缺口，避免把有意义的遗漏留在未标记的长描述里。",
+    "合并前检查重复、冲突和可溯源性。补足选定片段的覆盖记录后停止，把新事实留在待审核区。"
+  ],
+  "candidate_fields": ["subject_id", "predicate", "object_id_or_value", "evidence_ids", "scope_or_qualifier", "review_status"],
+  "defaults": {
+    "review_status": "pending",
+    "max_additional_rounds_per_passage_batch": 1
+  }
+}

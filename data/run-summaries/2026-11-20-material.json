@@ -1,0 +1,14 @@
+{
+  "run_id": "run:20261120-material",
+  "baseline": "data/candidates/wheel-axle.v0.3.json",
+  "output": "data/candidates/wheel-axle.v0.4.json",
+  "ontology_version": "0.2.0",
+  "method": "structured_from_existing_evidence",
+  "added_facts": [
+    {"fact_id": "fact:029", "evidence_id": "evidence:004"},
+    {"fact_id": "fact:030", "evidence_id": "evidence:005"},
+    {"fact_id": "fact:031", "evidence_id": "evidence:011"}
+  ],
+  "status": "pending",
+  "notes": "将已收录的标本材质转为关系。原描述保留漆皮状态或纹饰。未获得树种、合金成分或六号车归属的新证据。"
+}

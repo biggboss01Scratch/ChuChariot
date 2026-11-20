@@ -26,7 +26,8 @@ def _evidence_targets(facts):
 
 def project_media(dataset, snapshot, manifest, directory=None):
     """Validate catalog links against the full data, then apply query visibility."""
-    if manifest["version"] != "0.1.0" or manifest["dataset_id"] != dataset["dataset_id"]:
+    dataset_ids = (manifest["dataset_id"], *manifest.get("compatible_dataset_ids", ()))
+    if manifest["version"] != "0.1.0" or dataset["dataset_id"] not in dataset_ids:
         raise KnowledgeError("媒体清单版本或对应数据集不匹配")
 
     visible_mappings = {item["id"] for item in snapshot["mappings"]}

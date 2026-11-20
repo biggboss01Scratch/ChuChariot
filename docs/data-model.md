@@ -1,14 +1,14 @@
 # 知识数据规范 v0.1.0
 
-更新：2026-11-19。适用于当前三批候选数据。项目约束由 `chuchariot/validation.py` 与 `data/ontology/ontology.v0.1.json` 共同定义。
+更新：2026-11-20。项目校验在 `chuchariot/validation.py`，本体随数据批次选择。
 
 ## 数据集与 ID
 
 根字段：`schema_version`、`ontology_version`、`dataset_id`、`stage`、`description`，以及 `sources`、`evidence`、`entities`、`facts`、`model_mappings` 五个数组。
 
-最新候选包名 `wheel-axle.v0.3.json` 表示数据批次，包内契约与本体版本仍为 `0.1.0`。实际入库关系和描述数量见[当前覆盖](coverage.md)。预审结论按事实 ID 保存在运行摘要，正式事实状态由 `review_status` 表达。
+最新候选包 `wheel-axle.v0.4.json` 采用 `ontology.v0.2.json`，前三批使用 `ontology.v0.1.json`。实际入库关系和描述数量见[当前覆盖](coverage.md)。预审结论按事实 ID 保存在运行摘要，正式事实状态由 `review_status` 表达。
 
-当前版本均为 `0.1.0`。`stage` 为 `candidate` 或 `reviewed`；后者不得含待审核事实或映射。未知字段报错，以避免拼写错误被忽略。导入包必须是完整、引用闭合的数据集，不接受孤立事实片段直接入库。
+JSON 字段契约仍为 `0.1.0`。`stage` 为 `candidate` 或 `reviewed`；后者不得含待审核事实或映射。未知字段报错，以避免拼写错误被忽略。导入包必须是完整、引用闭合的数据集，不接受孤立事实片段直接入库。
 
 ID 格式为 `命名空间:稳定编号`，例如 `type:001`、`fact:001`；只能用小写英文字母、数字和规范允许的分隔符。一个数据集内全局唯一，不随名称变更。外部重复 JSON 字段被拒绝，不接受“最后一个同名字段覆盖前面字段”。
 
@@ -31,6 +31,8 @@ ID 格式为 `命名空间:稳定编号`，例如 `type:001`、`fact:001`；只�
 每条事实包含 `id`、`subject_id`、`predicate`、`object_id` 或 `value`、`evidence_ids`、`origin`、`review_status`、`extraction`。目标实体与文字值二选一，关系允许类型在本体中逐项声明。
 
 核心关系：类别层次、实例归类、直接组成、尺寸、参与连接、位姿、步骤涉及部件、步骤依赖和有证据的文字描述。
+
+`HAS_MATERIAL`、`HAS_PRESERVED_FEATURE`、`HAS_SURFACE_FINISH`、`HAS_DECORATION_MOTIF` 从 `ReferenceSpecimen` 或 `Component` 分别指向 `Material`、`PreservationFeature`、`SurfaceFinish`、`DecorationMotif`。保留资料用词与作用范围。深褐色漆皮作为残存特征，红漆和黑漆作为表面髹饰，勾连云纹作为纹饰。颜色发生在器物哪个部位，随证据原文及范围记录。每种关系都可反查相关标本。
 
 `HAS_PART` 的类别→类别只表达资料图示的通用结构；实例组成要求所属研究对象一致。不能由图中部件名推出具体实物数量或完整性。类别层次、直接组成、步骤依赖、推导依据链分别检查循环。
 

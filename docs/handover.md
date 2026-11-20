@@ -1,28 +1,28 @@
 # 当前交接与 GitHub 准备
 
-2026-11-19 · P1 知识层。当前交付含车轮与车轴第三批候选及本地临时只读检查页。完整导航见[项目文档索引](index.md)。
+2026-11-20 · P1 知识层。第四批把已有描述拆成可查询的材质、组成、保存特征、髹饰和纹饰关系。完整导航见[项目文档索引](index.md)。
 
 ## 收到的版本
 
 | 项目 | 当前情况 |
 |---|---|
 | Git | 本地开发分支为 `master`，基线为 `228591c`。`origin` 已指向 [GitHub 仓库](https://github.com/biggboss01Scratch/ChuChariot)，交付目标分支为 `main` |
-| 候选批次 | `dataset:wheel-axle-003`，对应 [wheel-axle.v0.3.json](../data/candidates/wheel-axle.v0.3.json) |
+| 候选批次 | `dataset:wheel-axle-004`，对应 [wheel-axle.v0.4.json](../data/candidates/wheel-axle.v0.4.json) 和 [ontology.v0.2.json](../data/ontology/ontology.v0.2.json) |
 | 接力 | 项目发起者维护当前阶段，组员尚未完成接收复现。接手时用 `git rev-parse HEAD` 记录实际收到的提交号 |
 | 环境 | Python 3.11+，核心查询、校验、预览及测试使用标准库。媒体重建另需 Pillow、NumPy 和 Poppler |
 
-当前 17 个实体、28 条待审核事实、22 段证据、7 组候选映射、8 张原文图块和 7 组节点静态图。图块和静态图须从本地原件生成。临时页面用于开发、展示候选和核对来源。正式展陈、实时三维浏览、审核写入以及生产 API 属于后续阶段。
+当前 24 个实体、38 条待审核事实、22 段证据、7 组候选映射、8 张原文图块和 7 组节点静态图。图块和静态图须从本地原件生成。临时页面用于开发、展示候选和核对来源。正式展陈、实时三维浏览、审核写入以及生产 API 属于后续阶段。
 
 ## 接手复现
 
-在仓库根目录运行以下命令。第一条预期返回 17 个实体、28 条事实和 28 条待审核事实。第二条在未准备外部原件时也可执行。
+在仓库根目录运行以下命令。第一条预期返回 24 个实体、38 条事实和 38 条待审核事实。两条命令均可在没有本地原件的情况下运行。
 
 ```powershell
-python -m chuchariot --dataset data/candidates/wheel-axle.v0.3.json validate --model-report data/scenes/model-inspection.json
+python -m chuchariot --dataset data/candidates/wheel-axle.v0.4.json --ontology data/ontology/ontology.v0.2.json validate --model-report data/scenes/model-inspection.json
 python -X utf8 -m unittest discover -s tests -v
 ```
 
-运行结果与 34 项测试覆盖见[进度记录](progress.md)。检查页启动和停止方式见 [README](../README.md)。原 PDF、图块与 GLB 节点图的查看方式见[融合检查](fusion.md)。
+运行结果与 38 项测试覆盖见[进度记录](progress.md)。检查页启动和停止方式见 [README](../README.md)。原 PDF、图块与 GLB 节点图的查看方式见[融合检查](fusion.md)。
 
 ## 准备提交到 GitHub
 

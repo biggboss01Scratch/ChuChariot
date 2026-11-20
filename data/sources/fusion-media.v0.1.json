@@ -293,5 +293,8 @@
       ],
       "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
     }
+  ],
+  "compatible_dataset_ids": [
+    "dataset:wheel-axle-004"
   ]
 }

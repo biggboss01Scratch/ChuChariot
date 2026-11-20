@@ -1,0 +1,1138 @@
+{
+  "schema_version": "0.1.0",
+  "ontology_version": "0.2.0",
+  "dataset_id": "dataset:wheel-axle-004",
+  "stage": "candidate",
+  "description": "第四批候选包。将已收录描述中的材质、保存特征、表面髹饰、器物组成和纹饰提取为带证据的图谱关系。",
+  "sources": [
+    {
+      "id": "source:001",
+      "title": "马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫",
+      "resource_id": "res:002",
+      "filename": "obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf",
+      "format": "pdf",
+      "page_count": 10,
+      "note": "当前直接来源为资料汇编，不冒充原始发掘报告；引文中的原报告页码与对照标本归属尚未追查。"
+    },
+    {
+      "id": "source:002",
+      "resource_id": "ref:004",
+      "title": "刘永华《中国古代车舆马具》出版社公开样章",
+      "filename": "liu-2013-chariot-excerpt.pdf",
+      "format": "pdf",
+      "page_count": 9
+    },
+    {
+      "id": "source:003",
+      "resource_id": "assembly-source:006",
+      "title": "邵朋飞《探微〈考工记〉中的工匠精神——以“轮”的制造为例》",
+      "filename": "shao-2022-wheel-craft.pdf",
+      "format": "pdf",
+      "page_count": 9
+    },
+    {
+      "id": "source:004",
+      "resource_id": "ref:003",
+      "title": "张万辉《先秦辐式双轮马车轮辋制作技艺研究》",
+      "filename": "zhang-2022-wheel-rim.pdf",
+      "format": "pdf",
+      "page_count": 7
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:001",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "页面下半部“（四）轮”下方的结构示意图，轮、毂、辐、牙标注",
+      "quote": "轮；毂；辐；牙",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "记录图示的部件组成，不由此证明全部楚国车轮具有同一结构，也不推出装配顺序。"
+    },
+    {
+      "id": "evidence:002",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落，右轮横径与竖径",
+      "quote": "右轮横径132、竖径119厘米",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "只归属于所引 CH1：5 轮标本；该段不足以证明它属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:003",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "“参考：”下方“标本 CH1：3-轴”段落末尾",
+      "quote": "轴通长272、粗径9.7、细径2.6厘米",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "只归属于参考段的 CH1：3 轴标本；不能与该页上方未注明标本的276厘米记录混为一条。",
+      "figure": "原文括注图二八七；当前只核对汇编页面，未找到原报告"
+    },
+    {
+      "id": "evidence:004",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落开头",
+      "quote": "轮为木质，木质已腐烂，现仅存表面深褐色漆皮",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "CH1：5 标本描述，不推广为所有车轮，也不归属于数字模型材质。"
+    },
+    {
+      "id": "evidence:005",
+      "source_id": "source:001",
+      "check_status": "source_checked",
+      "transcription": "image_transcription",
+      "pdf_page": 4,
+      "locator": "“参考”下方 CH1：3 轴标本段开头",
+      "quote": "轴为木质，木质已腐烂，现仅存表面深褐色漆皮",
+      "scope_note": "仅为 CH1：3 对照标本的保存描述，遗址和车号未核。"
+    },
+    {
+      "id": "evidence:006",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页“车轴是车舆的关键部件”段",
+      "quote": "是承受车载重量的所在",
+      "scope_note": "作者对商车结构的解释，用于部件功能讲解。"
+    },
+    {
+      "id": "evidence:007",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页“车轴是车舆的关键部件”段末",
+      "quote": "为了不使毂掉落",
+      "scope_note": "只概括商车讨论中的轴端部件功能。"
+    },
+    {
+      "id": "evidence:008",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "251",
+      "locator": "第3.3.3节“判定辐条”开头",
+      "quote": "辐是车轮中连接毂与轮圈的直木条",
+      "scope_note": "古籍解释论文中的部件术语，用作类别讲解。"
+    },
+    {
+      "id": "evidence:009",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "251",
+      "locator": "第3.3.1、3.3.2和3.3.4节标题（分隔符为整理所加）",
+      "quote": "判定正圆；判定平整；判定均衡",
+      "scope_note": "记录作者划分的检验主题，适合工艺导览。"
+    },
+    {
+      "id": "evidence:010",
+      "source_id": "source:004",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 6,
+      "printed_page": "168",
+      "locator": "第5节“结语”中段",
+      "quote": "江苏淮安运河村出土的战国中晚期车辆",
+      "scope_note": "记录论文选用的对照案例，不将其形制或参数归给九连墩。"
+    },
+    {
+      "id": "evidence:011",
+      "source_id": "source:001",
+      "check_status": "source_checked",
+      "transcription": "image_transcription",
+      "pdf_page": 5,
+      "figure": "图二四〇",
+      "locator": "图二四〇图注，括号内为标本号",
+      "quote": "一号墓出土车器——铜双箍云纹圆筒形车軎",
+      "scope_note": "范围限于图注所指器物；与九连墩六号车的对应未核。"
+    },
+    {
+      "id": "evidence:012",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页图2-20上方毂的说明段",
+      "quote": "孔径大处称“贤端”，孔径小处称“轵端”",
+      "scope_note": "用于商车部件术语说明。"
+    },
+    {
+      "id": "evidence:013",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 6,
+      "printed_page": "252",
+      "locator": "第3.3.10节“判定耐久”左栏下部",
+      "quote": "是指毂、辐、牙三者的材料",
+      "scope_note": "作者对古籍用语的解释，适合工艺导览。"
+    },
+    {
+      "id": "evidence:014",
+      "source_id": "source:004",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "167",
+      "locator": "第3节左栏最后一段，第4节上方",
+      "quote": "铜枒饰构件的对称性来推测",
+      "scope_note": "仅记录论文转述的研究线索；具体标本的轮辋分段需要独立证据。"
+    },
+    {
+      "id": "evidence:015",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "页首“说明”",
+      "quote": "以九连墩一号车马坑的6号车为复原的主要模板",
+      "transcription": "embedded_text",
+      "check_status": "source_checked",
+      "scope_note": "描述汇编的选题，其他标本仍按原文分别归属。"
+    },
+    {
+      "id": "evidence:016",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "“舆的总体结构”图题与围栏局部标注",
+      "quote": "图三一七 一号车马坑——6号车复原图",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "汇编中的复原图，适合解释图例和复原范围。"
+    },
+    {
+      "id": "evidence:017",
+      "source_id": "source:001",
+      "pdf_page": 3,
+      "locator": "车辀照片下的标本段开头",
+      "quote": "标本 M1：302，出自南室第二层西部中间靠西壁处。残存前段。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅适用于 M1：302 对照标本。"
+    },
+    {
+      "id": "evidence:018",
+      "source_id": "source:001",
+      "pdf_page": 3,
+      "locator": "车辀照片下的标本段末部，非连续摘录",
+      "quote": "辀首髹红漆……中、后段髹黑漆",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅描述汇编关于该对照标本的文字记录。"
+    },
+    {
+      "id": "evidence:019",
+      "source_id": "source:001",
+      "pdf_page": 7,
+      "locator": "“衔、镳”标题下 M1：257 段",
+      "quote": "存一只漆骨帽马镳，骨帽黑漆绘勾连云纹。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "描述器物组中的马镳，组内马衔另有标本号。"
+    },
+    {
+      "id": "evidence:020",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "“轮”下方示意图横贯长件下侧的标注",
+      "quote": "轴",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "图示识别标签，适合部件导览。"
+    },
+    {
+      "id": "evidence:021",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "“軎、辖”段内 M1：201-1 文字和图二四〇旁的器物侧图",
+      "quote": "辖首为兽面",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "器物装饰图示对应对照标本，与六号车对应待核。"
+    },
+    {
+      "id": "evidence:022",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "页面左上角正文左侧，图像无单独图题",
+      "quote": "〔图像观察〕页面左上角的车轮正视图",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅记录该页图示；所绘个体归属需用原报告核对。"
+    }
+  ],
+  "entities": [
+    {
+      "id": "type:001",
+      "kind": "ComponentType",
+      "label": "车轮",
+      "aliases": [
+        "轮"
+      ],
+      "note": "本样例的组成知识限于资料图示，不宣称部件清单完整。"
+    },
+    {
+      "id": "type:002",
+      "kind": "ComponentType",
+      "label": "车轴",
+      "aliases": [
+        "轴"
+      ]
+    },
+    {
+      "id": "type:003",
+      "kind": "ComponentType",
+      "label": "毂",
+      "aliases": [
+        "轮毂"
+      ]
+    },
+    {
+      "id": "type:004",
+      "kind": "ComponentType",
+      "label": "辐",
+      "aliases": [
+        "辐条"
+      ]
+    },
+    {
+      "id": "type:005",
+      "kind": "ComponentType",
+      "label": "牙",
+      "aliases": [
+        "轮牙"
+      ]
+    },
+    {
+      "id": "type:006",
+      "kind": "ComponentType",
+      "label": "軎",
+      "aliases": []
+    },
+    {
+      "id": "type:007",
+      "kind": "ComponentType",
+      "label": "辖",
+      "aliases": []
+    },
+    {
+      "id": "object:001",
+      "kind": "Chariot",
+      "label": "九连墩一号车马坑6号车",
+      "aliases": [
+        "九连墩六号车"
+      ],
+      "note": "按现有资料登记的拟定主研究对象；本批没有向它归入未经证实的尺寸。最终展陈范围尚待组内确认。"
+    },
+    {
+      "id": "specimen:001",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：5轮标本",
+      "aliases": [
+        "CH1:5"
+      ],
+      "note": "汇编引用的对照标本；具体遗址、墓坑和与主研究对象的关系未核实。"
+    },
+    {
+      "id": "specimen:002",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：3轴标本",
+      "aliases": [
+        "CH1:3"
+      ],
+      "note": "汇编“参考”段落中的对照标本，不能默认当作主展品的轴。"
+    },
+    {
+      "id": "measurement:001",
+      "kind": "Measurement",
+      "label": "CH1：5右轮横径",
+      "aliases": [],
+      "scope_id": "specimen:001",
+      "measurement": {
+        "quantity": "右轮横径",
+        "value": 132,
+        "unit": "cm",
+        "raw": "右轮横径132、竖径119厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "measurement:002",
+      "kind": "Measurement",
+      "label": "CH1：5右轮竖径",
+      "aliases": [],
+      "scope_id": "specimen:001",
+      "measurement": {
+        "quantity": "右轮竖径",
+        "value": 119,
+        "unit": "cm",
+        "raw": "右轮横径132、竖径119厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "measurement:003",
+      "kind": "Measurement",
+      "label": "CH1：3轴通长",
+      "aliases": [],
+      "scope_id": "specimen:002",
+      "measurement": {
+        "quantity": "通长",
+        "value": 272,
+        "unit": "cm",
+        "raw": "轴通长272、粗径9.7、细径2.6厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "model:001",
+      "kind": "ModelVersion",
+      "label": "已有教学复原GLB初始版本",
+      "aliases": [],
+      "resource_id": "res:005",
+      "content_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00",
+      "note": "本版本未验证考古准确性、模型采用单位及动画效果。"
+    },
+    {
+      "id": "specimen:003",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：201-1 车軎",
+      "aliases": [
+        "M1:201-1"
+      ],
+      "note": "汇编图二四〇所指器物，与主研究对象的关系未核。"
+    },
+    {
+      "id": "specimen:004",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：302 车辀残件",
+      "aliases": [
+        "M1:302"
+      ]
+    },
+    {
+      "id": "specimen:005",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：257 马具组",
+      "aliases": [
+        "M1:257"
+      ]
+    },
+    {
+      "id": "material:001",
+      "kind": "Material",
+      "label": "木材",
+      "aliases": [
+        "木质"
+      ]
+    },
+    {
+      "id": "material:002",
+      "kind": "Material",
+      "label": "铜",
+      "aliases": [],
+      "note": "保留汇编图注用词，合金成分和牌号待检测资料核实。"
+    },
+    {
+      "id": "preservation:001",
+      "kind": "PreservationFeature",
+      "label": "残存深褐色漆皮",
+      "aliases": [
+        "深褐色漆皮"
+      ],
+      "note": "描述现存遗迹。仅共享同类保存特征，两条标本记录各有出处。"
+    },
+    {
+      "id": "component:001",
+      "kind": "Component",
+      "label": "M1：257 残存漆骨帽马镳",
+      "aliases": [
+        "漆骨帽马镳"
+      ],
+      "scope_id": "specimen:005",
+      "note": "马具组内单列的残件，沿用组号标识。"
+    },
+    {
+      "id": "motif:001",
+      "kind": "DecorationMotif",
+      "label": "勾连云纹",
+      "aliases": []
+    },
+    {
+      "id": "finish:001",
+      "kind": "SurfaceFinish",
+      "label": "红漆",
+      "aliases": [
+        "髹红漆"
+      ]
+    },
+    {
+      "id": "finish:002",
+      "kind": "SurfaceFinish",
+      "label": "黑漆",
+      "aliases": [
+        "髹黑漆"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "id": "fact:001",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:003",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:002",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:004",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:003",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:005",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:004",
+      "subject_id": "specimen:001",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:005",
+      "subject_id": "specimen:002",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:002",
+      "evidence_ids": [
+        "evidence:003"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:006",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:001",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:007",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:002",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:008",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:003",
+      "evidence_ids": [
+        "evidence:003"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:009",
+      "subject_id": "specimen:001",
+      "predicate": "DESCRIPTION",
+      "value": "资料记载该轮为木质，木质已腐烂，现仅存表面深褐色漆皮。",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:010",
+      "subject_id": "specimen:002",
+      "predicate": "DESCRIPTION",
+      "value": "汇编将 CH1：3 轴描述为木质，木质已腐朽，仅见表面深褐色漆皮。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:011",
+      "subject_id": "type:002",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车轴解释为承载车上重量的关键部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:006"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:012",
+      "subject_id": "type:006",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车軎描述为轴端防止车毂脱落的部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:007"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:013",
+      "subject_id": "type:004",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞将辐解释为车轮中连接毂与轮圈的木质部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:008"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:014",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞把车轮的正圆、平整与均衡分别作为《考工记》制轮质量的解释主题。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:009"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:015",
+      "subject_id": "type:005",
+      "predicate": "DESCRIPTION",
+      "value": "张万辉将江苏淮安运河村出土的战国中晚期车辆列为先秦木质轮辋研究的实物案例。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:010"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:016",
+      "subject_id": "specimen:003",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编图二四〇将 M1：201-1 标为一号墓出土的铜双箍云纹圆筒形车軎。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:017",
+      "subject_id": "type:003",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车毂两端分别称为贤端和轵端。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:012"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:018",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞将《考工记》制轮语境中的“三材”解释为毂、辐、牙的用材。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:013"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:019",
+      "subject_id": "type:005",
+      "predicate": "DESCRIPTION",
+      "value": "张万辉转述了考古研究者利用铜枒饰的对称分布推测西周车辆轮辋拼合情况的做法。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:014"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:020",
+      "subject_id": "object:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编把九连墩一号车马坑6号车作为复原的主要模板。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:015"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:021",
+      "subject_id": "object:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编收录一号车马坑6号车复原图，图三一七标出围栏局部。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:016"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:022",
+      "subject_id": "specimen:004",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：302 车辀出自南室第二层西部中间靠西壁处，残存前段。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:017"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:023",
+      "subject_id": "specimen:004",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：302 车辀考古记录中有红、黑两种漆饰。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:024",
+      "subject_id": "specimen:005",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：257 马具组留存一只漆骨帽马镳，骨帽有黑漆勾连云纹。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:025",
+      "subject_id": "type:002",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编的车轮示意图标出了车轴。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:020"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:026",
+      "subject_id": "type:007",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编记载 M1：201-1 所配辖的顶端为兽面。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:021"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:027",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编第6页左上角有一幅辐式车轮的正面图。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:022"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:028",
+      "subject_id": "specimen:003",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:006",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:029",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:030",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:031",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:002",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:032",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:033",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:034",
+      "subject_id": "specimen:005",
+      "predicate": "HAS_PART",
+      "object_id": "component:001",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:035",
+      "subject_id": "component:001",
+      "predicate": "HAS_DECORATION_MOTIF",
+      "object_id": "motif:001",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:036",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:037",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:038",
+      "subject_id": "component:001",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    }
+  ],
+  "model_mappings": [
+    {
+      "id": "mapping:001",
+      "entity_id": "type:002",
+      "model_version_id": "model:001",
+      "node_indices": [
+        2
+      ],
+      "review_status": "pending",
+      "note": "根据节点名“轴”登记的类别映射线索；尚未渲染核对，不代表确认的实物部件实例。"
+    },
+    {
+      "id": "mapping:002",
+      "entity_id": "type:001",
+      "model_version_id": "model:001",
+      "node_indices": [
+        246,
+        326
+      ],
+      "review_status": "pending",
+      "note": "节点名为右轮旋转轴、左轮旋转轴，子节点组成待几何核对；不能按名称直接确认。"
+    },
+    {
+      "id": "mapping:003",
+      "entity_id": "type:003",
+      "model_version_id": "model:001",
+      "node_indices": [
+        188,
+        268
+      ],
+      "review_status": "pending",
+      "note": "两个同名毂组，必须按模型版本及节点索引区分。"
+    },
+    {
+      "id": "mapping:004",
+      "entity_id": "type:004",
+      "model_version_id": "model:001",
+      "node_indices": [
+        241,
+        321
+      ],
+      "review_status": "pending",
+      "note": "两个辐组的候选类别映射，不推断实际辐条数量。"
+    },
+    {
+      "id": "mapping:005",
+      "entity_id": "type:005",
+      "model_version_id": "model:001",
+      "node_indices": [
+        245,
+        325
+      ],
+      "review_status": "pending",
+      "note": "两个牙组的候选类别映射，不把三维分段数当作考古事实。"
+    },
+    {
+      "id": "mapping:006",
+      "entity_id": "type:006",
+      "model_version_id": "model:001",
+      "node_indices": [
+        250,
+        330
+      ],
+      "review_status": "pending",
+      "note": "依据GLB节点名登记，几何对应和历史解释待核验。"
+    },
+    {
+      "id": "mapping:007",
+      "entity_id": "type:007",
+      "model_version_id": "model:001",
+      "node_indices": [
+        253,
+        333
+      ],
+      "review_status": "pending",
+      "note": "依据GLB节点名登记，几何对应和历史解释待核验。"
+    }
+  ]
+}

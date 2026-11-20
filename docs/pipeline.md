@@ -46,7 +46,11 @@ python -X utf8 -m unittest discover -s tests -v
 
 ## 5. AI 抽取和 Gleaning 边界
 
-契约文件为 `data/pipeline/gleaning-contract.v0.1.json`，当前仅为待实现接口约定。输入包括原片段、来源定位、本体版本、首轮结果；输出只补有证据支持的遗漏，合并去重后仍进入候选区。
+当前采用[拾遗契约 v0.2](../data/pipeline/gleaning-contract.v0.2.json)。它适用于本地逐段复查，自动执行器仍待实现。输入为原片段、来源定位、本体、首轮结果和已有实体。
+
+逐句核查实体、可独立验证的属性和关系，分辨具体标本、类别与修饰对象。优先复用标本、材质或术语，同一句中已写进 `DESCRIPTION` 的内容也要检查能否结构化。记录每段的新增、已有、待核和范围缺口，以覆盖结果和溯源判断完成度。新增带上证据及限定条件并保持待审核。
+
+例如，马具组的原文提到某件马镳及骨帽上的黑漆勾连云纹。按「组包含残件」「残件有髹饰」「残件有纹饰」分别赋予关系，效果可以从「黑漆」反查车辀和马镳，并回到各自不同的原文页。见[第四批拾遗记录](../data/run-summaries/2026-11-20-structured-gleaning.json)。
 
 额外补抽默认最多一轮；无新增有效记录停止。歧义与冲突不得静默覆盖；调用失败保留首轮结果。真实处理原始资料前确认授权，密钥仅通过环境配置，不进入日志。
 
@@ -56,12 +60,12 @@ python -X utf8 -m unittest discover -s tests -v
 
 第三批开展了扩展页拾遗，新增 5 条文献候选和 4 条媒体索引候选，随后对照原页独立预审。详见[第三批摘要](../data/run-summaries/2026-11-19-fusion-gleaning.json)。
 
-在仓库根目录可导入第三批并检查幂等性。批次编号独立，派生快照使用单独路径。
+在仓库根目录可导入第四批并反查拾遗结果。不同阶段的派生快照保留各自路径。
 
 ```powershell
-python -m chuchariot import --input data/candidates/wheel-axle.v0.3.json --output data/local/wheel-axle.v0.3.json
-python -m chuchariot --dataset data/local/wheel-axle.v0.3.json validate --model-report data/scenes/model-inspection.json
-python -m chuchariot --dataset data/local/wheel-axle.v0.3.json evidence type:003 --include-pending
+python -m chuchariot --ontology data/ontology/ontology.v0.2.json import --input data/candidates/wheel-axle.v0.4.json --output data/local/wheel-axle-structured.v0.4.json
+python -m chuchariot --ontology data/ontology/ontology.v0.2.json --dataset data/local/wheel-axle-structured.v0.4.json validate --model-report data/scenes/model-inspection.json
+python -m chuchariot --ontology data/ontology/ontology.v0.2.json --dataset data/local/wheel-axle-structured.v0.4.json relations finish:002 --include-pending
 ```
 
 ## 6. 批次记录与交接

@@ -17,7 +17,7 @@
 | `chuchariot/media.py` | 将带页码的图块和带版本的模型节点图关联到实体，跟随查询审核状态 |
 | `frontend/inspector/` | 无构建、无 CDN 的临时检查页：实体检索、SVG关系图、证据和映射 |
 | `data/ontology/ontology.v0.1.json` | 类型、单位、关系方向、端点组合及无环约束 |
-| `data/candidates/wheel-axle.v0.1.json` 至 `wheel-axle.v0.3.json` | 初版默认样例、第二批预审候选、第三批融合候选 |
+| `data/candidates/wheel-axle.v0.1.json` 至 `wheel-axle.v0.4.json` | 初版默认样例、第二批预审候选、第三批融合候选、第四批材质关系 |
 | `data/sources/` | 资源规格与本次本地检查快照 |
 | `data/scenes/model-inspection.json` | 模型版本内容哈希、命名节点、重名和动画初查结果 |
 | `tests/` | 验证事实、导入、资源、临时 HTTP 接口和媒体审核视图 |

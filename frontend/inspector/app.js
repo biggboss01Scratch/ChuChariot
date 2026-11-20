@@ -1,13 +1,14 @@
 "use strict";
 
 const $ = (selector) => document.querySelector(selector);
-const state = { data: null, selected: "type:001", review: true, tab: "detail", query: "", kind: "", neighbors: false, selectedFact: null, zoom: 1, center: { x: 490, y: 410 }, requestVersion: 0 };
-const kinds = { ComponentType: "部件类别", Chariot: "研究对象", Component: "具体部件", ReferenceSpecimen: "对照标本", Measurement: "尺寸记录", ModelVersion: "模型版本", Connection: "连接记录", Pose: "位姿记录", AssemblyStep: "演示步骤" };
-const relationNames = { HAS_PART: "包含部件", INSTANCE_OF: "属于类别", HAS_MEASUREMENT: "具有尺寸", SUBCLASS_OF: "属于父类", DESCRIPTION: "资料描述", PARTICIPATES_IN_CONNECTION: "参与连接", HAS_POSE: "具有位姿", INVOLVES_COMPONENT: "涉及部件", DEPENDS_ON: "依赖步骤" };
-const shortRelations = { HAS_PART: "组成", INSTANCE_OF: "归类", HAS_MEASUREMENT: "尺寸", SUBCLASS_OF: "类别", DESCRIPTION: "描述" };
+const GRAPH_WIDTH = 980;
+const state = { data: null, selected: "type:001", review: true, tab: "detail", query: "", kind: "", neighbors: false, selectedFact: null, zoom: 1, center: { x: 490, y: 410 }, requestVersion: 0, positions: new Map(), graphHeight: 820 };
+const kinds = { ComponentType: "部件类别", Chariot: "研究对象", Component: "具体部件", ReferenceSpecimen: "对照标本", Measurement: "尺寸记录", Material: "材质", PreservationFeature: "保存特征", SurfaceFinish: "表面髹饰", DecorationMotif: "纹饰图案", ModelVersion: "模型版本", Connection: "连接记录", Pose: "位姿记录", AssemblyStep: "演示步骤" };
+const relationNames = { HAS_PART: "包含部件", INSTANCE_OF: "属于类别", HAS_MEASUREMENT: "具有尺寸", HAS_MATERIAL: "材质为", HAS_PRESERVED_FEATURE: "残存特征", HAS_SURFACE_FINISH: "表面髹饰", HAS_DECORATION_MOTIF: "纹饰为", SUBCLASS_OF: "属于父类", DESCRIPTION: "资料描述", PARTICIPATES_IN_CONNECTION: "参与连接", HAS_POSE: "具有位姿", INVOLVES_COMPONENT: "涉及部件", DEPENDS_ON: "依赖步骤" };
+const shortRelations = { HAS_PART: "组成", INSTANCE_OF: "归类", HAS_MEASUREMENT: "尺寸", HAS_MATERIAL: "材质", HAS_PRESERVED_FEATURE: "保存特征", HAS_SURFACE_FINISH: "髹饰", HAS_DECORATION_MOTIF: "纹饰", SUBCLASS_OF: "类别", DESCRIPTION: "描述" };
 const origins = { documented: "资料记载", inferred: "结构推导", hypothesis: "复原假设" };
 const statusNames = { pending: "待审核", confirmed: "已确认", disputed: "有争议" };
-const symbols = { ComponentType: "件", ReferenceSpecimen: "标", Measurement: "尺", ModelVersion: "模", Chariot: "车" };
+const symbols = { ComponentType: "件", ReferenceSpecimen: "标", Measurement: "尺", Material: "材", PreservationFeature: "存", SurfaceFinish: "饰", DecorationMotif: "纹", ModelVersion: "模", Chariot: "车" };
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const getEntity = (id) => state.data.entities.find((e) => e.id === id);
 const relatedFacts = (id) => state.data.facts.filter((f) => f.subject_id === id || f.object_id === id);
@@ -24,7 +25,14 @@ async function loadData() {
     const data = await response.json();
     if (requestVersion !== state.requestVersion) return;
     if (!response.ok) throw new Error(data.error || "数据读取失败");
+    const datasetChanged = state.data?.meta.dataset_id !== data.meta.dataset_id;
     state.data = data;
+    state.positions = graphPositions(data.entities);
+    const height = Math.max(820, ...[...state.positions.values()].map(([, y]) => y + 90));
+    if (datasetChanged || height !== state.graphHeight) {
+      state.graphHeight = height;
+      resetGraphView();
+    }
     if (!getEntity(state.selected)) state.selected = data.entities[0]?.id || null;
     renderOverview();
     renderList();
@@ -125,6 +133,18 @@ function svgElement(tag, attributes = {}, text) {
   return element;
 }
 
+function resetGraphView() {
+  state.zoom = 1;
+  state.center = { x: GRAPH_WIDTH / 2, y: state.graphHeight / 2 };
+}
+
+function setGraphViewport(svg) {
+  const width = GRAPH_WIDTH / state.zoom;
+  const height = state.graphHeight / state.zoom;
+  svg.setAttribute("viewBox", `${state.center.x - width / 2} ${state.center.y - height / 2} ${width} ${height}`);
+  return { width, height };
+}
+
 function renderGraph() {
   if (!state.data) return;
   const svg = $("#graph");
@@ -136,8 +156,7 @@ function renderGraph() {
     if (f.object_id) adjacent.add(f.object_id);
   }
   const matches = new Set(matchedEntities().map((e) => e.id));
-  const width = 980 / state.zoom, height = 820 / state.zoom;
-  svg.setAttribute("viewBox", `${state.center.x - width / 2} ${state.center.y - height / 2} ${width} ${height}`);
+  const { width, height } = setGraphViewport(svg);
   const scale = Math.max(Math.min(svg.clientWidth / width, svg.clientHeight / height), 0.2);
   const labelSize = Math.min(70, Math.max(17, 14 / scale));
   svg.replaceChildren();
@@ -145,7 +164,7 @@ function renderGraph() {
   const marker = svgElement("marker", { id: "arrow-head", viewBox: "0 0 10 10", refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
   marker.append(svgElement("path", { d: "M 1 1 L 9 5 L 1 9", fill: "none", stroke: "#92af9b", "stroke-width": 1.3 }));
   defs.append(marker); svg.append(defs);
-  const positions = graphPositions(entities);
+  const positions = state.positions;
   const edgeLayer = svgElement("g"), labelLayer = svgElement("g"), nodeLayer = svgElement("g");
   for (const fact of connections) {
     if (state.neighbors && (!adjacent.has(fact.subject_id) || !adjacent.has(fact.object_id))) continue;
@@ -293,7 +312,7 @@ $("#confirmed-mode").addEventListener("click", () => { state.review = false; loa
 function zoomBy(factor) { state.zoom = Math.max(.6, Math.min(2.8, state.zoom * factor)); renderGraph(); }
 $("#zoom-in").addEventListener("click", () => zoomBy(1.2));
 $("#zoom-out").addEventListener("click", () => zoomBy(1 / 1.2));
-$("#zoom-reset").addEventListener("click", () => { state.zoom = 1; state.center = { x: 490, y: 410 }; renderGraph(); });
+$("#zoom-reset").addEventListener("click", () => { resetGraphView(); renderGraph(); });
 $("#graph").addEventListener("wheel", (event) => { event.preventDefault(); zoomBy(event.deltaY < 0 ? 1.1 : 1 / 1.1); }, { passive: false });
 let drag = null;
 $("#graph").addEventListener("pointerdown", (event) => {
@@ -303,11 +322,11 @@ $("#graph").addEventListener("pointerdown", (event) => {
 });
 $("#graph").addEventListener("pointermove", (event) => {
   if (!drag) return;
-  const scale = Math.max((980 / state.zoom) / $("#graph").clientWidth, (820 / state.zoom) / $("#graph").clientHeight);
+  const svg = $("#graph");
+  const scale = Math.max(GRAPH_WIDTH / state.zoom / svg.clientWidth, state.graphHeight / state.zoom / svg.clientHeight);
   state.center = { x: drag.center.x - (event.clientX - drag.x) * scale, y: drag.center.y - (event.clientY - drag.y) * scale };
   // Only change the viewport during a drag, retaining pointer capture.
-  const width = 980 / state.zoom, height = 820 / state.zoom;
-  $("#graph").setAttribute("viewBox", `${state.center.x - width / 2} ${state.center.y - height / 2} ${width} ${height}`);
+  setGraphViewport(svg);
 });
 for (const name of ["pointerup", "pointercancel"]) $("#graph").addEventListener(name, () => { drag = null; });
 let resizeTimer;
