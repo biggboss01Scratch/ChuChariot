@@ -40,7 +40,7 @@ def validate(data: dict, ontology: dict) -> list[str]:
     if errors:
         return errors
 
-    if data["schema_version"] != "0.1.0":
+    if data["schema_version"] not in {"0.1.0", "0.2.0"}:
         error("schema_version", "不支持的版本；请先迁移")
     if data["ontology_version"] != ontology["version"]:
         error("ontology_version", "与本体版本不一致")
@@ -80,6 +80,8 @@ def _validate_shape(data, error):
                         "stage": str, "description": str, **{name: list for name in TABLES}}, {}, "dataset", error):
         return
     for table, (required, optional) in RECORD_SHAPES.items():
+        if table == "facts" and data["schema_version"] == "0.2.0":
+            optional = {**optional, "value": (str, dict)}
         if isinstance(data.get(table), list):
             for index, record in enumerate(data[table]):
                 shape(record, required, optional, f"{table}[{index}]", error)
@@ -127,6 +129,26 @@ def _validate_evidence(evidence, sources, error):
             error(ident, "未知的原文检查状态")
 
 
+def _validate_measurement(measurement, ontology, ident, error):
+    if not shape(measurement, {"quantity": str, "unit": str, "raw": str, "approximate": bool},
+                 {"value": (int, float), "min": (int, float), "max": (int, float)}, ident, error):
+        return
+    scalar = "value" in measurement
+    interval = "min" in measurement and "max" in measurement
+    if scalar == interval or (scalar and ("min" in measurement or "max" in measurement)):
+        error(ident, "尺寸必须为单值或完整范围，不能混用")
+    for key in ("value", "min", "max"):
+        if key in measurement and (type(measurement[key]) not in {int, float} or
+                                   not math.isfinite(measurement[key]) or measurement[key] <= 0):
+            error(ident, "尺寸数值必须是有限正数，不能以零或布尔值填空")
+    if interval and measurement["min"] > measurement["max"]:
+        error(ident, "尺寸范围上下界颠倒")
+    if measurement["unit"] not in ontology["units"]:
+        error(ident, "未定义的尺寸单位")
+    if not measurement["raw"].strip() or not measurement["quantity"].strip():
+        error(ident, "尺寸类型和原始表达不能为空")
+
+
 def _validate_entities(entities, ontology, error):
     for item in entities.values():
         ident, kind = item["id"], item["kind"]
@@ -140,31 +162,15 @@ def _validate_entities(entities, ontology, error):
         scope = entities.get(item.get("scope_id"))
         if "scope_id" in item and scope is None:
             error(ident, "scope_id 引用不存在")
-        if kind == "Component" and (scope is None or scope["kind"] not in {"Chariot", "ReferenceSpecimen"}):
+        if kind in {"Component", "ComponentRegion"} and (scope is None or scope["kind"] not in {"Chariot", "ReferenceSpecimen"}):
             error(ident, "具体部件必须声明所属战车或对照标本")
         if kind == "Measurement":
             measurement = item.get("measurement")
             if measurement is None:
                 error(ident, "尺寸实体缺少 measurement")
                 continue
-            if not shape(measurement, {"quantity": str, "unit": str, "raw": str, "approximate": bool},
-                  {"value": (int, float), "min": (int, float), "max": (int, float)}, ident + ".measurement", error):
-                continue
-            scalar = "value" in measurement
-            interval = "min" in measurement and "max" in measurement
-            if scalar == interval or (scalar and ("min" in measurement or "max" in measurement)):
-                error(ident, "尺寸必须为单值或完整范围，不能混用")
-            for key in ("value", "min", "max"):
-                if key in measurement and (type(measurement[key]) not in {int, float} or
-                                           not math.isfinite(measurement[key]) or measurement[key] <= 0):
-                    error(ident, "尺寸数值必须是有限正数，不能以零或布尔值填空")
-            if interval and measurement["min"] > measurement["max"]:
-                error(ident, "尺寸范围上下界颠倒")
-            if measurement["unit"] not in ontology["units"]:
-                error(ident, "未定义的尺寸单位")
-            if not measurement["raw"].strip() or not measurement["quantity"].strip():
-                error(ident, "尺寸类型和原始表达不能为空")
-            if scope is None or scope["kind"] not in {"ReferenceSpecimen", "Component", "Chariot", "ModelVersion"}:
+            _validate_measurement(measurement, ontology, ident + ".measurement", error)
+            if scope is None or scope["kind"] not in {"ReferenceSpecimen", "ReferenceRecord", "Component", "Chariot", "ModelVersion"}:
                 error(ident, "尺寸必须声明归属对象")
         elif "measurement" in item:
             error(ident, "只有 Measurement 可携带尺寸值")
@@ -196,7 +202,20 @@ def _validate_facts(indices, ontology, stage, error):
                     expected = subject["id"] if subject["kind"] in {"Chariot", "ReferenceSpecimen"} else subject.get("scope_id")
                     if obj.get("scope_id") != expected:
                         error(ident, "具体部件跨研究对象组成")
-        elif "value" not in fact or subject["kind"] not in predicate["subject_kinds"]:
+                if fact["predicate"] == "HAS_REGION":
+                    expected = subject["id"] if subject["kind"] in {"Chariot", "ReferenceSpecimen"} else subject.get("scope_id")
+                    if obj.get("scope_id") != expected:
+                        error(ident, "描述区域不能跨标本或研究对象")
+                if fact["predicate"] == "HAS_ASSOCIATED_COMPONENT" and obj.get("scope_id") != subject["id"]:
+                    error(ident, "所配部件必须归属于当前标本记录")
+                if fact["predicate"] == "TENON_JOINT_WITH" and subject.get("scope_id") != obj.get("scope_id"):
+                    error(ident, "榫卯连接不能跨标本或研究对象")
+        elif predicate["object_kind"] == "dimension":
+            if not isinstance(fact.get("value"), dict) or subject["kind"] not in predicate["subject_kinds"]:
+                error(ident, "尺寸属性必须为结构化数值，且不能归给通用部件类别")
+            else:
+                _validate_measurement(fact["value"], ontology, ident + ".value", error)
+        elif not isinstance(fact.get("value"), str) or subject["kind"] not in predicate["subject_kinds"]:
             error(ident, "文字事实的主体类型或 value 不合法")
         elif not fact["value"].strip():
             error(ident, "文字事实不能为空")

@@ -1,74 +1,81 @@
-# 知识数据规范 v0.1.0
+# 知识数据规范 v0.2.0
 
-更新：2026-11-20。项目校验在 `chuchariot/validation.py`，本体随数据批次选择。
+更新：2026-11-23。第七批 `teacher-pdf.v0.7.json` 使用本体 `ontology.v0.5.json`；旧批次保留原契约0.1.0和对应旧本体。校验实现位于 `chuchariot/validation.py`。本轮修改见[原页审计](audits/2026-11-23-source-audit.md)及[尺寸迁移与建模检查](model-review-2026-11-23.md)。
 
-## 数据集与 ID
+## 数据集与标识
 
-根字段：`schema_version`、`ontology_version`、`dataset_id`、`stage`、`description`，以及 `sources`、`evidence`、`entities`、`facts`、`model_mappings` 五个数组。
+根字段为 `schema_version`、`ontology_version`、`dataset_id`、`stage`、`description`，以及 `sources`、`evidence`、`entities`、`facts`、`model_mappings` 五个数组。候选包引用必须闭合。未知字段、重复JSON键和不支持的契约版本报错。
 
-最新候选包 `wheel-axle.v0.4.json` 采用 `ontology.v0.2.json`，前三批使用 `ontology.v0.1.json`。实际入库关系和描述数量见[当前覆盖](coverage.md)。预审结论按事实 ID 保存在运行摘要，正式事实状态由 `review_status` 表达。
-
-JSON 字段契约仍为 `0.1.0`。`stage` 为 `candidate` 或 `reviewed`；后者不得含待审核事实或映射。未知字段报错，以避免拼写错误被忽略。导入包必须是完整、引用闭合的数据集，不接受孤立事实片段直接入库。
-
-ID 格式为 `命名空间:稳定编号`，例如 `type:001`、`fact:001`；只能用小写英文字母、数字和规范允许的分隔符。一个数据集内全局唯一，不随名称变更。外部重复 JSON 字段被拒绝，不接受“最后一个同名字段覆盖前面字段”。
+ID采用稳定命名空间格式，例如 `type:001`、`fact:pdf-147`，全包唯一。实体、事实、证据ID不随名称变化。`stage` 为 `candidate` 或 `reviewed`；后者不得含待审核事实或映射。具体记录数量见[当前覆盖](coverage.md)。
 
 ## 实体
 
-共同字段：`id`、`kind`、`label`、`aliases`；可选 `scope_id`、`note`。具体类型及语义见本体文件。
+共同字段为 `id`、`kind`、`label`、`aliases`，可选 `scope_id`、`note`。类型约束以所选本体为准。
 
-- `ComponentType` 是类别；`Component` 是实物部件实例，必须通过 `scope_id` 声明所属 `Chariot` 或 `ReferenceSpecimen`。
-- `ReferenceSpecimen` 专门保存对照标本；不能默认属于主展品，也不能因资料合订就合并不同标本。
-- `Measurement` 的 `scope_id` 是尺寸所有者；必须与 `HAS_MEASUREMENT` 主体一致。允许所有者为战车、具体部件、对照标本或模型版本，彼此不可混用。
-- `ModelVersion` 必须携带 `resource_id` 和 `content_sha256`，与对应 GLB 内容绑定；模型变化须使用新版本并重新核对映射。
-- `Connection`、`Pose`、`AssemblyStep` 当前仅有基础实体与关系边界，没有完整空间/步骤执行格式。不能将它们的预留类型视为已实现演示。
+- `ComponentType` 为通用部件类别，不代表某辆车上的具体对象。
+- `Chariot` 为具体战车或研究对象。
+- `ReferenceSpecimen` 为资料中的对照标本，不能默认归属于六号车。
+- `Component` 通过 `scope_id` 声明所属 `Chariot` 或 `ReferenceSpecimen`。
+- `ComponentRegion` 表示部件的描述区域，通过同范围的 `HAS_REGION` 关联，用于局部属性限定，不表示可拆卸零件。当前M1：302辀身前、中、后段使用此类型。
+- `ReferenceRecord` 保存未编号描述、统计及复原图记录，不冒充已确定身份的实物。
+- `HarnessRole` 保存服马、骖马等系驾角色，不是已识别的某匹马。
+- `Material`、`SurfaceFinish`、`PreservationFeature`、`DecorationMotif` 是可复用的概念，支持反查关联器物。
+- `ModelVersion` 必须绑定 `resource_id` 与 `content_sha256`；模型变化使用新版本并重新核对节点。
+- `Connection`、`Pose`、`AssemblyStep` 为预留类型，不能据其存在声称已完成空间或步骤演示。
 
-`measurement` 字段只用于尺寸实体，包含 `quantity`、`unit`、`raw`、`approximate`，以及单值 `value` 或完整范围 `min`/`max`。数值必须是有限正数，未知值不填零；当前长度单位为 `mm`、`cm`、`m`。保留原始表达，不自动把非圆轮的横径/竖径合成一个“直径”。
+## 尺寸作为结构化属性
 
-当前没有经过核对的位姿数据。不能以文件格式的单位惯例替代模型实际采用单位的核验；坐标系、局部/世界空间和旋转表示在场景格式引入前另行固定。
+第六批不再创建独立 `Measurement` 实体。`HAS_DIMENSION` 事实以所属对象为 `subject_id`，`value` 为结构化对象：
 
-## 事实与关系
+```json
+{
+  "quantity": "通长",
+  "unit": "cm",
+  "raw": "毂通长70、贤端径13.5、壶中径17、轵端径6厘米",
+  "approximate": false,
+  "value": 70
+}
+```
 
-每条事实包含 `id`、`subject_id`、`predicate`、`object_id` 或 `value`、`evidence_ids`、`origin`、`review_status`、`extraction`。目标实体与文字值二选一，关系允许类型在本体中逐项声明。
+必填 `quantity`、`unit`、`raw`、`approximate`，并提供单值 `value` 或完整范围 `min`/`max`，两者不能混用。数值必须为有限正数，拒绝零、布尔值和无穷值。长度单位为 `mm`、`cm`、`m`，不擅自替换原始单位或以零表示未知。
 
-核心关系：类别层次、实例归类、直接组成、尺寸、参与连接、位姿、步骤涉及部件、步骤依赖和有证据的文字描述。
+属性归属由事实主体唯一表达，不在实体元数据重复保存另一份可编辑尺寸。允许主体为具体部件、对照标本、战车、来源记录或模型版本；不允许通用类别直接接收标本尺寸。同一主体同一项目可有多条来源断言，每条拥有独立事实ID、证据和审核状态，不按项目名覆盖。
 
-`HAS_MATERIAL`、`HAS_PRESERVED_FEATURE`、`HAS_SURFACE_FINISH`、`HAS_DECORATION_MOTIF` 从 `ReferenceSpecimen` 或 `Component` 分别指向 `Material`、`PreservationFeature`、`SurfaceFinish`、`DecorationMotif`。保留资料用词与作用范围。深褐色漆皮作为残存特征，红漆和黑漆作为表面髹饰，勾连云纹作为纹饰。颜色发生在器物哪个部位，随证据原文及范围记录。每种关系都可反查相关标本。
+横径/竖径、残长/通长、局部尺寸/总体尺寸保持区别；不自动合成平均直径。数量与重量目前仍为文字属性，尚未采用上述长度对象；相对位置距离虽然保留原项目名，也不能被解释成轴自身通长。
 
-`HAS_PART` 的类别→类别只表达资料图示的通用结构；实例组成要求所属研究对象一致。不能由图中部件名推出具体实物数量或完整性。类别层次、直接组成、步骤依赖、推导依据链分别检查循环。
+旧契约0.1.0仍支持尺寸实体、`measurement` 数值对象、`scope_id` 和 `HAS_MEASUREMENT` 边，原有所有者一致性检查不变。旧包继续可读，迁移生成新包，不原地覆盖。对应ID索引见[迁移摘要](../data/run-summaries/2026-11-23-dimension-properties.json)。
 
-`SUPPORTED_BY` 由事实的 `evidence_ids` 投影；`REPRESENTED_BY` 由映射表投影，避免双份可修改记录。
+## 事实、范围与审核
 
-| 字段 | 取值及含义 |
+事实共同字段为 `id`、`subject_id`、`predicate`、`evidence_ids`、`origin`、`review_status`、`extraction`。目标二选一：实体关系提供 `object_id`，属性提供 `value`。一般文字属性的值必须为字符串；只有本体声明 `object_kind: dimension` 的尺寸属性可使用结构化数值对象，旧契约不接受该扩展。
+
+- `HAS_PART` 为直接组成；类别组成需明确适用范围。原3条图示结构已收窄为 `DEPICTS`。实例组成要求归属一致，不能跨车或标本。
+- `INSTANCE_OF` 表示实例归类。`REFERS_TO_TYPE` 表示来源记录涉及某类别，`DEPICTS` 表示图中描绘，两者不等于实物组成。
+- `TENON_JOINT_WITH` 要求部件同属一个器物范围；`HAS_ASSOCIATED_COMPONENT` 要求所配部件归属于主体标本。
+- 材质、保存特征、髹饰、纹饰关系保留作用范围。局部红黑漆不自动成为所有同类部件的属性。
+- 类别层次、组成、步骤依赖和推导依据分别检查循环。`SUPPORTED_BY` 与 `REPRESENTED_BY` 从证据引用和映射投影，避免重复编辑。
+
+| 字段 | 含义 |
 |---|---|
-| `origin` | `documented` 资料明确记载；`inferred` 结构推导；`hypothesis` 复原假设 |
-| `review_status` | `pending` 待审核；`confirmed` 按本项目规则已审核；`disputed` 有争议 |
-| `basis_fact_ids` | 可选推导依据；不可引用自己或形成循环 |
-| `rationale` | 推导/假设必须提供理由，并附证据或依据事实 |
-| `extraction` | 必填 `method`、`run_id`，可选模型与提示词版本 |
-| `review` | 已确认或有争议时必填审核者、ISO 日期和备注 |
+| `origin` | `documented` 来源记载或图像观察；`inferred` 推断；`hypothesis` 复原假设 |
+| `review_status` | `pending` 待审核；`confirmed` 已按项目规则审核；`disputed` 有争议 |
+| `basis_fact_ids` | 可选依据事实，不能引用自身或形成循环 |
+| `rationale` | 推断和假设必填理由，并附证据或依据事实 |
+| `extraction` | 必填 `method`、`run_id`，可选模型和提示词版本 |
+| `review` | 非pending记录必填审核者、ISO日期、备注 |
 
-`documented` 必须附有效证据。`confirmed` 不代表考古权威认证，也不改变 `hypothesis` 的性质。当前样例全部 `pending`，AI/程序不能因格式通过就自动提升状态。
+来源记载必须附有效证据；已确认不改变推断或假设的性质。当前270条事实均待审核。原272条的来源支持/需修正/证据不足判定单独保存在审计记录，不替代 `review_status`。`documented` 不意味着逐字照录或已经独立核实。年代、车型和适用范围尚未充分结构化，需保留描述中的限定词。
 
-## 来源与证据
+## 来源、媒体与模型
 
-来源记录保存稳定 ID、题名、资源 ID、资源文件名和格式；PDF 可保存总页数。当前具体证据格式只实现 PDF 页定位，DOCX 段落/OCR 坐标等后续扩展需要版本说明，不能滥用 PDF 页字段。
+来源保存题名、资源ID、文件名和格式；PDF可带页数。当前证据支持PDF页定位，包含 `source_id`、`pdf_page`、`locator`、`quote`、`transcription`、`check_status`、`scope_note`，可选印刷页码、图号；三者不能互相替代。
 
-证据包含 `source_id`、从 1 开始的 `pdf_page`、`locator`、`quote`、`transcription`、`check_status`、`scope_note`，可选印刷页码和图号。PDF 页码、图号、印刷页码互不替代。
+`embedded_text` 为文本层，`image_transcription` 为页面图像转录或观察。`source_checked` 表示Codex已对照页面，不能当作老师、组员或独立人员审核。教师汇编也不替代原始发掘报告。
 
-`embedded_text` 表示文本层抽取，`image_transcription` 表示依据页面图像转录或观察。`source_checked` 表示已对照来源，正式审核见对应事实的 `review_status`。第三批共登记 4 份 PDF 和 22 段证据，部分汇编图号待回查至原始报告。
+媒体v0.7沿用18个资料图块和7组模型图，按实体、事实证据和来源页关联。模型映射保存实体、模型版本、节点索引、状态和说明；索引绑定GLB哈希，不采用运行时对象ID。模型几何不自动成为历史尺寸。详见[融合记录](fusion.md)。
 
-## 模型映射与查询视图
+## 查询、导入与版本
 
-映射保存 `id`、`entity_id`、`model_version_id`、`node_indices`、`review_status`、`note`；非待审核映射另附 `review`。允许一对多；类别映射不能冒充实物部件实例映射。
+默认查询仅返回已确认事实、证据和映射，审核模式显式启用候选和争议。尺寸属性随整条事实过滤，不从实体字段绕过。目录保留并附审核数量，这些数量不是已确认内容。`stats.dimension_properties` 单列尺寸属性总数，不能代替当前可见事实。
 
-索引是绑定内容哈希的 glTF 节点数组下标，不是 Three.js 运行时对象 ID。模型中存在重名节点，不能只按名称绑定。索引/哈希检查只验证格式对应，不能确认几何语义。
-
-检查页的图像索引位于 `data/sources/fusion-media.v0.1.json`，与候选包并列管理。资料裁片按实体、证据页和像素矩形定位，模型图按实体、映射 ID、节点索引和 GLB 哈希定位。关联须经过校验，并遵循事实或映射的审核可见性。查看[融合格式与重建](fusion.md)。
-
-默认事实、关系、证据、映射查询仅返回 `confirmed`；审核视图 `--include-pending` 同时返回待审核及争议记录。实体目录始终可以浏览，但会附带 `fact_review_summary`；未确认尺寸值默认隐藏，返回 `measurement_visibility: hidden_until_reviewed`。目录元数据不能被前端直接包装成已确认解说。
-
-## 导入与迁移
-
-导入先完整校验，按 ID 去重；同 ID 同内容不重复写入，同 ID 不同内容拒绝整次操作，原文件保持不变。格式、数据集身份、阶段或说明冲突也需显式协调，不静默覆盖。
-
-本版本是首个实现版本，无历史数据迁移。新增字段/语义需更新版本、验证器、样例、测试和本文；不支持的版本明确报错。
+候选数据为唯一编辑入口；本地导入快照只作派生产物。幂等导入同ID同内容不重写，同ID不同内容拒绝整次操作，元数据版本冲突也不静默合并。新增语义须同步本体、校验、查询消费者、测试和文档。

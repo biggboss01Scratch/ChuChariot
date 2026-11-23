@@ -96,6 +96,7 @@ class KnowledgeStore:
                 "confirmed": sum(_visible(f, False) for f in facts),
                 "pending": sum(f["review_status"] == "pending" for f in facts),
                 "evidence": len(self._data["evidence"]), "visible_facts": len(visible_facts),
+                "dimension_properties": sum(f["predicate"] == "HAS_DIMENSION" for f in facts),
                 "mappings": len(self._data["model_mappings"]),
             },
             "entities": self.list_entities(include_pending=include_pending),

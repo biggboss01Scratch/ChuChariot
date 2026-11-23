@@ -1,0 +1,599 @@
+{
+  "run_id": "run:20261123-teacher-pdf",
+  "date": "2026-11-23",
+  "base_dataset": "dataset:wheel-axle-004",
+  "dataset_id": "dataset:teacher-pdf-005",
+  "source_sha256": "23d79ba68d0935ac26e439dede14c611a47556af8bdebc7b0f26a83bcc4a36e5",
+  "method": "single-agent checked-page extraction with deterministic curation; no external model calls",
+  "counts": {
+    "entities": 149,
+    "facts": 272,
+    "evidence": 52,
+    "model_mappings": 7
+  },
+  "added": {
+    "entities": 125,
+    "facts": 234,
+    "evidence": 30,
+    "model_mappings": 0
+  },
+  "fact_kinds": {
+    "HAS_PART": 19,
+    "INSTANCE_OF": 24,
+    "HAS_MEASUREMENT": 54,
+    "DESCRIPTION": 33,
+    "HAS_MATERIAL": 13,
+    "HAS_PRESERVED_FEATURE": 9,
+    "HAS_DECORATION_MOTIF": 4,
+    "HAS_SURFACE_FINISH": 10,
+    "HAS_PROCESSING": 6,
+    "HAS_SHAPE": 37,
+    "HAS_POSITION": 6,
+    "REFERS_TO_TYPE": 15,
+    "HAS_RECORDED_QUANTITY": 7,
+    "HAS_ORIGINAL_IDENTIFIERS": 2,
+    "HAS_FIND_POSITION": 3,
+    "HAS_PATTERN_DETAIL": 3,
+    "HAS_MASS_RECORD": 2,
+    "HAS_ASSOCIATED_COMPONENT": 1,
+    "TENON_JOINT_WITH": 2,
+    "HAS_DIAGRAM_LABELS": 10,
+    "DEPICTS": 12
+  },
+  "entity_kinds": {
+    "ComponentType": 33,
+    "Chariot": 1,
+    "ReferenceSpecimen": 12,
+    "Measurement": 54,
+    "ModelVersion": 1,
+    "Material": 5,
+    "PreservationFeature": 4,
+    "Component": 17,
+    "DecorationMotif": 2,
+    "SurfaceFinish": 2,
+    "ReferenceRecord": 16,
+    "HarnessRole": 2
+  },
+  "all_new_facts_pending": true,
+  "coverage": {
+    "heading-p09-floor-mat": {
+      "pdf_page": 9,
+      "fact_ids": [
+        "fact:pdf-001"
+      ],
+      "excluded": []
+    },
+    "heading-p09-body-cover": {
+      "pdf_page": 9,
+      "fact_ids": [
+        "fact:pdf-002"
+      ],
+      "excluded": []
+    },
+    "heading-p09-umbrella": {
+      "pdf_page": 9,
+      "fact_ids": [
+        "fact:pdf-003"
+      ],
+      "excluded": []
+    },
+    "heading-p09-canopy": {
+      "pdf_page": 9,
+      "fact_ids": [
+        "fact:pdf-004"
+      ],
+      "excluded": []
+    },
+    "P01-T03": {
+      "pdf_page": 1,
+      "fact_ids": [
+        "fact:pdf-005",
+        "fact:pdf-006",
+        "fact:pdf-007",
+        "fact:pdf-008",
+        "fact:pdf-009",
+        "fact:pdf-010"
+      ],
+      "excluded": []
+    },
+    "P01-T05": {
+      "pdf_page": 1,
+      "fact_ids": [
+        "fact:pdf-011",
+        "fact:pdf-012",
+        "fact:pdf-013",
+        "fact:pdf-014",
+        "fact:pdf-015",
+        "fact:pdf-016",
+        "fact:pdf-017",
+        "fact:pdf-018"
+      ],
+      "excluded": []
+    },
+    "P01-T07": {
+      "pdf_page": 1,
+      "fact_ids": [
+        "fact:pdf-019",
+        "fact:pdf-020",
+        "fact:pdf-021",
+        "fact:pdf-022",
+        "fact:pdf-023",
+        "fact:pdf-024",
+        "fact:pdf-025",
+        "fact:pdf-026"
+      ],
+      "excluded": []
+    },
+    "P01-T04": {
+      "pdf_page": 1,
+      "fact_ids": [
+        "fact:pdf-027",
+        "fact:pdf-028",
+        "fact:pdf-029"
+      ],
+      "excluded": []
+    },
+    "P01-T06": {
+      "pdf_page": 1,
+      "fact_ids": [
+        "fact:pdf-030",
+        "fact:pdf-031",
+        "fact:pdf-032"
+      ],
+      "excluded": []
+    },
+    "P02-T01": {
+      "pdf_page": 2,
+      "fact_ids": [
+        "fact:pdf-033",
+        "fact:pdf-034",
+        "fact:pdf-035",
+        "fact:pdf-036",
+        "fact:pdf-037",
+        "fact:pdf-038",
+        "fact:pdf-039",
+        "fact:pdf-040",
+        "fact:pdf-041",
+        "fact:pdf-042",
+        "fact:pdf-043",
+        "fact:pdf-044",
+        "fact:pdf-045",
+        "fact:pdf-046",
+        "fact:pdf-047",
+        "fact:pdf-048"
+      ],
+      "excluded": []
+    },
+    "P02-T02": {
+      "pdf_page": 2,
+      "fact_ids": [
+        "fact:pdf-049",
+        "fact:pdf-050",
+        "fact:pdf-051",
+        "fact:pdf-052",
+        "fact:pdf-053",
+        "fact:pdf-054",
+        "fact:pdf-055",
+        "fact:pdf-056",
+        "fact:pdf-057",
+        "fact:pdf-058"
+      ],
+      "excluded": []
+    },
+    "P03-T01": {
+      "pdf_page": 3,
+      "fact_ids": [
+        "fact:pdf-059",
+        "fact:pdf-060",
+        "fact:pdf-061",
+        "fact:pdf-062",
+        "fact:pdf-063",
+        "fact:pdf-064",
+        "fact:pdf-065",
+        "fact:pdf-066",
+        "fact:pdf-067",
+        "fact:pdf-068",
+        "fact:pdf-069",
+        "fact:pdf-070",
+        "fact:pdf-071",
+        "fact:pdf-072",
+        "fact:pdf-073",
+        "fact:pdf-074",
+        "fact:pdf-075",
+        "fact:pdf-076",
+        "fact:pdf-077",
+        "fact:pdf-078",
+        "fact:pdf-079",
+        "fact:pdf-080"
+      ],
+      "excluded": []
+    },
+    "P04-T02": {
+      "pdf_page": 4,
+      "fact_ids": [
+        "fact:pdf-081",
+        "fact:pdf-082",
+        "fact:pdf-083",
+        "fact:pdf-084",
+        "fact:pdf-085",
+        "fact:pdf-086",
+        "fact:pdf-087"
+      ],
+      "excluded": []
+    },
+    "P04-T03": {
+      "pdf_page": 4,
+      "fact_ids": [
+        "fact:pdf-088",
+        "fact:pdf-089"
+      ],
+      "excluded": []
+    },
+    "P04-T04": {
+      "pdf_page": 4,
+      "fact_ids": [
+        "fact:pdf-090",
+        "fact:pdf-091",
+        "fact:pdf-092",
+        "fact:pdf-093",
+        "fact:pdf-094",
+        "fact:pdf-095",
+        "fact:pdf-096"
+      ],
+      "excluded": []
+    },
+    "P05-T01": {
+      "pdf_page": 5,
+      "fact_ids": [
+        "fact:pdf-097",
+        "fact:pdf-098",
+        "fact:pdf-099",
+        "fact:pdf-100",
+        "fact:pdf-101",
+        "fact:pdf-102",
+        "fact:pdf-103",
+        "fact:pdf-104"
+      ],
+      "excluded": []
+    },
+    "P05-T02": {
+      "pdf_page": 5,
+      "fact_ids": [
+        "fact:pdf-105",
+        "fact:pdf-106",
+        "fact:pdf-107",
+        "fact:pdf-108",
+        "fact:pdf-109",
+        "fact:pdf-110",
+        "fact:pdf-111",
+        "fact:pdf-112",
+        "fact:pdf-113",
+        "fact:pdf-114",
+        "fact:pdf-115",
+        "fact:pdf-116",
+        "fact:pdf-117",
+        "fact:pdf-118",
+        "fact:pdf-119",
+        "fact:pdf-120",
+        "fact:pdf-121",
+        "fact:pdf-122"
+      ],
+      "excluded": []
+    },
+    "P06-T01": {
+      "pdf_page": 6,
+      "fact_ids": [
+        "fact:pdf-123",
+        "fact:pdf-124",
+        "fact:pdf-125",
+        "fact:pdf-126",
+        "fact:pdf-127",
+        "fact:pdf-128",
+        "fact:pdf-129",
+        "fact:pdf-130",
+        "fact:pdf-131",
+        "fact:pdf-132",
+        "fact:pdf-133",
+        "fact:pdf-134",
+        "fact:pdf-135",
+        "fact:pdf-136",
+        "fact:pdf-137",
+        "fact:pdf-138",
+        "fact:pdf-139",
+        "fact:pdf-140",
+        "fact:pdf-141",
+        "fact:pdf-142",
+        "fact:pdf-143",
+        "fact:pdf-144",
+        "fact:pdf-145",
+        "fact:pdf-146",
+        "fact:pdf-147",
+        "fact:pdf-148",
+        "fact:pdf-149",
+        "fact:pdf-150",
+        "fact:pdf-151",
+        "fact:pdf-152",
+        "fact:pdf-153",
+        "fact:pdf-154",
+        "fact:pdf-155",
+        "fact:pdf-156",
+        "fact:pdf-157",
+        "fact:pdf-158",
+        "fact:pdf-159",
+        "fact:pdf-160",
+        "fact:pdf-161",
+        "fact:pdf-162",
+        "fact:pdf-163",
+        "fact:pdf-164",
+        "fact:pdf-165",
+        "fact:pdf-166",
+        "fact:pdf-167",
+        "fact:pdf-168",
+        "fact:pdf-169",
+        "fact:pdf-170"
+      ],
+      "excluded": []
+    },
+    "P07-T02": {
+      "pdf_page": 7,
+      "fact_ids": [
+        "fact:pdf-171",
+        "fact:pdf-172",
+        "fact:pdf-173",
+        "fact:pdf-174",
+        "fact:pdf-175",
+        "fact:pdf-176",
+        "fact:pdf-177",
+        "fact:pdf-178",
+        "fact:pdf-179",
+        "fact:pdf-180",
+        "fact:pdf-181",
+        "fact:pdf-182",
+        "fact:pdf-183",
+        "fact:pdf-184",
+        "fact:pdf-185",
+        "fact:pdf-186",
+        "fact:pdf-187",
+        "fact:pdf-188",
+        "fact:pdf-189",
+        "fact:pdf-190",
+        "fact:pdf-191",
+        "fact:pdf-192"
+      ],
+      "excluded": []
+    },
+    "figure-15": {
+      "pdf_page": 7,
+      "fact_ids": [
+        "fact:pdf-193",
+        "fact:pdf-194"
+      ],
+      "excluded": []
+    },
+    "figure-16": {
+      "pdf_page": 8,
+      "fact_ids": [
+        "fact:pdf-195",
+        "fact:pdf-196"
+      ],
+      "excluded": []
+    },
+    "figure-17": {
+      "pdf_page": 8,
+      "fact_ids": [
+        "fact:pdf-197",
+        "fact:pdf-198",
+        "fact:pdf-199",
+        "fact:pdf-200",
+        "fact:pdf-201",
+        "fact:pdf-202",
+        "fact:pdf-203"
+      ],
+      "excluded": []
+    },
+    "figure-18": {
+      "pdf_page": 9,
+      "fact_ids": [
+        "fact:pdf-204",
+        "fact:pdf-205",
+        "fact:pdf-206",
+        "fact:pdf-207",
+        "fact:pdf-208",
+        "fact:pdf-209",
+        "fact:pdf-210",
+        "fact:pdf-211",
+        "fact:pdf-212",
+        "fact:pdf-213"
+      ],
+      "excluded": []
+    },
+    "figure-02": {
+      "pdf_page": 2,
+      "fact_ids": [
+        "fact:pdf-214",
+        "fact:pdf-215",
+        "fact:pdf-216"
+      ],
+      "excluded": []
+    },
+    "figure-03": {
+      "pdf_page": 2,
+      "fact_ids": [
+        "fact:pdf-217",
+        "fact:pdf-218",
+        "fact:pdf-219"
+      ],
+      "excluded": []
+    },
+    "figure-07": {
+      "pdf_page": 4,
+      "fact_ids": [
+        "fact:pdf-220",
+        "fact:pdf-221",
+        "fact:pdf-222"
+      ],
+      "excluded": []
+    },
+    "figure-09": {
+      "pdf_page": 5,
+      "fact_ids": [
+        "fact:pdf-223",
+        "fact:pdf-224",
+        "fact:pdf-225"
+      ],
+      "excluded": []
+    },
+    "figure-11": {
+      "pdf_page": 6,
+      "fact_ids": [
+        "fact:pdf-226",
+        "fact:pdf-227",
+        "fact:pdf-228"
+      ],
+      "excluded": []
+    },
+    "figure-12": {
+      "pdf_page": 6,
+      "fact_ids": [
+        "fact:pdf-229",
+        "fact:pdf-230",
+        "fact:pdf-231"
+      ],
+      "excluded": []
+    },
+    "figure-13": {
+      "pdf_page": 6,
+      "fact_ids": [
+        "fact:pdf-232",
+        "fact:pdf-233",
+        "fact:pdf-234"
+      ],
+      "excluded": []
+    },
+    "P01-T01": {
+      "pdf_page": 1,
+      "fact_ids": [],
+      "excluded": [
+        "导言或结构箭头：原样保留在转写输入，不从箭头推导安装顺序；已有导言候选不重复新增。"
+      ]
+    },
+    "P01-T02": {
+      "pdf_page": 1,
+      "fact_ids": [],
+      "excluded": [
+        "导言或结构箭头：原样保留在转写输入，不从箭头推导安装顺序；已有导言候选不重复新增。"
+      ]
+    },
+    "P04-T01": {
+      "pdf_page": 4,
+      "fact_ids": [],
+      "excluded": [
+        "导言或结构箭头：原样保留在转写输入，不从箭头推导安装顺序；已有导言候选不重复新增。"
+      ]
+    },
+    "P07-T01": {
+      "pdf_page": 7,
+      "fact_ids": [],
+      "excluded": [
+        "导言或结构箭头：原样保留在转写输入，不从箭头推导安装顺序；已有导言候选不重复新增。"
+      ]
+    },
+    "figure-01": {
+      "pdf_page": 1,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-04": {
+      "pdf_page": 2,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-05": {
+      "pdf_page": 3,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-06": {
+      "pdf_page": 3,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-08": {
+      "pdf_page": 5,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-10": {
+      "pdf_page": 6,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    },
+    "figure-14": {
+      "pdf_page": 7,
+      "fact_ids": [],
+      "excluded": [
+        "本图作为原件核查上下文保留，本轮未从图形比例、未标注尺寸或颜色另外生成确定事实。"
+      ]
+    }
+  },
+  "exclusions": [
+    {
+      "page": 1,
+      "item": "两处疑为“轸前”的字形、轭内軜术语",
+      "reason": "未建明确连接事实；需原报告核字。"
+    },
+    {
+      "page": 2,
+      "item": "未编号辀328厘米的具体车辆归属",
+      "reason": "作为ReferenceRecord保留，不填入六号车或M1：302。"
+    },
+    {
+      "page": 4,
+      "item": "276厘米与272厘米同一轴的假定",
+      "reason": "分属未编号记录和CH1：3参考标本，不合并。"
+    },
+    {
+      "page": 5,
+      "item": "470克是否含所配辖",
+      "reason": "重量属性保留范围提示，不拆分臆算。"
+    },
+    {
+      "page": 6,
+      "item": "辐条根数；各比较图的尺寸推广",
+      "reason": "不数图补辐数；138cm、188cm仅保留为原图标签。"
+    },
+    {
+      "page": 7,
+      "item": "残存漆骨帽镳与M1：257-2a同一性；锡鋄疑字",
+      "reason": "不合并镳记录，不将疑字建成确定术语。"
+    },
+    {
+      "page": 8,
+      "item": "觼軜疑读、示意图的六号车归属",
+      "reason": "暂不录入；正反马勒图保留推测复原性质。"
+    },
+    {
+      "page": 9,
+      "item": "车茵、车蔽衣、伞、盖的属性及实物归属",
+      "reason": "仅登记标题术语，不补材料、尺寸或六号车组成。"
+    },
+    {
+      "page": 10,
+      "item": "空白页",
+      "reason": "无可抽取正文或图示。"
+    }
+  ],
+  "review_note": "来源页面核对与自动校验不替代独立内容审核；本轮未执行独立Agent预审。"
+}

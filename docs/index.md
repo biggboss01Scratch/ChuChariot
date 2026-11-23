@@ -1,10 +1,12 @@
 # 项目文档索引
 
-2026-11-20 · P1 知识层与本地临时检查原型，当前数据批次为 `wheel-axle.v0.4`。
+2026-11-23更新：当前批次为 **teacher-pdf.v0.7**，95个实体、107条实体关系、54项尺寸属性、270条待审核事实、52段证据和7组模型映射。68项Python测试及6项Node布局测试通过。原272条逐条审计为258条来源支持、13条需修正、1条证据不足；全部仍待组员审核。查看[审计表](audits/2026-11-23-source-audit.md)、[覆盖与缺口](audits/2026-11-23-coverage.md)、[当前候选](../data/candidates/teacher-pdf.v0.7.json)、[本体0.5](../data/ontology/ontology.v0.5.json)和[媒体v0.7](../data/sources/fusion-media.v0.7.json)。以下保留第四批历史基线，启动以README为准。
 
-第一次接手建议按顺序阅读 [README 与启动命令](../README.md)、[项目交接索引](handover.md)、[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
+2026-11-20 · P1 知识层与本地临时检查原型，历史数据批次为 `wheel-axle.v0.4`。
 
-## 这一版交付到哪里
+队友开发先看[知识图谱v0.7接入说明](teammate-quickstart-v0.7.md)，再读[README与启动命令](../README.md)、[项目交接索引](handover.md)和[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
+
+## 第四批交付记录（历史）
 
 | 模块 | 当前结果 | 查阅入口 |
 |---|---|---|
@@ -36,6 +38,8 @@
 | [v0.1](../data/candidates/wheel-axle.v0.1.json) | 默认 CLI 启动样例，14 个实体、9 条候选 |
 | [v0.2](../data/candidates/wheel-axle.v0.2.json) | 第二批提取及预审，15 个实体、19 条候选 |
 | [v0.3](../data/candidates/wheel-axle.v0.3.json) | 第三批融合候选，17 个实体、28 条候选 |
-| [v0.4](../data/candidates/wheel-axle.v0.4.json) | 当前交接批次，24 个实体、38 条候选，新增材质、保存特征、髹饰、组成和纹饰边 |
+| [v0.4](../data/candidates/wheel-axle.v0.4.json) | 第四批，24 个实体、38 条候选，新增材质、保存特征、髹饰、组成和纹饰边 |
 
 JSON 字段契约为 `0.1.0`。第四批使用[本体 `0.2.0`](../data/ontology/ontology.v0.2.json)，前三批使用本体 `0.1.0`。
+
+第七批使用数据契约0.2.0、本体0.5.0。第五批仍可按契约0.1.0、本体0.3.0复现；历史节点数量不与当前属性数量混算。

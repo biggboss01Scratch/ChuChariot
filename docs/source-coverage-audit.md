@@ -1,5 +1,7 @@
 # 教师原件入库覆盖核查
 
+2026-11-23补充：本页是第四批覆盖审计的历史记录。第五批已处理其中多数PDF文字和图示缺口，具体新增及尚未解决项见[第五批提取记录](extraction-2026-11-23.md)；不能再将下文的第四批缺项全部视为当前未提取项。
+
 2026-11-20。核查对象为教师需求 DOCX 的正文和三张插图、教师汇编 PDF 的全部 10 页。对照[候选知识库](../data/candidates/wheel-axle.v0.4.json)、[资料图块与模型静态图](../data/sources/fusion-media.v0.1.json)、[现用 GLB 节点表](../data/scenes/model-inspection.json)及本地教学爆炸图。原件文件名见[资源登记](sources.md)。
 
 ## 古车部件总图

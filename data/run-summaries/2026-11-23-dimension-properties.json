@@ -1,0 +1,350 @@
+{
+  "run_id": "run:20261123-dimension-properties",
+  "date": "2026-11-23",
+  "source_dataset": "dataset:teacher-pdf-005",
+  "dataset_id": "dataset:teacher-pdf-006",
+  "source_dataset_sha256": "8d4053fbf9baa101c548b48e966fad7e5a2c101af62a0813d611794b85e073de",
+  "schema_version": "0.2.0",
+  "ontology_version": "0.4.0",
+  "counts": {
+    "entities": 95,
+    "facts": 272,
+    "dimension_properties": 54,
+    "entity_relations": 109,
+    "evidence": 52,
+    "model_mappings": 7
+  },
+  "new_historical_claims": 0,
+  "review_status_changes": 0,
+  "migrations": [
+    {
+      "legacy_entity_id": "measurement:001",
+      "legacy_label": "CH1：5右轮横径",
+      "subject_id": "specimen:001",
+      "fact_id": "fact:006"
+    },
+    {
+      "legacy_entity_id": "measurement:002",
+      "legacy_label": "CH1：5右轮竖径",
+      "subject_id": "specimen:001",
+      "fact_id": "fact:007"
+    },
+    {
+      "legacy_entity_id": "measurement:003",
+      "legacy_label": "CH1：3轴通长",
+      "subject_id": "specimen:002",
+      "fact_id": "fact:008"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-001",
+      "legacy_label": "CH1：3轭标本 · 通宽",
+      "subject_id": "specimen:ch13-yoke",
+      "fact_id": "fact:pdf-009"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-002",
+      "legacy_label": "CH1：3轭标本 · 高",
+      "subject_id": "specimen:ch13-yoke",
+      "fact_id": "fact:pdf-010"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-003",
+      "legacy_label": "CH1：1靷标本 · 可见部分长",
+      "subject_id": "specimen:ch11-trace",
+      "fact_id": "fact:pdf-015"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-004",
+      "legacy_label": "CH1：1靷标本 · 宽",
+      "subject_id": "specimen:ch11-trace",
+      "fact_id": "fact:pdf-016"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-005",
+      "legacy_label": "CH1：4靷标本 · 可见部分长",
+      "subject_id": "specimen:ch14-trace",
+      "fact_id": "fact:pdf-023"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-006",
+      "legacy_label": "CH1：4靷标本 · 宽",
+      "subject_id": "specimen:ch14-trace",
+      "fact_id": "fact:pdf-024"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-007",
+      "legacy_label": "CH1：4衡标本 · 残长",
+      "subject_id": "specimen:ch14-beam",
+      "fact_id": "fact:pdf-038"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-008",
+      "legacy_label": "CH1：4衡标本 · 宽",
+      "subject_id": "specimen:ch14-beam",
+      "fact_id": "fact:pdf-039"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-009",
+      "legacy_label": "CH1：4衡标本 · 厚",
+      "subject_id": "specimen:ch14-beam",
+      "fact_id": "fact:pdf-040"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-010",
+      "legacy_label": "第2页未编号辀记录 · 长",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-050"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-011",
+      "legacy_label": "第2页未编号辀记录 · 厚",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-051"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-012",
+      "legacy_label": "第2页未编号辀记录 · 前轸处宽",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-052"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-013",
+      "legacy_label": "第2页未编号辀记录 · 近衡处宽",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-053"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-014",
+      "legacy_label": "第2页未编号辀记录 · 踵外露部分长",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-054"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-015",
+      "legacy_label": "第2页未编号辀记录 · 踵外露部分宽",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-055"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-016",
+      "legacy_label": "第2页未编号辀记录 · 踵外露部分厚",
+      "subject_id": "record:p02-unnumbered-pole",
+      "fact_id": "fact:pdf-056"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-017",
+      "legacy_label": "M1：302 车辀残件 · 残长",
+      "subject_id": "specimen:004",
+      "fact_id": "fact:pdf-063"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-018",
+      "legacy_label": "M1：302 车辀残件 · 前宽",
+      "subject_id": "specimen:004",
+      "fact_id": "fact:pdf-064"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-019",
+      "legacy_label": "M1：302 车辀残件 · 最高",
+      "subject_id": "specimen:004",
+      "fact_id": "fact:pdf-065"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-020",
+      "legacy_label": "M1：302 车辀残件 · 身前宽",
+      "subject_id": "specimen:004",
+      "fact_id": "fact:pdf-066"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-021",
+      "legacy_label": "M1：302 车辀残件 · 身前高",
+      "subject_id": "specimen:004",
+      "fact_id": "fact:pdf-067"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-022",
+      "legacy_label": "第4页未编号轴记录 · 通长",
+      "subject_id": "record:p04-unnumbered-axle",
+      "fact_id": "fact:pdf-082"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-023",
+      "legacy_label": "第4页未编号轴记录 · 粗径",
+      "subject_id": "record:p04-unnumbered-axle",
+      "fact_id": "fact:pdf-083"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-024",
+      "legacy_label": "第4页未编号轴记录 · 细径",
+      "subject_id": "record:p04-unnumbered-axle",
+      "fact_id": "fact:pdf-084"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-025",
+      "legacy_label": "第4页未编号轴记录 · 相对舆中轴经线向前距离",
+      "subject_id": "record:p04-unnumbered-axle",
+      "fact_id": "fact:pdf-085"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-026",
+      "legacy_label": "CH1：3轴标本 · 粗径",
+      "subject_id": "specimen:002",
+      "fact_id": "fact:pdf-090"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-027",
+      "legacy_label": "CH1：3轴标本 · 细径",
+      "subject_id": "specimen:002",
+      "fact_id": "fact:pdf-091"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-028",
+      "legacy_label": "M1：201-1 车軎 · 口径",
+      "subject_id": "specimen:003",
+      "fact_id": "fact:pdf-105"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-029",
+      "legacy_label": "M1：201-1 车軎 · 末端径",
+      "subject_id": "specimen:003",
+      "fact_id": "fact:pdf-106"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-030",
+      "legacy_label": "M1：201-1 车軎 · 通长",
+      "subject_id": "specimen:003",
+      "fact_id": "fact:pdf-107"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-031",
+      "legacy_label": "M1：201-1车軎所配辖 · 长",
+      "subject_id": "component:m1201-pin",
+      "fact_id": "fact:pdf-120"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-032",
+      "legacy_label": "CH1：5轮牙 · 牙高",
+      "subject_id": "component:ch15-rim",
+      "fact_id": "fact:pdf-131"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-033",
+      "legacy_label": "CH1：5轮牙 · 牙宽",
+      "subject_id": "component:ch15-rim",
+      "fact_id": "fact:pdf-132"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-034",
+      "legacy_label": "CH1：5轮辐（尺寸记录对象） · 通长",
+      "subject_id": "component:ch15-spoke",
+      "fact_id": "fact:pdf-133"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-035",
+      "legacy_label": "CH1：5轮辐内段（股） · 宽",
+      "subject_id": "component:ch15-spoke-inner",
+      "fact_id": "fact:pdf-140"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-036",
+      "legacy_label": "CH1：5轮辐内段（股） · 厚",
+      "subject_id": "component:ch15-spoke-inner",
+      "fact_id": "fact:pdf-141"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-037",
+      "legacy_label": "CH1：5轮辐外段（骹） · 直径",
+      "subject_id": "component:ch15-spoke-outer",
+      "fact_id": "fact:pdf-142"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-038",
+      "legacy_label": "CH1：5轮毂 · 通长",
+      "subject_id": "component:ch15-hub",
+      "fact_id": "fact:pdf-147"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-039",
+      "legacy_label": "CH1：5轮毂 · 贤端径",
+      "subject_id": "component:ch15-hub",
+      "fact_id": "fact:pdf-148"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-040",
+      "legacy_label": "CH1：5轮毂 · 壶中径",
+      "subject_id": "component:ch15-hub",
+      "fact_id": "fact:pdf-149"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-041",
+      "legacy_label": "CH1：5轮毂 · 轵端径",
+      "subject_id": "component:ch15-hub",
+      "fact_id": "fact:pdf-150"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-042",
+      "legacy_label": "CH1：5毂轵部窄篆 · 间隔",
+      "subject_id": "component:ch15-hub-ridges",
+      "fact_id": "fact:pdf-155"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-043",
+      "legacy_label": "CH1：5毂轵部窄篆 · 宽",
+      "subject_id": "component:ch15-hub-ridges",
+      "fact_id": "fact:pdf-156"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-044",
+      "legacy_label": "CH1：5毂轵部窄篆 · 高",
+      "subject_id": "component:ch15-hub-ridges",
+      "fact_id": "fact:pdf-157"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-045",
+      "legacy_label": "CH1：5轮附加圆木条 · 长",
+      "subject_id": "component:ch15-wood-strips",
+      "fact_id": "fact:pdf-163"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-046",
+      "legacy_label": "CH1：5轮附加圆木条 · 直径",
+      "subject_id": "component:ch15-wood-strips",
+      "fact_id": "fact:pdf-164"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-047",
+      "legacy_label": "CH1：5轮捆扎皮条 · 宽",
+      "subject_id": "component:ch15-binding",
+      "fact_id": "fact:pdf-170"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-048",
+      "legacy_label": "M1：257-1马衔 · 通长",
+      "subject_id": "specimen:m1257-bit",
+      "fact_id": "fact:pdf-175"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-049",
+      "legacy_label": "M1：257-2a马镳 · 长",
+      "subject_id": "specimen:m1257-2a",
+      "fact_id": "fact:pdf-177"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-050",
+      "legacy_label": "M1：257-1马衔 · 枣核形浇痕长",
+      "subject_id": "specimen:m1257-bit",
+      "fact_id": "fact:pdf-182"
+    },
+    {
+      "legacy_entity_id": "measurement:pdf-051",
+      "legacy_label": "M1：257-1马衔 · 枣核形浇痕宽",
+      "subject_id": "specimen:m1257-bit",
+      "fact_id": "fact:pdf-183"
+    }
+  ],
+  "notes": [
+    "尺寸仍逐项保留原事实ID、证据、来源性质、审核状态和抽取记录。",
+    "保留横径/竖径、残长/通长、近似、范围及原始表达；不自动平均、覆盖或换算原始值。",
+    "同主体同项目可有多个来源的属性事实，需逐条核对，不能按项目名覆盖。"
+  ]
+}

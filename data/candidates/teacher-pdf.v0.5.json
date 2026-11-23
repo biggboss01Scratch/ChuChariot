@@ -1,0 +1,6189 @@
+{
+  "schema_version": "0.1.0",
+  "ontology_version": "0.3.0",
+  "dataset_id": "dataset:teacher-pdf-005",
+  "stage": "candidate",
+  "description": "第五批：继承v0.4，逐页补提教师汇编中的部件、标本、尺寸、形态、连接、工艺及图示记录；全部新增事实待审核，复原图与实物记录分开。",
+  "sources": [
+    {
+      "id": "source:001",
+      "title": "马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫",
+      "resource_id": "res:002",
+      "filename": "obP5c-1787891799145-马车复原及示意图及相关器具尺寸数据6.28.-刘逸鑫.pdf",
+      "format": "pdf",
+      "page_count": 10,
+      "note": "当前直接来源为资料汇编，不冒充原始发掘报告；引文中的原报告页码与对照标本归属尚未追查。"
+    },
+    {
+      "id": "source:002",
+      "resource_id": "ref:004",
+      "title": "刘永华《中国古代车舆马具》出版社公开样章",
+      "filename": "liu-2013-chariot-excerpt.pdf",
+      "format": "pdf",
+      "page_count": 9
+    },
+    {
+      "id": "source:003",
+      "resource_id": "assembly-source:006",
+      "title": "邵朋飞《探微〈考工记〉中的工匠精神——以“轮”的制造为例》",
+      "filename": "shao-2022-wheel-craft.pdf",
+      "format": "pdf",
+      "page_count": 9
+    },
+    {
+      "id": "source:004",
+      "resource_id": "ref:003",
+      "title": "张万辉《先秦辐式双轮马车轮辋制作技艺研究》",
+      "filename": "zhang-2022-wheel-rim.pdf",
+      "format": "pdf",
+      "page_count": 7
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:001",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "页面下半部“（四）轮”下方的结构示意图，轮、毂、辐、牙标注",
+      "quote": "轮；毂；辐；牙",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "记录图示的部件组成，不由此证明全部楚国车轮具有同一结构，也不推出装配顺序。"
+    },
+    {
+      "id": "evidence:002",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落，右轮横径与竖径",
+      "quote": "右轮横径132、竖径119厘米",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "只归属于所引 CH1：5 轮标本；该段不足以证明它属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:003",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "“参考：”下方“标本 CH1：3-轴”段落末尾",
+      "quote": "轴通长272、粗径9.7、细径2.6厘米",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "只归属于参考段的 CH1：3 轴标本；不能与该页上方未注明标本的276厘米记录混为一条。",
+      "figure": "原文括注图二八七；当前只核对汇编页面，未找到原报告"
+    },
+    {
+      "id": "evidence:004",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "上半部左栏“标本 CH1：5-轮”段落开头",
+      "quote": "轮为木质，木质已腐烂，现仅存表面深褐色漆皮",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "CH1：5 标本描述，不推广为所有车轮，也不归属于数字模型材质。"
+    },
+    {
+      "id": "evidence:005",
+      "source_id": "source:001",
+      "check_status": "source_checked",
+      "transcription": "image_transcription",
+      "pdf_page": 4,
+      "locator": "“参考”下方 CH1：3 轴标本段开头",
+      "quote": "轴为木质，木质已腐烂，现仅存表面深褐色漆皮",
+      "scope_note": "仅为 CH1：3 对照标本的保存描述，遗址和车号未核。"
+    },
+    {
+      "id": "evidence:006",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页“车轴是车舆的关键部件”段",
+      "quote": "是承受车载重量的所在",
+      "scope_note": "作者对商车结构的解释，用于部件功能讲解。"
+    },
+    {
+      "id": "evidence:007",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页“车轴是车舆的关键部件”段末",
+      "quote": "为了不使毂掉落",
+      "scope_note": "只概括商车讨论中的轴端部件功能。"
+    },
+    {
+      "id": "evidence:008",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "251",
+      "locator": "第3.3.3节“判定辐条”开头",
+      "quote": "辐是车轮中连接毂与轮圈的直木条",
+      "scope_note": "古籍解释论文中的部件术语，用作类别讲解。"
+    },
+    {
+      "id": "evidence:009",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "251",
+      "locator": "第3.3.1、3.3.2和3.3.4节标题（分隔符为整理所加）",
+      "quote": "判定正圆；判定平整；判定均衡",
+      "scope_note": "记录作者划分的检验主题，适合工艺导览。"
+    },
+    {
+      "id": "evidence:010",
+      "source_id": "source:004",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 6,
+      "printed_page": "168",
+      "locator": "第5节“结语”中段",
+      "quote": "江苏淮安运河村出土的战国中晚期车辆",
+      "scope_note": "记录论文选用的对照案例，不将其形制或参数归给九连墩。"
+    },
+    {
+      "id": "evidence:011",
+      "source_id": "source:001",
+      "check_status": "source_checked",
+      "transcription": "image_transcription",
+      "pdf_page": 5,
+      "figure": "图二四〇",
+      "locator": "图二四〇图注，括号内为标本号",
+      "quote": "一号墓出土车器——铜双箍云纹圆筒形车軎",
+      "scope_note": "范围限于图注所指器物；与九连墩六号车的对应未核。"
+    },
+    {
+      "id": "evidence:012",
+      "source_id": "source:002",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 9,
+      "printed_page": "21",
+      "locator": "右页图2-20上方毂的说明段",
+      "quote": "孔径大处称“贤端”，孔径小处称“轵端”",
+      "scope_note": "用于商车部件术语说明。"
+    },
+    {
+      "id": "evidence:013",
+      "source_id": "source:003",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 6,
+      "printed_page": "252",
+      "locator": "第3.3.10节“判定耐久”左栏下部",
+      "quote": "是指毂、辐、牙三者的材料",
+      "scope_note": "作者对古籍用语的解释，适合工艺导览。"
+    },
+    {
+      "id": "evidence:014",
+      "source_id": "source:004",
+      "check_status": "source_checked",
+      "transcription": "embedded_text",
+      "pdf_page": 5,
+      "printed_page": "167",
+      "locator": "第3节左栏最后一段，第4节上方",
+      "quote": "铜枒饰构件的对称性来推测",
+      "scope_note": "仅记录论文转述的研究线索；具体标本的轮辋分段需要独立证据。"
+    },
+    {
+      "id": "evidence:015",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "页首“说明”",
+      "quote": "以九连墩一号车马坑的6号车为复原的主要模板",
+      "transcription": "embedded_text",
+      "check_status": "source_checked",
+      "scope_note": "描述汇编的选题，其他标本仍按原文分别归属。"
+    },
+    {
+      "id": "evidence:016",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "“舆的总体结构”图题与围栏局部标注",
+      "quote": "图三一七 一号车马坑——6号车复原图",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "汇编中的复原图，适合解释图例和复原范围。"
+    },
+    {
+      "id": "evidence:017",
+      "source_id": "source:001",
+      "pdf_page": 3,
+      "locator": "车辀照片下的标本段开头",
+      "quote": "标本 M1：302，出自南室第二层西部中间靠西壁处。残存前段。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅适用于 M1：302 对照标本。"
+    },
+    {
+      "id": "evidence:018",
+      "source_id": "source:001",
+      "pdf_page": 3,
+      "locator": "车辀照片下的标本段末部，非连续摘录",
+      "quote": "辀首髹红漆……中、后段髹黑漆",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅描述汇编关于该对照标本的文字记录。"
+    },
+    {
+      "id": "evidence:019",
+      "source_id": "source:001",
+      "pdf_page": 7,
+      "locator": "“衔、镳”标题下 M1：257 段",
+      "quote": "存一只漆骨帽马镳，骨帽黑漆绘勾连云纹。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "描述器物组中的马镳，组内马衔另有标本号。"
+    },
+    {
+      "id": "evidence:020",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "“轮”下方示意图横贯长件下侧的标注",
+      "quote": "轴",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "图示识别标签，适合部件导览。"
+    },
+    {
+      "id": "evidence:021",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "“軎、辖”段内 M1：201-1 文字和图二四〇旁的器物侧图",
+      "quote": "辖首为兽面",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "器物装饰图示对应对照标本，与六号车对应待核。"
+    },
+    {
+      "id": "evidence:022",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "页面左上角正文左侧，图像无单独图题",
+      "quote": "〔图像观察〕页面左上角的车轮正视图",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "仅记录该页图示；所绘个体归属需用原报告核对。"
+    },
+    {
+      "id": "evidence:pdf-heading-p09-floor-mat",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "原PDF第9页：四、舆，后两小节标题；转写定位heading-p09-floor-mat",
+      "quote": "（二）车茵、车蔽衣；（三）伞、盖",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-heading-p09-body-cover",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "原PDF第9页：四、舆，后两小节标题；转写定位heading-p09-body-cover",
+      "quote": "（二）车茵、车蔽衣；（三）伞、盖",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-heading-p09-umbrella",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "原PDF第9页：四、舆，后两小节标题；转写定位heading-p09-umbrella",
+      "quote": "（二）车茵、车蔽衣；（三）伞、盖",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-heading-p09-canopy",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "原PDF第9页：四、舆，后两小节标题；转写定位heading-p09-canopy",
+      "quote": "（二）车茵、车蔽衣；（三）伞、盖",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p01-t03",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "原PDF第1页：说明、转动装置、轭与靷；转写定位P01-T03",
+      "quote": "标本 CH1：3-轭，轭为木质，木质已腐烂，现仅存深褐色漆皮。髹红漆。通宽49、高52厘米（图二八二，2）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p01-t05",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "原PDF第1页：说明、转动装置、轭与靷；转写定位P01-T05",
+      "quote": "标本 CH1：1-靷，靷为麻（或丝）质，已炭化，现仅存痕迹，深褐色。靷由三根合并对折而成，在〔轸？〕前打结分成左右两股，前端结小套环，与轭内軜相套。表面残留少量深褐色漆痕迹。可见部分长163、宽约1.5厘米（彩版二七一，5）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。 引文含转写疑读标记，本批事实不采用这些疑读字词。"
+    },
+    {
+      "id": "evidence:pdf-p01-t07",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "原PDF第1页：说明、转动装置、轭与靷；转写定位P01-T07",
+      "quote": "标本 CH1：4-靷，靷为皮质，皮质已炭化，现仅存痕迹，深褐色。在前轸下引出双股，由辀的两侧前引至左右服马后脊处，前端结小套环，与轭内軜相套，后端结大套环，在〔轸？〕前的辀上打结，将辀套住。皮表面残留少量深褐色漆痕迹。可见部分长177、宽约3厘米（彩版二八八，1）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。 引文含转写疑读标记，本批事实不采用这些疑读字词。"
+    },
+    {
+      "id": "evidence:pdf-p01-t04",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "原PDF第1页：说明、转动装置、轭与靷；转写定位P01-T04",
+      "quote": "麻（或丝）靷 5根（CH1：1、6、12、14、22）（彩版二七一，5；彩版二九三，3；彩版三〇六，3；彩版三一二，2；彩版三二七，1）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p01-t06",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "locator": "原PDF第1页：说明、转动装置、轭与靷；转写定位P01-T06",
+      "quote": "皮靷 14根（CH1：2~5、7~10、13、15、16、20、24、33）（彩版二八八，1；彩版二九七，1；彩版二九九，1；彩版三一六，5；彩版三三一，1）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p02-t01",
+      "source_id": "source:001",
+      "pdf_page": 2,
+      "locator": "原PDF第2页：7号、8号车图，衡与辀；转写定位P02-T01",
+      "quote": "标本 CH1：4-衡，衡为木质，木质已腐烂，现仅存深褐色漆皮。波浪形，中粗两端细，横截面扁方形，四轙长方形，两端套骨衡帽。衡残长136、宽4.2、厚3.6厘米（图二八一，5）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p02-t02",
+      "source_id": "source:001",
+      "pdf_page": 2,
+      "locator": "原PDF第2页：7号、8号车图，衡与辀；转写定位P02-T02",
+      "quote": "辀纵向置于舆下轴上中轴纬线上。辀前端上扬，后段贴于地面，横截面扁方形，厚3.1厘米，辀在前轸处较宽，宽13厘米，近衡处较窄，宽6厘米，辀直首，踵露于轮后，外露部分长4.5、宽7.3、厚4.2厘米。辀长328、厚3.1厘米（彩版二九五，4）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p03-t01",
+      "source_id": "source:001",
+      "pdf_page": 3,
+      "locator": "原PDF第3页：辀首与 M1：302 车辀残件；转写定位P03-T01",
+      "quote": "标本 M1：302，出自南室第二层西部中间靠西壁处。残存前段。辀首前上部中间有一长方形穿孔，下部成“凹”字形，后部横穿一圆孔；辀身长方体，前粗后细。辀首髹红漆，辀身前段髹红漆，中、后段髹黑漆，后段黑漆上有一周髹红漆。残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米（图二二〇，1；彩版一六，1）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p04-t02",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "原PDF第4页：承载装置，轴与轮毂拼装图；转写定位P04-T02",
+      "quote": "轴置于舆下的中轴经线前2厘米处。轴长条形，横截面下圆上方，末端锥形贯毂。轴通长276、粗径5、细径3.5厘米。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p04-t03",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "原PDF第4页：承载装置，轴与轮毂拼装图；转写定位P04-T03",
+      "quote": "轴 33件，现存22件。轴中部较粗，两端呈圆锥体，轮贯其上。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p04-t04",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "原PDF第4页：承载装置，轴与轮毂拼装图；转写定位P04-T04",
+      "quote": "标本 CH1：3-轴，轴为木质，木质已腐烂，现仅存表面深褐色漆皮。轴由一根整木砍刨打磨光滑而成。轴中部较粗，贯毂部分内粗外细，呈圆锥体。根据轴与伏兔的连接推测，轴上部应为平面，下部为圆弧形，为了防止毂内侵，轴两端呈锥状，为防止车轮滑脱，在轴末端凿有长方形榫钉孔，套軎后辖插入其中。轴通长272、粗径9.7、细径2.6厘米（图二八七）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p05-t01",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "原PDF第5页：軎、辖及轮轴部件图；转写定位P05-T01",
+      "quote": "双箍云纹圆筒形车軎 2件1对。出自南室第一层东段中部偏南处。軎体末端平，正中有小圆孔，首端口部斜折，宽沿方唇。軎体双凸箍，箍下有垫片，外箍一侧下伸长嘴鸟首形钩，内箍与口部间有对称长方形穿。鸟首形钩下颈至喙端，有一条明显的范线痕，表明其为双范合铸，并嵌入軎体叠铸（图二三九，2）。辖首兽面，侧面对穿长方形孔，辖尾横穿方孔。通体错金银带纹和勾连云纹。末端面饰四蒂状卷云纹，双箍外壁饰勾连云纹，双箍间饰四组方块夹对三角勾连云纹。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p05-t02",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "原PDF第5页：軎、辖及轮轴部件图；转写定位P05-T02",
+      "quote": "标本 M1：201-1，軎体末端圆形，顶中央有一圆形穿孔。身上近两端各有一道圆凸箍，箍上均有三道凹弦纹，近顶的一圆箍上，有一侈出的鸟首饰物，长变形喙，鸟首下颈至喙端，有一条明显的范线痕。另一圆箍至沿之间，有对称的两个长方形穿孔。宽直沿，沿内侧呈斜坡形。通体错金银带纹和勾连云纹。器身经不同程度的锉磨加工。軎上贯一件辖。辖首为兽面，辖身作长方条形，末端上有一长方形横穿，末端顶上，有一近方形浅痕。器身经不同程度的锉磨加工，加工痕清晰。口径6.1、末端径3.4、通长8、辖长6.15厘米，重470克（图二四〇；彩版二二九，3）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p06-t01",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "原PDF第6页：CH1：5 轮、轮结构与受力示意；转写定位P06-T01",
+      "quote": "标本 CH1：5-轮，轮为木质，木质已腐烂，现仅存表面深褐色漆皮。右轮横径132、竖径119厘米，轮牙截面略呈梯形，着地面和两侧略鼓，牙高6.7、宽4.6厘米。辐分为内外两段，外段为骹，与轮牙榫卯结合，横截面圆柱形，直径2.9厘米。内段为股，与毂榫卯结合，横截面扁棱形，宽4.4、厚1.4厘米。骹与股之间过渡较平滑，无明显界线，但骹长于股。辐通长50厘米。毂圆锥状，近贤端较粗，呈圆鼓腹，中空。毂通长70、贤端径13.5、壶中径17、轵端径6厘米。毂轵部施十三道环棱状窄篆，篆间隔1.6、宽0.8、高0.4~0.6厘米。辐条外侧沿毂两侧平行附加圆木条两根，两端贴附在轮牙的中部，木条与辐条交汇处用皮条捆扎四道，皮条宽1.5厘米，在皮条的底漆上饰红漆。木条长118、径3厘米（图二八五，2）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-p07-t02",
+      "source_id": "source:001",
+      "pdf_page": 7,
+      "locator": "原PDF第7页：系驾装置，衔、镳与辔；转写定位P07-T02",
+      "quote": "标本 M1：257，出自南室第二层东段西部偏北处。马衔两大环均呈扁圆形，小环圆形；存一只漆骨帽马镳，骨帽黑漆绘勾连云纹。标本 M1：257-1，马衔由两节铜棒套成。每节铜棒两端各有一环，外端大环椭圆形，里端相套合的小环为圆形，中部做成绳索状。一棒环的内侧均有一周明显的芯线；棒的两侧各有一条范线与两环外侧的一圈范线相连接。另一棒大环内侧有一周明显的芯线；小环顶端平，有与内径等距离且平行的两道芯线，均与小环内侧两端的芯线相连接；两侧各有一条范线分别与大环外侧的一圈范线和小环芯线中间相连接。两铜棒大环外侧范线上，均有一枣核形浇痕，痕长1.4、宽0.3厘米，一浇痕明显凸出。通体仅对范线和芯线稍进行了锉磨加工。通长22.5厘米，重220克；标本 M1：257-2a，镳长37厘米（图二五五，1）。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-15",
+      "source_id": "source:001",
+      "pdf_page": 7,
+      "locator": "原PDF第7页：二号墓铜节约及马具散置图；转写定位figure-15",
+      "quote": "图五二七 二号墓出土马器——铜节约，锡〔鋄？〕。1.铜节约（M2：432-3）；2.革带穿马镳、〔鋄？〕（M2：432）散置情况。 图内文字：子编号1、2；比例尺分别为0、3厘米和0、8厘米；“鋄”为本版暂录，字形待核。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。 引文含转写疑读标记，本批事实不采用这些疑读字词。"
+    },
+    {
+      "id": "evidence:pdf-figure-16",
+      "source_id": "source:001",
+      "pdf_page": 8,
+      "locator": "原PDF第8页：马勒推测复原图 M2：432；转写定位figure-16",
+      "quote": "图五二八 二号墓出土马器——马勒推测复原图（M2：432）。 图内文字：正、反；比例尺0、16厘米。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-17",
+      "source_id": "source:001",
+      "pdf_page": 8,
+      "locator": "原PDF第8页：四马缰绳穿引示意图；转写定位figure-17",
+      "quote": "原图未附独立图题；本标题为编辑标题。图右下保留数字6，其含义未在本页解释。 图内文字：轙环、游环、左骖、左服、右服、右骖、〔觼軜？〕、御者左手、御者右手；图右下数字6。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。 引文含转写疑读标记，本批事实不采用这些疑读字词。"
+    },
+    {
+      "id": "evidence:pdf-figure-18",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "locator": "原PDF第9页：一号车马坑6号车复原图；转写定位figure-18",
+      "quote": "图三一七 一号车马坑——6号车复原图。 图内文字：围栏局部；局部比例尺0、10厘米，整图比例尺0、80厘米。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-02",
+      "source_id": "source:001",
+      "pdf_page": 2,
+      "locator": "原PDF第2页：一号车马坑7号车平、剖面图；转写定位figure-02",
+      "quote": "图三一八 一号车马坑——7号车平、剖面图。 图内文字：北；A、A′、B、B′剖面定位符；比例尺0、80厘米；红字“红色部分为‘靷’”。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-03",
+      "source_id": "source:001",
+      "pdf_page": 2,
+      "locator": "原PDF第2页：一号车马坑8号车平、剖面图；转写定位figure-03",
+      "quote": "图三一九 一号车马坑——8号车平、剖面图。 图内文字：北；A、A′、B、B′剖面定位符；原图子编号1、2、3、4、5；比例尺0、80厘米。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-07",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "locator": "原PDF第4页：轮牙、辐、毂拼装方式示意图；转写定位figure-07",
+      "quote": "图二八三 一号车马坑——轮牙、辐、毂拼装方式示意图。 图内文字：1.轮牙拼合；2.安装辐与牙；3.安装后车轮；4.辐条结构；5.车轮剖视；6.后视车轮；7.车毂结构。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-09",
+      "source_id": "source:001",
+      "pdf_page": 5,
+      "locator": "原PDF第5页：轮、轴、毂、辐的结构及部位标注图；转写定位figure-09",
+      "quote": "原图未附独立图题；本标题为编辑标题。 图内文字：上图：牙、辐、軎、轴、伏兔、轮、毂。左下图：股、骹、辐。右下图：贤、壶中、轵、毂、篆。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-11",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "原PDF第6页：中凹轮结构示意图；转写定位figure-11",
+      "quote": "图一 中凹轮结构示意图。1.根据长沙203号汉墓2号车车轮绘制；2.根据辉县琉璃阁131号战国车马坑第16号车车轮绘制。 图内文字：正视图、股端、骹端、辐条、侧视图、夹辅；子编号1、2。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-12",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "原PDF第6页：有夹辅车轮结构及其稳定性能示意图；转写定位figure-12",
+      "quote": "图七 有夹辅车轮结构及其稳定性能示意图。 图内文字：轴、轮牙、辐条、毂、夹辅、夹辅截面。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    },
+    {
+      "id": "evidence:pdf-figure-13",
+      "source_id": "source:001",
+      "pdf_page": 6,
+      "locator": "原PDF第6页：车轮受力变形示意图与车轮状态；转写定位figure-13",
+      "quote": "图四 车轮受力变形示意图与车轮状态（左边剖面图，右边全图）。1.轮与轴受力示意图；2.直辐轮变形示意图；3.中凹轮受力示意图。 图内文字：轮毂、载重力、轴末端、138cm、188cm、F；子编号1、2、3。",
+      "transcription": "image_transcription",
+      "check_status": "source_checked",
+      "scope_note": "直接来源为教师汇编，非原始发掘报告；不自动归属于九连墩六号车。"
+    }
+  ],
+  "entities": [
+    {
+      "id": "type:001",
+      "kind": "ComponentType",
+      "label": "车轮",
+      "aliases": [
+        "轮"
+      ],
+      "note": "本样例的组成知识限于资料图示，不宣称部件清单完整。"
+    },
+    {
+      "id": "type:002",
+      "kind": "ComponentType",
+      "label": "车轴",
+      "aliases": [
+        "轴"
+      ]
+    },
+    {
+      "id": "type:003",
+      "kind": "ComponentType",
+      "label": "毂",
+      "aliases": [
+        "轮毂"
+      ]
+    },
+    {
+      "id": "type:004",
+      "kind": "ComponentType",
+      "label": "辐",
+      "aliases": [
+        "辐条"
+      ]
+    },
+    {
+      "id": "type:005",
+      "kind": "ComponentType",
+      "label": "牙",
+      "aliases": [
+        "轮牙"
+      ]
+    },
+    {
+      "id": "type:006",
+      "kind": "ComponentType",
+      "label": "軎",
+      "aliases": []
+    },
+    {
+      "id": "type:007",
+      "kind": "ComponentType",
+      "label": "辖",
+      "aliases": []
+    },
+    {
+      "id": "object:001",
+      "kind": "Chariot",
+      "label": "九连墩一号车马坑6号车",
+      "aliases": [
+        "九连墩六号车"
+      ],
+      "note": "按现有资料登记的拟定主研究对象；本批没有向它归入未经证实的尺寸。最终展陈范围尚待组内确认。"
+    },
+    {
+      "id": "specimen:001",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：5轮标本",
+      "aliases": [
+        "CH1:5"
+      ],
+      "note": "汇编引用的对照标本；具体遗址、墓坑和与主研究对象的关系未核实。"
+    },
+    {
+      "id": "specimen:002",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：3轴标本",
+      "aliases": [
+        "CH1:3"
+      ],
+      "note": "汇编“参考”段落中的对照标本，不能默认当作主展品的轴。"
+    },
+    {
+      "id": "measurement:001",
+      "kind": "Measurement",
+      "label": "CH1：5右轮横径",
+      "aliases": [],
+      "scope_id": "specimen:001",
+      "measurement": {
+        "quantity": "右轮横径",
+        "value": 132,
+        "unit": "cm",
+        "raw": "右轮横径132、竖径119厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "measurement:002",
+      "kind": "Measurement",
+      "label": "CH1：5右轮竖径",
+      "aliases": [],
+      "scope_id": "specimen:001",
+      "measurement": {
+        "quantity": "右轮竖径",
+        "value": 119,
+        "unit": "cm",
+        "raw": "右轮横径132、竖径119厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "measurement:003",
+      "kind": "Measurement",
+      "label": "CH1：3轴通长",
+      "aliases": [],
+      "scope_id": "specimen:002",
+      "measurement": {
+        "quantity": "通长",
+        "value": 272,
+        "unit": "cm",
+        "raw": "轴通长272、粗径9.7、细径2.6厘米",
+        "approximate": false
+      }
+    },
+    {
+      "id": "model:001",
+      "kind": "ModelVersion",
+      "label": "已有教学复原GLB初始版本",
+      "aliases": [],
+      "resource_id": "res:005",
+      "content_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00",
+      "note": "本版本未验证考古准确性、模型采用单位及动画效果。"
+    },
+    {
+      "id": "specimen:003",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：201-1 车軎",
+      "aliases": [
+        "M1:201-1"
+      ],
+      "note": "汇编图二四〇所指器物，与主研究对象的关系未核。"
+    },
+    {
+      "id": "specimen:004",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：302 车辀残件",
+      "aliases": [
+        "M1:302"
+      ]
+    },
+    {
+      "id": "specimen:005",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：257 马具组",
+      "aliases": [
+        "M1:257"
+      ]
+    },
+    {
+      "id": "material:001",
+      "kind": "Material",
+      "label": "木材",
+      "aliases": [
+        "木质"
+      ]
+    },
+    {
+      "id": "material:002",
+      "kind": "Material",
+      "label": "铜",
+      "aliases": [],
+      "note": "保留汇编图注用词，合金成分和牌号待检测资料核实。"
+    },
+    {
+      "id": "preservation:001",
+      "kind": "PreservationFeature",
+      "label": "残存深褐色漆皮",
+      "aliases": [
+        "深褐色漆皮"
+      ],
+      "note": "描述现存遗迹。仅共享同类保存特征，两条标本记录各有出处。"
+    },
+    {
+      "id": "component:001",
+      "kind": "Component",
+      "label": "M1：257 残存漆骨帽马镳",
+      "aliases": [
+        "漆骨帽马镳"
+      ],
+      "scope_id": "specimen:005",
+      "note": "马具组内单列的残件，沿用组号标识。"
+    },
+    {
+      "id": "motif:001",
+      "kind": "DecorationMotif",
+      "label": "勾连云纹",
+      "aliases": []
+    },
+    {
+      "id": "finish:001",
+      "kind": "SurfaceFinish",
+      "label": "红漆",
+      "aliases": [
+        "髹红漆"
+      ]
+    },
+    {
+      "id": "finish:002",
+      "kind": "SurfaceFinish",
+      "label": "黑漆",
+      "aliases": [
+        "髹黑漆"
+      ]
+    },
+    {
+      "id": "type:yoke",
+      "kind": "ComponentType",
+      "label": "轭",
+      "aliases": [
+        "軛"
+      ]
+    },
+    {
+      "id": "type:trace",
+      "kind": "ComponentType",
+      "label": "靷",
+      "aliases": []
+    },
+    {
+      "id": "type:beam",
+      "kind": "ComponentType",
+      "label": "衡",
+      "aliases": []
+    },
+    {
+      "id": "type:yi",
+      "kind": "ComponentType",
+      "label": "轙",
+      "aliases": [],
+      "note": "原文称四轙长方形；与第8页“轙环”不未经核实合并。"
+    },
+    {
+      "id": "type:beam-cap",
+      "kind": "ComponentType",
+      "label": "骨衡帽",
+      "aliases": []
+    },
+    {
+      "id": "type:pole",
+      "kind": "ComponentType",
+      "label": "辀",
+      "aliases": [
+        "輈"
+      ]
+    },
+    {
+      "id": "type:pole-head",
+      "kind": "ComponentType",
+      "label": "辀首",
+      "aliases": []
+    },
+    {
+      "id": "type:body",
+      "kind": "ComponentType",
+      "label": "舆",
+      "aliases": [
+        "輿"
+      ]
+    },
+    {
+      "id": "type:futu",
+      "kind": "ComponentType",
+      "label": "伏兔",
+      "aliases": []
+    },
+    {
+      "id": "type:spoke-inner",
+      "kind": "ComponentType",
+      "label": "股",
+      "aliases": [],
+      "note": "这里指辐的内段，不采用同字的其他词义。"
+    },
+    {
+      "id": "type:spoke-outer",
+      "kind": "ComponentType",
+      "label": "骹",
+      "aliases": [],
+      "note": "这里指辐的外段。"
+    },
+    {
+      "id": "type:hub-ridge",
+      "kind": "ComponentType",
+      "label": "篆",
+      "aliases": [],
+      "note": "本页指毂轵部环棱状窄篆，不与文字书体概念合并。"
+    },
+    {
+      "id": "type:wheel-strip",
+      "kind": "ComponentType",
+      "label": "车轮附加圆木条",
+      "aliases": []
+    },
+    {
+      "id": "type:binding-strip",
+      "kind": "ComponentType",
+      "label": "捆扎皮条",
+      "aliases": []
+    },
+    {
+      "id": "type:bit",
+      "kind": "ComponentType",
+      "label": "衔",
+      "aliases": []
+    },
+    {
+      "id": "type:cheekpiece",
+      "kind": "ComponentType",
+      "label": "镳",
+      "aliases": []
+    },
+    {
+      "id": "type:bridle",
+      "kind": "ComponentType",
+      "label": "辔",
+      "aliases": [],
+      "note": "原页小节名为“辔”，所附图题为马勒推测复原图；本批保留图题性质。"
+    },
+    {
+      "id": "type:reins",
+      "kind": "ComponentType",
+      "label": "缰",
+      "aliases": []
+    },
+    {
+      "id": "type:yi-ring",
+      "kind": "ComponentType",
+      "label": "轙环",
+      "aliases": []
+    },
+    {
+      "id": "type:you-ring",
+      "kind": "ComponentType",
+      "label": "游环",
+      "aliases": []
+    },
+    {
+      "id": "type:buckle",
+      "kind": "ComponentType",
+      "label": "节约",
+      "aliases": []
+    },
+    {
+      "id": "type:railing",
+      "kind": "ComponentType",
+      "label": "围栏",
+      "aliases": []
+    },
+    {
+      "id": "type:floor-mat",
+      "kind": "ComponentType",
+      "label": "车茵",
+      "aliases": [],
+      "note": "原第9页只有小节标题，无属性、实例或六号车归属的正文证据。"
+    },
+    {
+      "id": "type:body-cover",
+      "kind": "ComponentType",
+      "label": "车蔽衣",
+      "aliases": [],
+      "note": "原第9页只有小节标题，无属性、实例或六号车归属的正文证据。"
+    },
+    {
+      "id": "type:umbrella",
+      "kind": "ComponentType",
+      "label": "伞",
+      "aliases": [],
+      "note": "原第9页只有小节标题，无属性、实例或六号车归属的正文证据。"
+    },
+    {
+      "id": "type:canopy",
+      "kind": "ComponentType",
+      "label": "盖",
+      "aliases": [],
+      "note": "原第9页只有小节标题，无属性、实例或六号车归属的正文证据。"
+    },
+    {
+      "id": "material:hemp-or-silk",
+      "kind": "Material",
+      "label": "麻或丝（原文未定）",
+      "aliases": [
+        "麻（或丝）"
+      ],
+      "note": "保留原文二选一的不确定性，不拆成两条肯定材质事实。"
+    },
+    {
+      "id": "material:hide",
+      "kind": "Material",
+      "label": "皮质",
+      "aliases": [
+        "皮"
+      ]
+    },
+    {
+      "id": "material:bone",
+      "kind": "Material",
+      "label": "骨质",
+      "aliases": [
+        "骨"
+      ]
+    },
+    {
+      "id": "preservation:charred-trace",
+      "kind": "PreservationFeature",
+      "label": "炭化后仅存深褐色痕迹",
+      "aliases": [
+        "已炭化，仅存痕迹"
+      ]
+    },
+    {
+      "id": "preservation:brown-paint-trace",
+      "kind": "PreservationFeature",
+      "label": "残留少量深褐色漆痕迹",
+      "aliases": []
+    },
+    {
+      "id": "motif:ribbon",
+      "kind": "DecorationMotif",
+      "label": "带纹",
+      "aliases": []
+    },
+    {
+      "id": "specimen:ch13-yoke",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：3轭标本",
+      "aliases": [
+        "CH1:3轭"
+      ],
+      "note": "与既有 CH1：3轴标本分开登记；同号不等于同一对象。"
+    },
+    {
+      "id": "measurement:pdf-001",
+      "kind": "Measurement",
+      "label": "CH1：3轭标本 · 通宽",
+      "aliases": [],
+      "scope_id": "specimen:ch13-yoke",
+      "measurement": {
+        "quantity": "通宽",
+        "unit": "cm",
+        "raw": "通宽49、高52厘米",
+        "approximate": false,
+        "value": 49
+      }
+    },
+    {
+      "id": "measurement:pdf-002",
+      "kind": "Measurement",
+      "label": "CH1：3轭标本 · 高",
+      "aliases": [],
+      "scope_id": "specimen:ch13-yoke",
+      "measurement": {
+        "quantity": "高",
+        "unit": "cm",
+        "raw": "通宽49、高52厘米",
+        "approximate": false,
+        "value": 52
+      }
+    },
+    {
+      "id": "specimen:ch11-trace",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：1靷标本",
+      "aliases": [],
+      "note": "按汇编中具名标本登记；与六号车的实物归属未核实。"
+    },
+    {
+      "id": "measurement:pdf-003",
+      "kind": "Measurement",
+      "label": "CH1：1靷标本 · 可见部分长",
+      "aliases": [],
+      "scope_id": "specimen:ch11-trace",
+      "measurement": {
+        "quantity": "可见部分长",
+        "unit": "cm",
+        "raw": "可见部分长163、宽约1.5厘米",
+        "approximate": false,
+        "value": 163
+      }
+    },
+    {
+      "id": "measurement:pdf-004",
+      "kind": "Measurement",
+      "label": "CH1：1靷标本 · 宽",
+      "aliases": [],
+      "scope_id": "specimen:ch11-trace",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "可见部分长163、宽约1.5厘米",
+        "approximate": true,
+        "value": 1.5
+      }
+    },
+    {
+      "id": "specimen:ch14-trace",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：4靷标本",
+      "aliases": [],
+      "note": "按汇编中具名标本登记；与六号车的实物归属未核实。"
+    },
+    {
+      "id": "measurement:pdf-005",
+      "kind": "Measurement",
+      "label": "CH1：4靷标本 · 可见部分长",
+      "aliases": [],
+      "scope_id": "specimen:ch14-trace",
+      "measurement": {
+        "quantity": "可见部分长",
+        "unit": "cm",
+        "raw": "可见部分长177、宽约3厘米",
+        "approximate": false,
+        "value": 177
+      }
+    },
+    {
+      "id": "measurement:pdf-006",
+      "kind": "Measurement",
+      "label": "CH1：4靷标本 · 宽",
+      "aliases": [],
+      "scope_id": "specimen:ch14-trace",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "可见部分长177、宽约3厘米",
+        "approximate": true,
+        "value": 3
+      }
+    },
+    {
+      "id": "record:hemp-trace-count",
+      "kind": "ReferenceRecord",
+      "label": "麻或丝靷统计记录",
+      "aliases": [],
+      "note": "表九六及正文的统计集合，不是单件标本，数量不属于六号车。"
+    },
+    {
+      "id": "record:hide-trace-count",
+      "kind": "ReferenceRecord",
+      "label": "皮靷统计记录",
+      "aliases": [],
+      "note": "表九六及正文的统计集合，不是单件标本，数量不属于六号车。"
+    },
+    {
+      "id": "specimen:ch14-beam",
+      "kind": "ReferenceSpecimen",
+      "label": "CH1：4衡标本",
+      "aliases": [
+        "CH1:4衡"
+      ],
+      "note": "与同号 CH1：4靷分开。残长不当作完整长度。"
+    },
+    {
+      "id": "measurement:pdf-007",
+      "kind": "Measurement",
+      "label": "CH1：4衡标本 · 残长",
+      "aliases": [],
+      "scope_id": "specimen:ch14-beam",
+      "measurement": {
+        "quantity": "残长",
+        "unit": "cm",
+        "raw": "衡残长136、宽4.2、厚3.6厘米",
+        "approximate": false,
+        "value": 136
+      }
+    },
+    {
+      "id": "measurement:pdf-008",
+      "kind": "Measurement",
+      "label": "CH1：4衡标本 · 宽",
+      "aliases": [],
+      "scope_id": "specimen:ch14-beam",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "衡残长136、宽4.2、厚3.6厘米",
+        "approximate": false,
+        "value": 4.2
+      }
+    },
+    {
+      "id": "measurement:pdf-009",
+      "kind": "Measurement",
+      "label": "CH1：4衡标本 · 厚",
+      "aliases": [],
+      "scope_id": "specimen:ch14-beam",
+      "measurement": {
+        "quantity": "厚",
+        "unit": "cm",
+        "raw": "衡残长136、宽4.2、厚3.6厘米",
+        "approximate": false,
+        "value": 3.6
+      }
+    },
+    {
+      "id": "component:ch14-yi",
+      "kind": "Component",
+      "label": "CH1：4衡的轙（合组记录）",
+      "aliases": [],
+      "scope_id": "specimen:ch14-beam"
+    },
+    {
+      "id": "component:ch14-beam-caps",
+      "kind": "Component",
+      "label": "CH1：4衡两端骨衡帽",
+      "aliases": [],
+      "scope_id": "specimen:ch14-beam"
+    },
+    {
+      "id": "record:p02-unnumbered-pole",
+      "kind": "ReferenceRecord",
+      "label": "第2页未编号辀记录",
+      "aliases": [],
+      "note": "原段无明确标本号；保留记录对象，不归给 M1：302 残件或六号车。"
+    },
+    {
+      "id": "measurement:pdf-010",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 长",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "长",
+        "unit": "cm",
+        "raw": "辀长328、厚3.1厘米",
+        "approximate": false,
+        "value": 328
+      }
+    },
+    {
+      "id": "measurement:pdf-011",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 厚",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "厚",
+        "unit": "cm",
+        "raw": "辀长328、厚3.1厘米",
+        "approximate": false,
+        "value": 3.1
+      }
+    },
+    {
+      "id": "measurement:pdf-012",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 前轸处宽",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "前轸处宽",
+        "unit": "cm",
+        "raw": "辀在前轸处较宽，宽13厘米，近衡处较窄，宽6厘米",
+        "approximate": false,
+        "value": 13
+      }
+    },
+    {
+      "id": "measurement:pdf-013",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 近衡处宽",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "近衡处宽",
+        "unit": "cm",
+        "raw": "辀在前轸处较宽，宽13厘米，近衡处较窄，宽6厘米",
+        "approximate": false,
+        "value": 6
+      }
+    },
+    {
+      "id": "measurement:pdf-014",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 踵外露部分长",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "踵外露部分长",
+        "unit": "cm",
+        "raw": "外露部分长4.5、宽7.3、厚4.2厘米",
+        "approximate": false,
+        "value": 4.5
+      }
+    },
+    {
+      "id": "measurement:pdf-015",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 踵外露部分宽",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "踵外露部分宽",
+        "unit": "cm",
+        "raw": "外露部分长4.5、宽7.3、厚4.2厘米",
+        "approximate": false,
+        "value": 7.3
+      }
+    },
+    {
+      "id": "measurement:pdf-016",
+      "kind": "Measurement",
+      "label": "第2页未编号辀记录 · 踵外露部分厚",
+      "aliases": [],
+      "scope_id": "record:p02-unnumbered-pole",
+      "measurement": {
+        "quantity": "踵外露部分厚",
+        "unit": "cm",
+        "raw": "外露部分长4.5、宽7.3、厚4.2厘米",
+        "approximate": false,
+        "value": 4.2
+      }
+    },
+    {
+      "id": "preservation:front-fragment",
+      "kind": "PreservationFeature",
+      "label": "残存前段",
+      "aliases": []
+    },
+    {
+      "id": "measurement:pdf-017",
+      "kind": "Measurement",
+      "label": "M1：302 车辀残件 · 残长",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "measurement": {
+        "quantity": "残长",
+        "unit": "cm",
+        "raw": "残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米",
+        "approximate": false,
+        "value": 39.6
+      }
+    },
+    {
+      "id": "measurement:pdf-018",
+      "kind": "Measurement",
+      "label": "M1：302 车辀残件 · 前宽",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "measurement": {
+        "quantity": "前宽",
+        "unit": "cm",
+        "raw": "残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米",
+        "approximate": false,
+        "value": 7.6
+      }
+    },
+    {
+      "id": "measurement:pdf-019",
+      "kind": "Measurement",
+      "label": "M1：302 车辀残件 · 最高",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "measurement": {
+        "quantity": "最高",
+        "unit": "cm",
+        "raw": "残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米",
+        "approximate": false,
+        "value": 7.6
+      }
+    },
+    {
+      "id": "measurement:pdf-020",
+      "kind": "Measurement",
+      "label": "M1：302 车辀残件 · 身前宽",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "measurement": {
+        "quantity": "身前宽",
+        "unit": "cm",
+        "raw": "残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米",
+        "approximate": false,
+        "value": 4
+      }
+    },
+    {
+      "id": "measurement:pdf-021",
+      "kind": "Measurement",
+      "label": "M1：302 车辀残件 · 身前高",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "measurement": {
+        "quantity": "身前高",
+        "unit": "cm",
+        "raw": "残长39.6、前宽7.6、最高7.6、身前宽4、高5.2厘米",
+        "approximate": false,
+        "value": 5.2
+      }
+    },
+    {
+      "id": "component:m1302-head",
+      "kind": "Component",
+      "label": "M1：302辀首",
+      "aliases": [],
+      "scope_id": "specimen:004"
+    },
+    {
+      "id": "component:m1302-front",
+      "kind": "Component",
+      "label": "M1：302辀身前段",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "note": "原文描述的区域，不代表可拆卸零件。"
+    },
+    {
+      "id": "component:m1302-middle",
+      "kind": "Component",
+      "label": "M1：302辀身中段",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "note": "原文描述的区域，不代表可拆卸零件。"
+    },
+    {
+      "id": "component:m1302-rear",
+      "kind": "Component",
+      "label": "M1：302辀身后段",
+      "aliases": [],
+      "scope_id": "specimen:004",
+      "note": "原文描述的区域，不代表可拆卸零件。"
+    },
+    {
+      "id": "record:p04-unnumbered-axle",
+      "kind": "ReferenceRecord",
+      "label": "第4页未编号轴记录",
+      "aliases": [],
+      "note": "位于“参考”之前的独立段落；不得与 CH1：3参考轴标本混合。"
+    },
+    {
+      "id": "measurement:pdf-022",
+      "kind": "Measurement",
+      "label": "第4页未编号轴记录 · 通长",
+      "aliases": [],
+      "scope_id": "record:p04-unnumbered-axle",
+      "measurement": {
+        "quantity": "通长",
+        "unit": "cm",
+        "raw": "轴通长276、粗径5、细径3.5厘米",
+        "approximate": false,
+        "value": 276
+      }
+    },
+    {
+      "id": "measurement:pdf-023",
+      "kind": "Measurement",
+      "label": "第4页未编号轴记录 · 粗径",
+      "aliases": [],
+      "scope_id": "record:p04-unnumbered-axle",
+      "measurement": {
+        "quantity": "粗径",
+        "unit": "cm",
+        "raw": "轴通长276、粗径5、细径3.5厘米",
+        "approximate": false,
+        "value": 5
+      }
+    },
+    {
+      "id": "measurement:pdf-024",
+      "kind": "Measurement",
+      "label": "第4页未编号轴记录 · 细径",
+      "aliases": [],
+      "scope_id": "record:p04-unnumbered-axle",
+      "measurement": {
+        "quantity": "细径",
+        "unit": "cm",
+        "raw": "轴通长276、粗径5、细径3.5厘米",
+        "approximate": false,
+        "value": 3.5
+      }
+    },
+    {
+      "id": "measurement:pdf-025",
+      "kind": "Measurement",
+      "label": "第4页未编号轴记录 · 相对舆中轴经线向前距离",
+      "aliases": [],
+      "scope_id": "record:p04-unnumbered-axle",
+      "measurement": {
+        "quantity": "相对舆中轴经线向前距离",
+        "unit": "cm",
+        "raw": "轴置于舆下的中轴经线前2厘米处",
+        "approximate": false,
+        "value": 2
+      }
+    },
+    {
+      "id": "record:p04-axle-count",
+      "kind": "ReferenceRecord",
+      "label": "第4页轴数量记录",
+      "aliases": [],
+      "note": "原文整体统计，不是六号车车轴数量。"
+    },
+    {
+      "id": "measurement:pdf-026",
+      "kind": "Measurement",
+      "label": "CH1：3轴标本 · 粗径",
+      "aliases": [],
+      "scope_id": "specimen:002",
+      "measurement": {
+        "quantity": "粗径",
+        "unit": "cm",
+        "raw": "轴通长272、粗径9.7、细径2.6厘米",
+        "approximate": false,
+        "value": 9.7
+      }
+    },
+    {
+      "id": "measurement:pdf-027",
+      "kind": "Measurement",
+      "label": "CH1：3轴标本 · 细径",
+      "aliases": [],
+      "scope_id": "specimen:002",
+      "measurement": {
+        "quantity": "细径",
+        "unit": "cm",
+        "raw": "轴通长272、粗径9.7、细径2.6厘米",
+        "approximate": false,
+        "value": 2.6
+      }
+    },
+    {
+      "id": "record:p05-cap-pair",
+      "kind": "ReferenceRecord",
+      "label": "双箍云纹圆筒形车軎组记录",
+      "aliases": [],
+      "note": "本段为器物组统计，不是所有车軎或六号车数量。"
+    },
+    {
+      "id": "measurement:pdf-028",
+      "kind": "Measurement",
+      "label": "M1：201-1 车軎 · 口径",
+      "aliases": [],
+      "scope_id": "specimen:003",
+      "measurement": {
+        "quantity": "口径",
+        "unit": "cm",
+        "raw": "口径6.1、末端径3.4、通长8、辖长6.15厘米",
+        "approximate": false,
+        "value": 6.1
+      }
+    },
+    {
+      "id": "measurement:pdf-029",
+      "kind": "Measurement",
+      "label": "M1：201-1 车軎 · 末端径",
+      "aliases": [],
+      "scope_id": "specimen:003",
+      "measurement": {
+        "quantity": "末端径",
+        "unit": "cm",
+        "raw": "口径6.1、末端径3.4、通长8、辖长6.15厘米",
+        "approximate": false,
+        "value": 3.4
+      }
+    },
+    {
+      "id": "measurement:pdf-030",
+      "kind": "Measurement",
+      "label": "M1：201-1 车軎 · 通长",
+      "aliases": [],
+      "scope_id": "specimen:003",
+      "measurement": {
+        "quantity": "通长",
+        "unit": "cm",
+        "raw": "口径6.1、末端径3.4、通长8、辖长6.15厘米",
+        "approximate": false,
+        "value": 8
+      }
+    },
+    {
+      "id": "component:m1201-pin",
+      "kind": "Component",
+      "label": "M1：201-1车軎所配辖",
+      "aliases": [],
+      "scope_id": "specimen:003",
+      "note": "原文“軎上贯一件辖”；所配不等于軎体自身材料或纹饰。"
+    },
+    {
+      "id": "measurement:pdf-031",
+      "kind": "Measurement",
+      "label": "M1：201-1车軎所配辖 · 长",
+      "aliases": [],
+      "scope_id": "component:m1201-pin",
+      "measurement": {
+        "quantity": "长",
+        "unit": "cm",
+        "raw": "口径6.1、末端径3.4、通长8、辖长6.15厘米",
+        "approximate": false,
+        "value": 6.15
+      }
+    },
+    {
+      "id": "component:ch15-rim",
+      "kind": "Component",
+      "label": "CH1：5轮牙",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "component:ch15-spoke",
+      "kind": "Component",
+      "label": "CH1：5轮辐（尺寸记录对象）",
+      "aliases": [],
+      "scope_id": "specimen:001",
+      "note": "用于承接原文辐的尺寸，不据示意图补辐数或指定某一根。"
+    },
+    {
+      "id": "component:ch15-hub",
+      "kind": "Component",
+      "label": "CH1：5轮毂",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "measurement:pdf-032",
+      "kind": "Measurement",
+      "label": "CH1：5轮牙 · 牙高",
+      "aliases": [],
+      "scope_id": "component:ch15-rim",
+      "measurement": {
+        "quantity": "牙高",
+        "unit": "cm",
+        "raw": "牙高6.7、宽4.6厘米",
+        "approximate": false,
+        "value": 6.7
+      }
+    },
+    {
+      "id": "measurement:pdf-033",
+      "kind": "Measurement",
+      "label": "CH1：5轮牙 · 牙宽",
+      "aliases": [],
+      "scope_id": "component:ch15-rim",
+      "measurement": {
+        "quantity": "牙宽",
+        "unit": "cm",
+        "raw": "牙高6.7、宽4.6厘米",
+        "approximate": false,
+        "value": 4.6
+      }
+    },
+    {
+      "id": "measurement:pdf-034",
+      "kind": "Measurement",
+      "label": "CH1：5轮辐（尺寸记录对象） · 通长",
+      "aliases": [],
+      "scope_id": "component:ch15-spoke",
+      "measurement": {
+        "quantity": "通长",
+        "unit": "cm",
+        "raw": "辐通长50厘米",
+        "approximate": false,
+        "value": 50
+      }
+    },
+    {
+      "id": "component:ch15-spoke-inner",
+      "kind": "Component",
+      "label": "CH1：5轮辐内段（股）",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "component:ch15-spoke-outer",
+      "kind": "Component",
+      "label": "CH1：5轮辐外段（骹）",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "measurement:pdf-035",
+      "kind": "Measurement",
+      "label": "CH1：5轮辐内段（股） · 宽",
+      "aliases": [],
+      "scope_id": "component:ch15-spoke-inner",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "内段为股，与毂榫卯结合，横截面扁棱形，宽4.4、厚1.4厘米",
+        "approximate": false,
+        "value": 4.4
+      }
+    },
+    {
+      "id": "measurement:pdf-036",
+      "kind": "Measurement",
+      "label": "CH1：5轮辐内段（股） · 厚",
+      "aliases": [],
+      "scope_id": "component:ch15-spoke-inner",
+      "measurement": {
+        "quantity": "厚",
+        "unit": "cm",
+        "raw": "内段为股，与毂榫卯结合，横截面扁棱形，宽4.4、厚1.4厘米",
+        "approximate": false,
+        "value": 1.4
+      }
+    },
+    {
+      "id": "measurement:pdf-037",
+      "kind": "Measurement",
+      "label": "CH1：5轮辐外段（骹） · 直径",
+      "aliases": [],
+      "scope_id": "component:ch15-spoke-outer",
+      "measurement": {
+        "quantity": "直径",
+        "unit": "cm",
+        "raw": "外段为骹，与轮牙榫卯结合，横截面圆柱形，直径2.9厘米",
+        "approximate": false,
+        "value": 2.9
+      }
+    },
+    {
+      "id": "measurement:pdf-038",
+      "kind": "Measurement",
+      "label": "CH1：5轮毂 · 通长",
+      "aliases": [],
+      "scope_id": "component:ch15-hub",
+      "measurement": {
+        "quantity": "通长",
+        "unit": "cm",
+        "raw": "毂通长70、贤端径13.5、壶中径17、轵端径6厘米",
+        "approximate": false,
+        "value": 70
+      }
+    },
+    {
+      "id": "measurement:pdf-039",
+      "kind": "Measurement",
+      "label": "CH1：5轮毂 · 贤端径",
+      "aliases": [],
+      "scope_id": "component:ch15-hub",
+      "measurement": {
+        "quantity": "贤端径",
+        "unit": "cm",
+        "raw": "毂通长70、贤端径13.5、壶中径17、轵端径6厘米",
+        "approximate": false,
+        "value": 13.5
+      }
+    },
+    {
+      "id": "measurement:pdf-040",
+      "kind": "Measurement",
+      "label": "CH1：5轮毂 · 壶中径",
+      "aliases": [],
+      "scope_id": "component:ch15-hub",
+      "measurement": {
+        "quantity": "壶中径",
+        "unit": "cm",
+        "raw": "毂通长70、贤端径13.5、壶中径17、轵端径6厘米",
+        "approximate": false,
+        "value": 17
+      }
+    },
+    {
+      "id": "measurement:pdf-041",
+      "kind": "Measurement",
+      "label": "CH1：5轮毂 · 轵端径",
+      "aliases": [],
+      "scope_id": "component:ch15-hub",
+      "measurement": {
+        "quantity": "轵端径",
+        "unit": "cm",
+        "raw": "毂通长70、贤端径13.5、壶中径17、轵端径6厘米",
+        "approximate": false,
+        "value": 6
+      }
+    },
+    {
+      "id": "component:ch15-hub-ridges",
+      "kind": "Component",
+      "label": "CH1：5毂轵部窄篆",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "measurement:pdf-042",
+      "kind": "Measurement",
+      "label": "CH1：5毂轵部窄篆 · 间隔",
+      "aliases": [],
+      "scope_id": "component:ch15-hub-ridges",
+      "measurement": {
+        "quantity": "间隔",
+        "unit": "cm",
+        "raw": "篆间隔1.6、宽0.8、高0.4~0.6厘米",
+        "approximate": false,
+        "value": 1.6
+      }
+    },
+    {
+      "id": "measurement:pdf-043",
+      "kind": "Measurement",
+      "label": "CH1：5毂轵部窄篆 · 宽",
+      "aliases": [],
+      "scope_id": "component:ch15-hub-ridges",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "篆间隔1.6、宽0.8、高0.4~0.6厘米",
+        "approximate": false,
+        "value": 0.8
+      }
+    },
+    {
+      "id": "measurement:pdf-044",
+      "kind": "Measurement",
+      "label": "CH1：5毂轵部窄篆 · 高",
+      "aliases": [],
+      "scope_id": "component:ch15-hub-ridges",
+      "measurement": {
+        "quantity": "高",
+        "unit": "cm",
+        "raw": "篆间隔1.6、宽0.8、高0.4~0.6厘米",
+        "approximate": false,
+        "min": 0.4,
+        "max": 0.6
+      }
+    },
+    {
+      "id": "component:ch15-wood-strips",
+      "kind": "Component",
+      "label": "CH1：5轮附加圆木条",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "measurement:pdf-045",
+      "kind": "Measurement",
+      "label": "CH1：5轮附加圆木条 · 长",
+      "aliases": [],
+      "scope_id": "component:ch15-wood-strips",
+      "measurement": {
+        "quantity": "长",
+        "unit": "cm",
+        "raw": "木条长118、径3厘米",
+        "approximate": false,
+        "value": 118
+      }
+    },
+    {
+      "id": "measurement:pdf-046",
+      "kind": "Measurement",
+      "label": "CH1：5轮附加圆木条 · 直径",
+      "aliases": [],
+      "scope_id": "component:ch15-wood-strips",
+      "measurement": {
+        "quantity": "直径",
+        "unit": "cm",
+        "raw": "木条长118、径3厘米",
+        "approximate": false,
+        "value": 3
+      }
+    },
+    {
+      "id": "component:ch15-binding",
+      "kind": "Component",
+      "label": "CH1：5轮捆扎皮条",
+      "aliases": [],
+      "scope_id": "specimen:001"
+    },
+    {
+      "id": "measurement:pdf-047",
+      "kind": "Measurement",
+      "label": "CH1：5轮捆扎皮条 · 宽",
+      "aliases": [],
+      "scope_id": "component:ch15-binding",
+      "measurement": {
+        "quantity": "宽",
+        "unit": "cm",
+        "raw": "皮条宽1.5厘米",
+        "approximate": false,
+        "value": 1.5
+      }
+    },
+    {
+      "id": "specimen:m1257-bit",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：257-1马衔",
+      "aliases": [
+        "M1:257-1"
+      ],
+      "note": "按汇编中具名标本登记；与六号车的实物归属未核实。"
+    },
+    {
+      "id": "specimen:m1257-2a",
+      "kind": "ReferenceSpecimen",
+      "label": "M1：257-2a马镳",
+      "aliases": [
+        "M1:257-2a"
+      ],
+      "note": "与既有残存漆骨帽马镳是否同件尚未核实，不据两条记录认定有两件。"
+    },
+    {
+      "id": "measurement:pdf-048",
+      "kind": "Measurement",
+      "label": "M1：257-1马衔 · 通长",
+      "aliases": [],
+      "scope_id": "specimen:m1257-bit",
+      "measurement": {
+        "quantity": "通长",
+        "unit": "cm",
+        "raw": "通长22.5厘米，重220克",
+        "approximate": false,
+        "value": 22.5
+      }
+    },
+    {
+      "id": "measurement:pdf-049",
+      "kind": "Measurement",
+      "label": "M1：257-2a马镳 · 长",
+      "aliases": [],
+      "scope_id": "specimen:m1257-2a",
+      "measurement": {
+        "quantity": "长",
+        "unit": "cm",
+        "raw": "镳长37厘米",
+        "approximate": false,
+        "value": 37
+      }
+    },
+    {
+      "id": "measurement:pdf-050",
+      "kind": "Measurement",
+      "label": "M1：257-1马衔 · 枣核形浇痕长",
+      "aliases": [],
+      "scope_id": "specimen:m1257-bit",
+      "measurement": {
+        "quantity": "枣核形浇痕长",
+        "unit": "cm",
+        "raw": "痕长1.4、宽0.3厘米",
+        "approximate": false,
+        "value": 1.4
+      }
+    },
+    {
+      "id": "measurement:pdf-051",
+      "kind": "Measurement",
+      "label": "M1：257-1马衔 · 枣核形浇痕宽",
+      "aliases": [],
+      "scope_id": "specimen:m1257-bit",
+      "measurement": {
+        "quantity": "枣核形浇痕宽",
+        "unit": "cm",
+        "raw": "痕长1.4、宽0.3厘米",
+        "approximate": false,
+        "value": 0.3
+      }
+    },
+    {
+      "id": "component:m1257-bone-cap",
+      "kind": "Component",
+      "label": "M1：257残存马镳的骨帽",
+      "aliases": [],
+      "scope_id": "specimen:005"
+    },
+    {
+      "id": "specimen:m2432-buckle",
+      "kind": "ReferenceSpecimen",
+      "label": "M2：432-3铜节约",
+      "aliases": [
+        "M2:432-3"
+      ],
+      "note": "按汇编中具名标本登记；与六号车的实物归属未核实。"
+    },
+    {
+      "id": "record:m2432-reconstruction",
+      "kind": "ReferenceRecord",
+      "label": "M2：432马勒推测复原图记录",
+      "aliases": [],
+      "note": "二号墓图五二八明确为推测复原；图中比例尺不作为马勒实测尺寸。"
+    },
+    {
+      "id": "record:p08-reins-diagram",
+      "kind": "ReferenceRecord",
+      "label": "第8页四马缰绳示意记录",
+      "aliases": [],
+      "note": "原图无可核实的具体标本号；图内“觼軜”疑读未建实体。"
+    },
+    {
+      "id": "role:fu-horse",
+      "kind": "HarnessRole",
+      "label": "服马",
+      "aliases": [],
+      "note": "从图中左右服或左右骖标注抽取的系驾角色，不是某匹马的实物身份。"
+    },
+    {
+      "id": "role:can-horse",
+      "kind": "HarnessRole",
+      "label": "骖马",
+      "aliases": [],
+      "note": "从图中左右服或左右骖标注抽取的系驾角色，不是某匹马的实物身份。"
+    },
+    {
+      "id": "record:six-chariot-reconstruction",
+      "kind": "ReferenceRecord",
+      "label": "图三一七6号车复原图记录",
+      "aliases": [],
+      "note": "来源图题明确为复原图；DEPICTS表示图中呈现，不等于6号车出土实物的组成认定。"
+    },
+    {
+      "id": "record:chariot7",
+      "kind": "ReferenceRecord",
+      "label": "7号车平剖面图记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:chariot8",
+      "kind": "ReferenceRecord",
+      "label": "8号车平剖面图记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:wheel-assembly",
+      "kind": "ReferenceRecord",
+      "label": "轮牙辐毂拼装示意记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:wheel-axle-labels",
+      "kind": "ReferenceRecord",
+      "label": "轮轴部位图示记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:concave-wheel",
+      "kind": "ReferenceRecord",
+      "label": "中凹轮比较图记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:wheel-support",
+      "kind": "ReferenceRecord",
+      "label": "夹辅车轮比较图记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    },
+    {
+      "id": "record:wheel-force",
+      "kind": "ReferenceRecord",
+      "label": "车轮受力变形图记录",
+      "aliases": [],
+      "note": "仅表示该来源图组及图题所指比较语境，不能把绘图、工序或比例尺归给六号车。"
+    }
+  ],
+  "facts": [
+    {
+      "id": "fact:001",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:003",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:002",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:004",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:003",
+      "subject_id": "type:001",
+      "predicate": "HAS_PART",
+      "object_id": "type:005",
+      "evidence_ids": [
+        "evidence:001"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:004",
+      "subject_id": "specimen:001",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:005",
+      "subject_id": "specimen:002",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:002",
+      "evidence_ids": [
+        "evidence:003"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:006",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:001",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:007",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:002",
+      "evidence_ids": [
+        "evidence:002"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:008",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:003",
+      "evidence_ids": [
+        "evidence:003"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:009",
+      "subject_id": "specimen:001",
+      "predicate": "DESCRIPTION",
+      "value": "资料记载该轮为木质，木质已腐烂，现仅存表面深褐色漆皮。",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-local01"
+      }
+    },
+    {
+      "id": "fact:010",
+      "subject_id": "specimen:002",
+      "predicate": "DESCRIPTION",
+      "value": "汇编将 CH1：3 轴描述为木质，木质已腐朽，仅见表面深褐色漆皮。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:011",
+      "subject_id": "type:002",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车轴解释为承载车上重量的关键部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:006"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:012",
+      "subject_id": "type:006",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车軎描述为轴端防止车毂脱落的部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:007"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:013",
+      "subject_id": "type:004",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞将辐解释为车轮中连接毂与轮圈的木质部件。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:008"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:014",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞把车轮的正圆、平整与均衡分别作为《考工记》制轮质量的解释主题。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:009"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:015",
+      "subject_id": "type:005",
+      "predicate": "DESCRIPTION",
+      "value": "张万辉将江苏淮安运河村出土的战国中晚期车辆列为先秦木质轮辋研究的实物案例。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:010"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "source_page_review",
+        "run_id": "run:20261119-wheel-first"
+      }
+    },
+    {
+      "id": "fact:016",
+      "subject_id": "specimen:003",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编图二四〇将 M1：201-1 标为一号墓出土的铜双箍云纹圆筒形车軎。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:017",
+      "subject_id": "type:003",
+      "predicate": "DESCRIPTION",
+      "value": "刘永华在商车讨论中将车毂两端分别称为贤端和轵端。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:012"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:018",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "邵朋飞将《考工记》制轮语境中的“三材”解释为毂、辐、牙的用材。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:013"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:019",
+      "subject_id": "type:005",
+      "predicate": "DESCRIPTION",
+      "value": "张万辉转述了考古研究者利用铜枒饰的对称分布推测西周车辆轮辋拼合情况的做法。",
+      "origin": "documented",
+      "evidence_ids": [
+        "evidence:014"
+      ],
+      "review_status": "pending",
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-wheel-glean"
+      }
+    },
+    {
+      "id": "fact:020",
+      "subject_id": "object:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编把九连墩一号车马坑6号车作为复原的主要模板。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:015"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:021",
+      "subject_id": "object:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编收录一号车马坑6号车复原图，图三一七标出围栏局部。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:016"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:022",
+      "subject_id": "specimen:004",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：302 车辀出自南室第二层西部中间靠西壁处，残存前段。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:017"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:023",
+      "subject_id": "specimen:004",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：302 车辀考古记录中有红、黑两种漆饰。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:024",
+      "subject_id": "specimen:005",
+      "predicate": "DESCRIPTION",
+      "value": "汇编记载 M1：257 马具组留存一只漆骨帽马镳，骨帽有黑漆勾连云纹。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "extraction": {
+        "method": "subagent_gleaning",
+        "run_id": "run:20261119-fusion-glean"
+      }
+    },
+    {
+      "id": "fact:025",
+      "subject_id": "type:002",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编的车轮示意图标出了车轴。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:020"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:026",
+      "subject_id": "type:007",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编记载 M1：201-1 所配辖的顶端为兽面。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:021"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:027",
+      "subject_id": "type:001",
+      "predicate": "DESCRIPTION",
+      "value": "教师汇编第6页左上角有一幅辐式车轮的正面图。",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:022"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:028",
+      "subject_id": "specimen:003",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:006",
+      "origin": "documented",
+      "review_status": "pending",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "extraction": {
+        "method": "local_image_transcription",
+        "run_id": "run:20261119-fusion-index"
+      }
+    },
+    {
+      "id": "fact:029",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:030",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:031",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:002",
+      "evidence_ids": [
+        "evidence:011"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "structured_from_existing_evidence",
+        "run_id": "run:20261120-material"
+      }
+    },
+    {
+      "id": "fact:032",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:004"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:033",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:005"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:034",
+      "subject_id": "specimen:005",
+      "predicate": "HAS_PART",
+      "object_id": "component:001",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:035",
+      "subject_id": "component:001",
+      "predicate": "HAS_DECORATION_MOTIF",
+      "object_id": "motif:001",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:036",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:037",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:018"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:038",
+      "subject_id": "component:001",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:019"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "existing_passage_gleaning",
+        "run_id": "run:20261120-structured-gleaning"
+      }
+    },
+    {
+      "id": "fact:pdf-001",
+      "subject_id": "type:floor-mat",
+      "predicate": "DESCRIPTION",
+      "value": "原第9页标题列出“车茵”，该小节无展开内容。",
+      "evidence_ids": [
+        "evidence:pdf-heading-p09-floor-mat"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-002",
+      "subject_id": "type:body-cover",
+      "predicate": "DESCRIPTION",
+      "value": "原第9页标题列出“车蔽衣”，该小节无展开内容。",
+      "evidence_ids": [
+        "evidence:pdf-heading-p09-body-cover"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-003",
+      "subject_id": "type:umbrella",
+      "predicate": "DESCRIPTION",
+      "value": "原第9页标题列出“伞”，该小节无展开内容。",
+      "evidence_ids": [
+        "evidence:pdf-heading-p09-umbrella"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-004",
+      "subject_id": "type:canopy",
+      "predicate": "DESCRIPTION",
+      "value": "原第9页标题列出“盖”，该小节无展开内容。",
+      "evidence_ids": [
+        "evidence:pdf-heading-p09-canopy"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-005",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:yoke",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-006",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-007",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-008",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-009",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-001",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-010",
+      "subject_id": "specimen:ch13-yoke",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-002",
+      "evidence_ids": [
+        "evidence:pdf-p01-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-011",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-012",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:hemp-or-silk",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-013",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:charred-trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-014",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:brown-paint-trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-015",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-003",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-016",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-004",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-017",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_PROCESSING",
+      "value": "三根合并对折而成",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-018",
+      "subject_id": "specimen:ch11-trace",
+      "predicate": "HAS_SHAPE",
+      "value": "分成左右两股，前端结小套环",
+      "evidence_ids": [
+        "evidence:pdf-p01-t05"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-019",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-020",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:hide",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-021",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:charred-trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-022",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:brown-paint-trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-023",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-005",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-024",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-006",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-025",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_SHAPE",
+      "value": "前端小套环，后端大套环",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-026",
+      "subject_id": "specimen:ch14-trace",
+      "predicate": "HAS_POSITION",
+      "value": "从前轸下引出双股，由辀的两侧前引至左右服马后脊处",
+      "evidence_ids": [
+        "evidence:pdf-p01-t07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-027",
+      "subject_id": "record:hemp-trace-count",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-028",
+      "subject_id": "record:hemp-trace-count",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "5根",
+      "evidence_ids": [
+        "evidence:pdf-p01-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-029",
+      "subject_id": "record:hemp-trace-count",
+      "predicate": "HAS_ORIGINAL_IDENTIFIERS",
+      "value": "CH1：1、6、12、14、22",
+      "evidence_ids": [
+        "evidence:pdf-p01-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-030",
+      "subject_id": "record:hide-trace-count",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-p01-t06"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-031",
+      "subject_id": "record:hide-trace-count",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "14根",
+      "evidence_ids": [
+        "evidence:pdf-p01-t06"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-032",
+      "subject_id": "record:hide-trace-count",
+      "predicate": "HAS_ORIGINAL_IDENTIFIERS",
+      "value": "CH1：2~5、7~10、13、15、16、20、24、33",
+      "evidence_ids": [
+        "evidence:pdf-p01-t06"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-033",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:beam",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-034",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-035",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:001",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-036",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_SHAPE",
+      "value": "波浪形，中粗两端细",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-037",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_SHAPE",
+      "value": "横截面扁方形",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-038",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-007",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-039",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-008",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-040",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-009",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-041",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch14-yi",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-042",
+      "subject_id": "component:ch14-yi",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:yi",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-043",
+      "subject_id": "component:ch14-yi",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "4个",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-044",
+      "subject_id": "component:ch14-yi",
+      "predicate": "HAS_SHAPE",
+      "value": "长方形",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-045",
+      "subject_id": "specimen:ch14-beam",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch14-beam-caps",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-046",
+      "subject_id": "component:ch14-beam-caps",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:beam-cap",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-047",
+      "subject_id": "component:ch14-beam-caps",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:bone",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-048",
+      "subject_id": "component:ch14-beam-caps",
+      "predicate": "HAS_POSITION",
+      "value": "套于衡两端",
+      "evidence_ids": [
+        "evidence:pdf-p02-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-049",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:pole",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-050",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-010",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-051",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-011",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-052",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-012",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-053",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-013",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-054",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-014",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-055",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-015",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-056",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-016",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-057",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_SHAPE",
+      "value": "前端上扬，后段贴于地面；横截面扁方形",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-058",
+      "subject_id": "record:p02-unnumbered-pole",
+      "predicate": "HAS_POSITION",
+      "value": "纵向置于舆下轴上中轴纬线上；踵露于轮后（原文用语照录）",
+      "evidence_ids": [
+        "evidence:pdf-p02-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-059",
+      "subject_id": "specimen:004",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:pole",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-060",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_FIND_POSITION",
+      "value": "南室第二层西部中间靠西壁处",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-061",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_PRESERVED_FEATURE",
+      "object_id": "preservation:front-fragment",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-062",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_SHAPE",
+      "value": "辀身长方体，前粗后细",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-063",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-017",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-064",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-018",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-065",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-019",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-066",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-020",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-067",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-021",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-068",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_PART",
+      "object_id": "component:m1302-head",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-069",
+      "subject_id": "component:m1302-head",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:pole-head",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-070",
+      "subject_id": "component:m1302-head",
+      "predicate": "HAS_SHAPE",
+      "value": "前上部中间有长方形穿孔",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-071",
+      "subject_id": "component:m1302-head",
+      "predicate": "HAS_SHAPE",
+      "value": "下部成“凹”字形",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-072",
+      "subject_id": "component:m1302-head",
+      "predicate": "HAS_SHAPE",
+      "value": "后部横穿圆孔",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-073",
+      "subject_id": "component:m1302-head",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-074",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_PART",
+      "object_id": "component:m1302-front",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-075",
+      "subject_id": "component:m1302-front",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-076",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_PART",
+      "object_id": "component:m1302-middle",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-077",
+      "subject_id": "component:m1302-middle",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-078",
+      "subject_id": "specimen:004",
+      "predicate": "HAS_PART",
+      "object_id": "component:m1302-rear",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-079",
+      "subject_id": "component:m1302-rear",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-080",
+      "subject_id": "component:m1302-rear",
+      "predicate": "HAS_PATTERN_DETAIL",
+      "value": "黑漆上有一周红漆",
+      "evidence_ids": [
+        "evidence:pdf-p03-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-081",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:002",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-082",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-022",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-083",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-023",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-084",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-024",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-085",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-025",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-086",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_SHAPE",
+      "value": "长条形，横截面下圆上方，末端锥形贯毂",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-087",
+      "subject_id": "record:p04-unnumbered-axle",
+      "predicate": "HAS_POSITION",
+      "value": "位于舆下的中轴经线前2厘米处",
+      "evidence_ids": [
+        "evidence:pdf-p04-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-088",
+      "subject_id": "record:p04-axle-count",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:002",
+      "evidence_ids": [
+        "evidence:pdf-p04-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-089",
+      "subject_id": "record:p04-axle-count",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "登记33件；现存22件",
+      "evidence_ids": [
+        "evidence:pdf-p04-t03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-090",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-026",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-091",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-027",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-092",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_PROCESSING",
+      "value": "一根整木砍刨打磨光滑而成",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-093",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_SHAPE",
+      "value": "中部较粗，贯毂部分内粗外细，呈圆锥体",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-094",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_SHAPE",
+      "value": "轴上部应为平面，下部为圆弧形（原文推测）",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "inferred",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      },
+      "rationale": "汇编根据轴与伏兔的连接推测截面；不是本轮新增实测或已确认的考古结论。"
+    },
+    {
+      "id": "fact:pdf-095",
+      "subject_id": "specimen:002",
+      "predicate": "HAS_SHAPE",
+      "value": "末端有长方形榫钉孔，套軎后辖插入其中",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-096",
+      "subject_id": "type:futu",
+      "predicate": "DESCRIPTION",
+      "value": "汇编在轴的参考段中讨论轴与伏兔的连接；部件图另标“伏兔”。",
+      "evidence_ids": [
+        "evidence:pdf-p04-t04"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-097",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:006",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-098",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "2件，1对",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-099",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_FIND_POSITION",
+      "value": "南室第一层东段中部偏南处",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-100",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_SHAPE",
+      "value": "末端平，正中有小圆孔；首端口部斜折，宽沿方唇",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-101",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_SHAPE",
+      "value": "双凸箍，箍下有垫片",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-102",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_SHAPE",
+      "value": "外箍一侧下伸长嘴鸟首形钩；内箍与口部间有对称长方形穿",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-103",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_PROCESSING",
+      "value": "鸟首形钩范线痕被原文解释为双范合铸、嵌入軎体叠铸的依据",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "inferred",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      },
+      "rationale": "原文依据范线痕解释铸造方式；保留其推断性质，不作为本轮独立实验结论。"
+    },
+    {
+      "id": "fact:pdf-104",
+      "subject_id": "record:p05-cap-pair",
+      "predicate": "HAS_PATTERN_DETAIL",
+      "value": "通体错金银带纹和勾连云纹；末端面四蒂状卷云纹；双箍外壁勾连云纹；箍间四组方块夹对三角勾连云纹",
+      "evidence_ids": [
+        "evidence:pdf-p05-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-105",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-028",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-106",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-029",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-107",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-030",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-108",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_MASS_RECORD",
+      "value": "原文记重470克；是否包含所配辖未另行注明",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-109",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_SHAPE",
+      "value": "末端圆形，顶中央圆形穿孔",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-110",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_SHAPE",
+      "value": "近两端各有一道圆凸箍",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-111",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_SHAPE",
+      "value": "近顶圆箍上侈出鸟首饰物，长变形喙",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-112",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_SHAPE",
+      "value": "另一圆箍至沿之间有对称的两个长方形穿孔",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-113",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_SHAPE",
+      "value": "宽直沿，沿内侧呈斜坡形",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-114",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_PROCESSING",
+      "value": "通体错金银；器身经不同程度锉磨加工",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-115",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_PATTERN_DETAIL",
+      "value": "箍上均有三道凹弦纹；鸟首下颈至喙端有明显范线痕",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-116",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_DECORATION_MOTIF",
+      "object_id": "motif:ribbon",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-117",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_DECORATION_MOTIF",
+      "object_id": "motif:001",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-118",
+      "subject_id": "specimen:003",
+      "predicate": "HAS_ASSOCIATED_COMPONENT",
+      "object_id": "component:m1201-pin",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-119",
+      "subject_id": "component:m1201-pin",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:007",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-120",
+      "subject_id": "component:m1201-pin",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-031",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-121",
+      "subject_id": "component:m1201-pin",
+      "predicate": "HAS_SHAPE",
+      "value": "兽面辖首，辖身长方条形；末端长方形横穿，顶有近方形浅痕",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-122",
+      "subject_id": "component:m1201-pin",
+      "predicate": "HAS_PROCESSING",
+      "value": "器身有锉磨加工痕",
+      "evidence_ids": [
+        "evidence:pdf-p05-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-123",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-rim",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-124",
+      "subject_id": "component:ch15-rim",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:005",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-125",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-spoke",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-126",
+      "subject_id": "component:ch15-spoke",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:004",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-127",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-hub",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-128",
+      "subject_id": "component:ch15-hub",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:003",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-129",
+      "subject_id": "component:ch15-rim",
+      "predicate": "HAS_SHAPE",
+      "value": "截面略呈梯形",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-130",
+      "subject_id": "component:ch15-rim",
+      "predicate": "HAS_SHAPE",
+      "value": "着地面和两侧略鼓",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-131",
+      "subject_id": "component:ch15-rim",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-032",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-132",
+      "subject_id": "component:ch15-rim",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-033",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-133",
+      "subject_id": "component:ch15-spoke",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-034",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-134",
+      "subject_id": "component:ch15-spoke",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-spoke-inner",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-135",
+      "subject_id": "component:ch15-spoke-inner",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:spoke-inner",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-136",
+      "subject_id": "component:ch15-spoke",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-spoke-outer",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-137",
+      "subject_id": "component:ch15-spoke-outer",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:spoke-outer",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-138",
+      "subject_id": "component:ch15-spoke-inner",
+      "predicate": "HAS_SHAPE",
+      "value": "横截面扁棱形",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-139",
+      "subject_id": "component:ch15-spoke-outer",
+      "predicate": "HAS_SHAPE",
+      "value": "横截面圆柱形",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-140",
+      "subject_id": "component:ch15-spoke-inner",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-035",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-141",
+      "subject_id": "component:ch15-spoke-inner",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-036",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-142",
+      "subject_id": "component:ch15-spoke-outer",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-037",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-143",
+      "subject_id": "component:ch15-spoke",
+      "predicate": "HAS_SHAPE",
+      "value": "骹与股过渡较平滑，无明显界线；骹长于股",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-144",
+      "subject_id": "component:ch15-spoke-inner",
+      "predicate": "TENON_JOINT_WITH",
+      "object_id": "component:ch15-hub",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-145",
+      "subject_id": "component:ch15-spoke-outer",
+      "predicate": "TENON_JOINT_WITH",
+      "object_id": "component:ch15-rim",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-146",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_SHAPE",
+      "value": "圆锥状，近贤端较粗，呈圆鼓腹，中空",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-147",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-038",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-148",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-039",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-149",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-040",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-150",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-041",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-151",
+      "subject_id": "component:ch15-hub",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-hub-ridges",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-152",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:hub-ridge",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-153",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "13道",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-154",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "HAS_SHAPE",
+      "value": "环棱状窄篆",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-155",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-042",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-156",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-043",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-157",
+      "subject_id": "component:ch15-hub-ridges",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-044",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-158",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-wood-strips",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-159",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:wheel-strip",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-160",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:001",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-161",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "HAS_RECORDED_QUANTITY",
+      "value": "2根",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-162",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "HAS_POSITION",
+      "value": "辐条外侧沿毂两侧平行附加，两端贴附轮牙中部",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-163",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-045",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-164",
+      "subject_id": "component:ch15-wood-strips",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-046",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-165",
+      "subject_id": "specimen:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:ch15-binding",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-166",
+      "subject_id": "component:ch15-binding",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:binding-strip",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-167",
+      "subject_id": "component:ch15-binding",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:hide",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-168",
+      "subject_id": "component:ch15-binding",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:001",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-169",
+      "subject_id": "component:ch15-binding",
+      "predicate": "HAS_POSITION",
+      "value": "木条与辐条交汇处捆扎四道；皮条底漆上饰红漆",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-170",
+      "subject_id": "component:ch15-binding",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-047",
+      "evidence_ids": [
+        "evidence:pdf-p06-t01"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-171",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:bit",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-172",
+      "subject_id": "specimen:m1257-2a",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:cheekpiece",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-173",
+      "subject_id": "specimen:005",
+      "predicate": "HAS_FIND_POSITION",
+      "value": "南室第二层东段西部偏北处",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-174",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:002",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-175",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-048",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-176",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_MASS_RECORD",
+      "value": "220克",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-177",
+      "subject_id": "specimen:m1257-2a",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-049",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-178",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "两节铜棒套成，每节两端各有一环",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-179",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "外端大环椭圆形，里端相套小环圆形",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-180",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "棒中部做成绳索状",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-181",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "两铜棒大环外侧范线上均有枣核形浇痕，其中一痕明显凸出",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-182",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-050",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-183",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_MEASUREMENT",
+      "object_id": "measurement:pdf-051",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-184",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_PROCESSING",
+      "value": "仅对范线和芯线稍作锉磨加工",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-185",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "一棒环内侧有一周明显芯线，棒两侧范线与两环外侧一圈范线相接",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-186",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "另一棒大环内侧有一周明显芯线；小环顶端平，有与内径等距且平行的两道芯线",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-187",
+      "subject_id": "specimen:m1257-bit",
+      "predicate": "HAS_SHAPE",
+      "value": "另一棒两道芯线与小环内侧两端芯线相接；两侧范线分别与大环外侧范线及小环芯线中间相接",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-188",
+      "subject_id": "component:001",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:cheekpiece",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-189",
+      "subject_id": "component:001",
+      "predicate": "HAS_PART",
+      "object_id": "component:m1257-bone-cap",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-190",
+      "subject_id": "component:m1257-bone-cap",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:bone",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-191",
+      "subject_id": "component:m1257-bone-cap",
+      "predicate": "HAS_SURFACE_FINISH",
+      "object_id": "finish:002",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-192",
+      "subject_id": "component:m1257-bone-cap",
+      "predicate": "HAS_DECORATION_MOTIF",
+      "object_id": "motif:001",
+      "evidence_ids": [
+        "evidence:pdf-p07-t02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-193",
+      "subject_id": "specimen:m2432-buckle",
+      "predicate": "INSTANCE_OF",
+      "object_id": "type:buckle",
+      "evidence_ids": [
+        "evidence:pdf-figure-15"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-194",
+      "subject_id": "specimen:m2432-buckle",
+      "predicate": "HAS_MATERIAL",
+      "object_id": "material:002",
+      "evidence_ids": [
+        "evidence:pdf-figure-15"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-195",
+      "subject_id": "record:m2432-reconstruction",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:bridle",
+      "evidence_ids": [
+        "evidence:pdf-figure-16"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-196",
+      "subject_id": "record:m2432-reconstruction",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "正、反；比例尺0、16厘米（比例尺不作器物尺寸）",
+      "evidence_ids": [
+        "evidence:pdf-figure-16"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-197",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:reins",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-198",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "DEPICTS",
+      "object_id": "type:yi-ring",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-199",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "DEPICTS",
+      "object_id": "type:you-ring",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-200",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "DEPICTS",
+      "object_id": "role:fu-horse",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-201",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "DEPICTS",
+      "object_id": "role:can-horse",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-202",
+      "subject_id": "record:p08-reins-diagram",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "轙环、游环、左骖、左服、右服、右骖、御者左手、御者右手",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-203",
+      "subject_id": "type:reins",
+      "predicate": "DESCRIPTION",
+      "value": "第8页示意图用青、红色线路分别向御者左、右手汇集，绿色线路在内侧两马之间交叉；仅作图示观察。",
+      "evidence_ids": [
+        "evidence:pdf-figure-17"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-204",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "object:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-205",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:body",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-206",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:railing",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-207",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:pole",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-208",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:beam",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-209",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:yoke",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-210",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-211",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "DEPICTS",
+      "object_id": "type:002",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-212",
+      "subject_id": "record:six-chariot-reconstruction",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "围栏局部；比例尺0、10厘米与0、80厘米（不反算实物尺寸）",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-213",
+      "subject_id": "type:body",
+      "predicate": "DESCRIPTION",
+      "value": "原第9页“舆的总体结构”配图三一七，并标注“围栏局部”；其后车茵、车蔽衣、伞、盖仅有标题。",
+      "evidence_ids": [
+        "evidence:pdf-figure-18"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-214",
+      "subject_id": "record:chariot7",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-figure-02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-215",
+      "subject_id": "record:chariot7",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "北；A、A′、B、B′剖面定位符；比例尺0、80厘米；红字“红色部分为‘靷’”。",
+      "evidence_ids": [
+        "evidence:pdf-figure-02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-216",
+      "subject_id": "record:chariot7",
+      "predicate": "DESCRIPTION",
+      "value": "图三一八 一号车马坑——7号车平、剖面图。",
+      "evidence_ids": [
+        "evidence:pdf-figure-02"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-217",
+      "subject_id": "record:chariot8",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:trace",
+      "evidence_ids": [
+        "evidence:pdf-figure-03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-218",
+      "subject_id": "record:chariot8",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "北；A、A′、B、B′剖面定位符；原图子编号1、2、3、4、5；比例尺0、80厘米。",
+      "evidence_ids": [
+        "evidence:pdf-figure-03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-219",
+      "subject_id": "record:chariot8",
+      "predicate": "DESCRIPTION",
+      "value": "图三一九 一号车马坑——8号车平、剖面图。",
+      "evidence_ids": [
+        "evidence:pdf-figure-03"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-220",
+      "subject_id": "record:wheel-assembly",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-221",
+      "subject_id": "record:wheel-assembly",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "1.轮牙拼合；2.安装辐与牙；3.安装后车轮；4.辐条结构；5.车轮剖视；6.后视车轮；7.车毂结构。",
+      "evidence_ids": [
+        "evidence:pdf-figure-07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-222",
+      "subject_id": "record:wheel-assembly",
+      "predicate": "DESCRIPTION",
+      "value": "图二八三 一号车马坑——轮牙、辐、毂拼装方式示意图。",
+      "evidence_ids": [
+        "evidence:pdf-figure-07"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-223",
+      "subject_id": "record:wheel-axle-labels",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-09"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-224",
+      "subject_id": "record:wheel-axle-labels",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "上图：牙、辐、軎、轴、伏兔、轮、毂。左下图：股、骹、辐。右下图：贤、壶中、轵、毂、篆。",
+      "evidence_ids": [
+        "evidence:pdf-figure-09"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-225",
+      "subject_id": "record:wheel-axle-labels",
+      "predicate": "DESCRIPTION",
+      "value": "原图未附独立图题；本标题为编辑标题。",
+      "evidence_ids": [
+        "evidence:pdf-figure-09"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-226",
+      "subject_id": "record:concave-wheel",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-11"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-227",
+      "subject_id": "record:concave-wheel",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "正视图、股端、骹端、辐条、侧视图、夹辅；子编号1、2。",
+      "evidence_ids": [
+        "evidence:pdf-figure-11"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-228",
+      "subject_id": "record:concave-wheel",
+      "predicate": "DESCRIPTION",
+      "value": "图一 中凹轮结构示意图。1.根据长沙203号汉墓2号车车轮绘制；2.根据辉县琉璃阁131号战国车马坑第16号车车轮绘制。",
+      "evidence_ids": [
+        "evidence:pdf-figure-11"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-229",
+      "subject_id": "record:wheel-support",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-12"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-230",
+      "subject_id": "record:wheel-support",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "轴、轮牙、辐条、毂、夹辅、夹辅截面。",
+      "evidence_ids": [
+        "evidence:pdf-figure-12"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-231",
+      "subject_id": "record:wheel-support",
+      "predicate": "DESCRIPTION",
+      "value": "图七 有夹辅车轮结构及其稳定性能示意图。",
+      "evidence_ids": [
+        "evidence:pdf-figure-12"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-232",
+      "subject_id": "record:wheel-force",
+      "predicate": "REFERS_TO_TYPE",
+      "object_id": "type:001",
+      "evidence_ids": [
+        "evidence:pdf-figure-13"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-233",
+      "subject_id": "record:wheel-force",
+      "predicate": "HAS_DIAGRAM_LABELS",
+      "value": "轮毂、载重力、轴末端、138cm、188cm、F；子编号1、2、3。",
+      "evidence_ids": [
+        "evidence:pdf-figure-13"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    },
+    {
+      "id": "fact:pdf-234",
+      "subject_id": "record:wheel-force",
+      "predicate": "DESCRIPTION",
+      "value": "图四 车轮受力变形示意图与车轮状态（左边剖面图，右边全图）。1.轮与轴受力示意图；2.直辐轮变形示意图；3.中凹轮受力示意图。",
+      "evidence_ids": [
+        "evidence:pdf-figure-13"
+      ],
+      "origin": "documented",
+      "review_status": "pending",
+      "extraction": {
+        "method": "checked_pdf_atomic_extraction",
+        "run_id": "run:20261123-teacher-pdf"
+      }
+    }
+  ],
+  "model_mappings": [
+    {
+      "id": "mapping:001",
+      "entity_id": "type:002",
+      "model_version_id": "model:001",
+      "node_indices": [
+        2
+      ],
+      "review_status": "pending",
+      "note": "根据节点名“轴”登记的类别映射线索；尚未渲染核对，不代表确认的实物部件实例。"
+    },
+    {
+      "id": "mapping:002",
+      "entity_id": "type:001",
+      "model_version_id": "model:001",
+      "node_indices": [
+        246,
+        326
+      ],
+      "review_status": "pending",
+      "note": "节点名为右轮旋转轴、左轮旋转轴，子节点组成待几何核对；不能按名称直接确认。"
+    },
+    {
+      "id": "mapping:003",
+      "entity_id": "type:003",
+      "model_version_id": "model:001",
+      "node_indices": [
+        188,
+        268
+      ],
+      "review_status": "pending",
+      "note": "两个同名毂组，必须按模型版本及节点索引区分。"
+    },
+    {
+      "id": "mapping:004",
+      "entity_id": "type:004",
+      "model_version_id": "model:001",
+      "node_indices": [
+        241,
+        321
+      ],
+      "review_status": "pending",
+      "note": "两个辐组的候选类别映射，不推断实际辐条数量。"
+    },
+    {
+      "id": "mapping:005",
+      "entity_id": "type:005",
+      "model_version_id": "model:001",
+      "node_indices": [
+        245,
+        325
+      ],
+      "review_status": "pending",
+      "note": "两个牙组的候选类别映射，不把三维分段数当作考古事实。"
+    },
+    {
+      "id": "mapping:006",
+      "entity_id": "type:006",
+      "model_version_id": "model:001",
+      "node_indices": [
+        250,
+        330
+      ],
+      "review_status": "pending",
+      "note": "依据GLB节点名登记，几何对应和历史解释待核验。"
+    },
+    {
+      "id": "mapping:007",
+      "entity_id": "type:007",
+      "model_version_id": "model:001",
+      "node_indices": [
+        253,
+        333
+      ],
+      "review_status": "pending",
+      "note": "依据GLB节点名登记，几何对应和历史解释待核验。"
+    }
+  ]
+}

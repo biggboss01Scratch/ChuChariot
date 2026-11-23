@@ -1,0 +1,97 @@
+{
+  "run_id": "run:20261123-source-audit",
+  "date": "2026-11-23",
+  "auditor": "Codex",
+  "input_dataset": "dataset:teacher-pdf-006",
+  "output_dataset": "dataset:teacher-pdf-007",
+  "audit_file": "data/audits/2026-11-23-source-audit.json",
+  "audit_sha256": "956064790aade460ae36609f77dba850d4630fcb230d3284578876295f8298dd",
+  "reviewed_facts": 272,
+  "verdicts": {
+    "source_supported": 258,
+    "needs_correction": 13,
+    "insufficient_evidence": 1,
+    "conflict": 0
+  },
+  "independent_review": false,
+  "formal_confirmations": 0,
+  "output_counts": {
+    "entities": 95,
+    "facts": 270,
+    "entity_relations": 107,
+    "dimension_properties": 54,
+    "evidence": 52,
+    "model_mappings": 7
+  },
+  "changed_fact_ids": [
+    "fact:001",
+    "fact:002",
+    "fact:003",
+    "fact:035",
+    "fact:038",
+    "fact:pdf-074",
+    "fact:pdf-076",
+    "fact:pdf-078",
+    "fact:pdf-089",
+    "fact:pdf-217"
+  ],
+  "changed_entity_ids": [
+    "component:m1302-front",
+    "component:m1302-middle",
+    "component:m1302-rear"
+  ],
+  "expanded_evidence_ids": [
+    "evidence:002",
+    "evidence:003",
+    "evidence:007",
+    "evidence:011",
+    "evidence:016",
+    "evidence:019"
+  ],
+  "merged_duplicates": [
+    {
+      "removed_fact_id": "fact:pdf-192",
+      "retained_fact_id": "fact:035",
+      "reason": "原页限定为骨帽；将旧的整件边定位到骨帽后，与已有局部事实重复。",
+      "removed_fact": {
+        "id": "fact:pdf-192",
+        "subject_id": "component:m1257-bone-cap",
+        "predicate": "HAS_DECORATION_MOTIF",
+        "object_id": "motif:001",
+        "evidence_ids": [
+          "evidence:pdf-p07-t02"
+        ],
+        "origin": "documented",
+        "review_status": "pending",
+        "extraction": {
+          "method": "checked_pdf_atomic_extraction",
+          "run_id": "run:20261123-teacher-pdf"
+        }
+      }
+    },
+    {
+      "removed_fact_id": "fact:pdf-191",
+      "retained_fact_id": "fact:038",
+      "reason": "原页限定为骨帽；将旧的整件边定位到骨帽后，与已有局部事实重复。",
+      "removed_fact": {
+        "id": "fact:pdf-191",
+        "subject_id": "component:m1257-bone-cap",
+        "predicate": "HAS_SURFACE_FINISH",
+        "object_id": "finish:002",
+        "evidence_ids": [
+          "evidence:pdf-p07-t02"
+        ],
+        "origin": "documented",
+        "review_status": "pending",
+        "extraction": {
+          "method": "checked_pdf_atomic_extraction",
+          "run_id": "run:20261123-teacher-pdf"
+        }
+      }
+    }
+  ],
+  "unsupported_claims_still_pending": [
+    "fact:pdf-217"
+  ],
+  "note": "来源支持只表示在当前直接来源和限定内得到支持，包含作者推断与图示观察；不是考古真实性认证。"
+}
