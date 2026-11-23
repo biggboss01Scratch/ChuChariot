@@ -52,8 +52,39 @@ def validate(data: dict, ontology: dict) -> list[str]:
     _validate_evidence(indices["evidence"], indices["sources"], error)
     _validate_entities(indices["entities"], ontology, error)
     _validate_facts(indices, ontology, data["stage"], error)
+    if not errors:
+        _validate_teaching_paths(indices, error)
     _validate_mappings(indices["model_mappings"], indices["entities"], data["stage"], error)
     return errors
+
+
+def _validate_teaching_paths(indices, error):
+    """A schematic hop must have exactly one complete, consistent basis record."""
+    predicates = {"CONNECTION_FROM", "CONNECTION_TO", "HAS_EVIDENCE_BASIS"}
+    fields = defaultdict(lambda: defaultdict(list))
+    paths = {f["id"]: f for f in indices["facts"].values() if f["predicate"] == "SCHEMATIC_NEXT"}
+    for fact in indices["facts"].values():
+        if fact["predicate"] in predicates:
+            fields[fact["subject_id"]][fact["predicate"]].append(fact)
+    counts = defaultdict(int)
+    for connection_id, group in fields.items():
+        if set(group) != predicates or any(len(items) != 1 for items in group.values()):
+            error(connection_id, "教学连接必须各有一条起点、终点和依据类别事实")
+            continue
+        group = {key: items[0] for key, items in group.items()}
+        anchors = [set(item.get("basis_fact_ids", [])) & paths.keys() for item in group.values()]
+        if any(len(anchor) != 1 for anchor in anchors) or any(anchor != anchors[0] for anchor in anchors):
+            error(connection_id, "教学连接的起点、终点和依据类别必须引用同一条路径事实")
+            continue
+        path_id = next(iter(anchors[0]))
+        hop = paths[path_id]
+        if (group["CONNECTION_FROM"]["object_id"] != hop["subject_id"]
+                or group["CONNECTION_TO"]["object_id"] != hop["object_id"]):
+            error(connection_id, "教学连接的起止点与路径事实不一致")
+        counts[path_id] += 1
+    for path_id in paths:
+        if counts[path_id] != 1:
+            error(path_id, "教学路径必须恰好对应一组完整的连接依据")
 
 
 def shape(record, required, optional, path, error):

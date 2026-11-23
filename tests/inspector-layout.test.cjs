@@ -9,7 +9,7 @@ const scope = {};
 vm.runInNewContext(source.slice(source.indexOf('function atlasLayout('), source.indexOf('function graphLayout(')), scope);
 vm.runInNewContext(source.slice(source.indexOf('function graphLabelLines('), source.indexOf('function svgElement(')), scope);
 const load = (name) => JSON.parse(fs.readFileSync(path.join(root, 'data/candidates', name), 'utf8'));
-const current = load('teacher-pdf.v0.7.json');
+const current = load('teacher-pdf.v0.9.json');
 const initial = JSON.stringify(current);
 const atlas = scope.atlasLayout(current.entities, current.facts);
 
@@ -37,6 +37,10 @@ test('dimensions remain owner properties and never become atlas nodes or routes'
   assert.equal(atlas.regionByEntity.get('specimen:ch13-yoke'), 'traction');
   assert.equal(atlas.regionByEntity.get('specimen:002'), 'axle');
   assert.equal(atlas.regionByEntity.get('component:m1302-front'), atlas.regionByEntity.get('specimen:004'));
+  assert.equal(atlas.regionByEntity.get('type:body-floor'), 'traction');
+  assert.equal(atlas.regionByEntity.get('regiontype:floor-support'), 'traction');
+  assert.equal(atlas.regionByEntity.get('type:horse-bridle'), 'harness');
+  assert.equal(atlas.regionByEntity.get('type:rope-family'), 'harness');
 });
 
 test('the map draws every real entity relation and invents none', () => {
@@ -65,6 +69,10 @@ test('earlier dataset versions and confirmed catalogues retain all their nodes',
   assert.equal(scope.atlasLayout(fifth.entities, fifth.facts).positions.size, fifth.entities.length);
   const sixth = load('teacher-pdf.v0.6.json');
   assert.equal(scope.atlasLayout(sixth.entities, sixth.facts).positions.size, sixth.entities.length);
+  for (const version of [7, 8]) {
+    const previous = load(`teacher-pdf.v0.${version}.json`);
+    assert.equal(scope.atlasLayout(previous.entities, previous.facts).positions.size, previous.entities.length);
+  }
   const confirmed = structuredClone(current.entities);
   for (const entity of confirmed) delete entity.measurement;
   assert.equal(scope.atlasLayout(confirmed, []).positions.size, confirmed.length);

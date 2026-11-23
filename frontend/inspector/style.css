@@ -107,3 +107,7 @@ body.map-expanded { overflow: hidden; }
 }
 .node[data-kind="ComponentRegion"] rect { fill: #eff4f7; stroke: #8b9fa9; stroke-dasharray: 3 3; }
 .node[data-kind="ComponentRegion"].active rect { fill: #456474; stroke: #c5d9e2; }
+.node[data-kind="StructuralRegionType"] rect,.node[data-kind="Subsystem"] rect,.node[data-kind="EvidenceBasisClass"] rect { fill: #f8f3e8; stroke: #bba77d; stroke-dasharray: 4 3; }
+.node[data-kind="StructuralRegionType"].active rect,.node[data-kind="Subsystem"].active rect,.node[data-kind="EvidenceBasisClass"].active rect { fill: #7c6741; stroke: #dfd0ac; }
+.graph-edge.origin-inferred { stroke-dasharray: 7 4; }
+.graph-edge.origin-hypothesis { stroke-dasharray: 3 5; }

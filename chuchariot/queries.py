@@ -1,7 +1,7 @@
 """Read-only knowledge queries and review visibility."""
 
 import copy
-from collections import defaultdict
+from collections import defaultdict, deque
 
 from .dataset_io import DEFAULT_DATASET, DEFAULT_ONTOLOGY, TABLES, KnowledgeError, read_json
 from .validation import validate
@@ -76,6 +76,62 @@ class KnowledgeStore:
     def mappings(self, ident, include_pending=False):
         self._require_entity(ident)
         return copy.deepcopy([m for m in self._mappings_by_entity.get(ident, []) if _visible(m, include_pending)])
+
+    def connection_path(self, from_id, to_id, include_pending=False, max_hops=8):
+        """Shortest directed teaching path, preserving each hop's distinct basis.
+
+        Only SCHEMATIC_NEXT participates. Classification, composition and shared
+        materials must never create shortcuts or imply physical connectivity.
+        """
+        self._require_entity(from_id)
+        self._require_entity(to_id)
+        if type(max_hops) is not int or not 1 <= max_hops <= 16:
+            raise KnowledgeError("max_hops 必须为1至16的整数")
+        visible = [f for f in self._data["facts"] if _visible(f, include_pending)]
+        metadata = defaultdict(dict)
+        for fact in visible:
+            if fact["predicate"] in {"CONNECTION_FROM", "CONNECTION_TO", "HAS_EVIDENCE_BASIS"}:
+                metadata[fact["subject_id"]][fact["predicate"]] = fact
+        edges = defaultdict(list)
+        for fact in sorted(visible, key=lambda f: f["id"]):
+            if fact["predicate"] != "SCHEMATIC_NEXT":
+                continue
+            for connection_id, fields in sorted(metadata.items()):
+                if set(fields) != {"CONNECTION_FROM", "CONNECTION_TO", "HAS_EVIDENCE_BASIS"}:
+                    continue
+                if (fields["CONNECTION_FROM"]["object_id"] != fact["subject_id"]
+                        or fields["CONNECTION_TO"]["object_id"] != fact["object_id"]
+                        or any(fact["id"] not in item.get("basis_fact_ids", []) for item in fields.values())):
+                    continue
+                evidence_ids = sorted({eid for item in [fact, *fields.values()] for eid in item["evidence_ids"]})
+                edges[fact["subject_id"]].append({
+                    "fact": fact, "connection": self.entity(connection_id, include_pending),
+                    "from": self.entity(fact["subject_id"], include_pending),
+                    "to": self.entity(fact["object_id"], include_pending),
+                    "evidence_basis": self.entity(fields["HAS_EVIDENCE_BASIS"]["object_id"], include_pending),
+                    "metadata_facts": list(fields.values()),
+                    "evidence": [{"evidence": self._indices["evidence"][eid],
+                                  "source": self._indices["sources"][self._indices["evidence"][eid]["source_id"]]}
+                                 for eid in evidence_ids],
+                })
+        result = {"from_id": from_id, "to_id": to_id, "found": False, "hops": [],
+                  "view": "review" if include_pending else "confirmed_only",
+                  "note": "这是有向教学导航路径，各跳可来自不同标本、复原图或教学方案；不是同车物理连接、受力链或装配顺序证明。"}
+        queue = deque([(from_id, [])])
+        seen = {from_id}
+        while queue:
+            current, hops = queue.popleft()
+            if current == to_id:
+                result.update(found=True, hops=hops)
+                break
+            if len(hops) >= max_hops:
+                continue
+            for hop in edges.get(current, []):
+                target = hop["fact"]["object_id"]
+                if target not in seen:
+                    seen.add(target)
+                    queue.append((target, [*hops, hop]))
+        return copy.deepcopy(result)
 
     def _require_entity(self, ident):
         if ident not in self._indices["entities"]:

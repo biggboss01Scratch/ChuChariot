@@ -1,6 +1,6 @@
 # 接口状态与后端对接
 
-2026-11-23更新：第七批继续使用契约0.2.0。`HAS_DIMENSION` 的 `value` 是结构化尺寸对象，含 `quantity`、`unit`、`raw`、`approximate` 和 `value` 或 `min`/`max`；归属为事实的 `subject_id`，不提供 `object_id`。尺寸参与属性、证据和审核查询，不参与实体邻接关系。`stats.dimension_properties` 单列总数，审核视图由可见事实判断，不可用总数绕过过滤。旧契约0.1.0仍支持旧节点式尺寸。本体0.5增加 `ComponentRegion`（描述区域）和 `HAS_REGION`；推断保留 `rationale`，不能按来源记载展示。
+2026-11-23更新：第九批继续使用契约0.2.0。`HAS_DIMENSION` 的 `value` 是结构化尺寸对象，含 `quantity`、`unit`、`raw`、`approximate` 和 `value` 或 `min`/`max`；归属为事实的 `subject_id`，不提供 `object_id`。尺寸参与属性、证据和审核查询，不参与实体邻接关系。`stats.dimension_properties` 单列总数，审核视图由可见事实判断，不可用总数绕过过滤。旧契约0.1.0仍支持旧节点式尺寸。本体0.5增加 `ComponentRegion`（描述区域）和 `HAS_REGION`；推断保留 `rationale`，不能按来源记载展示。
 
 更新：2026-11-19。当前增加临时本地只读检查接口，正式后端实体查询等计划路由尚未实现；路由草案见软件计划设计书第 6 节。
 
@@ -29,8 +29,8 @@ P2 可以先复用 `chuchariot.knowledge.KnowledgeStore`：
 from chuchariot.knowledge import KnowledgeStore
 
 store = KnowledgeStore.load(
-    "data/candidates/teacher-pdf.v0.7.json",
-    "data/ontology/ontology.v0.5.json",
+    "data/candidates/teacher-pdf.v0.9.json",
+    "data/ontology/ontology.v0.6.json",
 )
 entities = store.list_entities(query="轮毂", kind="ComponentType")
 detail = store.entity("type:003")
@@ -44,3 +44,11 @@ proof = store.evidence("component:ch15-hub", include_pending=True)
 基础查询的 `include_pending` 默认为 `False`。后端审核模式若允许开启，必须明确标记；普通展陈页面不能无提示地使用候选。实体元数据带 `fact_review_summary`；未确认尺寸默认隐藏。
 
 HTTP 参数、分页、错误模型、正式响应和框架依赖需 P2 实际实现后补齐。本页记录的是 Python 调用接口，不宣称满足计划中的 REST 接口验收。
+
+## v0.9教学路径查询
+
+`KnowledgeStore.connection_path(from_id, to_id, include_pending=False, max_hops=8)` 返回一个最短有向教学路径，包含 `found`、`hops`、`view`、`note`。每跳含 `fact`、`from`、`to`、`connection`、`evidence_basis`、`metadata_facts`和带来源的 `evidence`。不走组成、分类或共享材质边；不自动反向查询；max_hops为1—16整数。找不到时found为false，hops为空；未知实体抛KnowledgeError。
+
+本地只读接口：`GET /api/connection-path?from=type:001&to=type:body&review=1&max_hops=8`。from/to必须各出现一次；参数错误400，实体不存在404，数据读取或校验失败500。review省略时仅使用确认事实，当前找不到候选路径。未提供跨域或正式服务部署。
+
+CLI：`python -m chuchariot --dataset data/candidates/teacher-pdf.v0.9.json --ontology data/ontology/ontology.v0.6.json connection-path type:001 type:body --include-pending`。展示时保留各跳性质和警示，不把教学导航描述为真实装配确认。

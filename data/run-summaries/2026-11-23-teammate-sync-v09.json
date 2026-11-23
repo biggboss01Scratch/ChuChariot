@@ -1,0 +1,195 @@
+{
+  "run_id": "run:20261123-teammate-sync-v09",
+  "date": "2026-11-23",
+  "inputs": [
+    {
+      "filename": "ontology.v0.6.json",
+      "target": "data/ontology/ontology.v0.6.json",
+      "received_sha256": "6965aa9c78dd56a9aab25a0784617e5a0b3408d504d8156227f5df6627f6e427",
+      "lf_sha256": "6965aa9c78dd56a9aab25a0784617e5a0b3408d504d8156227f5df6627f6e427"
+    },
+    {
+      "filename": "teacher-pdf.v0.8.json",
+      "target": "data/candidates/teacher-pdf.v0.8.json",
+      "received_sha256": "899908098725da6fbe9703c08af45ef308449d7ba01357e61ee84cb074086ede",
+      "lf_sha256": "899908098725da6fbe9703c08af45ef308449d7ba01357e61ee84cb074086ede"
+    },
+    {
+      "filename": "teacher-pdf.v0.9.json",
+      "target": "data/candidates/teacher-pdf.v0.9.json",
+      "received_sha256": "e18b3ef833dfddbc45bad7100462afa32623334ccca3a162ebbdc98f4707bc12",
+      "lf_sha256": "e18b3ef833dfddbc45bad7100462afa32623334ccca3a162ebbdc98f4707bc12"
+    }
+  ],
+  "deltas": [
+    {
+      "from": "dataset:teacher-pdf-007",
+      "to": "dataset:teacher-pdf-008",
+      "tables": {
+        "entities": {
+          "added": 1,
+          "changed": 0,
+          "removed": 0
+        },
+        "facts": {
+          "added": 7,
+          "changed": 0,
+          "removed": 0
+        },
+        "evidence": {
+          "added": 6,
+          "changed": 0,
+          "removed": 0
+        },
+        "sources": {
+          "added": 0,
+          "changed": 0,
+          "removed": 0
+        },
+        "model_mappings": {
+          "added": 0,
+          "changed": 0,
+          "removed": 0
+        }
+      }
+    },
+    {
+      "from": "dataset:teacher-pdf-008",
+      "to": "dataset:teacher-pdf-009",
+      "tables": {
+        "entities": {
+          "added": 24,
+          "changed": 0,
+          "removed": 0
+        },
+        "facts": {
+          "added": 118,
+          "changed": 0,
+          "removed": 0
+        },
+        "evidence": {
+          "added": 4,
+          "changed": 0,
+          "removed": 0
+        },
+        "sources": {
+          "added": 0,
+          "changed": 0,
+          "removed": 0
+        },
+        "model_mappings": {
+          "added": 0,
+          "changed": 0,
+          "removed": 0
+        }
+      }
+    }
+  ],
+  "output_dataset": "dataset:teacher-pdf-009",
+  "output_counts": {
+    "entities": 120,
+    "facts": 395,
+    "evidence": 62,
+    "sources": 4,
+    "model_mappings": 7
+  },
+  "entity_relations": 218,
+  "dimension_properties": 54,
+  "schematic_hops": 13,
+  "incoming_v09_origins": {
+    "documented": 32,
+    "inferred": 50,
+    "hypothesis": 36
+  },
+  "checks": [
+    {
+      "evidence_id": "evidence:v09-heading-p01",
+      "source_id": "source:001",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v09-heading-p04",
+      "source_id": "source:001",
+      "pdf_page": 4,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v09-heading-p07",
+      "source_id": "source:001",
+      "pdf_page": 7,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v09-heading-p09",
+      "source_id": "source:001",
+      "pdf_page": 9,
+      "normalized_exact_quote_present": false,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-01",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-02",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-03",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-04",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-05",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    },
+    {
+      "evidence_id": "evidence:v08-rim-06",
+      "source_id": "source:004",
+      "pdf_page": 1,
+      "normalized_exact_quote_present": true,
+      "wording_present_ignoring_punctuation_and_car_radical": true,
+      "scope": "native_text_quote_presence_only_not_full_claim_validation"
+    }
+  ],
+  "formal_confirmations": 0,
+  "remaining_review": [
+    "新增125条未作逐条完整独立内容审核；引文出现核对不等于整条推论成立。",
+    "7条类型层HAS_PART均为inferred，尤其舆底独立零件尚无实证，不能据此宣称六号车实物构件树已确认。",
+    "Subsystem转动装置是教师栏目名称，不能直接作为机械学分类。",
+    "7组模型映射未增加；伏兔、舆底、支承区及马具绳索的分别三维高亮未实现。",
+    "马勒与辔的术语层级、绳索与带具的教学集合仍待专业核实。",
+    "第9页新证据做了车字规范化且车茵、车蔽衣之间加了顿号，不能称逐字照录。"
+  ]
+}

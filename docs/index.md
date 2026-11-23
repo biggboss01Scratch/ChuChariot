@@ -1,10 +1,10 @@
 # 项目文档索引
 
-2026-11-23更新：当前批次为 **teacher-pdf.v0.7**，95个实体、107条实体关系、54项尺寸属性、270条待审核事实、52段证据和7组模型映射。68项Python测试及6项Node布局测试通过。原272条逐条审计为258条来源支持、13条需修正、1条证据不足；全部仍待组员审核。查看[审计表](audits/2026-11-23-source-audit.md)、[覆盖与缺口](audits/2026-11-23-coverage.md)、[当前候选](../data/candidates/teacher-pdf.v0.7.json)、[本体0.5](../data/ontology/ontology.v0.5.json)和[媒体v0.7](../data/sources/fusion-media.v0.7.json)。以下保留第四批历史基线，启动以README为准。
+2026-11-23更新：当前为 **teacher-pdf.v0.9**，120个实体、218条实体关系、54项尺寸、395条待审核事实、62段证据、7组未变模型映射。本体0.6.0。查看[队友接入v0.9](teammate-quickstart-v0.9.md)、[同步检查](teammate-sync-v0.9.md)和[当前候选](../data/candidates/teacher-pdf.v0.9.json)。78项Python和6项Node测试通过。13段路径有逐跳依据，仍是教学导航，不证明同车实物连接；新增三维高亮未完成。以下保留第四批历史基线。
 
 2026-11-20 · P1 知识层与本地临时检查原型，历史数据批次为 `wheel-axle.v0.4`。
 
-队友开发先看[知识图谱v0.7接入说明](teammate-quickstart-v0.7.md)，再读[README与启动命令](../README.md)、[项目交接索引](handover.md)和[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
+队友开发先看[知识图谱v0.9接入说明](teammate-quickstart-v0.9.md)，再读[README与启动命令](../README.md)、[项目交接索引](handover.md)和[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
 
 ## 第四批交付记录（历史）
 
@@ -42,4 +42,4 @@
 
 JSON 字段契约为 `0.1.0`。第四批使用[本体 `0.2.0`](../data/ontology/ontology.v0.2.json)，前三批使用本体 `0.1.0`。
 
-第七批使用数据契约0.2.0、本体0.5.0。第五批仍可按契约0.1.0、本体0.3.0复现；历史节点数量不与当前属性数量混算。
+第九批使用数据契约0.2.0、本体0.6.0。第五批仍可按契约0.1.0、本体0.3.0复现；历史节点数量不与当前属性数量混算。

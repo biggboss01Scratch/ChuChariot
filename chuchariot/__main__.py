@@ -33,6 +33,11 @@ def main(argv=None):
     importing = sub.add_parser("import", help="幂等导入候选包；同 ID 不同内容报错，不覆盖")
     importing.add_argument("--input", type=Path, required=True)
     importing.add_argument("--output", type=Path, required=True)
+    path_query = sub.add_parser("connection-path", help="查询带逐跳依据的有向教学路径，不证明实物连接")
+    path_query.add_argument("from_id")
+    path_query.add_argument("to_id")
+    path_query.add_argument("--include-pending", action="store_true")
+    path_query.add_argument("--max-hops", type=int, default=8)
     resources = sub.add_parser("inventory", help="只读登记资源并生成 GLB 结构报告")
     resources.add_argument("--resource-dir", type=Path, required=True)
     resources.add_argument("--specs", type=Path, default=ROOT / "data/sources/resource-specs.json")
@@ -93,6 +98,8 @@ def main(argv=None):
                     result = {"entity": store.entity(args.entity_id, args.include_pending),
                               "facts": store.facts(args.entity_id, args.include_pending),
                               "view": "review" if args.include_pending else "confirmed_only"}
+                elif args.command == "connection-path":
+                    result = store.connection_path(args.from_id, args.to_id, args.include_pending, args.max_hops)
                 else:
                     result = getattr(store, args.command)(args.entity_id, args.include_pending)
         print(json.dumps(result, ensure_ascii=False, indent=2))

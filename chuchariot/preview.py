@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
-from .dataset_io import DEFAULT_DATASET, DEFAULT_ONTOLOGY, ROOT, read_json
+from .dataset_io import DEFAULT_DATASET, DEFAULT_ONTOLOGY, ROOT, KnowledgeError, read_json
 from .media import image_path, project_media
 from .queries import KnowledgeStore
 
@@ -77,6 +77,25 @@ def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
                     self.json_response({"status": "ok", "mode": "local_read_only_preview"})
                 elif path == "/api/preview":
                     self.json_response(snapshot(review))
+                elif path == "/api/connection-path":
+                    parameters = parse_qs(parsed.query, keep_blank_values=True)
+                    try:
+                        if any(len(parameters.get(key, [])) != 1 or not parameters[key][0]
+                               for key in ("from", "to")):
+                            raise ValueError("from和to必须各提供一个实体ID")
+                        limit = parameters.get("max_hops", ["8"])
+                        if len(limit) != 1 or not limit[0].isascii() or not limit[0].isdigit() or not 1 <= int(limit[0]) <= 16:
+                            raise ValueError("max_hops必须为1至16的整数")
+                    except ValueError as exc:
+                        self.json_response({"error": str(exc)}, 400)
+                        return
+                    store = KnowledgeStore.load(dataset, ontology)
+                    try:
+                        result = store.connection_path(parameters["from"][0], parameters["to"][0], review, int(limit[0]))
+                    except KnowledgeError as exc:
+                        self.json_response({"error": str(exc)}, 404)
+                        return
+                    self.json_response(result)
                 elif path.startswith("/api/media/") and media_manifest is not None:
                     ident = path.removeprefix("/api/media/")
                     item = next((entry for entry in snapshot(review)["media"] if entry["id"] == ident), None)

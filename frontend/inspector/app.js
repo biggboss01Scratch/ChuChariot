@@ -14,6 +14,10 @@ Object.assign(kinds, { ReferenceRecord: "来源记录", HarnessRole: "系驾角�
 Object.assign(symbols, { ReferenceRecord: "录", HarnessRole: "驾", ComponentRegion: "区" });
 Object.assign(relationNames, { HAS_REGION: "包含描述区域" });
 Object.assign(shortRelations, { HAS_REGION: "区域" });
+Object.assign(kinds, { Subsystem: "教师栏目/教学分组", StructuralRegionType: "教学结构区域", EvidenceBasisClass: "路径依据类别" });
+Object.assign(symbols, { Subsystem: "组", StructuralRegionType: "区", EvidenceBasisClass: "据", Connection: "链" });
+Object.assign(relationNames, { IN_SUBSYSTEM: "归入教学分组", SCHEMATIC_NEXT: "教学路径下一节点", CONNECTION_FROM: "路径起点", CONNECTION_TO: "路径终点", HAS_EVIDENCE_BASIS: "路径依据类别", SCHEMATIC_HAS_REGION: "教学结构区域", REGION_NEAR_COMPONENT: "教学区域邻近", TEACHING_GROUPS_TYPE: "教学功能分组", SCHEMATIC_ASSEMBLY_WITH: "示意装配关联" });
+Object.assign(shortRelations, { IN_SUBSYSTEM: "教学分组", SCHEMATIC_NEXT: "教学路径", CONNECTION_FROM: "起点", CONNECTION_TO: "终点", HAS_EVIDENCE_BASIS: "依据类别", SCHEMATIC_HAS_REGION: "示意区域", REGION_NEAR_COMPONENT: "示意邻近", TEACHING_GROUPS_TYPE: "功能分组", SCHEMATIC_ASSEMBLY_WITH: "示意装配" });
 Object.assign(relationNames, { REFERS_TO_TYPE: "记录涉及类别", DEPICTS: "图示呈现", TENON_JOINT_WITH: "榫卯相接", HAS_ASSOCIATED_COMPONENT: "所配部件", HAS_SHAPE: "形态与结构", HAS_PROCESSING: "加工记载", HAS_POSITION: "位置记载", HAS_FIND_POSITION: "出土位置", HAS_RECORDED_QUANTITY: "原文数量", HAS_MASS_RECORD: "原文重量", HAS_ORIGINAL_IDENTIFIERS: "原文标识范围", HAS_DIAGRAM_LABELS: "图内标注", HAS_PATTERN_DETAIL: "纹饰部位与细节" });
 Object.assign(shortRelations, { REFERS_TO_TYPE: "类别", DEPICTS: "图示", TENON_JOINT_WITH: "榫卯", HAS_ASSOCIATED_COMPONENT: "所配" });
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -104,9 +108,9 @@ function selectEntity(id) {
 function atlasLayout(entities, facts) {
   const themes = [
     { key: "wheel", label: "轮系", subtitle: "轮 · 牙 · 辐 · 毂", color: "#408979", terms: ["车轮", "毂", "辐", "牙", "股", "骹", "篆", "车轮附加圆木条", "捆扎皮条"] },
-    { key: "traction", label: "牵引与车体", subtitle: "轭 · 靷 · 衡 · 辀及其标本", color: "#ac8142", terms: ["轭", "靷", "衡", "轙", "骨衡帽", "辀", "辀首", "舆", "伏兔", "围栏"] },
+    { key: "traction", label: "牵引与车体", subtitle: "轭 · 靷 · 衡 · 辀及其标本", color: "#ac8142", terms: ["轭", "靷", "衡", "轙", "骨衡帽", "辀", "辀首", "舆", "伏兔", "围栏", "舆底", "舆底支承位置（教学区域）"] },
     { key: "axle", label: "轴与軎辖", subtitle: "车轴 · 车軎 · 辖及来源记录", color: "#587faa", terms: ["车轴", "軎", "辖"] },
-    { key: "harness", label: "马具与系驾", subtitle: "衔 · 镳 · 缰辔 · 系驾角色", color: "#9a709e", terms: ["衔", "镳", "辔", "节约", "缰", "轙环", "游环"] },
+    { key: "harness", label: "马具与系驾", subtitle: "衔 · 镳 · 缰辔 · 系驾角色", color: "#9a709e", terms: ["衔", "镳", "辔", "节约", "缰", "轙环", "游环", "马勒（勒）", "绳索与带具（教学功能集合）"] },
     { key: "shared", label: "材质与髹饰", subtitle: "共享材料 · 保存状态 · 纹饰", color: "#75884f", terms: [] },
     { key: "reference", label: "图示与资料目录", subtitle: "复原与比较图 · 模型 · 待补充类别", color: "#85838b", terms: [] },
   ];
@@ -459,10 +463,10 @@ function renderGraph() {
     const route = state.routes.get(fact.id);
     const edge = svgElement(route ? "path" : "line", {
       ...(route ? { d: route.d } : { x1: from[0] + dx * start, y1: from[1] + dy * start, x2: to[0] - dx * end, y2: to[1] - dy * end }),
-      class: `graph-edge ${related ? "related" : state.highlight ? "dimmed" : ""} ${cross ? "cross-region" : ""}`,
+      class: `graph-edge origin-${fact.origin} ${related ? "related" : state.highlight ? "dimmed" : ""} ${cross ? "cross-region" : ""}`,
       "data-fact": fact.id, "marker-end": "url(#arrow-head)",
     });
-    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${relationNames[fact.predicate] || fact.predicate} → ${getEntity(fact.object_id).label} · ${statusNames[fact.review_status]}`));
+    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${relationNames[fact.predicate] || fact.predicate} → ${getEntity(fact.object_id).label} · ${origins[fact.origin]} · ${statusNames[fact.review_status]}`));
     edgeLayer.append(edge);
     if (related && scale >= .35) {
       const at = route?.label || [(from[0] + to[0]) / 2, (from[1] + to[1]) / 2];
@@ -631,6 +635,7 @@ function renderProperties(entity, facts) {
   }
   if (entity.kind === "ComponentType") content += '<p class="property-scope">这里只显示该类别直接记录的属性。具体标本的尺寸、材质请从下方关联记录进入标本查看。</p>';
   if (entity.kind === "ComponentRegion") content += '<p class="property-scope">这是资料描述的局部区域，用于限定属性作用部位，不表示可拆卸零件。</p>';
+  if (["Subsystem", "StructuralRegionType", "EvidenceBasisClass", "Connection"].includes(entity.kind)) content += '<p class="property-scope">这是教学分组、结构区域或路径依据记录。各跳可来自不同标本或图示，不能当作同车实物连接、受力链或安装顺序；新增三维高亮仍需模型映射。</p>';
   return content + '</section>';
 }
 
