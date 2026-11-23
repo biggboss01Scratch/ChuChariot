@@ -46,7 +46,7 @@ def main(argv=None):
     preview = sub.add_parser("preview", help="打开本地只读知识检查页，无第三方依赖")
     preview.add_argument("--port", type=int, default=8765)
     preview.add_argument("--resource-dir", type=Path, action="append",
-                         help="可重复指定原始PDF目录，只提供已登记的PDF")
+                         help="可重复指定原资料目录，只提供已登记的PDF、视频或词典摘录")
     preview.add_argument("--media-manifest", type=Path, help="截图与模型图像关联清单")
     preview.add_argument("--media-dir", type=Path, help="从原件生成的本地图像目录")
     args = parser.parse_args(argv)

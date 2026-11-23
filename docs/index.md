@@ -1,10 +1,14 @@
 # 项目文档索引
 
-2026-11-23更新：当前为 **teacher-pdf.v0.9**，120个实体、218条实体关系、54项尺寸、395条待审核事实、62段证据、7组未变模型映射。本体0.6.0。查看[队友接入v0.9](teammate-quickstart-v0.9.md)、[同步检查](teammate-sync-v0.9.md)和[当前候选](../data/candidates/teacher-pdf.v0.9.json)。78项Python和6项Node测试通过。13段路径有逐跳依据，仍是教学导航，不证明同车实物连接；新增三维高亮未完成。以下保留第四批历史基线。
+2026-11-23：当前 **knowledge.v0.11**，本体0.7.0，格式0.4.0。128实体、423事实、233实体关系、54尺寸、72证据；区域和辔／马勒已规范，见[接入与迁移说明](normalization-v0.11.md)。98项Python、13项Node测试通过。以下为历史记录。
+
+历史v0.10：**knowledge.v0.10**，126实体、412条待复核事实、229条实体关系、54项尺寸、68段证据。新增现代复原视频案例及推测，见[入库与接入说明](video-knowledge-v0.10.md)。88项Python、9项Node测试通过。下文保留v0.9及历史交付记录。
+
+历史v0.9：**teacher-pdf.v0.9**，120个实体、218条实体关系、54项尺寸、395条待审核事实、62段证据、7组未变模型映射。本体0.6.0。查看[队友接入v0.9](teammate-quickstart-v0.9.md)、[同步检查](teammate-sync-v0.9.md)和[当前候选](../data/candidates/teacher-pdf.v0.9.json)。78项Python和6项Node测试通过。13段路径有逐跳依据，仍是教学导航，不证明同车实物连接；新增三维高亮未完成。以下保留第四批历史基线。
 
 2026-11-20 · P1 知识层与本地临时检查原型，历史数据批次为 `wheel-axle.v0.4`。
 
-队友开发先看[知识图谱v0.9接入说明](teammate-quickstart-v0.9.md)，再读[README与启动命令](../README.md)、[项目交接索引](handover.md)和[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
+队友开发先看[当前v0.11规范说明](normalization-v0.11.md)，再读[README与启动命令](../README.md)、[项目交接索引](handover.md)和[知识覆盖与待核事项](coverage.md)。需要了解最终交付范围时看[软件计划设计书](software-plan.md)的需求和验收表。
 
 ## 第四批交付记录（历史）
 

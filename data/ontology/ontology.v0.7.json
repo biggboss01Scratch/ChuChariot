@@ -1,0 +1,539 @@
+{
+  "version": "0.7.0",
+  "entity_kinds": {
+    "ComponentType": "通用部件类别，不代表具体战车上的一个实例",
+    "Chariot": "具体战车或主研究对象",
+    "Component": "具体部件，必须声明所属对象",
+    "ReferenceSpecimen": "资料引用的对照标本，不能默认归属于主展品",
+    "Connection": "连接记录",
+    "ModelVersion": "数字模型版本，不是历史实物",
+    "Pose": "预留位姿实体；具体变换字段待场景阶段定义",
+    "AssemblyStep": "装配演示步骤，不是结构关系或导览顺序",
+    "Material": "资料记载的材质类别，保留原文用词和适用标本",
+    "PreservationFeature": "考古资料记载的保存特征",
+    "SurfaceFinish": "资料记录的表面髹饰类别",
+    "DecorationMotif": "资料记载的纹饰图案",
+    "ReferenceRecord": "来源中的未编号对象、统计或复原图记录，不等于主展品实物",
+    "HarnessRole": "图示中的系驾角色，不是某匹已识别的实物马",
+    "ComponentRegion": "具体构件的描述部位或形态特征区域；不是独立分件，保留标本归属",
+    "Subsystem": "教师资料中的装置栏目/教学分组，不是考古认定的独立实物",
+    "StructuralRegionType": "构件部位或形态特征区域的类别；可来自文献或教学，实测范围由实例及证据确定",
+    "EvidenceBasisClass": "连接路径依据的分类：对照标本、复原图或教学方案；该分类不等于审核结论",
+    "TermSense": "特定来源、语境或义项中的词义记录；不代表独立实物构件，不作全局同义归并"
+  },
+  "units": [
+    "mm",
+    "cm",
+    "m"
+  ],
+  "predicates": {
+    "SUBCLASS_OF": {
+      "label": "子类别属于父类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ]
+      ],
+      "acyclic": true
+    },
+    "INSTANCE_OF": {
+      "label": "实例属于类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "ComponentType"
+        ],
+        [
+          "ReferenceSpecimen",
+          "ComponentType"
+        ],
+        [
+          "ComponentRegion",
+          "StructuralRegionType"
+        ]
+      ]
+    },
+    "HAS_PART": {
+      "label": "主体直接包含部件；类别层关系不代表实例清单完整",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ],
+        [
+          "Chariot",
+          "Component"
+        ],
+        [
+          "Component",
+          "Component"
+        ],
+        [
+          "ReferenceSpecimen",
+          "Component"
+        ]
+      ],
+      "acyclic": true
+    },
+    "PARTICIPATES_IN_CONNECTION": {
+      "label": "部件参与连接",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Connection"
+        ]
+      ]
+    },
+    "HAS_POSE": {
+      "label": "具体部件具有位姿",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Pose"
+        ]
+      ]
+    },
+    "INVOLVES_COMPONENT": {
+      "label": "步骤涉及具体部件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "AssemblyStep",
+          "Component"
+        ]
+      ]
+    },
+    "DEPENDS_ON": {
+      "label": "步骤依赖前置步骤",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "AssemblyStep",
+          "AssemblyStep"
+        ]
+      ],
+      "acyclic": true
+    },
+    "DESCRIPTION": {
+      "label": "有证据的文字描述",
+      "object_kind": "text",
+      "subject_kinds": [
+        "ComponentType",
+        "Chariot",
+        "Component",
+        "ReferenceSpecimen",
+        "Connection",
+        "ReferenceRecord",
+        "HarnessRole",
+        "ComponentRegion",
+        "Subsystem",
+        "StructuralRegionType",
+        "EvidenceBasisClass",
+        "TermSense"
+      ]
+    },
+    "HAS_MATERIAL": {
+      "label": "标本记载的材质",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "Material"
+        ],
+        [
+          "Component",
+          "Material"
+        ],
+        [
+          "ReferenceRecord",
+          "Material"
+        ],
+        [
+          "ComponentRegion",
+          "Material"
+        ]
+      ]
+    },
+    "HAS_PRESERVED_FEATURE": {
+      "label": "残存特征",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "PreservationFeature"
+        ],
+        [
+          "Component",
+          "PreservationFeature"
+        ],
+        [
+          "ReferenceRecord",
+          "PreservationFeature"
+        ],
+        [
+          "ComponentRegion",
+          "PreservationFeature"
+        ]
+      ]
+    },
+    "HAS_SURFACE_FINISH": {
+      "label": "表面髹饰",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "SurfaceFinish"
+        ],
+        [
+          "Component",
+          "SurfaceFinish"
+        ],
+        [
+          "ReferenceRecord",
+          "SurfaceFinish"
+        ],
+        [
+          "ComponentRegion",
+          "SurfaceFinish"
+        ]
+      ]
+    },
+    "HAS_DECORATION_MOTIF": {
+      "label": "纹饰",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "DecorationMotif"
+        ],
+        [
+          "Component",
+          "DecorationMotif"
+        ],
+        [
+          "ReferenceRecord",
+          "DecorationMotif"
+        ],
+        [
+          "ComponentRegion",
+          "DecorationMotif"
+        ]
+      ]
+    },
+    "REFERS_TO_TYPE": {
+      "label": "来源记录涉及部件类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceRecord",
+          "ComponentType"
+        ]
+      ]
+    },
+    "DEPICTS": {
+      "label": "来源图示呈现对象或概念",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceRecord",
+          "ComponentType"
+        ],
+        [
+          "ReferenceRecord",
+          "Chariot"
+        ],
+        [
+          "ReferenceRecord",
+          "HarnessRole"
+        ]
+      ]
+    },
+    "TENON_JOINT_WITH": {
+      "label": "构件或其明确部位与构件榫卯相接；部位不因此成为独立零件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Component",
+          "Component"
+        ],
+        [
+          "ComponentRegion",
+          "Component"
+        ],
+        [
+          "Component",
+          "ComponentRegion"
+        ]
+      ]
+    },
+    "HAS_ASSOCIATED_COMPONENT": {
+      "label": "所配部件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "Component"
+        ]
+      ]
+    },
+    "HAS_SHAPE": {
+      "label": "形态与结构特征",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_PROCESSING": {
+      "label": "加工与制作记载",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_POSITION": {
+      "label": "位置记载",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_FIND_POSITION": {
+      "label": "出土位置",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord"
+      ]
+    },
+    "HAS_RECORDED_QUANTITY": {
+      "label": "原文数量",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_MASS_RECORD": {
+      "label": "原文重量记录",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord"
+      ]
+    },
+    "HAS_ORIGINAL_IDENTIFIERS": {
+      "label": "原文标识范围",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord"
+      ]
+    },
+    "HAS_DIAGRAM_LABELS": {
+      "label": "图内标注",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord"
+      ]
+    },
+    "HAS_PATTERN_DETAIL": {
+      "label": "纹饰部位与细节",
+      "object_kind": "text",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_DIMENSION": {
+      "label": "具有尺寸或距离属性；保留项目、数值、单位及原文",
+      "object_kind": "dimension",
+      "subject_kinds": [
+        "Component",
+        "ReferenceSpecimen",
+        "Chariot",
+        "ModelVersion",
+        "ReferenceRecord",
+        "ComponentRegion"
+      ]
+    },
+    "HAS_REGION": {
+      "label": "包含描述部位或形态特征区域，不表示独立分件或装配步骤",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceSpecimen",
+          "ComponentRegion"
+        ],
+        [
+          "Chariot",
+          "ComponentRegion"
+        ],
+        [
+          "Component",
+          "ComponentRegion"
+        ],
+        [
+          "ComponentType",
+          "StructuralRegionType"
+        ]
+      ],
+      "acyclic": true
+    },
+    "IN_SUBSYSTEM": {
+      "label": "构件类别、区域类别或来源词项归入教学栏目，可跨栏目",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "Subsystem"
+        ],
+        [
+          "StructuralRegionType",
+          "Subsystem"
+        ],
+        [
+          "TermSense",
+          "Subsystem"
+        ]
+      ]
+    },
+    "SCHEMATIC_NEXT": {
+      "label": "导览路径中的下一节点（非实物装配确认）",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ]
+      ]
+    },
+    "CONNECTION_FROM": {
+      "label": "教学路径说明记录的起始部件类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Connection",
+          "ComponentType"
+        ]
+      ]
+    },
+    "CONNECTION_TO": {
+      "label": "教学路径说明记录的目标部件类别",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Connection",
+          "ComponentType"
+        ]
+      ]
+    },
+    "HAS_EVIDENCE_BASIS": {
+      "label": "连接说明采用的依据类型",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "Connection",
+          "EvidenceBasisClass"
+        ]
+      ]
+    },
+    "SCHEMATIC_HAS_REGION": {
+      "label": "通用部件类别在教学上包含结构部位，不等于实物可拆分件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "StructuralRegionType"
+        ]
+      ]
+    },
+    "REGION_NEAR_COMPONENT": {
+      "label": "示意结构部位与构件类别相邻（教学推断，不保证接触与安装方式）",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "StructuralRegionType",
+          "ComponentType"
+        ]
+      ]
+    },
+    "TEACHING_GROUPS_TYPE": {
+      "label": "教学功能性分组，不代表实际零件具有整体-部分关系",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ]
+      ]
+    },
+    "SCHEMATIC_ASSEMBLY_WITH": {
+      "label": "教学示意或对照材料中的装配关联，非直接包含关系",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ComponentType",
+          "ComponentType"
+        ]
+      ]
+    },
+    "USES_TERM": {
+      "label": "来源记录使用特定语境词项，不代表增加一个实物部件",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "ReferenceRecord",
+          "TermSense"
+        ]
+      ]
+    },
+    "TERM_DENOTES": {
+      "label": "该来源词义在明确语境下指称规范概念，非全局同义",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "TermSense",
+          "ComponentType"
+        ]
+      ]
+    },
+    "TERM_RELATED_TO": {
+      "label": "该词义涉及某概念，不断言同义、上下位或整体部分关系",
+      "object_kind": "entity",
+      "endpoint_pairs": [
+        [
+          "TermSense",
+          "ComponentType"
+        ]
+      ]
+    }
+  },
+  "derived_relations": {
+    "SUPPORTED_BY": "Fact.evidence_ids 投影为 Fact → Evidence，不重复维护独立事实",
+    "REPRESENTED_BY": "model_mappings 投影为实体 → 模型版本与节点"
+  }
+}

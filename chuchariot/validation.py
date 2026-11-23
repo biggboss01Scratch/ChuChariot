@@ -6,6 +6,7 @@ from collections import defaultdict
 from datetime import date
 from graphlib import CycleError, TopologicalSorter
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from .dataset_io import TABLES
 
@@ -40,7 +41,7 @@ def validate(data: dict, ontology: dict) -> list[str]:
     if errors:
         return errors
 
-    if data["schema_version"] not in {"0.1.0", "0.2.0"}:
+    if data["schema_version"] not in {"0.1.0", "0.2.0", "0.3.0", "0.4.0"}:
         error("schema_version", "不支持的版本；请先迁移")
     if data["ontology_version"] != ontology["version"]:
         error("ontology_version", "与本体版本不一致")
@@ -50,7 +51,7 @@ def validate(data: dict, ontology: dict) -> list[str]:
     indices = _index_records(data, error)
     _validate_sources(indices["sources"], error)
     _validate_evidence(indices["evidence"], indices["sources"], error)
-    _validate_entities(indices["entities"], ontology, error)
+    _validate_entities(indices["entities"], ontology, error, indices["sources"])
     _validate_facts(indices, ontology, data["stage"], error)
     if not errors:
         _validate_teaching_paths(indices, error)
@@ -111,8 +112,23 @@ def _validate_shape(data, error):
                         "stage": str, "description": str, **{name: list for name in TABLES}}, {}, "dataset", error):
         return
     for table, (required, optional) in RECORD_SHAPES.items():
-        if table == "facts" and data["schema_version"] == "0.2.0":
+        if table == "facts" and data["schema_version"] in {"0.2.0", "0.3.0", "0.4.0"}:
             optional = {**optional, "value": (str, dict)}
+        if data["schema_version"] in {"0.3.0", "0.4.0"}:
+            if table == "sources":
+                optional = {**optional, "duration_seconds": (int, float),
+                            "content_sha256": str, "source_type": str}
+            elif table == "evidence":
+                required = {key: value for key, value in required.items() if key != "pdf_page"}
+                optional = {**optional, "pdf_page": int, "start_seconds": (int, float),
+                            "end_seconds": (int, float)}
+            elif table == "facts":
+                optional = {**optional, "knowledge_basis": str}
+        if data["schema_version"] == "0.4.0":
+            if table == "sources":
+                optional = {**optional, "url": str, "accessed_on": str}
+            elif table == "entities":
+                optional = {**optional, "lexeme": str, "source_id": str}
         if isinstance(data.get(table), list):
             for index, record in enumerate(data[table]):
                 shape(record, required, optional, f"{table}[{index}]", error)
@@ -134,27 +150,77 @@ def _index_records(data, error):
 
 def _validate_sources(sources, error):
     for source in sources.values():
-        if source["format"] not in {"pdf", "docx", "md"}:
+        if source["format"] not in {"pdf", "docx", "md", "mp4"}:
             error(source["id"], "不支持的文献格式")
         if Path(source["filename"]).name != source["filename"] or ":" in source["filename"] or "\\" in source["filename"]:
             error(source["id"], "filename 必须是相对于资源目录的文件名")
         if "page_count" in source and (type(source["page_count"]) is not int or source["page_count"] < 1):
             error(source["id"], "page_count 必须为正整数")
+        if source["format"] == "mp4":
+            duration = source.get("duration_seconds")
+            if type(duration) not in {int, float} or not math.isfinite(duration) or duration <= 0:
+                error(source["id"], "视频 duration_seconds 必须为有限正数")
+            if not re.fullmatch(r"[0-9a-f]{64}", source.get("content_sha256", "")):
+                error(source["id"], "视频来源必须保存内容 SHA256")
+            if source.get("source_type") != "modern_reconstruction_video":
+                error(source["id"], "当前视频须标明来源类型 modern_reconstruction_video")
+            if "page_count" in source:
+                error(source["id"], "视频不能使用 PDF 页数")
+        elif source["format"] == "md" and source.get("source_type") == "dictionary_excerpt":
+            try:
+                url = urlsplit(source.get("url", ""))
+            except ValueError:
+                url = urlsplit("")
+            if url.scheme != "https" or not url.hostname or url.username or url.password:
+                error(source["id"], "词典摘录必须提供HTTPS官方条目URL，不能包含登录凭据")
+            if not re.fullmatch(r"[0-9a-f]{64}", source.get("content_sha256", "")):
+                error(source["id"], "词典摘录必须保存内容 SHA256")
+            try:
+                date.fromisoformat(source.get("accessed_on", ""))
+            except ValueError:
+                error(source["id"], "词典摘录必须保存ISO访问日期")
+            if "duration_seconds" in source or "page_count" in source:
+                error(source["id"], "词典条目不能使用视频时长或PDF页数")
+        elif any(key in source for key in ("duration_seconds", "content_sha256", "source_type", "url", "accessed_on")):
+            error(source["id"], "来源元数据与格式不兼容")
+        if source["format"] == "mp4" and any(key in source for key in ("url", "accessed_on")):
+            error(source["id"], "本地视频不能使用词典摘录字段")
 
 
 def _validate_evidence(evidence, sources, error):
     for item in evidence.values():
         ident = item["id"]
         source = sources.get(item["source_id"])
-        if source is None or source["format"] != "pdf":
-            error(ident, "当前证据格式要求引用已登记 PDF")
-        if type(item["pdf_page"]) is not int or item["pdf_page"] < 1:
-            error(ident, "pdf_page 必须为从 1 开始的正整数")
-        elif source and item["pdf_page"] > source.get("page_count", math.inf):
-            error(ident, "PDF 页码越界")
+        if source is None or source["format"] not in {"pdf", "mp4", "md"}:
+            error(ident, "证据必须引用已登记PDF、视频或词典摘录")
+        if source and source["format"] == "mp4":
+            if "pdf_page" in item or "printed_page" in item or "figure" in item:
+                error(ident, "视频证据不能使用 PDF 页码或图号")
+            start, end = item.get("start_seconds"), item.get("end_seconds")
+            if any(type(n) not in {int, float} or not math.isfinite(n) for n in (start, end)):
+                error(ident, "视频必须提供有限数值 start_seconds 和 end_seconds")
+            elif (type(source.get("duration_seconds")) not in {int, float}
+                  or not 0 <= start < end <= source["duration_seconds"]):
+                error(ident, "视频时间段越界或起止顺序错误")
+            transcriptions = {"video_frame", "video_subtitle"}
+        elif source and source["format"] == "md":
+            if source.get("source_type") != "dictionary_excerpt":
+                error(ident, "文字条目证据须引用已登记的词典摘录")
+            if any(key in item for key in ("pdf_page", "printed_page", "figure", "start_seconds", "end_seconds")):
+                error(ident, "词典条目不能使用PDF页码或视频时间段")
+            transcriptions = {"embedded_text"}
+        else:
+            page = item.get("pdf_page")
+            if type(page) is not int or page < 1:
+                error(ident, "pdf_page 必须为从 1 开始的正整数")
+            elif source and page > source.get("page_count", math.inf):
+                error(ident, "PDF 页码越界")
+            if "start_seconds" in item or "end_seconds" in item:
+                error(ident, "PDF 证据不能使用视频时间段")
+            transcriptions = {"embedded_text", "image_transcription"}
         if not item["quote"].strip() or not item["locator"].strip():
             error(ident, "证据原文和定位不能为空")
-        if item["transcription"] not in {"embedded_text", "image_transcription"}:
+        if item["transcription"] not in transcriptions:
             error(ident, "未知的转录方式")
         if item["check_status"] not in {"source_checked", "pending"}:
             error(ident, "未知的原文检查状态")
@@ -180,7 +246,7 @@ def _validate_measurement(measurement, ontology, ident, error):
         error(ident, "尺寸类型和原始表达不能为空")
 
 
-def _validate_entities(entities, ontology, error):
+def _validate_entities(entities, ontology, error, sources=None):
     for item in entities.values():
         ident, kind = item["id"], item["kind"]
         if kind not in ontology["entity_kinds"]:
@@ -193,6 +259,13 @@ def _validate_entities(entities, ontology, error):
         scope = entities.get(item.get("scope_id"))
         if "scope_id" in item and scope is None:
             error(ident, "scope_id 引用不存在")
+        if kind == "TermSense":
+            if not item.get("lexeme", "").strip() or item.get("source_id") not in (sources or {}):
+                error(ident, "词义节点必须保存原词lexeme及有效来源source_id")
+            if "scope_id" in item and (scope is None or scope["kind"] != "ReferenceRecord"):
+                error(ident, "词义语境必须指向来源记录，不能当作实物归属")
+        elif "lexeme" in item or "source_id" in item:
+            error(ident, "lexeme/source_id只用于词义节点")
         if kind in {"Component", "ComponentRegion"} and (scope is None or scope["kind"] not in {"Chariot", "ReferenceSpecimen"}):
             error(ident, "具体部件必须声明所属战车或对照标本")
         if kind == "Measurement":
@@ -233,7 +306,7 @@ def _validate_facts(indices, ontology, stage, error):
                     expected = subject["id"] if subject["kind"] in {"Chariot", "ReferenceSpecimen"} else subject.get("scope_id")
                     if obj.get("scope_id") != expected:
                         error(ident, "具体部件跨研究对象组成")
-                if fact["predicate"] == "HAS_REGION":
+                if fact["predicate"] == "HAS_REGION" and obj["kind"] == "ComponentRegion":
                     expected = subject["id"] if subject["kind"] in {"Chariot", "ReferenceSpecimen"} else subject.get("scope_id")
                     if obj.get("scope_id") != expected:
                         error(ident, "描述区域不能跨标本或研究对象")
@@ -241,6 +314,16 @@ def _validate_facts(indices, ontology, stage, error):
                     error(ident, "所配部件必须归属于当前标本记录")
                 if fact["predicate"] == "TENON_JOINT_WITH" and subject.get("scope_id") != obj.get("scope_id"):
                     error(ident, "榫卯连接不能跨标本或研究对象")
+                if fact["predicate"] == "TERM_DENOTES":
+                    term_source = subject.get("source_id")
+                    if not any(evidence.get(eid, {}).get("source_id") == term_source
+                               for eid in fact["evidence_ids"] if isinstance(eid, str)):
+                        error(ident, "词义指称必须引用该词义所属来源的证据")
+                if fact["predicate"] == "USES_TERM":
+                    term_source = obj.get("source_id")
+                    if not any(evidence.get(eid, {}).get("source_id") == term_source
+                               for eid in fact["evidence_ids"] if isinstance(eid, str)):
+                        error(ident, "来源用词必须引用该词义所属来源的证据")
         elif predicate["object_kind"] == "dimension":
             if not isinstance(fact.get("value"), dict) or subject["kind"] not in predicate["subject_kinds"]:
                 error(ident, "尺寸属性必须为结构化数值，且不能归给通用部件类别")
@@ -252,6 +335,17 @@ def _validate_facts(indices, ontology, stage, error):
             error(ident, "文字事实不能为空")
         if fact["origin"] not in {"documented", "inferred", "hypothesis"}:
             error(ident, "未知的 origin")
+        video_backed = any(
+            indices["sources"].get(evidence.get(eid, {}).get("source_id"), {}).get("format") == "mp4"
+            for eid in fact["evidence_ids"] if isinstance(eid, str))
+        knowledge_basis = fact.get("knowledge_basis")
+        if video_backed or knowledge_basis is not None:
+            if knowledge_basis not in {"modern_reconstruction_observation", "modern_reconstruction_inference"}:
+                error(ident, "视频知识必须标注现代复原实验记录或现代复原推测")
+            if not video_backed:
+                error(ident, "现代复原来源标注必须引用视频证据")
+            if knowledge_basis == "modern_reconstruction_inference" and fact["origin"] == "documented":
+                error(ident, "现代复原推测不能标为 documented")
         if fact["review_status"] not in {"pending", "confirmed", "disputed"}:
             error(ident, "未知的 review_status")
         if stage == "reviewed" and fact["review_status"] == "pending":

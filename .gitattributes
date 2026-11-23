@@ -1,2 +1,3 @@
 # Snapshot byte hashes must survive checkout on Windows, macOS and Linux.
 data/**/*.json text eol=lf
+data/sources/terminology/*.md text eol=lf

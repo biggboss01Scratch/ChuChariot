@@ -1,0 +1,545 @@
+{
+  "version": "0.1.0",
+  "dataset_id": "dataset:knowledge-011",
+  "source_sha256": {
+    "source:001": "23d79ba68d0935ac26e439dede14c611a47556af8bdebc7b0f26a83bcc4a36e5"
+  },
+  "items": [
+    {
+      "id": "media:wheel-diagram",
+      "kind": "source_clip",
+      "filename": "wheel-diagram.png",
+      "label": "车轮正面图",
+      "context": "汇编图示，个体归属待核",
+      "entity_ids": [
+        "type:001"
+      ],
+      "evidence_id": "evidence:022",
+      "pdf_page": 6,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        88,
+        124,
+        409,
+        438
+      ]
+    },
+    {
+      "id": "media:axle-diagram",
+      "kind": "source_clip",
+      "filename": "axle-diagram.png",
+      "label": "车轴标注",
+      "context": "汇编示意图",
+      "entity_ids": [
+        "type:002"
+      ],
+      "evidence_id": "evidence:020",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        531,
+        1314,
+        714,
+        1412
+      ]
+    },
+    {
+      "id": "media:hub-diagram",
+      "kind": "source_clip",
+      "filename": "hub-diagram.png",
+      "label": "毂的图示",
+      "context": "汇编示意图",
+      "entity_ids": [
+        "type:003"
+      ],
+      "evidence_id": "evidence:001",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        666,
+        1537,
+        1084,
+        1735
+      ]
+    },
+    {
+      "id": "media:spoke-diagram",
+      "kind": "source_clip",
+      "filename": "spoke-diagram.png",
+      "label": "辐的图示",
+      "context": "汇编示意图",
+      "entity_ids": [
+        "type:004"
+      ],
+      "evidence_id": "evidence:001",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        255,
+        1519,
+        572,
+        1744
+      ]
+    },
+    {
+      "id": "media:rim-diagram",
+      "kind": "source_clip",
+      "filename": "rim-diagram.png",
+      "label": "轮牙标注",
+      "context": "汇编示意图",
+      "entity_ids": [
+        "type:005"
+      ],
+      "evidence_id": "evidence:001",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        344,
+        1166,
+        423,
+        1251
+      ]
+    },
+    {
+      "id": "media:axle-cap-artifact",
+      "kind": "source_clip",
+      "filename": "axle-cap-artifact.png",
+      "label": "M1：201-1 车軎纹饰",
+      "context": "对照器物图",
+      "entity_ids": [
+        "specimen:003",
+        "type:006"
+      ],
+      "evidence_id": "evidence:011",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        192,
+        700,
+        416,
+        937
+      ]
+    },
+    {
+      "id": "media:axle-pin-artifact",
+      "kind": "source_clip",
+      "filename": "axle-pin-artifact.png",
+      "label": "M1：201-1 旁的辖侧图",
+      "context": "对照器物图",
+      "entity_ids": [
+        "type:007"
+      ],
+      "evidence_id": "evidence:021",
+      "pdf_page": 5,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        422,
+        720,
+        465,
+        819
+      ]
+    },
+    {
+      "id": "media:shaft-artifact",
+      "kind": "source_clip",
+      "filename": "shaft-artifact.png",
+      "label": "M1：302 车辀残件",
+      "context": "对照器物照片",
+      "entity_ids": [
+        "specimen:004"
+      ],
+      "evidence_id": "evidence:017",
+      "pdf_page": 3,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        692,
+        189,
+        1159,
+        500
+      ]
+    },
+    {
+      "id": "media:glb-001",
+      "kind": "model_view",
+      "filename": "glb-001.png",
+      "label": "车轴 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:002"
+      ],
+      "mapping_id": "mapping:001",
+      "node_indices": [
+        2
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-002",
+      "kind": "model_view",
+      "filename": "glb-002.png",
+      "label": "车轮 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:001"
+      ],
+      "mapping_id": "mapping:002",
+      "node_indices": [
+        246,
+        326
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-003",
+      "kind": "model_view",
+      "filename": "glb-003.png",
+      "label": "毂 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:003"
+      ],
+      "mapping_id": "mapping:003",
+      "node_indices": [
+        188,
+        268
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-004",
+      "kind": "model_view",
+      "filename": "glb-004.png",
+      "label": "辐 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:004"
+      ],
+      "mapping_id": "mapping:004",
+      "node_indices": [
+        241,
+        321
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-005",
+      "kind": "model_view",
+      "filename": "glb-005.png",
+      "label": "牙 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:005"
+      ],
+      "mapping_id": "mapping:005",
+      "node_indices": [
+        245,
+        325
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-006",
+      "kind": "model_view",
+      "filename": "glb-006.png",
+      "label": "軎 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:006"
+      ],
+      "mapping_id": "mapping:006",
+      "node_indices": [
+        250,
+        330
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:glb-007",
+      "kind": "model_view",
+      "filename": "glb-007.png",
+      "label": "辖 · GLB 节点视图",
+      "context": "教学模型静态渲染 · 绿色突出显示节点",
+      "entity_ids": [
+        "type:007"
+      ],
+      "mapping_id": "mapping:007",
+      "node_indices": [
+        253,
+        333
+      ],
+      "model_sha256": "fd4708a46f78cc2e59b9ae11274f4de8025bc1248aa18cb510759e4964021f00"
+    },
+    {
+      "id": "media:pdf-yoke",
+      "kind": "source_clip",
+      "filename": "pdf-yoke.png",
+      "label": "轭示意与 CH1：3轭原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "specimen:ch13-yoke",
+        "type:yoke"
+      ],
+      "evidence_id": "evidence:pdf-p01-t03",
+      "pdf_page": 1,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        530,
+        432,
+        948
+      ]
+    },
+    {
+      "id": "media:pdf-hemp-trace",
+      "kind": "source_clip",
+      "filename": "pdf-hemp-trace.png",
+      "label": "麻或丝靷表及原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "specimen:ch11-trace"
+      ],
+      "evidence_id": "evidence:pdf-p01-t05",
+      "pdf_page": 1,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        1069,
+        1157,
+        1568
+      ]
+    },
+    {
+      "id": "media:pdf-hide-trace",
+      "kind": "source_clip",
+      "filename": "pdf-hide-trace.png",
+      "label": "皮靷表及原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "specimen:ch14-trace"
+      ],
+      "evidence_id": "evidence:pdf-p01-t07",
+      "pdf_page": 1,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        1069,
+        1157,
+        1568
+      ]
+    },
+    {
+      "id": "media:pdf-beam",
+      "kind": "source_clip",
+      "filename": "pdf-beam.png",
+      "label": "衡示意与 CH1：4衡原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "component:ch14-beam-caps",
+        "component:ch14-yi",
+        "specimen:ch14-beam",
+        "type:beam"
+      ],
+      "evidence_id": "evidence:pdf-p02-t01",
+      "pdf_page": 2,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        876,
+        1157,
+        1354
+      ]
+    },
+    {
+      "id": "media:pdf-pole-fragment",
+      "kind": "source_clip",
+      "filename": "pdf-pole-fragment.png",
+      "label": "M1：302辀残件与髹饰原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "component:m1302-front",
+        "component:m1302-head",
+        "component:m1302-middle",
+        "component:m1302-rear",
+        "specimen:004"
+      ],
+      "evidence_id": "evidence:pdf-p03-t01",
+      "pdf_page": 3,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        198,
+        1157,
+        1029
+      ]
+    },
+    {
+      "id": "media:pdf-axle-reference",
+      "kind": "source_clip",
+      "filename": "pdf-axle-reference.png",
+      "label": "CH1：3轴参考段原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "specimen:002"
+      ],
+      "evidence_id": "evidence:pdf-p04-t04",
+      "pdf_page": 4,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        89,
+        564,
+        1208,
+        770
+      ]
+    },
+    {
+      "id": "media:pdf-wheel-details",
+      "kind": "source_clip",
+      "filename": "pdf-wheel-details.png",
+      "label": "CH1：5轮牙、辐、毂尺寸原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "component:ch15-binding",
+        "component:ch15-hub",
+        "component:ch15-hub-ridges",
+        "component:ch15-rim",
+        "component:ch15-spoke",
+        "component:ch15-spoke-inner",
+        "component:ch15-spoke-outer",
+        "component:ch15-wood-strips",
+        "specimen:001"
+      ],
+      "evidence_id": "evidence:pdf-p06-t01",
+      "pdf_page": 6,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        85,
+        115,
+        1189,
+        603
+      ]
+    },
+    {
+      "id": "media:pdf-harness",
+      "kind": "source_clip",
+      "filename": "pdf-harness.png",
+      "label": "衔镳图与 M1：257 组原文",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "component:m1257-bone-cap",
+        "specimen:005",
+        "specimen:m1257-2a",
+        "specimen:m1257-bit"
+      ],
+      "evidence_id": "evidence:pdf-p07-t02",
+      "pdf_page": 7,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        389,
+        1157,
+        1151
+      ]
+    },
+    {
+      "id": "media:pdf-reins-diagram",
+      "kind": "source_clip",
+      "filename": "pdf-reins-diagram.png",
+      "label": "四马缰绳示意图（未明示标本号）",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "record:p08-reins-diagram",
+        "type:reins",
+        "type:yi-ring",
+        "type:you-ring"
+      ],
+      "evidence_id": "evidence:pdf-figure-17",
+      "pdf_page": 8,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        207,
+        816,
+        1070,
+        1677
+      ]
+    },
+    {
+      "id": "media:pdf-six-chariot",
+      "kind": "source_clip",
+      "filename": "pdf-six-chariot.png",
+      "label": "图三一七6号车复原图",
+      "context": "教师汇编原页截图；保留标本与图示范围，待内容审核",
+      "entity_ids": [
+        "object:001",
+        "record:six-chariot-reconstruction",
+        "type:beam",
+        "type:body",
+        "type:pole",
+        "type:railing",
+        "type:yoke"
+      ],
+      "evidence_id": "evidence:pdf-figure-18",
+      "pdf_page": 9,
+      "page_size_px": [
+        1273,
+        1800
+      ],
+      "rect_px": [
+        115,
+        346,
+        1157,
+        1016
+      ]
+    }
+  ]
+}

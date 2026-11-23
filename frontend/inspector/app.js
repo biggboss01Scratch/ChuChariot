@@ -8,14 +8,17 @@ const kinds = { ComponentType: "部件类别", Chariot: "研究对象", Componen
 const relationNames = { HAS_PART: "包含部件", INSTANCE_OF: "属于类别", HAS_MEASUREMENT: "具有尺寸", HAS_DIMENSION: "尺寸或距离", HAS_MATERIAL: "材质为", HAS_PRESERVED_FEATURE: "残存特征", HAS_SURFACE_FINISH: "表面髹饰", HAS_DECORATION_MOTIF: "纹饰为", SUBCLASS_OF: "属于父类", DESCRIPTION: "资料描述", PARTICIPATES_IN_CONNECTION: "参与连接", HAS_POSE: "具有位姿", INVOLVES_COMPONENT: "涉及部件", DEPENDS_ON: "依赖步骤" };
 const shortRelations = { HAS_PART: "组成", INSTANCE_OF: "归类", HAS_MEASUREMENT: "尺寸", HAS_MATERIAL: "材质", HAS_PRESERVED_FEATURE: "保存特征", HAS_SURFACE_FINISH: "髹饰", HAS_DECORATION_MOTIF: "纹饰", SUBCLASS_OF: "类别", DESCRIPTION: "描述" };
 const origins = { documented: "资料记载", inferred: "推断解释", hypothesis: "复原假设" };
+const knowledgeBases = { modern_reconstruction_observation: "现代复原实验记录", modern_reconstruction_inference: "现代复原推测" };
 const statusNames = { pending: "待审核", confirmed: "已确认", disputed: "有争议" };
 const symbols = { ComponentType: "件", ReferenceSpecimen: "标", Measurement: "尺", Material: "材", PreservationFeature: "存", SurfaceFinish: "饰", DecorationMotif: "纹", ModelVersion: "模", Chariot: "车" };
 Object.assign(kinds, { ReferenceRecord: "来源记录", HarnessRole: "系驾角色", ComponentRegion: "描述区域" });
 Object.assign(symbols, { ReferenceRecord: "录", HarnessRole: "驾", ComponentRegion: "区" });
 Object.assign(relationNames, { HAS_REGION: "包含描述区域" });
 Object.assign(shortRelations, { HAS_REGION: "区域" });
-Object.assign(kinds, { Subsystem: "教师栏目/教学分组", StructuralRegionType: "教学结构区域", EvidenceBasisClass: "路径依据类别" });
-Object.assign(symbols, { Subsystem: "组", StructuralRegionType: "区", EvidenceBasisClass: "据", Connection: "链" });
+Object.assign(kinds, { Subsystem: "教师栏目/教学分组", StructuralRegionType: "部位或特征类别", EvidenceBasisClass: "路径依据类别", TermSense: "语境词义" });
+Object.assign(symbols, { Subsystem: "组", StructuralRegionType: "区", EvidenceBasisClass: "据", Connection: "链", TermSense: "词" });
+Object.assign(relationNames, { USES_TERM: "来源原称", TERM_DENOTES: "本语境指称", TERM_RELATED_TO: "词义涉及" });
+Object.assign(shortRelations, { USES_TERM: "原称", TERM_DENOTES: "语境指称", TERM_RELATED_TO: "词义涉及" });
 Object.assign(relationNames, { IN_SUBSYSTEM: "归入教学分组", SCHEMATIC_NEXT: "教学路径下一节点", CONNECTION_FROM: "路径起点", CONNECTION_TO: "路径终点", HAS_EVIDENCE_BASIS: "路径依据类别", SCHEMATIC_HAS_REGION: "教学结构区域", REGION_NEAR_COMPONENT: "教学区域邻近", TEACHING_GROUPS_TYPE: "教学功能分组", SCHEMATIC_ASSEMBLY_WITH: "示意装配关联" });
 Object.assign(shortRelations, { IN_SUBSYSTEM: "教学分组", SCHEMATIC_NEXT: "教学路径", CONNECTION_FROM: "起点", CONNECTION_TO: "终点", HAS_EVIDENCE_BASIS: "依据类别", SCHEMATIC_HAS_REGION: "示意区域", REGION_NEAR_COMPONENT: "示意邻近", TEACHING_GROUPS_TYPE: "功能分组", SCHEMATIC_ASSEMBLY_WITH: "示意装配" });
 Object.assign(relationNames, { REFERS_TO_TYPE: "记录涉及类别", DEPICTS: "图示呈现", TENON_JOINT_WITH: "榫卯相接", HAS_ASSOCIATED_COMPONENT: "所配部件", HAS_SHAPE: "形态与结构", HAS_PROCESSING: "加工记载", HAS_POSITION: "位置记载", HAS_FIND_POSITION: "出土位置", HAS_RECORDED_QUANTITY: "原文数量", HAS_MASS_RECORD: "原文重量", HAS_ORIGINAL_IDENTIFIERS: "原文标识范围", HAS_DIAGRAM_LABELS: "图内标注", HAS_PATTERN_DETAIL: "纹饰部位与细节" });
@@ -25,6 +28,26 @@ const getEntity = (id) => state.data.entities.find((e) => e.id === id);
 const relatedFacts = (id) => state.data.facts.filter((f) => f.subject_id === id || f.object_id === id);
 const badge = (status) => `<span class="badge ${escapeHtml(status)}">${escapeHtml(statusNames[status] || status)}</span>`;
 const entityLink = (id) => `<button class="entity-link" data-entity="${escapeHtml(id)}">${escapeHtml(getEntity(id)?.label || id)}</button>`;
+
+function formatEvidenceTime(seconds) {
+  const total = Math.floor(seconds);
+  return `${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`;
+}
+
+function evidenceLocation(evidence) {
+  if (Number.isFinite(evidence.start_seconds)) return `视频 ${formatEvidenceTime(evidence.start_seconds)}—${formatEvidenceTime(evidence.end_seconds)}`;
+  return Number.isInteger(evidence.pdf_page) ? `PDF 第 ${evidence.pdf_page} 页` : `词典条目 · ${evidence.locator}`;
+}
+
+function factOrigin(fact) {
+  return [origins[fact.origin] || fact.origin, knowledgeBases[fact.knowledge_basis]].filter(Boolean).join(" · ");
+}
+
+function evidenceSourceUrl(source, evidence) {
+  if (source.format === "md") return source.url;
+  const anchor = source.format === "mp4" ? `t=${evidence.start_seconds},${evidence.end_seconds}` : `page=${evidence.pdf_page}`;
+  return `/api/sources/${encodeURIComponent(source.id)}#${anchor}`;
+}
 
 async function loadData() {
   const requestVersion = ++state.requestVersion;
@@ -134,7 +157,7 @@ function atlasLayout(entities, facts) {
   }
   entities.forEach((entity) => region(entity.id));
   const positions = new Map(), groups = [];
-  const rank = { ComponentType: 0, ReferenceSpecimen: 1, Component: 2, ComponentRegion: 2, ReferenceRecord: 3, Measurement: 4 };
+  const rank = { ComponentType: 0, StructuralRegionType: 0, ReferenceSpecimen: 1, Component: 2, ComponentRegion: 2, ReferenceRecord: 3, TermSense: 3, Measurement: 4 };
   const tileWidth = 1210, gap = 180;
   let rowY = 60;
   for (let row = 0; row < 2; row++) {
@@ -466,7 +489,7 @@ function renderGraph() {
       class: `graph-edge origin-${fact.origin} ${related ? "related" : state.highlight ? "dimmed" : ""} ${cross ? "cross-region" : ""}`,
       "data-fact": fact.id, "marker-end": "url(#arrow-head)",
     });
-    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${relationNames[fact.predicate] || fact.predicate} → ${getEntity(fact.object_id).label} · ${origins[fact.origin]} · ${statusNames[fact.review_status]}`));
+    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${relationNames[fact.predicate] || fact.predicate} → ${getEntity(fact.object_id).label} · ${factOrigin(fact)} · ${statusNames[fact.review_status]}`));
     edgeLayer.append(edge);
     if (related && scale >= .35) {
       const at = route?.label || [(from[0] + to[0]) / 2, (from[1] + to[1]) / 2];
@@ -584,7 +607,7 @@ function renderDetail() {
 }
 
 const propertyPredicates = new Set(["HAS_MEASUREMENT", "HAS_DIMENSION", "HAS_MATERIAL", "HAS_PRESERVED_FEATURE", "HAS_SURFACE_FINISH", "HAS_DECORATION_MOTIF"]);
-const fieldNames = { id: "实体编号", kind: "实体类型", label: "名称", aliases: "别名", scope_id: "归属对象", note: "备注", resource_id: "资源编号", content_sha256: "文件 SHA-256", measurement: "尺寸记录", quantity: "测量项目", value: "记录值", unit: "单位", raw: "原始表达", approximate: "是否近似", min: "下限", max: "上限" };
+const fieldNames = { id: "实体编号", kind: "实体类型", label: "名称", aliases: "别名", scope_id: "归属对象或语境记录", lexeme: "来源原词", source_id: "词义来源", note: "备注", resource_id: "资源编号", content_sha256: "文件 SHA-256", measurement: "尺寸记录", quantity: "测量项目", value: "记录值", unit: "单位", raw: "原始表达", approximate: "是否近似", min: "下限", max: "上限" };
 const propertyNames = { HAS_MATERIAL: "材质", HAS_PRESERVED_FEATURE: "保存特征", HAS_SURFACE_FINISH: "表面髹饰", HAS_DECORATION_MOTIF: "纹饰" };
 
 function renderEntityFields(entity) {
@@ -595,6 +618,7 @@ function renderEntityFields(entity) {
       if (value && typeof value === "object" && !Array.isArray(value)) return rows(value, `${label} / `);
       let display;
       if (key === "scope_id") display = entityLink(value);
+      else if (key === "source_id") display = escapeHtml(state.data.sources.find((source) => source.id === value)?.title || value);
       else if (key === "kind") display = escapeHtml(kinds[value] || value);
       else if (Array.isArray(value)) display = value.length ? value.map((item) => escapeHtml(typeof item === "object" ? JSON.stringify(item) : item)).join("、") : "无";
       else display = escapeHtml(value === true ? "是" : value === false ? "否" : value ?? "未填写");
@@ -628,19 +652,21 @@ function renderProperties(entity, facts) {
         : fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value);
       const references = [...new Set(fact.evidence_ids.map((id) => {
         const evidence = state.data.evidence.find((item) => item.id === id);
-        return evidence ? `PDF 第 ${evidence.pdf_page} 页` : null;
+        return evidence ? evidenceLocation(evidence) : null;
       }).filter(Boolean))];
-      return `<div class="property-row" data-property-fact="${escapeHtml(fact.id)}"><dt>${escapeHtml(label)}</dt><dd><div class="property-value">${value}</div><div class="property-meta">${badge(fact.review_status)}<span>${escapeHtml(origins[fact.origin] || fact.origin)}</span></div>${measurement ? `<p class="property-raw">原始表达：${escapeHtml(measurement.raw)}</p>` : ""}<div class="property-proof"><span>${references.length ? escapeHtml(references.join("、")) : "暂无证据片段"}</span><button class="text-button" data-proof="${escapeHtml(fact.id)}">查看依据</button></div></dd></div>`;
+      return `<div class="property-row" data-property-fact="${escapeHtml(fact.id)}"><dt>${escapeHtml(label)}</dt><dd><div class="property-value">${value}</div><div class="property-meta">${badge(fact.review_status)}<span>${escapeHtml(factOrigin(fact))}</span></div>${measurement ? `<p class="property-raw">原始表达：${escapeHtml(measurement.raw)}</p>` : ""}<div class="property-proof"><span>${references.length ? escapeHtml(references.join("、")) : "暂无证据片段"}</span><button class="text-button" data-proof="${escapeHtml(fact.id)}">查看依据</button></div></dd></div>`;
     }).join("") + '</dl>';
   }
   if (entity.kind === "ComponentType") content += '<p class="property-scope">这里只显示该类别直接记录的属性。具体标本的尺寸、材质请从下方关联记录进入标本查看。</p>';
   if (entity.kind === "ComponentRegion") content += '<p class="property-scope">这是资料描述的局部区域，用于限定属性作用部位，不表示可拆卸零件。</p>';
-  if (["Subsystem", "StructuralRegionType", "EvidenceBasisClass", "Connection"].includes(entity.kind)) content += '<p class="property-scope">这是教学分组、结构区域或路径依据记录。各跳可来自不同标本或图示，不能当作同车实物连接、受力链或安装顺序；新增三维高亮仍需模型映射。</p>';
+  if (entity.kind === "StructuralRegionType") content += '<p class="property-scope">这是构件部位或形态特征的类别，不表示独立分件。具体尺寸请查看对照标本中的区域；部位也可单独高亮，三维对应仍需核对。</p>';
+  if (entity.kind === "TermSense") content += '<p class="property-scope">这是特定来源或义项中的用词，不是一件额外的马具。请沿“本语境指称”查看规范概念；“词义涉及”不表示同义或整体部分关系。</p>';
+  if (["Subsystem", "EvidenceBasisClass", "Connection"].includes(entity.kind)) content += '<p class="property-scope">这是教学分组或路径依据记录。各跳可来自不同标本或图示，不能当作同车实物连接、受力链或安装顺序；新增三维高亮仍需模型映射。</p>';
   return content + '</section>';
 }
 
 function renderFactCards(facts) {
-  return facts.map((fact) => `<article class="fact-card"><div class="fact-meta"><code>${escapeHtml(fact.id)}</code>${badge(fact.review_status)}</div><p class="fact-statement">${entityLink(fact.subject_id)}<span class="relation-word">${escapeHtml(relationNames[fact.predicate] || fact.predicate)}</span>${fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value)}</p><div class="fact-origin">${escapeHtml(origins[fact.origin] || fact.origin)} · ${fact.evidence_ids.length} 段证据</div>${fact.rationale ? `<p class="property-scope">推断或假设理由：${escapeHtml(fact.rationale)}</p>` : ""}<button class="text-button" data-proof="${escapeHtml(fact.id)}">查看事实依据</button></article>`).join("");
+  return facts.map((fact) => `<article class="fact-card"><div class="fact-meta"><code>${escapeHtml(fact.id)}</code>${badge(fact.review_status)}</div><p class="fact-statement">${entityLink(fact.subject_id)}<span class="relation-word">${escapeHtml(relationNames[fact.predicate] || fact.predicate)}</span>${fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value)}</p><div class="fact-origin">${escapeHtml(factOrigin(fact))} · ${fact.evidence_ids.length} 段证据</div>${fact.rationale ? `<p class="property-scope">推断或假设理由：${escapeHtml(fact.rationale)}</p>` : ""}<button class="text-button" data-proof="${escapeHtml(fact.id)}">查看事实依据</button></article>`).join("");
 }
 
 function renderKnowledge(entity) {
@@ -693,10 +719,15 @@ function renderEvidence(entity) {
     return;
   }
   const selectedEvidence = new Set(state.data.facts.find((f) => f.id === state.selectedFact)?.evidence_ids || []);
-  $("#detail-content").innerHTML = '<p class="note">证据链接到原始 PDF。相关段落和部件图见下方。</p>' + evidence.map((e) => {
+  $("#detail-content").innerHTML = '<p class="note">证据保留原 PDF 页码、视频时间段或词典义项，以及观察、解释的适用范围。</p>' + evidence.map((e) => {
     const source = state.data.sources.find((s) => s.id === e.source_id);
     const factIds = facts.filter((f) => f.evidence_ids.includes(e.id)).map((f) => f.id);
-    return `<article class="evidence-card ${selectedEvidence.has(e.id) ? "focused" : ""}"><div class="source-page"><strong>PDF 第 ${e.pdf_page} 页</strong><code>${escapeHtml(e.id)}</code></div><blockquote>${escapeHtml(e.quote)}</blockquote><p>${escapeHtml(e.locator)}</p><p class="scope-note">${escapeHtml(e.scope_note)}</p><p>对应事实：${factIds.map(escapeHtml).join("、")}</p><p>来源：${escapeHtml(source?.title || e.source_id)}</p><p>${e.check_status === "source_checked" ? "Codex已对照原页；尚待组员复核" : "原文对应待核对"}</p>${source?.available ? `<a class="pdf-link" href="/api/sources/${encodeURIComponent(source.id)}#page=${e.pdf_page}" target="_blank" rel="noopener">打开原 PDF 第 ${e.pdf_page} 页</a>` : '<p>原 PDF 未配置。启动时可通过 --resource-dir 指定资料目录。</p>'}${renderMedia(entity, { kind: "source_clip", evidenceId: e.id })}</article>`;
+    const video = source?.format === "mp4";
+    const dictionary = source?.format === "md" && source?.source_type === "dictionary_excerpt";
+    const labels = [...new Set(facts.filter((f) => f.evidence_ids.includes(e.id)).map((f) => knowledgeBases[f.knowledge_basis]).filter(Boolean))];
+    const checked = e.check_status === "source_checked" ? (video ? "已抽帧核对画面或字幕；尚待组员复核" : dictionary ? "已核对官方词典条目摘录；尚待组员复核" : "Codex已对照原页；尚待组员复核") : "来源对应待核对";
+    const link = source?.available || dictionary ? `<a class="pdf-link" href="${escapeHtml(evidenceSourceUrl(source, e))}" target="_blank" rel="noopener">${dictionary ? "打开官方词典条目" : `打开原${video ? "视频" : " PDF"}`} · ${escapeHtml(evidenceLocation(e))}</a>` : '<p>原资料未配置。启动时可通过 --resource-dir 指定资料目录。</p>';
+    return `<article class="evidence-card ${selectedEvidence.has(e.id) ? "focused" : ""}"><div class="source-page"><strong>${escapeHtml(evidenceLocation(e))}</strong><code>${escapeHtml(e.id)}</code></div>${labels.length ? `<p>${labels.map(escapeHtml).join(" · ")}</p>` : ""}<blockquote>${escapeHtml(e.quote)}</blockquote><p>${escapeHtml(e.locator)}</p><p class="scope-note">${escapeHtml(e.scope_note)}</p><p>对应事实：${factIds.map(escapeHtml).join("、")}</p><p>来源：${escapeHtml(source?.title || e.source_id)}</p><p>${checked}</p>${link}${video || dictionary ? "" : renderMedia(entity, { kind: "source_clip", evidenceId: e.id })}</article>`;
   }).join("");
 }
 

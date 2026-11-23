@@ -1,6 +1,6 @@
 # 接口状态与后端对接
 
-2026-11-23更新：第九批继续使用契约0.2.0。`HAS_DIMENSION` 的 `value` 是结构化尺寸对象，含 `quantity`、`unit`、`raw`、`approximate` 和 `value` 或 `min`/`max`；归属为事实的 `subject_id`，不提供 `object_id`。尺寸参与属性、证据和审核查询，不参与实体邻接关系。`stats.dimension_properties` 单列总数，审核视图由可见事实判断，不可用总数绕过过滤。旧契约0.1.0仍支持旧节点式尺寸。本体0.5增加 `ComponentRegion`（描述区域）和 `HAS_REGION`；推断保留 `rationale`，不能按来源记载展示。
+2026-11-23更新：当前第十一批使用契约0.4.0、本体0.7.0，增加词义节点、语境指称和词典条目定位，详见[规范接入](normalization-v0.11.md)。历史第十批使用契约0.3.0，新增视频时间段与现代复原来源标注，见[视频知识接入](video-knowledge-v0.10.md)。第九批契约0.2.0继续兼容。`HAS_DIMENSION` 的 `value` 是结构化尺寸对象，含 `quantity`、`unit`、`raw`、`approximate` 和 `value` 或 `min`/`max`；归属为事实的 `subject_id`，不提供 `object_id`。尺寸参与属性、证据和审核查询，不参与实体邻接关系。`stats.dimension_properties` 单列总数，审核视图由可见事实判断，不可用总数绕过过滤。旧契约0.1.0仍支持旧节点式尺寸。本体0.5增加 `ComponentRegion`（描述区域）和 `HAS_REGION`；推断保留 `rationale`，不能按来源记载展示。
 
 更新：2026-11-19。当前增加临时本地只读检查接口，正式后端实体查询等计划路由尚未实现；路由草案见软件计划设计书第 6 节。
 
@@ -14,7 +14,7 @@
 | `GET /api/health` | 返回 `status: ok`、`mode: local_read_only_preview`；不是数据库/AI健康证明 |
 | `GET /api/preview` | 元数据、统计、实体目录、已确认事实/证据/映射、本体及模型初查报告；配置媒体清单时返回可见的 `media` |
 | `GET /api/preview?review=1` | 显式审核视图，包含候选及争议记录，保留各条状态 |
-| `GET /api/sources/{id}` | 可选原 PDF；需要配置资源目录且文件存在，否则 404 |
+| `GET /api/sources/{id}` | 可选原PDF、MP4或已登记词典摘录MD；资源目录配置且文件存在时返回，支持Range及206/416；否则404 |
 | `GET /api/media/{id}` | 可选 PNG；需要媒体清单、可见关联和本地图片。候选图块显式使用 `?review=1`，其他情况返回 404 |
 
 来源和媒体对象附 `available` 表示对应本机文件能否打开。普通视图保留目录与审核数量，并按审核状态过滤事实、证据、尺寸、映射和媒体。JSON、样式和脚本响应禁用缓存，重新请求会重新校验数据。未定义路由返回 404，读取或校验失败返回 500 和 JSON 错误，POST 返回 405。预览服务仅绑定回环地址，审核参数用于切换本地视图。
@@ -29,8 +29,8 @@ P2 可以先复用 `chuchariot.knowledge.KnowledgeStore`：
 from chuchariot.knowledge import KnowledgeStore
 
 store = KnowledgeStore.load(
-    "data/candidates/teacher-pdf.v0.9.json",
-    "data/ontology/ontology.v0.6.json",
+    "data/candidates/knowledge.v0.11.json",
+    "data/ontology/ontology.v0.7.json",
 )
 entities = store.list_entities(query="轮毂", kind="ComponentType")
 detail = store.entity("type:003")
@@ -51,4 +51,4 @@ HTTP 参数、分页、错误模型、正式响应和框架依赖需 P2 实际�
 
 本地只读接口：`GET /api/connection-path?from=type:001&to=type:body&review=1&max_hops=8`。from/to必须各出现一次；参数错误400，实体不存在404，数据读取或校验失败500。review省略时仅使用确认事实，当前找不到候选路径。未提供跨域或正式服务部署。
 
-CLI：`python -m chuchariot --dataset data/candidates/teacher-pdf.v0.9.json --ontology data/ontology/ontology.v0.6.json connection-path type:001 type:body --include-pending`。展示时保留各跳性质和警示，不把教学导航描述为真实装配确认。
+CLI：`python -m chuchariot --dataset data/candidates/knowledge.v0.11.json --ontology data/ontology/ontology.v0.7.json connection-path type:001 type:body --include-pending`。展示时保留各跳性质和警示，不把教学导航描述为真实装配确认。

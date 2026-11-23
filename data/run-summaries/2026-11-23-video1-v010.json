@@ -1,0 +1,21 @@
+{
+  "dataset_id": "dataset:knowledge-010",
+  "baseline": "dataset:teacher-pdf-009",
+  "source_sha256": "a107003c1f48c3f7bc9005379faa2f5db56760a122c4891cbd15c52a42d5a421",
+  "added": {
+    "sources": 1,
+    "evidence": 6,
+    "entities": 6,
+    "facts": 17,
+    "model_mappings": 0
+  },
+  "totals": {
+    "sources": 5,
+    "evidence": 68,
+    "entities": 126,
+    "facts": 412,
+    "model_mappings": 7
+  },
+  "formal_confirmations": 0,
+  "review_scope": "重点抽帧与字幕核对；复原推测可入库，保留其性质和范围，不要求确定无疑。"
+}

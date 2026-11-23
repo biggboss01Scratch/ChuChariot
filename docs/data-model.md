@@ -1,6 +1,6 @@
-# 知识数据规范 v0.2.0
+# 知识数据规范 v0.4.0
 
-更新：2026-11-23。第九批 `teacher-pdf.v0.9.json` 使用本体 `ontology.v0.6.json`；旧批次保留原契约0.1.0和对应旧本体。校验实现位于 `chuchariot/validation.py`。本轮修改见[原页审计](audits/2026-11-23-source-audit.md)及[尺寸迁移与建模检查](model-review-2026-11-23.md)。
+更新：2026-11-23。当前v0.11使用本体0.7.0、格式0.4.0，区域类别及词义关系见[规范说明](normalization-v0.11.md)。校验继续兼容旧版。以下为历史第十批`knowledge.v0.10.json`使用契约0.3.0及本体0.6.0，增加视频时间段、现代复原标注；详见[视频知识入库](video-knowledge-v0.10.md)。旧PDF规范仍适用。以下第九批 `teacher-pdf.v0.9.json` 使用本体 `ontology.v0.6.json`；旧批次保留原契约0.1.0和对应旧本体。校验实现位于 `chuchariot/validation.py`。本轮修改见[原页审计](audits/2026-11-23-source-audit.md)及[尺寸迁移与建模检查](model-review-2026-11-23.md)。
 
 ## 数据集与标识
 
@@ -10,7 +10,7 @@ ID采用稳定命名空间格式，例如 `type:001`、`fact:pdf-147`，全包�
 
 ## 实体
 
-共同字段为 `id`、`kind`、`label`、`aliases`，可选 `scope_id`、`note`。类型约束以所选本体为准。
+共同字段为 `id`、`kind`、`label`、`aliases`，可选 `scope_id`、`note`；0.4.0的TermSense另须`lexeme`和有效来源`source_id`。类型约束以所选本体为准。
 
 - `ComponentType` 为通用部件类别，不代表某辆车上的具体对象。
 - `Chariot` 为具体战车或研究对象。
@@ -64,11 +64,11 @@ ID采用稳定命名空间格式，例如 `type:001`、`fact:pdf-147`，全包�
 | `extraction` | 必填 `method`、`run_id`，可选模型和提示词版本 |
 | `review` | 非pending记录必填审核者、ISO日期、备注 |
 
-来源记载必须附有效证据；已确认不改变推断或假设的性质。当前395条事实均待审核。原272条的来源支持/需修正/证据不足判定单独保存在审计记录，不替代 `review_status`。`documented` 不意味着逐字照录或已经独立核实。年代、车型和适用范围尚未充分结构化，需保留描述中的限定词。
+来源记载必须附有效证据；已确认不改变推断或假设的性质。当前423条事实均待审核。原272条的来源支持/需修正/证据不足判定单独保存在审计记录，不替代 `review_status`。`documented` 不意味着逐字照录或已经独立核实。年代、车型和适用范围尚未充分结构化，需保留描述中的限定词。
 
 ## 来源、媒体与模型
 
-来源保存题名、资源ID、文件名和格式；PDF可带页数。当前证据支持PDF页定位，包含 `source_id`、`pdf_page`、`locator`、`quote`、`transcription`、`check_status`、`scope_note`，可选印刷页码、图号；三者不能互相替代。
+来源保存题名、资源ID、文件名和格式；PDF可带页数。PDF证据支持PDF页定位，视频证据改用start_seconds/end_seconds（不能假设每条都有pdf_page）。PDF证据包含 `source_id`、`pdf_page`、`locator`、`quote`、`transcription`、`check_status`、`scope_note`，可选印刷页码、图号；三者不能互相替代。
 
 `embedded_text` 为文本层，`image_transcription` 为页面图像转录或观察。`source_checked` 表示Codex已对照页面，不能当作老师、组员或独立人员审核。教师汇编也不替代原始发掘报告。
 

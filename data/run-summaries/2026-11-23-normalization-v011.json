@@ -1,0 +1,859 @@
+{
+  "dataset_id": "dataset:knowledge-011",
+  "baseline": "dataset:knowledge-010",
+  "ontology_version": "0.7.0",
+  "baseline_sha256": "977dbf5ff18812456e7aa65b3eed6d34cec097b36efbeec5d61239d1447a20b2",
+  "schema_version": "0.4.0",
+  "changes": {
+    "sources": {
+      "added_ids": [
+        "source:moe-pei",
+        "source:moe-le"
+      ],
+      "modified": [],
+      "removed_ids": []
+    },
+    "evidence": {
+      "added_ids": [
+        "evidence:v11-pei-heading",
+        "evidence:v11-pei-reins",
+        "evidence:v11-pei-broad",
+        "evidence:v11-le-definition"
+      ],
+      "modified": [],
+      "removed_ids": []
+    },
+    "entities": {
+      "added_ids": [
+        "term:pei-reins",
+        "term:pei-broad"
+      ],
+      "modified": [
+        {
+          "id": "type:spoke-inner",
+          "before": {
+            "id": "type:spoke-inner",
+            "kind": "ComponentType",
+            "label": "股",
+            "aliases": [],
+            "note": "这里指辐的内段，不采用同字的其他词义。"
+          },
+          "after": {
+            "id": "type:spoke-inner",
+            "kind": "StructuralRegionType",
+            "label": "股",
+            "aliases": [],
+            "note": "本项目中指辐靠近毂的内段；用区域关系表达，不据此认定为可拆装零件。"
+          }
+        },
+        {
+          "id": "type:spoke-outer",
+          "before": {
+            "id": "type:spoke-outer",
+            "kind": "ComponentType",
+            "label": "骹",
+            "aliases": [],
+            "note": "这里指辐的外段。"
+          },
+          "after": {
+            "id": "type:spoke-outer",
+            "kind": "StructuralRegionType",
+            "label": "骹",
+            "aliases": [],
+            "note": "本项目中指辐靠近轮牙的外段；用区域关系表达，不据此认定为可拆装零件。"
+          }
+        },
+        {
+          "id": "type:hub-ridge",
+          "before": {
+            "id": "type:hub-ridge",
+            "kind": "ComponentType",
+            "label": "篆",
+            "aliases": [],
+            "note": "本页指毂轵部环棱状窄篆，不与文字书体概念合并。"
+          },
+          "after": {
+            "id": "type:hub-ridge",
+            "kind": "StructuralRegionType",
+            "label": "篆（毂上窄篆）",
+            "aliases": [
+              "篆",
+              "窄篆"
+            ],
+            "note": "本项目中指毂轵部的环棱状特征区域；用区域关系表达，不据此认定为可拆装零件。"
+          }
+        },
+        {
+          "id": "type:bridle",
+          "before": {
+            "id": "type:bridle",
+            "kind": "ComponentType",
+            "label": "辔",
+            "aliases": [],
+            "note": "原页小节名为“辔”，所附图题为马勒推测复原图；本批保留图题性质。"
+          },
+          "after": {
+            "id": "type:bridle",
+            "kind": "TermSense",
+            "label": "辔（教师资料中的马勒用法）",
+            "aliases": [],
+            "note": "保留旧ID以兼容交接。本节点记录教师资料第7页小节名“辔”及第8页马勒图的语境，不是另一件独立马具，也不代表所有辔都等于马勒。",
+            "lexeme": "辔",
+            "source_id": "source:001",
+            "scope_id": "record:m2432-reconstruction"
+          }
+        },
+        {
+          "id": "type:reins",
+          "before": {
+            "id": "type:reins",
+            "kind": "ComponentType",
+            "label": "缰",
+            "aliases": []
+          },
+          "after": {
+            "id": "type:reins",
+            "kind": "ComponentType",
+            "label": "缰",
+            "aliases": [
+              "缰绳"
+            ]
+          }
+        },
+        {
+          "id": "component:ch15-spoke-inner",
+          "before": {
+            "id": "component:ch15-spoke-inner",
+            "kind": "Component",
+            "label": "CH1：5轮辐内段（股）",
+            "aliases": [],
+            "scope_id": "specimen:001"
+          },
+          "after": {
+            "id": "component:ch15-spoke-inner",
+            "kind": "ComponentRegion",
+            "label": "CH1：5轮辐内段（股）",
+            "aliases": [],
+            "scope_id": "specimen:001",
+            "note": "CH1：5对照轮的辐靠近毂的内段，保留原尺寸与标本范围；不是独立分件。"
+          }
+        },
+        {
+          "id": "component:ch15-spoke-outer",
+          "before": {
+            "id": "component:ch15-spoke-outer",
+            "kind": "Component",
+            "label": "CH1：5轮辐外段（骹）",
+            "aliases": [],
+            "scope_id": "specimen:001"
+          },
+          "after": {
+            "id": "component:ch15-spoke-outer",
+            "kind": "ComponentRegion",
+            "label": "CH1：5轮辐外段（骹）",
+            "aliases": [],
+            "scope_id": "specimen:001",
+            "note": "CH1：5对照轮的辐靠近轮牙的外段，保留原尺寸与标本范围；不是独立分件。"
+          }
+        },
+        {
+          "id": "component:ch15-hub-ridges",
+          "before": {
+            "id": "component:ch15-hub-ridges",
+            "kind": "Component",
+            "label": "CH1：5毂轵部窄篆",
+            "aliases": [],
+            "scope_id": "specimen:001"
+          },
+          "after": {
+            "id": "component:ch15-hub-ridges",
+            "kind": "ComponentRegion",
+            "label": "CH1：5毂轵部窄篆",
+            "aliases": [],
+            "scope_id": "specimen:001",
+            "note": "CH1：5对照轮的毂轵部的环棱状特征区域，保留原尺寸与标本范围；不是独立分件。只记录环棱形态，制作方式及是否使用附加材料未由这段资料说明。"
+          }
+        },
+        {
+          "id": "type:horse-bridle",
+          "before": {
+            "id": "type:horse-bridle",
+            "kind": "ComponentType",
+            "label": "马勒（勒）",
+            "aliases": [
+              "勒"
+            ],
+            "note": "根据M2：432马勒推测复原图设置讲解类别；马勒与辔在专业名词上的对应尚需核对原始发掘报告；不把图示器物归到六号车。"
+          },
+          "after": {
+            "id": "type:horse-bridle",
+            "kind": "ComponentType",
+            "label": "马勒（勒）",
+            "aliases": [
+              "勒",
+              "马勒"
+            ],
+            "note": "马勒的规范讲解概念。教师资料“辔”小节的图题称马勒，原词另存为词义节点；不将缰绳义的辔全局并入本节点，也不据此确定六号车具体构造。"
+          }
+        },
+        {
+          "id": "connection:v09-cheekpiece-bridle",
+          "before": {
+            "id": "connection:v09-cheekpiece-bridle",
+            "kind": "Connection",
+            "label": "镳 → 辔（连接路径）",
+            "aliases": [],
+            "note": "依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。"
+          },
+          "after": {
+            "id": "connection:v09-cheekpiece-bridle",
+            "kind": "Connection",
+            "label": "镳 → 马勒（连接路径）",
+            "aliases": [],
+            "note": "依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。 原ID保留；教师原称辔已按马勒图统一为规范讲解对象。"
+          }
+        },
+        {
+          "id": "connection:v09-bridle-reins",
+          "before": {
+            "id": "connection:v09-bridle-reins",
+            "kind": "Connection",
+            "label": "辔 → 缰（连接路径）",
+            "aliases": [],
+            "note": "依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。"
+          },
+          "after": {
+            "id": "connection:v09-bridle-reins",
+            "kind": "Connection",
+            "label": "马勒 → 缰（连接路径）",
+            "aliases": [],
+            "note": "依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。 原ID保留；教师原称辔已按马勒图统一为规范讲解对象。"
+          }
+        }
+      ],
+      "removed_ids": []
+    },
+    "facts": {
+      "added_ids": [
+        "fact:v11-pei-teacher-description",
+        "fact:v11-pei-reins-description",
+        "fact:v11-pei-reins-denotes",
+        "fact:v11-pei-broad-description",
+        "fact:v11-pei-broad-related-reins",
+        "fact:v11-pei-broad-related-bridle",
+        "fact:v11-le-description",
+        "fact:v11-region-spoke-inner",
+        "fact:v11-region-spoke-outer",
+        "fact:v11-region-hub-ridge",
+        "fact:v11-hub-has-ridge-region"
+      ],
+      "modified": [
+        {
+          "id": "fact:pdf-134",
+          "before": {
+            "id": "fact:pdf-134",
+            "subject_id": "component:ch15-spoke",
+            "predicate": "HAS_PART",
+            "object_id": "component:ch15-spoke-inner",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "checked_pdf_atomic_extraction",
+              "run_id": "run:20261123-teacher-pdf"
+            }
+          },
+          "after": {
+            "id": "fact:pdf-134",
+            "subject_id": "component:ch15-spoke",
+            "predicate": "HAS_REGION",
+            "object_id": "component:ch15-spoke-inner",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            }
+          }
+        },
+        {
+          "id": "fact:pdf-136",
+          "before": {
+            "id": "fact:pdf-136",
+            "subject_id": "component:ch15-spoke",
+            "predicate": "HAS_PART",
+            "object_id": "component:ch15-spoke-outer",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "checked_pdf_atomic_extraction",
+              "run_id": "run:20261123-teacher-pdf"
+            }
+          },
+          "after": {
+            "id": "fact:pdf-136",
+            "subject_id": "component:ch15-spoke",
+            "predicate": "HAS_REGION",
+            "object_id": "component:ch15-spoke-outer",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            }
+          }
+        },
+        {
+          "id": "fact:pdf-151",
+          "before": {
+            "id": "fact:pdf-151",
+            "subject_id": "component:ch15-hub",
+            "predicate": "HAS_PART",
+            "object_id": "component:ch15-hub-ridges",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "checked_pdf_atomic_extraction",
+              "run_id": "run:20261123-teacher-pdf"
+            }
+          },
+          "after": {
+            "id": "fact:pdf-151",
+            "subject_id": "component:ch15-hub",
+            "predicate": "HAS_REGION",
+            "object_id": "component:ch15-hub-ridges",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            }
+          }
+        },
+        {
+          "id": "fact:pdf-195",
+          "before": {
+            "id": "fact:pdf-195",
+            "subject_id": "record:m2432-reconstruction",
+            "predicate": "REFERS_TO_TYPE",
+            "object_id": "type:bridle",
+            "evidence_ids": [
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "checked_pdf_atomic_extraction",
+              "run_id": "run:20261123-teacher-pdf"
+            }
+          },
+          "after": {
+            "id": "fact:pdf-195",
+            "subject_id": "record:m2432-reconstruction",
+            "predicate": "USES_TERM",
+            "object_id": "type:bridle",
+            "evidence_ids": [
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "documented",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            }
+          }
+        },
+        {
+          "id": "fact:v09-tree-04",
+          "before": {
+            "id": "fact:v09-tree-04",
+            "subject_id": "type:004",
+            "predicate": "HAS_PART",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "inferred",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:spoke-inner",
+            "rationale": "CH1：5对照轮的辐内段股，类型层教学分类。"
+          },
+          "after": {
+            "id": "fact:v09-tree-04",
+            "subject_id": "type:004",
+            "predicate": "HAS_REGION",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "inferred",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:spoke-inner",
+            "rationale": "CH1：5对照轮的辐内段股，类型层教学分类。统一为部位类别，不表示辐由可拆的股、骹两件拼成。"
+          }
+        },
+        {
+          "id": "fact:v09-tree-05",
+          "before": {
+            "id": "fact:v09-tree-05",
+            "subject_id": "type:004",
+            "predicate": "HAS_PART",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "inferred",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:spoke-outer",
+            "rationale": "CH1：5对照轮的辐外段骹，类型层教学分类。"
+          },
+          "after": {
+            "id": "fact:v09-tree-05",
+            "subject_id": "type:004",
+            "predicate": "HAS_REGION",
+            "evidence_ids": [
+              "evidence:pdf-p06-t01"
+            ],
+            "origin": "inferred",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:spoke-outer",
+            "rationale": "CH1：5对照轮的辐外段骹，类型层教学分类。统一为部位类别，不表示辐由可拆的股、骹两件拼成。"
+          }
+        },
+        {
+          "id": "fact:v09-functional-03",
+          "before": {
+            "id": "fact:v09-functional-03",
+            "subject_id": "type:horse-bridle",
+            "predicate": "TEACHING_GROUPS_TYPE",
+            "evidence_ids": [
+              "evidence:pdf-figure-16",
+              "evidence:v09-heading-p07"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:bridle",
+            "rationale": "辔与马勒的术语层级需进一步校订，此关联只为教学讲解聚合。"
+          },
+          "after": {
+            "id": "fact:v09-functional-03",
+            "subject_id": "type:bridle",
+            "predicate": "TERM_DENOTES",
+            "evidence_ids": [
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "inferred",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:horse-bridle",
+            "rationale": "依据教师资料第7页“辔”小节接续第8页“马勒推测复原图”，在本来源图示语境下对齐到马勒；不是全局同义、上下位或实物组成断言。"
+          }
+        },
+        {
+          "id": "fact:v09-path-cheekpiece-bridle",
+          "before": {
+            "id": "fact:v09-path-cheekpiece-bridle",
+            "subject_id": "type:cheekpiece",
+            "predicate": "SCHEMATIC_NEXT",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:bridle",
+            "rationale": "路径依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。"
+          },
+          "after": {
+            "id": "fact:v09-path-cheekpiece-bridle",
+            "subject_id": "type:cheekpiece",
+            "predicate": "SCHEMATIC_NEXT",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16",
+              "evidence:v11-pei-heading"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:horse-bridle",
+            "rationale": "路径依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。"
+          }
+        },
+        {
+          "id": "fact:v09-connection-cheekpiece-bridle-from",
+          "before": {
+            "id": "fact:v09-connection-cheekpiece-bridle-from",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "CONNECTION_FROM",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:cheekpiece",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-cheekpiece-bridle-from",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "CONNECTION_FROM",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16",
+              "evidence:v11-pei-heading"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:cheekpiece",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          }
+        },
+        {
+          "id": "fact:v09-connection-cheekpiece-bridle-to",
+          "before": {
+            "id": "fact:v09-connection-cheekpiece-bridle-to",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "CONNECTION_TO",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:bridle",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-cheekpiece-bridle-to",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "CONNECTION_TO",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16",
+              "evidence:v11-pei-heading"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:horse-bridle",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          }
+        },
+        {
+          "id": "fact:v09-connection-cheekpiece-bridle-basis",
+          "before": {
+            "id": "fact:v09-connection-cheekpiece-bridle-basis",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "HAS_EVIDENCE_BASIS",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "basis:teaching",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-cheekpiece-bridle-basis",
+            "subject_id": "connection:v09-cheekpiece-bridle",
+            "predicate": "HAS_EVIDENCE_BASIS",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-16",
+              "evidence:v11-pei-heading"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "basis:teaching",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教师资料系驾教学箭头“镳→辔”，物理连接细节未由该来源逐件证实。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-cheekpiece-bridle"
+            ]
+          }
+        },
+        {
+          "id": "fact:v09-path-bridle-reins",
+          "before": {
+            "id": "fact:v09-path-bridle-reins",
+            "subject_id": "type:bridle",
+            "predicate": "SCHEMATIC_NEXT",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:reins",
+            "rationale": "路径依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。"
+          },
+          "after": {
+            "id": "fact:v09-path-bridle-reins",
+            "subject_id": "type:horse-bridle",
+            "predicate": "SCHEMATIC_NEXT",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17",
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:reins",
+            "rationale": "路径依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。"
+          }
+        },
+        {
+          "id": "fact:v09-connection-bridle-reins-from",
+          "before": {
+            "id": "fact:v09-connection-bridle-reins-from",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "CONNECTION_FROM",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:bridle",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-bridle-reins-from",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "CONNECTION_FROM",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17",
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:horse-bridle",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          }
+        },
+        {
+          "id": "fact:v09-connection-bridle-reins-to",
+          "before": {
+            "id": "fact:v09-connection-bridle-reins-to",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "CONNECTION_TO",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "type:reins",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-bridle-reins-to",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "CONNECTION_TO",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17",
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "type:reins",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          }
+        },
+        {
+          "id": "fact:v09-connection-bridle-reins-basis",
+          "before": {
+            "id": "fact:v09-connection-bridle-reins-basis",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "HAS_EVIDENCE_BASIS",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "manual_source_review",
+              "run_id": "run:20261123-graph-v09"
+            },
+            "object_id": "basis:teaching",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          },
+          "after": {
+            "id": "fact:v09-connection-bridle-reins-basis",
+            "subject_id": "connection:v09-bridle-reins",
+            "predicate": "HAS_EVIDENCE_BASIS",
+            "evidence_ids": [
+              "evidence:v09-heading-p07",
+              "evidence:pdf-figure-17",
+              "evidence:v11-pei-heading",
+              "evidence:pdf-figure-16"
+            ],
+            "origin": "hypothesis",
+            "review_status": "pending",
+            "extraction": {
+              "method": "evidence_based_terminology_normalization",
+              "run_id": "run:20261123-normalize-v011"
+            },
+            "object_id": "basis:teaching",
+            "rationale": "连接路径说明字段；依据类别：教学方案。教学栏目顺序及缰绳示意；非出土绳索连接节点的个体证明。 本来源原称辔，现依马勒图统一到规范马勒概念；保持教学导航性质。",
+            "basis_fact_ids": [
+              "fact:v09-path-bridle-reins"
+            ]
+          }
+        }
+      ],
+      "removed_ids": []
+    },
+    "model_mappings": {
+      "added_ids": [],
+      "modified": [],
+      "removed_ids": []
+    }
+  },
+  "totals": {
+    "sources": 7,
+    "evidence": 72,
+    "entities": 128,
+    "facts": 423,
+    "model_mappings": 7
+  },
+  "dimension_properties": 54,
+  "entity_relations": 233,
+  "formal_confirmations": 0,
+  "notes": [
+    "旧ID保留，但type:bridle现为来源词义，机械/教学导航端点统一为type:horse-bridle。",
+    "部位与部件均可高亮；本次未新增模型映射。",
+    "原v0.10及队友v0.9快照保持不变。"
+  ]
+}

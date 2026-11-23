@@ -7,6 +7,7 @@
     {"id": "res:005", "filename": "九连墩六号车·动画模型.glb", "kind": "digital_reconstruction", "sharing": "unconfirmed"},
     {"id": "res:006", "filename": "九连墩六号车·交互展件.html", "kind": "legacy_web_exhibit", "sharing": "unconfirmed"},
     {"id": "res:007", "filename": "九连墩六号车·结构爆炸图.png", "kind": "digital_reconstruction_image", "sharing": "unconfirmed"},
-    {"id": "res:008", "filename": "isprs-archives-XLIX-B4-2026-745-2026.pdf", "kind": "reference_paper", "sharing": "unconfirmed"}
+    {"id": "res:008", "filename": "isprs-archives-XLIX-B4-2026-745-2026.pdf", "kind": "reference_paper", "sharing": "unconfirmed"},
+    {"id": "res:video1", "filename": "战车视频1.mp4", "kind": "modern_reconstruction_video", "sharing": "unconfirmed"}
   ]
 }

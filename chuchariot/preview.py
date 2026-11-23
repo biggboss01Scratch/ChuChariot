@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
-import shutil
+import re
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
@@ -35,7 +35,7 @@ def preview_data(dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, review=Fals
 
 
 def source_path(source: dict, resource_dir: ResourceDirectories) -> Path | None:
-    if resource_dir is None or source["format"] != "pdf":
+    if resource_dir is None or source["format"] not in {"pdf", "mp4", "md"}:
         return None
     directories = (resource_dir,) if isinstance(resource_dir, Path) else resource_dir
     for directory in directories:
@@ -111,14 +111,47 @@ def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
                     if file is None:
                         self.json_response({"error": "原文未配置、缺失或来源不存在"}, 404)
                         return
-                    self.send_response(200)
-                    self.send_header("Content-Type", "application/pdf")
-                    self.send_header("Content-Length", str(file.stat().st_size))
-                    self.send_header("Content-Disposition", 'inline; filename="source.pdf"')
+                    size = file.stat().st_size
+                    start, end, status = 0, size - 1, 200
+                    requested = self.headers.get("Range")
+                    if requested:
+                        match = re.fullmatch(r"bytes=(\d*)-(\d*)", requested)
+                        valid = bool(match and size and any(match.groups()))
+                        if valid:
+                            first, last = match.groups()
+                            if first:
+                                start = int(first)
+                                end = min(int(last), size - 1) if last else size - 1
+                            else:
+                                valid = int(last) > 0
+                                start = max(0, size - int(last))
+                            valid = valid and 0 <= start <= end < size
+                        if not valid:
+                            self.send_response(416)
+                            self.send_header("Content-Range", f"bytes */{size}")
+                            self.send_header("Content-Length", "0")
+                            self.end_headers()
+                            return
+                        status = 206
+                    self.send_response(status)
+                    source_types = {"mp4": "video/mp4", "pdf": "application/pdf", "md": "text/markdown; charset=utf-8"}
+                    self.send_header("Content-Type", source_types[source["format"]])
+                    self.send_header("Content-Length", str(max(0, end - start + 1)))
+                    self.send_header("Accept-Ranges", "bytes")
+                    if status == 206:
+                        self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+                    self.send_header("Content-Disposition", f'inline; filename="source.{source["format"]}"')
                     self.send_header("X-Content-Type-Options", "nosniff")
                     self.end_headers()
                     with file.open("rb") as stream:
-                        shutil.copyfileobj(stream, self.wfile)
+                        stream.seek(start)
+                        remaining = end - start + 1
+                        while remaining > 0:
+                            block = stream.read(min(65536, remaining))
+                            if not block:
+                                break
+                            self.wfile.write(block)
+                            remaining -= len(block)
                 elif path in {"/", "/index.html", "/style.css", "/app.js"}:
                     file = FRONTEND / ("index.html" if path == "/" else path[1:])
                     content_type = mimetypes.guess_type(str(file))[0] or "text/plain"

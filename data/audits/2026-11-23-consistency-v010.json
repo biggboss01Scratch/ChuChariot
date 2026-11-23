@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-23",
+  "dataset_id": "dataset:knowledge-010",
+  "dataset_sha256": "977dbf5ff18812456e7aa65b3eed6d34cec097b36efbeec5d61239d1447a20b2",
+  "reviewer": "Codex（同会话自查，非独立专家复核）",
+  "scope": "对当前412条事实执行格式、引用、归属、循环和重复检查；人工阅读非尺寸文字描述、组成归类与教学推断，并重点核对五组疑似差异。不是412条原始文献的重新逐条核验，也不是完整语义矛盾证明。",
+  "checks": {
+    "validation_errors": [],
+    "normalized_name_collisions": {},
+    "same_subject_same_dimension_multiple_records": [],
+    "exact_duplicate_claims": []
+  },
+  "counts": {
+    "entities": 126,
+    "facts": 412,
+    "evidence": 68,
+    "sources": 5
+  },
+  "conclusion": "格式和引用统一；本次检查未确认直接相互矛盾的事实。仍有四类建模、术语及范围问题，不能宣称语义完全统一或绝无矛盾。",
+  "reviewed_comparisons": [
+    {
+      "topic": "车轮横径132与竖径119厘米",
+      "fact_ids": [
+        "fact:006",
+        "fact:007"
+      ],
+      "verdict": "不是同一个尺寸项目的互斥取值；二者记录方向不同。本次不另行断定差异成因。"
+    },
+    {
+      "topic": "车轴通长272与276厘米",
+      "fact_ids": [
+        "fact:008",
+        "fact:pdf-082"
+      ],
+      "verdict": "主体分别为CH1:3轴标本与第4页未编号轴记录，未认定为同一实物，不构成已确认矛盾。"
+    },
+    {
+      "topic": "两段轮辋与可能三至四段轮辋",
+      "fact_ids": [
+        "fact:v08-rim-06",
+        "fact:v08-rim-07"
+      ],
+      "verdict": "前者是作者认为较常见，后者是保留其他可能性；并非对同一轮作出两个互斥断言。"
+    },
+    {
+      "topic": "藤编车底与教学舆底概念",
+      "fact_ids": [
+        "fact:video1-woven-floor-description",
+        "fact:v09-body-floor-explain"
+      ],
+      "verdict": "现代复原案例不等于六号车形制；现库没有给六号车写入互相排斥的木板底和藤编底材料结论。"
+    },
+    {
+      "topic": "长短榫与股骹",
+      "fact_ids": [
+        "fact:video1-tenon-explanation-description",
+        "fact:pdf-143"
+      ],
+      "verdict": "前者是不同辐条外端榫头的长短差异及其装配解释，后者是一根辐条的内外段；不是同一概念，不能合并。"
+    }
+  ],
+  "open_issues": [
+    {
+      "id": "consistency:region-granularity",
+      "classification": "建模口径待统一，非已确认事实冲突",
+      "entities": [
+        "component:ch15-spoke-inner",
+        "component:ch15-spoke-outer",
+        "component:ch15-hub-ridges",
+        "component:m1302-front"
+      ],
+      "facts": [
+        "fact:pdf-134",
+        "fact:pdf-136",
+        "fact:pdf-151",
+        "fact:pdf-074",
+        "fact:v09-tree-04",
+        "fact:v09-tree-05"
+      ],
+      "finding": "股、骹和毂上窄篆用Component/HAS_PART，而辀身分段用ComponentRegion/HAS_REGION。HAS_PART本身不证明可拆，因此不是逻辑矛盾，但给拆解模型和问答留下解释不一致的风险。",
+      "recommendation": "统一部件、部位、表面特征的定义；迁移股骹时同时处理榫卯关系端点及尺寸归属，不只改实体标签。"
+    },
+    {
+      "id": "consistency:bridle-terminology",
+      "classification": "术语关系待核，非已确认互斥结论",
+      "entities": [
+        "type:bridle",
+        "type:horse-bridle"
+      ],
+      "facts": [
+        "fact:v09-functional-03",
+        "fact:v09-le-explain"
+      ],
+      "finding": "辔与马勒分别建节点，现有备注已承认术语对应未核。教学聚合边没有证明二者是同义词、整体部分或上下位关系。",
+      "recommendation": "先核定术语定义和来源用法，再决定是否同义归并；当前问答应保留术语范围，不自动互换。"
+    },
+    {
+      "id": "consistency:generic-scope",
+      "classification": "适用范围结构化不足",
+      "entities": [
+        "type:001",
+        "type:004"
+      ],
+      "facts": [
+        "fact:v09-tree-01",
+        "fact:v09-tree-02",
+        "fact:v09-tree-03",
+        "fact:v09-tree-04",
+        "fact:v09-tree-05"
+      ],
+      "finding": "v0.7曾将过宽的类别组成收窄为图示呈现；v0.9以inferred和理由重新增加类别HAS_PART。它不否定旧图示记录，但辐式轮、对照标本和教学适用范围主要放在文字理由里，直接查询类别关系可能过度泛化。",
+      "recommendation": "将通用结论适用的车型或教学场景显式记录；问答必须读取rationale及来源，不把该边理解成所有车轮的通例。"
+    },
+    {
+      "id": "consistency:interpretation-metadata",
+      "classification": "观点与来源标注粒度不完全统一",
+      "facts": [
+        "fact:v08-rim-03",
+        "fact:v08-rim-06",
+        "fact:v08-rim-07",
+        "fact:video1-tenon-explanation-description"
+      ],
+      "finding": "旧论文观点以documented的作者转述保存，视频解释另带knowledge_basis与hypothesis/inferred。二者在其叙述层次上可以成立，但不是统一的观点表示，且目前仅视频拥有专用来源性质字段。",
+      "recommendation": "统一区分来源是否确有记载和历史解释本身的性质；以后以同一结构保存文献观点、复原推测和实验记录。"
+    }
+  ],
+  "knowledge_data_modified": false
+}
