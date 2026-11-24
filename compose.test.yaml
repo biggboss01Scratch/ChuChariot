@@ -1,0 +1,15 @@
+name: chuchariot-test
+services:
+  neo4j:
+    image: neo4j:5.26-community@sha256:51d0314ef86074f519003da8dd4daaa9fff72b8479672b742d7cab7f3064e3ed
+    env_file: .local/neo4j.env
+    environment:
+      NEO4J_server_memory_heap_initial__size: 256m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 128m
+    ports:
+      - "127.0.0.1:27687:7687"
+    volumes:
+      - integration-data:/data
+volumes:
+  integration-data:

@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-23",
+  "status": "preparation_only_not_implemented",
+  "authorization_boundary": "用户要求先做好准备，不开始安装、建库、导入或正式后端实现。",
+  "baseline": {
+    "dataset_id": "dataset:knowledge-011",
+    "ontology_version": "0.7.0",
+    "schema_version": "0.4.0",
+    "counts": {
+      "entities": 128,
+      "facts": 423,
+      "evidence": 72,
+      "sources": 7,
+      "model_mappings": 7
+    },
+    "dimension_properties": 54,
+    "confirmed_facts": 0,
+    "files": {
+      "data/candidates/knowledge.v0.11.json": {
+        "lf_sha256": "aa1fa2c3b736ae15171400f3e83631feba18b3a0965b1f16e31763cf2ba499cf",
+        "bytes": 291855
+      },
+      "data/ontology/ontology.v0.7.json": {
+        "lf_sha256": "bcebb1d4eb1afa1d887b50b23b818a91faffde541b5a77873153281e9373c834",
+        "bytes": 13238
+      },
+      "data/sources/fusion-media.v0.11.json": {
+        "lf_sha256": "236fa01d3a079df2f4be81101cde001889b617d2b131b054bbf62c5832d0e406",
+        "bytes": 12936
+      }
+    }
+  },
+  "environment_observation": {
+    "python_version": "3.13.11",
+    "on_path": {
+      "docker": true,
+      "java": true,
+      "neo4j": false
+    },
+    "packages_in_current_interpreter": {
+      "neo4j": null,
+      "fastapi": "0.135.3",
+      "pydantic": "2.12.4",
+      "uvicorn": "0.44.0"
+    },
+    "project_dependency_pinning_completed": false,
+    "docker_daemon_checked": false,
+    "neo4j_connectivity_checked": false
+  },
+  "head_commit_at_preparation": "9629a8f20d2ca4c8afaa97c78ad882cab3530f42",
+  "implementation_started": false,
+  "new_service_started": false,
+  "knowledge_data_modified": false,
+  "draft_contract": "docs/contracts/knowledge-api.v1.draft.openapi.json",
+  "api_path_count": 16,
+  "api_operation_count": 16
+}

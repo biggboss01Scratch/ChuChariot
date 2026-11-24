@@ -1,10 +1,22 @@
 # 接口状态与后端对接
 
+2026-11-24：API1.1.0在变更集中支持delete／restore，新增已鉴权回收站`GET /api/v1/internal/deleted`。删除记录从有效查询和候选图谱中移除，保留可恢复内容及审计；引用未处理时阻止删除。见[完整操作说明](deletion.md)。
+
+## 当前正式接口（本地首版已实现）
+
+2026-11-23用户要求开始后已实现Neo4j及FastAPI，运行于`http://127.0.0.1:8780`，实时文档`/docs`和`/openapi.json`。见[正式契约](contracts/knowledge-api.v1.openapi.json)、[启动、鉴权与变更集](backend.md)。16个原计划及5个适配／资源／历史接口可用。知识、本体版本不变，数据库修订单列。下文保留准备及临时接口记录，“尚未实现”描述的是当时状态。
+
+## 正式数据库API准备稿（尚未实现）
+
+2026-11-23：按“先做好准备、不开始”的要求，新增[数据库与迁移方案](plans/database-api-preparation-2026-11-23.md)及[OpenAPI 3.1契约草案](contracts/knowledge-api.v1.draft.openapi.json)，规划16个`/api/v1`接口。实体属性、图数据、事实证据、模型映射、教学路径、增量变更及导出均有拟定响应；公众与内部访问分开。接口草案不表示当前服务已提供这些路由。本轮未安装依赖、启动数据库、导入或实现后端；下文仍记录实际可用的临时接口及Python查询。
+
 2026-11-23更新：当前第十一批使用契约0.4.0、本体0.7.0，增加词义节点、语境指称和词典条目定位，详见[规范接入](normalization-v0.11.md)。历史第十批使用契约0.3.0，新增视频时间段与现代复原来源标注，见[视频知识接入](video-knowledge-v0.10.md)。第九批契约0.2.0继续兼容。`HAS_DIMENSION` 的 `value` 是结构化尺寸对象，含 `quantity`、`unit`、`raw`、`approximate` 和 `value` 或 `min`/`max`；归属为事实的 `subject_id`，不提供 `object_id`。尺寸参与属性、证据和审核查询，不参与实体邻接关系。`stats.dimension_properties` 单列总数，审核视图由可见事实判断，不可用总数绕过过滤。旧契约0.1.0仍支持旧节点式尺寸。本体0.5增加 `ComponentRegion`（描述区域）和 `HAS_REGION`；推断保留 `rationale`，不能按来源记载展示。
 
 更新：2026-11-19。当前增加临时本地只读检查接口，正式后端实体查询等计划路由尚未实现；路由草案见软件计划设计书第 6 节。
 
 ## 临时检查接口
+
+新增用途投影：`/api/preview?review=1&audience=public`隐藏管理及分类关系，`audience=internal`返回完整核对视图；默认internal兼容旧调用，未知或重复参数400。用途与审核状态独立，见[公众／内部视图](presentation-views.md)。这不是身份鉴权。
 
 在本机按 [README](../README.md#启动临时检查页) 启动服务。以下接口均用于组内临时测试。
 

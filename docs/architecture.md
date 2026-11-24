@@ -1,5 +1,7 @@
 # 当前架构与代码入口
 
+2026-11-23：新增`chuchariot/backend/`，实际提供Neo4j持久化、FastAPI、内部鉴权及增量维护。`config.py`读取本机配置，`database.py`处理事务／迁移／修订，`service.py`生成查询与展示响应，`api.py`提供HTTP，`__main__.py`提供维护命令。运行时以数据库为知识写入入口，JSON保留交接及回归用途。见[后端架构与接入](backend.md)。下文保留P1历史架构说明。
+
 2026-11-20 · 当前为 P1 知识层、第四批候选和本地临时融合检查页。`frontend/inspector/` 通过 HTTP 调用 `chuchariot/preview.py`。正式服务的 `backend/` 目录将在后端实现时建立，正式前端继续放在 `frontend/`。前后端分离要求见[计划设计书](software-plan.md#32-需求追踪)。
 
 ## 已实现模块

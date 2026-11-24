@@ -5,5 +5,16 @@ description = "Evidence-aware knowledge layer for the Chu chariot exhibit"
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+backend = [
+    "neo4j==6.4.1",
+    "fastapi==0.135.3",
+    "pydantic==2.12.4",
+    "uvicorn==0.44.0",
+    "jsonschema==4.26.0",
+]
+test = ["httpx==0.28.1"]
+
 # Run from the repository root with `python -m chuchariot`.
-# This phase uses only the standard library; no installation step is required.
+# JSON/preview tools use the standard library. Install the backend extra or the
+# tested requirements-backend.lock for the optional persistent service.

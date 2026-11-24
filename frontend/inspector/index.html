@@ -24,6 +24,10 @@
       <div class="stat pending-stat"><span>待审核事实</span><strong id="stat-pending">—</strong><small id="pending-note">已整理，尚待组员复核</small></div>
       <div class="stat"><span>证据片段</span><strong id="stat-evidence">—</strong><small>可定位到来源页、视频时间段或词典义项</small></div>
     </section>
+    <section class="audience-bar" aria-label="图谱展示范围">
+      <div class="segmented" role="group" aria-label="展示用途"><button id="public-view" aria-pressed="true">公众图谱预览</button><button id="internal-view" aria-pressed="false">内部完整核对</button></div>
+      <p id="audience-description">公众图谱突出构件与复原知识，保留来源和推测说明。</p>
+    </section>
     <section class="view-bar" aria-label="查询模式">
       <div class="segmented" role="group" aria-label="知识可见范围"><button id="review-mode" class="active" aria-pressed="true">候选检查</button><button id="confirmed-mode" aria-pressed="false">已确认知识</button></div>
       <p id="mode-description">正在读取当前候选…</p><span class="readonly">只读</span>
@@ -38,6 +42,7 @@
       </aside>
       <section class="panel graph-panel" aria-label="知识关系图">
         <div class="panel-title map-heading"><div><h2 id="graph-title">知识大地图</h2><span class="panel-subtitle" id="graph-summary">正在加载…</span></div><div class="map-actions"><div class="segmented graph-modes" role="group" aria-label="图谱范围"><button id="map-mode" aria-pressed="true">大地图</button><button id="local-mode" aria-pressed="false">局部关联</button></div><button class="button" id="map-expand" aria-pressed="false">展开地图</button></div></div>
+        <div class="relation-toolbar"><div id="relation-filters" class="relation-filters" role="group" aria-label="显示的关系类型"></div><label class="isolated-toggle"><input id="hide-isolated" type="checkbox" checked>隐藏无连线节点</label><span id="relation-summary" role="status"></span></div>
         <nav id="map-regions" class="map-regions" aria-label="地图分区"></nav>
         <div class="map-searchbar" id="map-searchbar"><label for="map-search" class="sr-only">在大地图中搜索实体</label><input id="map-search" type="search" placeholder="搜索实体，回车定位" autocomplete="off"><button class="text-button" id="map-locate">定位实体</button><button class="text-button" id="map-details">查看属性</button><span id="map-search-status" role="status"></span></div>
         <div class="graph-wrap" id="graph-wrap"><svg id="graph" viewBox="0 0 980 820" aria-label="实体与关系交互图"></svg><div id="graph-empty" class="graph-empty" hidden><span class="empty-icon" aria-hidden="true">◇</span><strong>当前没有已确认的关系</strong><p>已有候选仍待复核，可切换“候选检查”查看。</p></div><div class="graph-controls"><button id="zoom-out" aria-label="缩小关系图">−</button><span id="zoom-value">100%</span><button id="zoom-in" aria-label="放大关系图">+</button><button id="zoom-reset">全图总览</button><button id="map-focus">定位当前</button><button id="map-clear">取消高亮</button></div><div class="map-overview" id="map-overview"><span>位置导航</span><svg id="minimap" aria-label="地图位置导航"></svg></div></div>

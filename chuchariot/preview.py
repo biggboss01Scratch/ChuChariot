@@ -12,13 +12,14 @@ from urllib.parse import parse_qs, unquote, urlsplit
 from .dataset_io import DEFAULT_DATASET, DEFAULT_ONTOLOGY, ROOT, KnowledgeError, read_json
 from .media import image_path, project_media
 from .queries import KnowledgeStore
+from .presentation import project_presentation
 
 FRONTEND = ROOT / "frontend/inspector"
 ResourceDirectories = Path | list[Path] | tuple[Path, ...] | None
 
 
 def preview_data(dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, review=False,
-                 resource_dir: ResourceDirectories = None, *, media_manifest=None, media_dir=None) -> dict:
+                 resource_dir: ResourceDirectories = None, *, media_manifest=None, media_dir=None, audience="internal") -> dict:
     definitions = read_json(ontology)
     data = read_json(dataset)
     store = KnowledgeStore(data, definitions)
@@ -31,7 +32,7 @@ def preview_data(dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY, review=Fals
     snapshot["model_report"] = read_json(model) if model.exists() else None
     if media_manifest is not None:
         snapshot["media"] = project_media(data, snapshot, read_json(media_manifest), media_dir)
-    return snapshot
+    return project_presentation(data, snapshot, audience)
 
 
 def source_path(source: dict, resource_dir: ResourceDirectories) -> Path | None:
@@ -49,9 +50,9 @@ def source_path(source: dict, resource_dir: ResourceDirectories) -> Path | None:
 def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
                 resource_dir: ResourceDirectories = None, *, media_manifest=None, media_dir=None) -> ThreadingHTTPServer:
     # Validate before starting, then reload data on each request for manual review.
-    def snapshot(review):
+    def snapshot(review, audience="internal"):
         return preview_data(dataset, ontology, review, resource_dir,
-                            media_manifest=media_manifest, media_dir=media_dir)
+                            media_manifest=media_manifest, media_dir=media_dir, audience=audience)
 
     snapshot(False)
 
@@ -76,7 +77,11 @@ def make_server(port=8765, dataset=DEFAULT_DATASET, ontology=DEFAULT_ONTOLOGY,
                 if path == "/api/health":
                     self.json_response({"status": "ok", "mode": "local_read_only_preview"})
                 elif path == "/api/preview":
-                    self.json_response(snapshot(review))
+                    audience = parse_qs(parsed.query, keep_blank_values=True).get("audience", ["internal"])
+                    if len(audience) != 1 or audience[0] not in {"internal", "public"}:
+                        self.json_response({"error": "audience必须为public或internal且只能提供一次"}, 400)
+                        return
+                    self.json_response(snapshot(review, audience[0]))
                 elif path == "/api/connection-path":
                     parameters = parse_qs(parsed.query, keep_blank_values=True)
                     try:
