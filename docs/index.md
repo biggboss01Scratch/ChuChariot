@@ -1,5 +1,13 @@
 # 项目文档索引
 
+2026-11-24：[知识删除、回收站与恢复](deletion.md)已实现，当前API1.1.0。新增回收站路由并扩展变更集操作，知识数据版本不变。
+
+当前：Neo4j／FastAPI本地首版已实施，见[启动及队友接入](backend.md)、[正式API契约](contracts/knowledge-api.v1.openapi.json)。118项Python及16项Node通过，知识v0.11／本体v0.7未改。以下准备稿保留为实施前记录。
+
+2026-11-23：已形成[数据库与后端API准备方案](plans/database-api-preparation-2026-11-23.md)、[16个接口的OpenAPI草案](contracts/knowledge-api.v1.draft.openapi.json)和[基线／环境盘点](plans/database-api-readiness-2026-11-23.json)。按用户要求仅准备，尚未安装、启动、导入数据库或实现正式后端。
+
+新增[公众／内部展示及关系筛选](presentation-views.md)，数据和本体版本不变；105项Python、16项Node测试通过。
+
 2026-11-23：当前 **knowledge.v0.11**，本体0.7.0，格式0.4.0。128实体、423事实、233实体关系、54尺寸、72证据；区域和辔／马勒已规范，见[接入与迁移说明](normalization-v0.11.md)。98项Python、13项Node测试通过。以下为历史记录。
 
 历史v0.10：**knowledge.v0.10**，126实体、412条待复核事实、229条实体关系、54项尺寸、68段证据。新增现代复原视频案例及推测，见[入库与接入说明](video-knowledge-v0.10.md)。88项Python、9项Node测试通过。下文保留v0.9及历史交付记录。

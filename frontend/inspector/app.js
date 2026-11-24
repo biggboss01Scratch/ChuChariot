@@ -4,6 +4,7 @@ const $ = (selector) => document.querySelector(selector);
 const GRAPH_WIDTH = 1180;
 const pageOptions = new URLSearchParams(window.location.search);
 const state = { data: null, selected: pageOptions.get("entity") || "type:001", review: true, tab: "detail", query: "", kind: "", neighbors: pageOptions.get("neighbors") === "1", expanded: pageOptions.get("view") === "map", highlight: false, selectedFact: null, zoom: 1, center: { x: GRAPH_WIDTH / 2, y: 410 }, requestVersion: 0, positions: new Map(), graphHeight: 820, graphWidth: GRAPH_WIDTH, graphGroups: [], layoutKey: null, regionByEntity: new Map(), routes: new Map() };
+Object.assign(state, { audience: pageOptions.get("audience") === "internal" ? "internal" : "public", relationGroups: null, hideIsolated: pageOptions.get("audience") !== "internal" });
 const kinds = { ComponentType: "部件类别", Chariot: "研究对象", Component: "具体部件", ReferenceSpecimen: "对照标本", Measurement: "尺寸记录", Material: "材质", PreservationFeature: "保存特征", SurfaceFinish: "表面髹饰", DecorationMotif: "纹饰图案", ModelVersion: "模型版本", Connection: "连接记录", Pose: "位姿记录", AssemblyStep: "演示步骤" };
 const relationNames = { HAS_PART: "包含部件", INSTANCE_OF: "属于类别", HAS_MEASUREMENT: "具有尺寸", HAS_DIMENSION: "尺寸或距离", HAS_MATERIAL: "材质为", HAS_PRESERVED_FEATURE: "残存特征", HAS_SURFACE_FINISH: "表面髹饰", HAS_DECORATION_MOTIF: "纹饰为", SUBCLASS_OF: "属于父类", DESCRIPTION: "资料描述", PARTICIPATES_IN_CONNECTION: "参与连接", HAS_POSE: "具有位姿", INVOLVES_COMPONENT: "涉及部件", DEPENDS_ON: "依赖步骤" };
 const shortRelations = { HAS_PART: "组成", INSTANCE_OF: "归类", HAS_MEASUREMENT: "尺寸", HAS_MATERIAL: "材质", HAS_PRESERVED_FEATURE: "保存特征", HAS_SURFACE_FINISH: "髹饰", HAS_DECORATION_MOTIF: "纹饰", SUBCLASS_OF: "类别", DESCRIPTION: "描述" };
@@ -43,29 +44,67 @@ function factOrigin(fact) {
   return [origins[fact.origin] || fact.origin, knowledgeBases[fact.knowledge_basis]].filter(Boolean).join(" · ");
 }
 
+function factRelationName(fact, short = false) {
+  if (state.audience === "public" && fact.predicate === "REFERS_TO_TYPE") return "复原案例涉及";
+  return (short ? shortRelations[fact.predicate] : null) || relationNames[fact.predicate] || fact.predicate;
+}
+
 function evidenceSourceUrl(source, evidence) {
   if (source.format === "md") return source.url;
   const anchor = source.format === "mp4" ? `t=${evidence.start_seconds},${evidence.end_seconds}` : `page=${evidence.pdf_page}`;
+  if (source.content_url) return `${source.content_url}#${anchor}`;
   return `/api/sources/${encodeURIComponent(source.id)}#${anchor}`;
+}
+
+let operatorToken = "";
+async function databaseHeaders() {
+  if (!window.CHUCHARIOT_DATABASE_API || state.audience !== "internal") return {};
+  if (!operatorToken) {
+    const dialog = $("#operator-login"), input = $("#operator-token");
+    operatorToken = await new Promise((resolve) => {
+      dialog.addEventListener("close", () => {
+        resolve(dialog.returnValue === "login" ? input.value.trim() : "");
+        input.value = "";
+      }, { once: true });
+      dialog.showModal();
+    });
+  }
+  if (!operatorToken) throw new Error("内部访问需要操作员凭据");
+  return { Authorization: `Bearer ${operatorToken}` };
 }
 
 async function loadData() {
   const requestVersion = ++state.requestVersion;
   $("#reload-button").disabled = true;
   $("#workspace").setAttribute("aria-busy", "true");
+  if (window.CHUCHARIOT_DATABASE_API) $("#workspace").inert = true;
   $("#error-box").hidden = true;
   try {
-    const response = await fetch(`/api/preview?review=${state.review ? "1" : "0"}`, { cache: "no-store" });
+    const database = window.CHUCHARIOT_DATABASE_API;
+    const url = database ? `/api/v1/${state.audience === "internal" ? "internal/" : ""}inspector?confirmed=${!state.review}`
+      : `/api/preview?review=${state.review ? "1" : "0"}&audience=${state.audience}`;
+    const response = await fetch(url, { cache: "no-store", headers: await databaseHeaders() });
     const data = await response.json();
     if (requestVersion !== state.requestVersion) return;
-    if (!response.ok) throw new Error(data.error || "数据读取失败");
+    if (!response.ok) {
+      if (response.status === 401 || response.status === 403) operatorToken = "";
+      throw new Error(data.error?.message || data.error || "数据读取失败");
+    }
+    if (state.audience === "public" && data.presentation?.audience !== "public") throw new Error("当前服务尚未支持公众筛选，请重启新版知识检查服务");
     state.data = data;
+    if (database) {
+      state.review = data.meta.review_mode;
+      $("#operator-logout").hidden = state.audience !== "internal";
+    }
     if (!getEntity(state.selected)) state.selected = data.entities[0]?.id || null;
+    if (state.audience === "public" && state.tab === "mappings") state.tab = "detail";
+    if (!data.entities.some((entity) => entity.kind === state.kind)) state.kind = "";
     renderOverview();
+    renderRelationFilters();
     renderList();
     renderGraph();
     renderDetail();
-    $("#load-status").textContent = `已读取本地数据 · ${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })}`;
+    $("#load-status").textContent = `${database ? `Neo4j · ${data.meta.graph_revision}` : "已读取本地数据"} · ${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })}`;
   } catch (error) {
     if (requestVersion !== state.requestVersion) return;
     $("#error-box").textContent = `无法读取知识数据：${error.message}。请确认本地预览服务正在运行，并检查终端中的校验结果。`;
@@ -75,6 +114,7 @@ async function loadData() {
     if (requestVersion === state.requestVersion) {
       $("#reload-button").disabled = false;
       $("#workspace").setAttribute("aria-busy", "false");
+      if (window.CHUCHARIOT_DATABASE_API) $("#workspace").inert = !state.data;
     }
   }
 }
@@ -97,6 +137,46 @@ function renderOverview() {
   const kindsPresent = [...new Set(entities.map((e) => e.kind))];
   $("#kind-filter").innerHTML = '<option value="">全部类型</option>' + kindsPresent.map((kind) => `<option value="${escapeHtml(kind)}">${escapeHtml(kinds[kind] || kind)}</option>`).join("");
   $("#kind-filter").value = state.kind;
+  for (const audience of ["public", "internal"]) {
+    $(`#${audience}-view`).classList.toggle("active", state.audience === audience);
+    $(`#${audience}-view`).setAttribute("aria-pressed", String(state.audience === audience));
+  }
+  $("#audience-description").textContent = state.audience === "public"
+    ? "公众图谱预览：隐藏管理、分类、栏目和路径元数据；来源、推测与审核状态仍保留。"
+    : "内部完整核对：可查看所有实体、分类、来源词义、教学栏目和路径依据。";
+  $("#tab-mappings").hidden = state.audience === "public";
+}
+
+function filteredGraphFacts(data, selectedGroups) {
+  if (!data.presentation || selectedGroups === null) return data.facts;
+  const allowed = new Set(data.presentation.groups.filter((group) => selectedGroups.has(group.id)).flatMap((group) => group.fact_ids));
+  return data.facts.filter((fact) => !fact.object_id || allowed.has(fact.id));
+}
+
+function renderRelationFilters() {
+  const groups = (state.data.presentation?.groups || []).filter((group) => group.fact_ids.length);
+  if (state.relationGroups === null) state.relationGroups = new Set(groups.map((group) => group.id));
+  $("#relation-filters").innerHTML = groups.length ? groups.map((group) => `<label><input type="checkbox" data-relation-group="${escapeHtml(group.id)}" ${state.relationGroups.has(group.id) ? "checked" : ""}>${escapeHtml(group.label)} <small>${group.fact_ids.length}</small></label>`).join("") : '<span>当前审核范围暂无关系</span>';
+  $("#hide-isolated").checked = state.hideIsolated;
+}
+
+function setAudience(audience) {
+  if (window.CHUCHARIOT_DATABASE_API && audience !== state.audience) {
+    state.data = null;
+    for (const selector of ["#entity-list", "#graph", "#minimap", "#detail-content"]) $(selector).replaceChildren();
+    $("#detail-name").textContent = "正在加载…";
+    $("#detail-id").textContent = "";
+    $("#workspace").inert = true;
+  }
+  state.audience = audience;
+  state.relationGroups = null;
+  state.hideIsolated = audience === "public";
+  state.selectedFact = null;
+  state.layoutKey = null;
+  const url = new URL(window.location.href);
+  url.searchParams.set("audience", audience);
+  window.history.replaceState(null, "", url);
+  loadData();
 }
 
 function matchedEntities() {
@@ -128,7 +208,7 @@ function selectEntity(id) {
 }
 
 // Display regions organize the map; they never add semantic edges to the data.
-function atlasLayout(entities, facts) {
+function atlasLayout(entities, facts, regionHints = {}) {
   const themes = [
     { key: "wheel", label: "轮系", subtitle: "轮 · 牙 · 辐 · 毂", color: "#408979", terms: ["车轮", "毂", "辐", "牙", "股", "骹", "篆", "车轮附加圆木条", "捆扎皮条"] },
     { key: "traction", label: "牵引与车体", subtitle: "轭 · 靷 · 衡 · 辀及其标本", color: "#ac8142", terms: ["轭", "靷", "衡", "轙", "骨衡帽", "辀", "辀首", "舆", "伏兔", "围栏", "舆底", "舆底支承位置（教学区域）"] },
@@ -146,7 +226,8 @@ function atlasLayout(entities, facts) {
     if (!entity || visiting.has(id)) return "reference";
     visiting.add(id);
     let key;
-    if (["Material", "PreservationFeature", "SurfaceFinish", "DecorationMotif"].includes(entity.kind)) key = "shared";
+    if (themes.some((theme) => theme.key === regionHints[id])) key = regionHints[id];
+    else if (["Material", "PreservationFeature", "SurfaceFinish", "DecorationMotif"].includes(entity.kind)) key = "shared";
     else if (entity.kind === "HarnessRole") key = "harness";
     else if (entity.scope_id) key = region(entity.scope_id, visiting);
     else if (["Chariot", "ModelVersion"].includes(entity.kind) || /图|复原/.test(entity.label)) key = "reference";
@@ -436,17 +517,20 @@ function setGraphViewport(svg) {
 function renderGraph() {
   if (!state.data) return;
   const svg = $("#graph");
-  const { entities, facts } = state.data;
+  const { entities } = state.data;
+  const facts = filteredGraphFacts(state.data, state.relationGroups);
   const connections = facts.filter((f) => f.object_id && (!state.neighbors || f.subject_id === state.selected || f.object_id === state.selected));
   const adjacent = new Set([state.selected]);
-  for (const f of relatedFacts(state.selected)) {
+  for (const f of connections.filter((fact) => fact.subject_id === state.selected || fact.object_id === state.selected)) {
     adjacent.add(f.subject_id);
     if (f.object_id) adjacent.add(f.object_id);
   }
-  const visibleEntities = state.neighbors ? entities.filter((entity) => adjacent.has(entity.id)) : entities;
+  const connected = new Set(connections.flatMap((fact) => [fact.subject_id, fact.object_id]));
+  const visibleEntities = entities.filter((entity) => (!state.neighbors || adjacent.has(entity.id)) &&
+    (!state.hideIsolated || connected.has(entity.id) || entity.id === state.selected));
   const layoutKey = JSON.stringify([state.data.meta.dataset_id, state.neighbors, visibleEntities.map((entity) => entity.id), connections.map((fact) => fact.id)]);
   if (layoutKey !== state.layoutKey) {
-    const layout = state.neighbors ? graphLayout(visibleEntities, connections, state.selected) : atlasLayout(visibleEntities, connections);
+    const layout = state.neighbors ? graphLayout(visibleEntities, connections, state.selected) : atlasLayout(visibleEntities, connections, state.data.presentation?.regions);
     state.positions = layout.positions;
     state.graphGroups = layout.groups;
     state.graphWidth = layout.width;
@@ -489,11 +573,11 @@ function renderGraph() {
       class: `graph-edge origin-${fact.origin} ${related ? "related" : state.highlight ? "dimmed" : ""} ${cross ? "cross-region" : ""}`,
       "data-fact": fact.id, "marker-end": "url(#arrow-head)",
     });
-    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${relationNames[fact.predicate] || fact.predicate} → ${getEntity(fact.object_id).label} · ${factOrigin(fact)} · ${statusNames[fact.review_status]}`));
+    edge.append(svgElement("title", {}, `${getEntity(fact.subject_id).label} → ${factRelationName(fact)} → ${getEntity(fact.object_id).label} · ${factOrigin(fact)} · ${statusNames[fact.review_status]}`));
     edgeLayer.append(edge);
     if (related && scale >= .35) {
       const at = route?.label || [(from[0] + to[0]) / 2, (from[1] + to[1]) / 2];
-      labelLayer.append(svgElement("text", { x: at[0], y: at[1] - 10, class: "edge-label", "font-size": labelSize - 3 }, shortRelations[fact.predicate] || relationNames[fact.predicate] || fact.predicate));
+      labelLayer.append(svgElement("text", { x: at[0], y: at[1] - 10, class: "edge-label", "font-size": labelSize - 3 }, factRelationName(fact, true)));
     }
   }
   for (const entity of visibleEntities) {
@@ -511,10 +595,14 @@ function renderGraph() {
     nodeLayer.append(group);
   }
   svg.append(groupLayer, edgeLayer, labelLayer, nodeLayer);
-  const dimensionCount = facts.filter((fact) => fact.predicate === "HAS_DIMENSION" && (!state.neighbors || fact.subject_id === state.selected)).length;
+  const shownIds = new Set(visibleEntities.map((entity) => entity.id));
+  const dimensionCount = facts.filter((fact) => fact.predicate === "HAS_DIMENSION" && shownIds.has(fact.subject_id) && (!state.neighbors || fact.subject_id === state.selected)).length;
   $("#graph-summary").textContent = `${visibleEntities.length}${state.neighbors ? ` / ${entities.length}` : ""} 个实体 · ${connections.length} 条${state.review ? "候选" : "已确认"}关系${dimensionCount ? ` · ${dimensionCount}项尺寸属性` : ""}${state.neighbors ? " · 当前实体直接关联" : ` · ${state.graphGroups.length}个浏览分区`}`;
   $("#zoom-value").textContent = `${Math.round(state.zoom * 100)}%`;
-  $("#graph-empty").hidden = state.review || connections.length > 0;
+  $("#relation-summary").textContent = `当前显示 ${connections.length} 条连线；筛选只改变绘图`;
+  $("#graph-empty").hidden = connections.length > 0;
+  $("#graph-empty strong").textContent = state.review ? "当前筛选没有关系" : "当前没有已确认的关系";
+  $("#graph-empty p").textContent = state.review ? "可勾选关系类型或选择其他实体；属性与来源仍可查看。" : "可切换候选检查预览待复核知识，审核状态不会因此改变。";
   renderMinimap();
 }
 
@@ -666,7 +754,7 @@ function renderProperties(entity, facts) {
 }
 
 function renderFactCards(facts) {
-  return facts.map((fact) => `<article class="fact-card"><div class="fact-meta"><code>${escapeHtml(fact.id)}</code>${badge(fact.review_status)}</div><p class="fact-statement">${entityLink(fact.subject_id)}<span class="relation-word">${escapeHtml(relationNames[fact.predicate] || fact.predicate)}</span>${fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value)}</p><div class="fact-origin">${escapeHtml(factOrigin(fact))} · ${fact.evidence_ids.length} 段证据</div>${fact.rationale ? `<p class="property-scope">推断或假设理由：${escapeHtml(fact.rationale)}</p>` : ""}<button class="text-button" data-proof="${escapeHtml(fact.id)}">查看事实依据</button></article>`).join("");
+  return facts.map((fact) => `<article class="fact-card"><div class="fact-meta"><code>${escapeHtml(fact.id)}</code>${badge(fact.review_status)}</div><p class="fact-statement">${entityLink(fact.subject_id)}<span class="relation-word">${escapeHtml(factRelationName(fact))}</span>${fact.object_id ? entityLink(fact.object_id) : escapeHtml(fact.value)}</p><div class="fact-origin">${escapeHtml(factOrigin(fact))} · ${fact.evidence_ids.length} 段证据</div>${fact.rationale ? `<p class="property-scope">推断或假设理由：${escapeHtml(fact.rationale)}</p>` : ""}<button class="text-button" data-proof="${escapeHtml(fact.id)}">查看事实依据</button></article>`).join("");
 }
 
 function renderKnowledge(entity) {
@@ -755,6 +843,30 @@ document.addEventListener("click", (event) => {
   const proof = event.target.closest("[data-proof]");
   if (proof) { state.selectedFact = proof.dataset.proof; state.tab = "evidence"; renderDetail(); }
 });
+$("#operator-logout")?.addEventListener("click", () => {
+  operatorToken = "";
+  $("#operator-logout").hidden = true;
+  setAudience("public");
+});
+document.addEventListener("click", async (event) => {
+  const link = event.target.closest('a[href^="/api/v1/internal/sources/"]');
+  if (!link || !window.CHUCHARIOT_DATABASE_API) return;
+  event.preventDefault();
+  try {
+    const response = await fetch(link.href, { headers: await databaseHeaders(), cache: "no-store" });
+    if (!response.ok) throw new Error("原资料读取失败或凭据已失效");
+    const url = URL.createObjectURL(await response.blob());
+    const open = document.createElement("a");
+    open.href = url + new URL(link.href).hash;
+    open.target = "_blank";
+    open.rel = "noopener";
+    open.click();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (error) {
+    $("#error-box").textContent = error.message;
+    $("#error-box").hidden = false;
+  }
+});
 $("#graph").addEventListener("keydown", (event) => {
   if ((event.key === "Enter" || event.key === " ") && event.target.dataset.entity) {
     event.preventDefault(); selectEntity(event.target.dataset.entity);
@@ -773,6 +885,16 @@ $("#map-locate").addEventListener("click", locateMapSearch);
 $("#map-search").addEventListener("input", () => { state.mapSearchIndex = 0; $("#map-search-status").textContent = ""; $("#map-locate").textContent = "定位实体"; });
 $("#map-search").addEventListener("keydown", (event) => { if (event.key === "Enter" && state.data) locateMapSearch(); });
 $("#reload-button").addEventListener("click", loadData);
+$("#public-view").addEventListener("click", () => setAudience("public"));
+$("#internal-view").addEventListener("click", () => setAudience("internal"));
+$("#relation-filters").addEventListener("change", (event) => {
+  const group = event.target.dataset.relationGroup;
+  if (!group || !state.data) return;
+  if (event.target.checked) state.relationGroups.add(group); else state.relationGroups.delete(group);
+  state.layoutKey = null;
+  renderGraph();
+});
+$("#hide-isolated").addEventListener("change", (event) => { state.hideIsolated = event.target.checked; renderGraph(); });
 $("#back-to-graph").addEventListener("click", () => $(".graph-panel").scrollIntoView({ block: "start" }));
 $("#review-mode").addEventListener("click", () => { state.review = true; loadData(); });
 $("#confirmed-mode").addEventListener("click", () => { state.review = false; loadData(); });

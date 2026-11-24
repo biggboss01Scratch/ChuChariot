@@ -1,0 +1,2311 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "楚车知识服务 API：准备草案",
+    "version": "1.0.0-draft.1",
+    "description": "仅设计契约，所有路由均未实现。初始知识基线v0.11、本体0.7.0、数据契约0.4.0。正式公众默认confirmed_only；显式服务端演示配置可使用candidate_preview并显示审核及推测状态。"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "占位相对地址，不表示当前已有正式服务"
+    }
+  ],
+  "x-status": "preparation-only-not-implemented",
+  "x-baseline": {
+    "dataset_id": "dataset:knowledge-011",
+    "ontology_version": "0.7.0",
+    "schema_version": "0.4.0"
+  },
+  "tags": [
+    {
+      "name": "public",
+      "description": "服务端固定公众投影，不接受参数切换内部范围"
+    },
+    {
+      "name": "internal",
+      "description": "全部需要服务端操作员认证，未配置时拒绝访问"
+    }
+  ],
+  "paths": {
+    "/api/v1/health/live": {
+      "get": {
+        "operationId": "getLiveness",
+        "summary": "检查进程存活，不证明数据库连接",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true
+      }
+    },
+    "/api/v1/health/ready": {
+      "get": {
+        "operationId": "getReadiness",
+        "summary": "验证数据库及活动版本就绪；未就绪503",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Health"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true
+      }
+    },
+    "/api/v1/meta": {
+      "get": {
+        "operationId": "getPublicMetadata",
+        "summary": "读取可展示版本与修订信息",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Meta"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true
+      }
+    },
+    "/api/v1/entities": {
+      "get": {
+        "operationId": "listPublicEntities",
+        "summary": "检索公众可见实体",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": ""
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": ""
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "description": ""
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/entities/{entity_id}": {
+      "get": {
+        "operationId": "getPublicEntity",
+        "summary": "读取实体属性、描述及关联",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/graph": {
+      "get": {
+        "operationId": "getPublicGraph",
+        "summary": "公众图谱及关系组筛选",
+        "description": "省略center读取受限全图。groups使用重复查询参数。服务端决定发布模式，禁止通过audience/internal或review参数越权；推测性质保留。",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Graph"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "center",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          },
+          {
+            "name": "depth",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3,
+              "default": 1
+            },
+            "description": ""
+          },
+          {
+            "name": "groups",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "structure",
+                  "appearance",
+                  "reconstruction"
+                ]
+              },
+              "default": [
+                "structure",
+                "appearance",
+                "reconstruction"
+              ]
+            },
+            "description": ""
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 500,
+              "default": 200
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/facts/{fact_id}": {
+      "get": {
+        "operationId": "getPublicFact",
+        "summary": "读取公众可见事实及推测性质",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FactDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "fact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/facts/{fact_id}/evidence": {
+      "get": {
+        "operationId": "getPublicEvidence",
+        "summary": "读取PDF、视频或词典证据",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidencePage"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "fact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/entities/{entity_id}/model-mappings": {
+      "get": {
+        "operationId": "getPublicModelMappings",
+        "summary": "读取当前发布规则允许的模型映射",
+        "description": "当前7组映射均pending，默认正式模式为空，不能自动确认几何。",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MappingPage"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/sources/{source_id}": {
+      "get": {
+        "operationId": "getPublicSource",
+        "summary": "读取与可见知识关联的来源元数据",
+        "description": "",
+        "tags": [
+          "public"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Source"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ]
+      }
+    },
+    "/api/v1/internal/snapshot": {
+      "get": {
+        "operationId": "getInternalSnapshot",
+        "summary": "读取完整知识快照供内部核对",
+        "description": "",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Snapshot"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "x-required-role": "knowledge-operator"
+      }
+    },
+    "/api/v1/internal/paths/teaching": {
+      "get": {
+        "operationId": "getInternalTeachingPath",
+        "summary": "只沿教学导航边查询并返回逐跳依据",
+        "description": "",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeachingPath"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          },
+          {
+            "name": "max_hops",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16,
+              "default": 8
+            },
+            "description": ""
+          },
+          {
+            "name": "include_pending",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": ""
+          }
+        ],
+        "x-required-role": "knowledge-operator"
+      }
+    },
+    "/api/v1/internal/change-sets": {
+      "post": {
+        "operationId": "createChangeSet",
+        "summary": "暂存新增、修订或审核操作，不直接改正式图",
+        "description": "",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeSet"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 8,
+              "maxLength": 200
+            },
+            "description": "同操作人同键同内容返回原变更集；同键不同内容409"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeSetDraft"
+              }
+            }
+          }
+        },
+        "x-required-role": "knowledge-operator"
+      }
+    },
+    "/api/v1/internal/change-sets/{change_set_id}/validate": {
+      "post": {
+        "operationId": "validateChangeSet",
+        "summary": "校验拟修改的知识、依赖和基线修订",
+        "description": "",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "change_set_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ],
+        "x-required-role": "knowledge-operator"
+      }
+    },
+    "/api/v1/internal/change-sets/{change_set_id}/commit": {
+      "post": {
+        "operationId": "commitChangeSet",
+        "summary": "经校验后原子提交；重复提交不重复写入",
+        "description": "再次检查权限、当前修订及校验结果，提交事实、派生边和审计为同一事务。审核身份来自凭据，不接受客户端冒填。",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeSet"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "parameters": [
+          {
+            "name": "change_set_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            },
+            "description": ""
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitRequest"
+              }
+            }
+          }
+        },
+        "x-required-role": "knowledge-operator"
+      }
+    },
+    "/api/v1/internal/export": {
+      "get": {
+        "operationId": "exportKnowledge",
+        "summary": "导出知识与本体，不包含原始媒体或凭据",
+        "description": "",
+        "tags": [
+          "internal"
+        ],
+        "security": [
+          {
+            "OperatorBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "计划响应；接口尚未实现",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExportBundle"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        },
+        "x-implementation-status": "not-started",
+        "x-query-extra-forbid": true,
+        "x-required-role": "knowledge-operator"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "OperatorBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "opaque",
+        "description": "操作员凭据只在获准实施后配置；本草案不包含任何实际凭据"
+      }
+    },
+    "schemas": {
+      "Meta": {
+        "type": "object",
+        "properties": {
+          "graph_revision": {
+            "type": "string"
+          },
+          "baseline_dataset_id": {
+            "type": "string"
+          },
+          "ontology_version": {
+            "type": "string"
+          },
+          "schema_version": {
+            "type": "string"
+          },
+          "publication_mode": {
+            "type": "string",
+            "enum": [
+              "confirmed_only",
+              "candidate_preview",
+              "internal"
+            ]
+          },
+          "request_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "graph_revision",
+          "baseline_dataset_id",
+          "ontology_version",
+          "schema_version",
+          "publication_mode",
+          "request_id"
+        ],
+        "additionalProperties": false
+      },
+      "EntitySummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scope_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "label",
+          "aliases"
+        ],
+        "additionalProperties": false
+      },
+      "Dimension": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "mm",
+              "cm",
+              "m"
+            ]
+          },
+          "raw": {
+            "type": "string"
+          },
+          "approximate": {
+            "type": "boolean"
+          },
+          "value": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "min": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "max": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "quantity",
+          "unit",
+          "raw",
+          "approximate"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "value"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "min"
+                  ]
+                },
+                {
+                  "required": [
+                    "max"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "required": [
+              "min",
+              "max"
+            ],
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          }
+        ]
+      },
+      "Fact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "subject_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "object_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "value": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Dimension"
+              }
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            }
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "documented",
+              "inferred",
+              "hypothesis"
+            ]
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "confirmed",
+              "disputed"
+            ]
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "knowledge_basis": {
+            "type": "string",
+            "enum": [
+              "modern_reconstruction_observation",
+              "modern_reconstruction_inference"
+            ]
+          },
+          "basis_fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "subject_id",
+          "predicate",
+          "evidence_ids",
+          "origin",
+          "review_status"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "object_id"
+            ],
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          },
+          {
+            "required": [
+              "value"
+            ],
+            "not": {
+              "required": [
+                "object_id"
+              ]
+            }
+          }
+        ]
+      },
+      "Source": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "pdf",
+              "mp4",
+              "md"
+            ]
+          },
+          "resource_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "content_available": {
+            "type": "boolean"
+          },
+          "content_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "format",
+          "content_available"
+        ],
+        "additionalProperties": false
+      },
+      "PdfEvidence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "scope_note": {
+            "type": "string"
+          },
+          "type": {
+            "const": "pdf"
+          },
+          "pdf_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "printed_page": {
+            "type": "string"
+          },
+          "figure": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "locator",
+          "quote",
+          "scope_note",
+          "type",
+          "pdf_page"
+        ],
+        "additionalProperties": false
+      },
+      "VideoEvidence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "scope_note": {
+            "type": "string"
+          },
+          "type": {
+            "const": "video"
+          },
+          "start_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "locator",
+          "quote",
+          "scope_note",
+          "type",
+          "start_seconds",
+          "end_seconds"
+        ],
+        "additionalProperties": false
+      },
+      "DictionaryEvidence": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "scope_note": {
+            "type": "string"
+          },
+          "type": {
+            "const": "dictionary_excerpt"
+          },
+          "entry_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "locator",
+          "quote",
+          "scope_note",
+          "type",
+          "entry_url"
+        ],
+        "additionalProperties": false
+      },
+      "Evidence": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PdfEvidence"
+          },
+          {
+            "$ref": "#/components/schemas/VideoEvidence"
+          },
+          {
+            "$ref": "#/components/schemas/DictionaryEvidence"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "pdf": "#/components/schemas/PdfEvidence",
+            "video": "#/components/schemas/VideoEvidence",
+            "dictionary_excerpt": "#/components/schemas/DictionaryEvidence"
+          }
+        }
+      },
+      "ModelMapping": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "entity_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "model_version_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "node_indices": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "confirmed",
+              "disputed"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "entity_id",
+          "model_version_id",
+          "node_indices",
+          "review_status",
+          "note"
+        ],
+        "additionalProperties": false
+      },
+      "GraphEdge": {
+        "type": "object",
+        "properties": {
+          "fact_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "subject_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "object_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "documented",
+              "inferred",
+              "hypothesis"
+            ]
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "confirmed",
+              "disputed"
+            ]
+          },
+          "knowledge_basis": {
+            "type": "string"
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "evidence_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "fact_id",
+          "subject_id",
+          "object_id",
+          "predicate",
+          "origin",
+          "review_status",
+          "evidence_count"
+        ],
+        "additionalProperties": false
+      },
+      "Graph": {
+        "type": "object",
+        "properties": {
+          "nodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntitySummary"
+            }
+          },
+          "edges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GraphEdge"
+            }
+          },
+          "truncated": {
+            "type": "boolean"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "nodes",
+          "edges",
+          "truncated",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "EntityPage": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntitySummary"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "page_size": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "items",
+          "page",
+          "page_size",
+          "total",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "EntityDetail": {
+        "type": "object",
+        "properties": {
+          "entity": {
+            "$ref": "#/components/schemas/EntitySummary"
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            }
+          },
+          "descriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            }
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GraphEdge"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "entity",
+          "properties",
+          "descriptions",
+          "relations",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "FactDetail": {
+        "type": "object",
+        "properties": {
+          "fact": {
+            "$ref": "#/components/schemas/Fact"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "fact",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "EvidencePage": {
+        "type": "object",
+        "properties": {
+          "fact_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "fact_id",
+          "items",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "MappingPage": {
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ModelMapping"
+            }
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "entity_id",
+          "items",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "LegacyDataset": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "0.4.0"
+          },
+          "ontology_version": {
+            "type": "string"
+          },
+          "dataset_id": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "reviewed"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "entities": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          },
+          "model_mappings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        },
+        "required": [
+          "schema_version",
+          "ontology_version",
+          "dataset_id",
+          "stage",
+          "description",
+          "sources",
+          "evidence",
+          "entities",
+          "facts",
+          "model_mappings"
+        ],
+        "additionalProperties": false,
+        "description": "完整v0.4导出形态，嵌套记录仍须通过现有validation.py及所选本体；不是任意对象入库许可。"
+      },
+      "Ontology": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string"
+          },
+          "entity_kinds": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "predicates": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "entity_kinds",
+          "units",
+          "predicates"
+        ],
+        "additionalProperties": false
+      },
+      "Snapshot": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "$ref": "#/components/schemas/LegacyDataset"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "dataset",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "ExportBundle": {
+        "type": "object",
+        "properties": {
+          "dataset": {
+            "$ref": "#/components/schemas/LegacyDataset"
+          },
+          "ontology": {
+            "$ref": "#/components/schemas/Ontology"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "dataset",
+          "ontology",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "PathHop": {
+        "type": "object",
+        "properties": {
+          "fact": {
+            "$ref": "#/components/schemas/Fact"
+          },
+          "from": {
+            "$ref": "#/components/schemas/EntitySummary"
+          },
+          "to": {
+            "$ref": "#/components/schemas/EntitySummary"
+          },
+          "connection": {
+            "$ref": "#/components/schemas/EntitySummary"
+          },
+          "evidence_basis": {
+            "$ref": "#/components/schemas/EntitySummary"
+          },
+          "metadata_facts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Fact"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            }
+          }
+        },
+        "required": [
+          "fact",
+          "from",
+          "to",
+          "connection",
+          "evidence_basis",
+          "metadata_facts",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "TeachingPath": {
+        "type": "object",
+        "properties": {
+          "path_kind": {
+            "const": "teaching"
+          },
+          "found": {
+            "type": "boolean"
+          },
+          "hops": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PathHop"
+            }
+          },
+          "note": {
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        },
+        "required": [
+          "path_kind",
+          "found",
+          "hops",
+          "note",
+          "meta"
+        ],
+        "additionalProperties": false
+      },
+      "Operation": {
+        "type": "object",
+        "properties": {
+          "table": {
+            "type": "string",
+            "enum": [
+              "sources",
+              "evidence",
+              "entities",
+              "facts",
+              "model_mappings"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "create",
+              "update",
+              "review"
+            ]
+          },
+          "record": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "review_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "confirmed",
+              "disputed"
+            ]
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "table",
+          "id",
+          "action"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "action": {
+                "enum": [
+                  "create",
+                  "update"
+                ]
+              }
+            },
+            "required": [
+              "record"
+            ],
+            "not": {
+              "required": [
+                "review_status"
+              ]
+            }
+          },
+          {
+            "properties": {
+              "action": {
+                "const": "review"
+              },
+              "table": {
+                "enum": [
+                  "facts",
+                  "model_mappings"
+                ]
+              }
+            },
+            "required": [
+              "review_status",
+              "note"
+            ],
+            "not": {
+              "required": [
+                "record"
+              ]
+            }
+          }
+        ],
+        "description": "create/update的record按完整v0.4单条记录校验，record.id须与id一致；review操作人的身份和日期由服务端确定。"
+      },
+      "ChangeSetDraft": {
+        "type": "object",
+        "properties": {
+          "base_graph_revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ontology_version": {
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "0.4.0"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1000,
+            "items": {
+              "$ref": "#/components/schemas/Operation"
+            }
+          }
+        },
+        "required": [
+          "base_graph_revision",
+          "ontology_version",
+          "schema_version",
+          "reason",
+          "operations"
+        ],
+        "additionalProperties": false
+      },
+      "ChangeSet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "validated",
+              "committed",
+              "rejected"
+            ]
+          },
+          "base_graph_revision": {
+            "type": "string"
+          },
+          "result_graph_revision": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "actor_id": {
+            "type": "string"
+          },
+          "operation_count": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "state",
+          "base_graph_revision",
+          "actor_id",
+          "operation_count"
+        ],
+        "additionalProperties": false
+      },
+      "ValidationResult": {
+        "type": "object",
+        "properties": {
+          "change_set_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "base_graph_revision": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "path",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "impacted_fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*:[a-z0-9][a-z0-9._-]*$"
+            }
+          }
+        },
+        "required": [
+          "change_set_id",
+          "valid",
+          "base_graph_revision",
+          "errors",
+          "impacted_fact_ids"
+        ],
+        "additionalProperties": false
+      },
+      "CommitRequest": {
+        "type": "object",
+        "properties": {
+          "expected_graph_revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expected_graph_revision"
+        ],
+        "additionalProperties": false
+      },
+      "Health": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "not_ready"
+            ]
+          },
+          "database": {
+            "type": "string",
+            "enum": [
+              "not_checked",
+              "ready",
+              "unavailable"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "database"
+        ],
+        "additionalProperties": false
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "request_id": {
+                "type": "string"
+              },
+              "details": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "message"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "request_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "参数或数据约束错误",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "未认证",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "操作权限不足",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "记录不存在或对该调用者不可见",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "基线修订过期、同键不同内容或状态冲突",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Unavailable": {
+        "description": "数据库或内部鉴权配置尚未就绪",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

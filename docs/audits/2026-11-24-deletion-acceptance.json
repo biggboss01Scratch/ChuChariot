@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-24",
+  "api_version": "1.1.0",
+  "operations": 22,
+  "deletion_mode": "recoverable_archive",
+  "tables": [
+    "entities",
+    "facts",
+    "evidence",
+    "sources",
+    "model_mappings"
+  ],
+  "python_tests_passed": 126,
+  "new_lifecycle_integration_tests": 8,
+  "integration_uri": "bolt://127.0.0.1:27687",
+  "tested": [
+    "delete_visibility",
+    "recycle_bin_auth",
+    "dependency_protection",
+    "explicit_batch_delete",
+    "restore_validation",
+    "restored_review_pending",
+    "reserved_ids",
+    "idempotency",
+    "transaction_rollback",
+    "revision_conflicts"
+  ],
+  "main_graph_revision": "rev:00000001",
+  "main_dataset_hash": "5753402266423d3af0bb41d63aba4083dae30d3cbb78b8241bef53988433a087",
+  "main_knowledge_matches_v011": true,
+  "main_records_deleted_this_turn": 0,
+  "knowledge_files_unchanged": true,
+  "read_only_inspector_ui": true,
+  "github_pushed": false
+}

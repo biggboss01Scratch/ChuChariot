@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-23",
+  "status": "local_first_version_verified",
+  "api_version": "1.0.0",
+  "database_version": "5.26.33",
+  "driver_version": "6.4.1",
+  "graph_revision": "rev:00000001",
+  "dataset_id": "dataset:knowledge-011",
+  "ontology_version": "0.7.0",
+  "schema_version": "0.4.0",
+  "counts": {
+    "entities": 128,
+    "facts": 423,
+    "evidence": 72,
+    "sources": 7,
+    "model_mappings": 7
+  },
+  "domain_entity_relations": 233,
+  "dimensions": 54,
+  "confirmed_facts": 0,
+  "planned_operations_implemented": 16,
+  "total_api_operations": 21,
+  "public_candidate_relations": 76,
+  "python_tests_passed": 118,
+  "node_tests_passed": 16,
+  "integration_database_separate": true,
+  "restart_persistence_verified": true,
+  "backup_restore_verification": {
+    "date": "2026-11-23",
+    "restored_to": "dedicated integration database",
+    "baseline_roundtrip_equal": true,
+    "graph_revision": "rev:00000001",
+    "dump_sha256": "151caa77160905bf62bfac9dfb6c24ee225e02809da7ea02d1576384217ed0d6",
+    "dump_bytes": 307828
+  },
+  "runtime_reads_neo4j": true,
+  "json_fallback": false,
+  "knowledge_source_files_unchanged": true,
+  "public_deployment": false,
+  "github_pushed_this_turn": false
+}
