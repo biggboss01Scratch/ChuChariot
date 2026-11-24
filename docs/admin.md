@@ -1,14 +1,24 @@
 # 楚车知识管理
 
-后端运行时打开 `http://127.0.0.1:8780/admin`，使用 `.local/backend.json` 的 `operators` 所配置的操作员凭据。支持密码管理器的浏览器可勾选「下次自动填充」并确认保存，此后可从该浏览器自动填入。已登录页面在内存中持有凭据。
+## 登录
 
-AI 导入从环境变量 `DEEPSEEK_API_KEY` 或本机忽略文件 `.local/ai.json` 读取 DeepSeek 配置。使用文件时可参考以下结构。
+首次启动按[后端启动说明](backend.md#从仓库启动)生成本机配置。打开 `http://127.0.0.1:8780/admin`，把 `.local/backend.json` 中 `operators` 下对应操作员的值填入「操作员凭据」。如需使用组内交接说明里的统一凭据，把对应值填进本机的 `operators.local-operator`，再重启后端。登录后可通过浏览器的「下次自动填充」保存凭据。
+
+## AI 导入的 API Key
+
+在项目根目录创建 `.local/ai.json`，把自己的 DeepSeek API Key 填到 `generation_key`。该文件位于 Git 忽略的本机目录。
 
 ```json
 {
   "generation_key": "",
   "generation_model": "deepseek-flash"
 }
+```
+
+也可在启动后端的同一个 PowerShell 窗口设置环境变量，环境变量优先于配置文件。
+
+```powershell
+$env:DEEPSEEK_API_KEY = "<你的 DeepSeek API Key>"
 ```
 
 ## 图谱编辑
