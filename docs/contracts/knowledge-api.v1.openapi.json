@@ -1355,7 +1355,8 @@
             "enum": [
               "pdf",
               "mp4",
-              "md"
+              "md",
+              "txt"
             ]
           },
           "resource_id": {
@@ -1512,6 +1513,21 @@
         ],
         "additionalProperties": false
       },
+      "UploadedTextEvidence": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "source": { "$ref": "#/components/schemas/Source" },
+          "locator": { "type": "string" },
+          "quote": { "type": "string" },
+          "scope_note": { "type": "string" },
+          "start_line": { "type": "integer", "minimum": 1 },
+          "end_line": { "type": "integer", "minimum": 1 },
+          "type": { "const": "uploaded_text" }
+        },
+        "required": ["id", "source", "locator", "quote", "scope_note", "start_line", "end_line", "type"],
+        "additionalProperties": false
+      },
       "Evidence": {
         "oneOf": [
           {
@@ -1522,6 +1538,9 @@
           },
           {
             "$ref": "#/components/schemas/DictionaryEvidence"
+          },
+          {
+            "$ref": "#/components/schemas/UploadedTextEvidence"
           }
         ],
         "discriminator": {
@@ -1529,7 +1548,8 @@
           "mapping": {
             "pdf": "#/components/schemas/PdfEvidence",
             "video": "#/components/schemas/VideoEvidence",
-            "dictionary_excerpt": "#/components/schemas/DictionaryEvidence"
+            "dictionary_excerpt": "#/components/schemas/DictionaryEvidence",
+            "uploaded_text": "#/components/schemas/UploadedTextEvidence"
           }
         }
       },
@@ -2103,6 +2123,7 @@
               },
               "table": {
                 "enum": [
+                  "entities",
                   "facts",
                   "model_mappings"
                 ]

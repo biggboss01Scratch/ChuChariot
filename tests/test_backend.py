@@ -147,10 +147,13 @@ class BackendIntegrationTests(unittest.TestCase):
             row = session.run("MATCH (r:Record {id:'type:test-a'}) RETURN r.deleted AS deleted, size([(r)-[]-() | 1]) AS links").single()
             self.assertTrue(row["deleted"])
             self.assertEqual(row["links"], 0)
-        self.command([{**op, "action": "restore"}], next_revision, "restore-orphan-entity")
-        self.assertEqual(self.client.get("/api/v1/entities/type:test-a").status_code, 200)
+        _, restored_revision = self.command([{**op, "action": "restore"}], next_revision, "restore-orphan-entity")
+        self.assertEqual(self.client.get("/api/v1/entities/type:test-a").status_code, 404)
         self.assertEqual(self.client.get("/api/v1/internal/deleted", headers=self.auth).json()["total"], 0)
         self.assertEqual(self.repo.history("type:test-a")[-1]["action"], "restore")
+        self.command([{"table": "entities", "id": "type:test-a", "action": "review", "review_status": "confirmed",
+                       "note": "Approve restored entity"}], restored_revision, "publish-orphan-entity")
+        self.assertEqual(self.client.get("/api/v1/entities/type:test-a").status_code, 200)
 
     def test_delete_fact_is_hidden_in_all_modes_and_restore_requires_review(self):
         referenced = set().union(*(references(record) for table in ("sources", "evidence", "entities", "facts", "model_mappings") for record in DATA[table]))
@@ -200,7 +203,13 @@ class BackendIntegrationTests(unittest.TestCase):
         _, rev = self.command(operations, key="delete-explicit-closure")
         self.assertTrue(all(r["id"] not in ids for t in ("sources", "evidence", "entities", "facts", "model_mappings") for r in self.repo.snapshot()[0][t]))
         self.command([{**op, "action": "restore"} for op in reversed(operations)], rev, "restore-explicit-closure")
-        self.assertEqual(self.repo.snapshot()[0], normalized(DATA))
+        restored = self.repo.snapshot()[0]
+        self.assertEqual(next(e for e in restored["entities"] if e["id"] == "specimen:001")["publication_status"], "draft")
+        for record in restored["entities"]:
+            record.pop("publication_status", None)
+        for record in restored["facts"]:
+            record.pop("publication_managed", None)
+        self.assertEqual(restored, normalized(DATA))
 
     def test_deleted_id_cannot_be_recreated_updated_or_reviewed(self):
         _, rev = self.command(self.draft()["operations"], key="reserve-create")
@@ -363,6 +372,58 @@ class BackendIntegrationTests(unittest.TestCase):
             self.assertEqual(c.get("/api/v1/facts/fact:037").status_code, 404)
             self.assertEqual(c.get("/api/v1/sources/source:001").status_code, 404)
 
+    def test_admin_ingestion_and_explicit_publication_with_private_original(self):
+        from chuchariot.admin.api import DeepSeekExtractor
+        from chuchariot.admin.ingestion import Proposal
+
+        prefix = "/api/v1/internal/admin"
+        self.assertEqual(self.client.get("/admin").status_code, 200)
+        self.assertEqual(self.client.get(prefix + "/state").status_code, 401)
+        original = "测试轮 R1 的右轮横径为100厘米。"
+        unrelated = "周三参观签到。"
+        upload = {"filename": "test-source.md", "text": original + "\n" + unrelated}
+        proposal = Proposal(subject={"label": "测试轮 R1", "kind": "ReferenceSpecimen"},
+                            predicate="HAS_DIMENSION", value={"quantity": "右轮横径", "value": 100,
+                                                               "unit": "cm", "raw": original, "approximate": False},
+                            quote=original)
+        with patch.object(DeepSeekExtractor, "extract", return_value=([proposal], [{"quote": unrelated, "reason": "参观事宜"}], [])) as extract:
+            result = self.client.post(prefix + "/imports/analyze", headers=self.auth, json=upload)
+        self.assertEqual(result.status_code, 200, result.text)
+        args = extract.call_args.args
+        self.assertEqual(len(args[0]["facts"]), len(DATA["facts"]))
+        self.assertTrue(any(f["predicate"] == "SCHEMATIC_NEXT" for f in args[0]["facts"]))
+        analysis = result.json()
+        self.assertEqual(analysis["items"][0]["status"], "new")
+        self.assertEqual(analysis["unrelated"][0]["start_line"], 2)
+        self.assertEqual(self.repo.current_revision(), "rev:00000001")
+        request = {**upload, "candidates": analysis["candidates"], "base_graph_revision": analysis["graph_revision"],
+                   "selections": [{"index": 0, "action": "add"}]}
+        result = self.client.post(prefix + "/imports/commit", headers={**self.auth, "Idempotency-Key": "import-test-01"}, json=request)
+        self.assertEqual(result.status_code, 200, result.text)
+        fact_id = result.json()["fact_ids"][0]
+        entity_id = analysis["items"][0]["subject_id"]
+        source_id = analysis["items"][0]["evidence"]["source_id"]
+        self.assertEqual(self.client.get(f"/api/v1/entities/{entity_id}").status_code, 404)
+        self.assertEqual(self.client.get(f"/api/v1/facts/{fact_id}").status_code, 404)
+        self.assertEqual(self.client.get(f"/api/v1/sources/{source_id}").status_code, 404)
+        self.assertIn(fact_id, {f["id"] for f in self.client.get(prefix + "/state", headers=self.auth).json()["dataset"]["facts"]})
+        checked = self.client.post(prefix + "/imports/check", headers=self.auth, json={**upload, "candidates": analysis["candidates"]})
+        self.assertEqual(checked.json()["items"][0]["status"], "duplicate")
+        _, revision = self.command(
+            [{"table": table, "id": ident, "action": "review", "review_status": "confirmed", "note": "Accept test draft"}
+             for table, ident in (("entities", entity_id), ("facts", fact_id))],
+            result.json()["graph_revision"], "publish-import")
+        self.assertEqual(revision, "rev:00000003")
+        proof = self.client.get(f"/api/v1/facts/{fact_id}/evidence")
+        self.assertEqual(proof.status_code, 200, proof.text)
+        self.assertEqual(proof.json()["items"][0]["type"], "uploaded_text")
+        self.assertEqual(proof.json()["items"][0]["quote"], original)
+        self.assertEqual(self.client.get(f"/api/v1/sources/{source_id}/content").status_code, 404)
+        text = self.client.get(f"/api/v1/internal/sources/{source_id}/content", headers=self.auth)
+        self.assertEqual(text.text, upload["text"])
+        with TestClient(create_app(replace(self.settings, publication_mode="confirmed_only"), self.repo)) as public:
+            self.assertEqual(public.get(f"/api/v1/facts/{fact_id}").status_code, 200)
+
     def test_change_set_validate_commit_retry_history_and_restore(self):
         draft = self.draft()
         ident = self.post_change(draft)
@@ -377,7 +438,9 @@ class BackendIntegrationTests(unittest.TestCase):
         self.assertEqual(retry.json()["result_graph_revision"], "rev:00000002")
         self.assertEqual(len(self.repo.history("type:test-a")), 1)
         self.assertEqual(self.repo.history("type:test-a")[0]["reason"], draft["reason"])
-        self.assertEqual(self.client.get("/api/v1/entities/type:test-a").status_code, 200)
+        self.assertEqual(self.client.get("/api/v1/entities/type:test-a").status_code, 404)
+        state = self.client.get("/api/v1/internal/admin/state", headers=self.auth).json()["dataset"]
+        self.assertIn("type:test-a", {entity["id"] for entity in state["entities"]})
         # Restoring a record is an explicit new revision, not erasure of history.
         record = copy.deepcopy(DATA["entities"][0]); before = copy.deepcopy(record)
         record["note"] = "test edit"

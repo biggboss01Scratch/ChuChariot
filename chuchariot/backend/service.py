@@ -6,7 +6,7 @@ from neo4j.exceptions import ServiceUnavailable
 from ..queries import KnowledgeStore
 from ..presentation import project_presentation
 from ..preview import source_path
-from .database import Missing, Repository
+from .database import Missing, Repository, publication_blocks
 
 
 def pick(record, keys):
@@ -34,7 +34,12 @@ class View:
         self.review = review
         self.internal = internal
         self.meta = metadata(self.data, self.ontology, self.state, request_id, mode)
-        self.snapshot = project_presentation(self.data, self.store.snapshot(review), "internal" if internal else "public")
+        snapshot = self.store.snapshot(review)
+        if not internal:
+            hidden_entities, hidden_facts = publication_blocks(self.data)
+            snapshot["entities"] = [item for item in snapshot["entities"] if item["id"] not in hidden_entities]
+            snapshot["facts"] = [item for item in snapshot["facts"] if item["id"] not in hidden_facts]
+        self.snapshot = project_presentation(self.data, snapshot, "internal" if internal else "public")
         self.entities = {e["id"]: e for e in self.snapshot["entities"]}
         self.facts = {f["id"]: f for f in self.snapshot["facts"]}
         self.sources = {s["id"]: s for s in self.snapshot["sources"]}
@@ -60,7 +65,8 @@ class View:
         if ident not in self.sources:
             raise Missing("Source not found")
         source = self.sources[ident]
-        available = source_path(source, self.settings.resource_dirs) is not None
+        available = (self.internal if source.get("source_type") == "uploaded_text"
+                     else source_path(source, self.settings.resource_dirs) is not None)
         prefix = "/api/v1/internal" if self.internal else "/api/v1"
         return {**pick(source, {"id", "title", "format", "resource_id", "url", "note"}),
                 "content_available": available,
@@ -69,9 +75,12 @@ class View:
     def proof(self, evidence):
         source = self.source(evidence["source_id"])
         result = pick(evidence, {"id", "locator", "quote", "scope_note", "pdf_page", "printed_page", "figure",
-                                "start_seconds", "end_seconds"})
-        result.update(source=source, type={"pdf": "pdf", "mp4": "video", "md": "dictionary_excerpt"}[source["format"]])
-        if source["format"] == "md":
+                                "start_seconds", "end_seconds", "start_line", "end_line"})
+        source_type = self.sources[evidence["source_id"]].get("source_type")
+        evidence_type = ("uploaded_text" if source_type == "uploaded_text"
+                         else {"pdf": "pdf", "mp4": "video", "md": "dictionary_excerpt"}[source["format"]])
+        result.update(source=source, type=evidence_type)
+        if evidence_type == "dictionary_excerpt":
             result["entry_url"] = source["url"]
         return result
 
@@ -122,5 +131,6 @@ class View:
             dto = self.source(source["id"])
             source.update(available=dto["content_available"], content_url=dto["content_url"])
             source.pop("filename", None)
+            source.pop("text_content", None)
         result["presentation"]["note"] = "Database-backed projection; internal access requires server authentication."
         return result

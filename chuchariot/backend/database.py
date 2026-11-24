@@ -126,6 +126,10 @@ def apply_operations(data, operations, actor, timestamp, *, deleted_records=None
             if table in {"facts", "model_mappings"}:
                 record["review_status"] = "pending"
                 record.pop("review", None)
+            if table == "entities":
+                record["publication_status"] = "draft"
+            if table == "facts":
+                record["publication_managed"] = True
             result[table].append(record)
             changed[(table, ident)] = (None, record)
             continue
@@ -141,7 +145,10 @@ def apply_operations(data, operations, actor, timestamp, *, deleted_records=None
             continue
         if action == "review":
             record = copy.deepcopy(before)
-            record.update(review_status=op["review_status"], review={"reviewer": actor, "date": now, "note": op["note"]})
+            if table == "entities":
+                record["publication_status"] = "published" if op["review_status"] == "confirmed" else "draft"
+            else:
+                record.update(review_status=op["review_status"], review={"reviewer": actor, "date": now, "note": op["note"]})
         else:
             record = copy.deepcopy(op["record"])
             if record.get("id") != ident:
@@ -151,6 +158,10 @@ def apply_operations(data, operations, actor, timestamp, *, deleted_records=None
                 if record.get("review_status", "pending") != "pending" or "review" in record:
                     raise KnowledgeError("Use a review operation to assign review status")
                 record["review_status"] = "pending"
+            if table == "entities":
+                record["publication_status"] = "draft"
+            if table == "facts":
+                record["publication_managed"] = True
         if before is None:
             result[table].append(record)
         else:
@@ -165,11 +176,11 @@ def apply_operations(data, operations, actor, timestamp, *, deleted_records=None
                        + canonical(blockers))
 
     # Re-open reviewed assertions when evidence/source/terms or premises change.
-    impacted_entities = {i for (t, i) in changed if t == "entities"}
+    impacted_entities = {op["id"] for op in operations if op["table"] == "entities" and op["action"] != "review"}
     impacted_sources = {i for (t, i) in changed if t == "sources"}
     impacted_evidence = {i for (t, i) in changed if t == "evidence"}
     impacted_evidence |= {e["id"] for e in result["evidence"] if e["source_id"] in impacted_sources}
-    impacted_facts = {i for (t, i) in changed if t == "facts"}
+    impacted_facts = {op["id"] for op in operations if op["table"] == "facts" and op["action"] != "review"}
     affected = set()
     while True:
         prior = len(impacted_facts)
@@ -189,8 +200,37 @@ def apply_operations(data, operations, actor, timestamp, *, deleted_records=None
                 changed.setdefault((table, record["id"]), (copy.deepcopy(record), None))
                 record["review_status"] = "pending"
                 record.pop("review", None)
+                if table == "facts":
+                    record["publication_managed"] = True
                 changed[(table, record["id"])] = (changed[(table, record["id"])][0], copy.deepcopy(record))
+
+    hidden_entities, hidden_facts = publication_blocks(result)
+    for op in operations:
+        if op["action"] != "review" or op["review_status"] != "confirmed":
+            continue
+        ident = op["id"]
+        if op["table"] == "entities" and ident in hidden_entities:
+            raise KnowledgeError("请先发布该实体的所属对象：" + ident)
+        if op["table"] == "facts" and ident in hidden_facts:
+            raise KnowledgeError("请先发布该事实的关联实体或依据，内容刚修改的事实需另次发布：" + ident)
     return normalized(result), changed, sorted(affected)
+
+
+def publication_blocks(data):
+    entities = {entity["id"] for entity in data["entities"] if entity.get("publication_status") == "draft"}
+    while True:
+        scoped = {entity["id"] for entity in data["entities"] if entity.get("scope_id") in entities}
+        if scoped <= entities:
+            break
+        entities.update(scoped)
+    facts = {fact["id"] for fact in data["facts"]
+             if (fact.get("publication_managed") and fact["review_status"] != "confirmed")
+             or bool({fact["subject_id"], fact.get("object_id")} & entities)}
+    while True:
+        dependent = {fact["id"] for fact in data["facts"] if facts.intersection(fact.get("basis_fact_ids", []))}
+        if dependent <= facts:
+            return entities, facts
+        facts.update(dependent)
 
 
 class Repository:
@@ -207,6 +247,13 @@ class Repository:
         with self.driver.session(database=self.database) as session:
             row = session.run("MATCH (s:GraphState {id:'main'}) RETURN s.revision AS revision").single()
         return bool(row and row["revision"])
+
+    def current_revision(self):
+        with self.driver.session(database=self.database) as session:
+            row = session.run("MATCH (s:GraphState {id:'main'}) RETURN s.revision AS revision").single()
+        if not row or not row["revision"]:
+            raise Missing("Knowledge baseline has not been imported")
+        return self.revision(row)
 
     def initialize(self):
         with self.driver.session(database=self.database) as session:

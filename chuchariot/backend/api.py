@@ -10,7 +10,7 @@ from uuid import uuid4
 
 from fastapi import FastAPI, Depends, Header, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from jsonschema import Draft202012Validator
 from neo4j.exceptions import Neo4jError, DriverError
@@ -45,7 +45,9 @@ class Operation(StrictModel):
             if self.model_fields_set & {"record", "review_status", "note"}:
                 raise ValueError("Delete/restore accepts only table, id and action; use the change set reason")
         elif self.action == "review":
-            if self.table not in {"facts", "model_mappings"} or self.record is not None or self.review_status is None or not self.note:
+            if (self.table not in {"entities", "facts", "model_mappings"} or self.record is not None
+                    or self.review_status is None or not self.note
+                    or (self.table == "entities" and self.review_status == "disputed")):
                 raise ValueError("Review needs a status and note, with no record")
         elif self.record is None or self.review_status is not None:
             raise ValueError("Create/update needs a complete record and no review_status")
@@ -293,7 +295,10 @@ def create_app(settings=None, repository=None):
         query(request)
         v = view(request)
         v.source(source_id)
-        file = source_path(v.sources[source_id], settings.resource_dirs)
+        source_record = v.sources[source_id]
+        if source_record.get("source_type") == "uploaded_text":
+            raise Missing("Only the published excerpts of uploaded text are public")
+        file = source_path(source_record, settings.resource_dirs)
         if file is None:
             raise Missing("Source content unavailable")
         return FileResponse(file, filename=file.name, content_disposition_type="inline")
@@ -303,7 +308,10 @@ def create_app(settings=None, repository=None):
         query(request)
         v = view(request, True)
         v.source(source_id)
-        file = source_path(v.sources[source_id], settings.resource_dirs)
+        source_record = v.sources[source_id]
+        if source_record.get("source_type") == "uploaded_text":
+            return PlainTextResponse(source_record["text_content"])
+        file = source_path(source_record, settings.resource_dirs)
         if file is None:
             raise Missing("Source content unavailable")
         return FileResponse(file, filename=file.name, content_disposition_type="inline")
@@ -314,6 +322,7 @@ def create_app(settings=None, repository=None):
         text = text.replace('<script src="/app.js"', '<script>window.CHUCHARIOT_DATABASE_API=true;</script>\n  <script src="/app.js"')
         text = text.replace("临时测试 · 本地只读", "数据库版 · 只读浏览")
         text = text.replace("基于现有 JSON 知识层实时读取", "基于 Neo4j 知识库实时读取")
+        text = text.replace('<button class="button" id="reload-button">', '<a class="button" href="/admin">知识管理</a><button class="button" id="reload-button">')
         text = text.replace('<button class="button" id="reload-button">', '<button class="button" id="operator-logout" hidden>退出内部访问</button><button class="button" id="reload-button">')
         text = text.replace('</body>', '''<dialog id="operator-login"><form method="dialog"><h2>内部访问验证</h2><p>输入本机配置的操作员凭据。凭据只在当前页面内存中使用。</p><label>操作员凭据 <input type="password" id="operator-token" autocomplete="off" required></label><p><button value="cancel" formnovalidate>取消</button> <button value="login">进入内部视图</button></p></form></dialog></body>''')
         return text
@@ -349,6 +358,9 @@ def create_app(settings=None, repository=None):
         app.openapi_schema = actual
         return actual
     app.openapi = openapi
+    from ..admin.api import router as admin_router
+
+    app.include_router(admin_router(repo, operator))
     return app
 
 

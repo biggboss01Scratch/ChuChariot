@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知识管理 · 楚车</title>
+  <link rel="stylesheet" href="/admin/style.css">
+  <script type="module" src="/admin/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">楚车<span>知识管理</span></a>
+    <span id="revision" class="muted"></span>
+    <a class="toplink" href="/">公众图谱 ↗</a>
+    <button id="logout" class="quiet" type="button" hidden>退出</button>
+  </header>
+  <main>
+    <section id="login" class="login">
+      <h1>知识管理</h1>
+      <p>登录后编辑图谱、审核导入材料和发布知识。</p>
+      <form id="login-form" method="post" action="/admin">
+        <input type="hidden" name="username" value="chuchariot-operator" autocomplete="username">
+        <label>操作员凭据<input id="token" name="password" type="password" autocomplete="current-password" required></label>
+        <label id="remember-option" class="inline-check" hidden>
+          <input id="remember-token" type="checkbox">下次自动填充
+        </label>
+        <button class="primary">进入管理端</button>
+      </form>
+    </section>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="workspace" hidden>
+      <nav id="tabs" aria-label="管理功能">
+        <button type="button" data-tab="graph" aria-pressed="true">图谱编辑</button>
+        <button type="button" data-tab="imports" aria-pressed="false">AI 文本导入</button>
+        <button type="button" data-tab="publication" aria-pressed="false">待发布 <span id="pending-count"></span></button>
+        <button type="button" data-tab="trash" aria-pressed="false">回收站</button>
+      </nav>
+      <div id="graph-page">
+        <div class="page-head">
+          <div><h1>图谱编辑</h1><p id="graph-count" class="muted"></p></div>
+          <div class="actions"><button class="primary" id="add-entity" type="button">新增实体</button><button id="refresh" type="button">刷新</button></div>
+        </div>
+        <div class="graph-workspace">
+          <aside class="entity-index" aria-label="实体列表">
+            <label for="search" class="sr-only">搜索实体</label>
+            <input id="search" type="search" placeholder="搜索实体、标本或编号">
+            <div id="entity-list" class="entity-list"></div>
+          </aside>
+          <section class="graph-card" aria-label="知识可视化">
+            <div class="graph-toolbar">
+              <div class="graph-switch" aria-label="图谱显示方式">
+                <button id="grid-layout" type="button" aria-pressed="false">分区图</button>
+                <button id="network-layout" type="button" aria-pressed="true">网络图</button>
+              </div>
+              <select id="graph-scope" aria-label="显示内容">
+                <option value="all">全部记录</option>
+                <option value="knowledge" selected>战车知识</option>
+              </select>
+              <button id="toggle-ontology" type="button" aria-pressed="false">显示本体层</button>
+              <div class="graph-tools" aria-label="图谱范围和缩放">
+                <button id="overview" type="button" aria-pressed="true">全图</button>
+                <button id="neighborhood" type="button" aria-pressed="false">当前邻域</button>
+                <button id="zoom-out" type="button" aria-label="缩小图谱">−</button>
+                <button id="zoom-in" type="button" aria-label="放大图谱">＋</button>
+                <button id="fit-network" type="button">适应画布</button>
+                <span id="graph-mode" class="muted"></span>
+              </div>
+            </div>
+            <div id="graph-view" class="graph-view" tabindex="0" hidden></div>
+            <div id="network-view" class="graph-view network-view" tabindex="0" aria-label="关系网络地图"></div>
+            <div id="grid-legend" class="graph-legend" hidden><span>实体</span><span>待发布实体</span><span>选中的关系</span></div>
+            <footer id="network-footer" class="network-footer">
+              <div id="network-legend" class="network-legend" aria-label="网络图颜色图例"></div>
+              <p class="muted">拖拽平移 · 滚轮缩放 · 点击节点查看关系</p>
+            </footer>
+          </section>
+          <aside id="detail" class="detail" aria-label="实体与关系详情"></aside>
+        </div>
+      </div>
+      <div id="imports-page" hidden>
+        <div class="page-head"><div><h1>AI 文本导入</h1><p class="muted">根据上传材料与当前图谱生成可编辑的入库建议。</p></div></div>
+        <form id="upload-form" class="upload-card">
+          <label>选择 Markdown 或 TXT 文件<input id="upload-file" type="file" accept=".md,.txt,text/plain,text/markdown" required></label>
+          <button id="analyze" class="primary">分析材料</button>
+          <span id="upload-status" class="muted" role="status"></span>
+        </form>
+        <div id="review" hidden>
+          <div class="review-head">
+            <div><h2>导入审核</h2><p id="import-summary" class="muted"></p></div>
+            <div class="actions">
+              <label for="import-filter" class="sr-only">筛选建议</label>
+              <select id="import-filter"></select>
+              <button id="recheck" type="button">重新检查</button>
+              <button id="import-commit" class="primary" type="button">选中项入库</button>
+            </div>
+          </div>
+          <div id="import-candidates" class="cards"></div>
+          <div id="unrelated-list" class="cards"></div>
+        </div>
+      </div>
+      <div id="publication-page" hidden>
+        <div class="page-head"><div><h1>待发布</h1><p class="muted">已入库的记录可在这里发布到公众图谱。</p></div>
+          <button id="publish-selected" class="primary" type="button">发布选中</button>
+        </div>
+        <div id="publication-list" class="cards"></div>
+      </div>
+      <div id="trash-page" hidden>
+        <div class="page-head"><div><h1>回收站</h1><p class="muted">恢复后可重新检查和发布。</p></div>
+          <div class="actions"><button id="trash-prev" type="button">上一页</button><button id="trash-next" type="button">下一页</button></div>
+        </div>
+        <div id="trash-list" class="cards"></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="editor"><form id="editor-form">
+    <div class="dialog-head"><h2 id="editor-title"></h2><button id="close-editor" type="button" class="quiet" aria-label="关闭编辑器">关闭</button></div>
+    <div id="editor-fields"></div>
+    <p id="editor-error" class="error" role="alert"></p>
+    <div class="dialog-foot"><button id="save-editor" class="primary"></button></div>
+  </form></dialog>
+</body>
+</html>

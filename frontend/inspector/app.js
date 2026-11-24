@@ -37,6 +37,7 @@ function formatEvidenceTime(seconds) {
 
 function evidenceLocation(evidence) {
   if (Number.isFinite(evidence.start_seconds)) return `视频 ${formatEvidenceTime(evidence.start_seconds)}—${formatEvidenceTime(evidence.end_seconds)}`;
+  if (Number.isInteger(evidence.start_line)) return `文本 · ${evidence.locator}`;
   return Number.isInteger(evidence.pdf_page) ? `PDF 第 ${evidence.pdf_page} 页` : `词典条目 · ${evidence.locator}`;
 }
 
@@ -807,14 +808,16 @@ function renderEvidence(entity) {
     return;
   }
   const selectedEvidence = new Set(state.data.facts.find((f) => f.id === state.selectedFact)?.evidence_ids || []);
-  $("#detail-content").innerHTML = '<p class="note">证据保留原 PDF 页码、视频时间段或词典义项，以及观察、解释的适用范围。</p>' + evidence.map((e) => {
+  $("#detail-content").innerHTML = '<p class="note">证据保留资料定位和适用范围。</p>' + evidence.map((e) => {
     const source = state.data.sources.find((s) => s.id === e.source_id);
     const factIds = facts.filter((f) => f.evidence_ids.includes(e.id)).map((f) => f.id);
     const video = source?.format === "mp4";
     const dictionary = source?.format === "md" && source?.source_type === "dictionary_excerpt";
+    const uploadedText = source?.source_type === "uploaded_text";
     const labels = [...new Set(facts.filter((f) => f.evidence_ids.includes(e.id)).map((f) => knowledgeBases[f.knowledge_basis]).filter(Boolean))];
     const checked = e.check_status === "source_checked" ? (video ? "已抽帧核对画面或字幕；尚待组员复核" : dictionary ? "已核对官方词典条目摘录；尚待组员复核" : "Codex已对照原页；尚待组员复核") : "来源对应待核对";
-    const link = source?.available || dictionary ? `<a class="pdf-link" href="${escapeHtml(evidenceSourceUrl(source, e))}" target="_blank" rel="noopener">${dictionary ? "打开官方词典条目" : `打开原${video ? "视频" : " PDF"}`} · ${escapeHtml(evidenceLocation(e))}</a>` : '<p>原资料未配置。启动时可通过 --resource-dir 指定资料目录。</p>';
+    const link = uploadedText ? '<p>整份上传材料可在管理端查看。</p>' :
+      source?.available || dictionary ? `<a class="pdf-link" href="${escapeHtml(evidenceSourceUrl(source, e))}" target="_blank" rel="noopener">${dictionary ? "打开官方词典条目" : `打开原${video ? "视频" : " PDF"}`} · ${escapeHtml(evidenceLocation(e))}</a>` : '<p>原资料未配置。启动时可通过 --resource-dir 指定资料目录。</p>';
     return `<article class="evidence-card ${selectedEvidence.has(e.id) ? "focused" : ""}"><div class="source-page"><strong>${escapeHtml(evidenceLocation(e))}</strong><code>${escapeHtml(e.id)}</code></div>${labels.length ? `<p>${labels.map(escapeHtml).join(" · ")}</p>` : ""}<blockquote>${escapeHtml(e.quote)}</blockquote><p>${escapeHtml(e.locator)}</p><p class="scope-note">${escapeHtml(e.scope_note)}</p><p>对应事实：${factIds.map(escapeHtml).join("、")}</p><p>来源：${escapeHtml(source?.title || e.source_id)}</p><p>${checked}</p>${link}${video || dictionary ? "" : renderMedia(entity, { kind: "source_clip", evidenceId: e.id })}</article>`;
   }).join("");
 }

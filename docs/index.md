@@ -1,5 +1,7 @@
 # 项目文档索引
 
+[知识管理](admin.md)包含图谱编辑、AI 文本导入与发布说明。
+
 2026-11-24：[知识删除、回收站与恢复](deletion.md)已实现，当前API1.1.0。新增回收站路由并扩展变更集操作，知识数据版本不变。
 
 当前：Neo4j／FastAPI本地首版已实施，见[启动及队友接入](backend.md)、[正式API契约](contracts/knowledge-api.v1.openapi.json)。118项Python及16项Node通过，知识v0.11／本体v0.7未改。以下准备稿保留为实施前记录。

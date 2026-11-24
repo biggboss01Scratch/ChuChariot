@@ -1,6 +1,7 @@
 """Dataset schema, reference integrity and domain validation."""
 
 import math
+import hashlib
 import re
 from collections import defaultdict
 from datetime import date
@@ -126,9 +127,13 @@ def _validate_shape(data, error):
                 optional = {**optional, "knowledge_basis": str}
         if data["schema_version"] == "0.4.0":
             if table == "sources":
-                optional = {**optional, "url": str, "accessed_on": str}
+                optional = {**optional, "url": str, "accessed_on": str, "text_content": str}
             elif table == "entities":
-                optional = {**optional, "lexeme": str, "source_id": str}
+                optional = {**optional, "lexeme": str, "source_id": str, "publication_status": str}
+            elif table == "evidence":
+                optional = {**optional, "start_line": int, "end_line": int}
+            elif table == "facts":
+                optional = {**optional, "publication_managed": bool}
         if isinstance(data.get(table), list):
             for index, record in enumerate(data[table]):
                 shape(record, required, optional, f"{table}[{index}]", error)
@@ -150,7 +155,7 @@ def _index_records(data, error):
 
 def _validate_sources(sources, error):
     for source in sources.values():
-        if source["format"] not in {"pdf", "docx", "md", "mp4"}:
+        if source["format"] not in {"pdf", "docx", "md", "mp4", "txt"}:
             error(source["id"], "不支持的文献格式")
         if Path(source["filename"]).name != source["filename"] or ":" in source["filename"] or "\\" in source["filename"]:
             error(source["id"], "filename 必须是相对于资源目录的文件名")
@@ -166,6 +171,14 @@ def _validate_sources(sources, error):
                 error(source["id"], "当前视频须标明来源类型 modern_reconstruction_video")
             if "page_count" in source:
                 error(source["id"], "视频不能使用 PDF 页数")
+        elif source["format"] in {"md", "txt"} and source.get("source_type") == "uploaded_text":
+            content = source.get("text_content", "")
+            if not content.strip() or len(content) > 80_000 or "\x00" in content:
+                error(source["id"], "上传文本不能为空、超过 80000 字符或包含空字符")
+            if hashlib.sha256(content.encode("utf-8")).hexdigest() != source.get("content_sha256"):
+                error(source["id"], "文本内容与保存的 SHA256 不一致")
+            if any(key in source for key in ("page_count", "duration_seconds", "url", "accessed_on")):
+                error(source["id"], "上传文本不能使用页数、视频时长或外部词典链接字段")
         elif source["format"] == "md" and source.get("source_type") == "dictionary_excerpt":
             try:
                 url = urlsplit(source.get("url", ""))
@@ -185,14 +198,16 @@ def _validate_sources(sources, error):
             error(source["id"], "来源元数据与格式不兼容")
         if source["format"] == "mp4" and any(key in source for key in ("url", "accessed_on")):
             error(source["id"], "本地视频不能使用词典摘录字段")
+        if source.get("source_type") != "uploaded_text" and ("text_content" in source or source["format"] == "txt"):
+            error(source["id"], "普通文本字段需要 uploaded_text 来源类型")
 
 
 def _validate_evidence(evidence, sources, error):
     for item in evidence.values():
         ident = item["id"]
         source = sources.get(item["source_id"])
-        if source is None or source["format"] not in {"pdf", "mp4", "md"}:
-            error(ident, "证据必须引用已登记PDF、视频或词典摘录")
+        if source is None or source["format"] not in {"pdf", "mp4", "md", "txt"}:
+            error(ident, "证据必须引用已登记PDF、视频或文本")
         if source and source["format"] == "mp4":
             if "pdf_page" in item or "printed_page" in item or "figure" in item:
                 error(ident, "视频证据不能使用 PDF 页码或图号")
@@ -203,6 +218,15 @@ def _validate_evidence(evidence, sources, error):
                   or not 0 <= start < end <= source["duration_seconds"]):
                 error(ident, "视频时间段越界或起止顺序错误")
             transcriptions = {"video_frame", "video_subtitle"}
+        elif source and source.get("source_type") == "uploaded_text":
+            if any(key in item for key in ("pdf_page", "printed_page", "figure", "start_seconds", "end_seconds")):
+                error(ident, "文本证据不能使用PDF页码或视频时间段")
+            lines = source.get("text_content", "").split("\n")
+            start, end = item.get("start_line"), item.get("end_line")
+            if (type(start) is not int or type(end) is not int or not 1 <= start <= end <= len(lines)
+                    or item["quote"] not in "\n".join(lines[start - 1:end])):
+                error(ident, "文本引文必须出现在指定行范围")
+            transcriptions = {"embedded_text"}
         elif source and source["format"] == "md":
             if source.get("source_type") != "dictionary_excerpt":
                 error(ident, "文字条目证据须引用已登记的词典摘录")
@@ -224,6 +248,8 @@ def _validate_evidence(evidence, sources, error):
             error(ident, "未知的转录方式")
         if item["check_status"] not in {"source_checked", "pending"}:
             error(ident, "未知的原文检查状态")
+        if (not source or source.get("source_type") != "uploaded_text") and {"start_line", "end_line"} & item.keys():
+            error(ident, "行号仅适用于上传文本")
 
 
 def _validate_measurement(measurement, ontology, ident, error):
@@ -249,6 +275,8 @@ def _validate_measurement(measurement, ontology, ident, error):
 def _validate_entities(entities, ontology, error, sources=None):
     for item in entities.values():
         ident, kind = item["id"], item["kind"]
+        if item.get("publication_status", "published") not in {"draft", "published"}:
+            error(ident, "实体发布状态无效")
         if kind not in ontology["entity_kinds"]:
             error(ident, "未定义的实体类型")
         if kind == "ModelVersion" and (not item.get("resource_id") or

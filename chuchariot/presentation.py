@@ -24,6 +24,35 @@ REGION_TYPES = {
 }
 
 
+def browsing_regions(dataset, visible_entities):
+    """Return display-only groups, including groups inherited by specimens."""
+    index = {entity["id"]: entity for entity in dataset["entities"]}
+    categories = {fact["subject_id"]: fact["object_id"] for fact in dataset["facts"]
+                  if fact["predicate"] in {"INSTANCE_OF", "REFERS_TO_TYPE"}}
+    direct = {ident: region for region, ids in REGION_TYPES.items() for ident in ids}
+
+    def region(ident, visited):
+        if ident in direct:
+            return direct[ident]
+        if ident in visited or ident not in index:
+            return "reference"
+        visited.add(ident)
+        entity = index[ident]
+        if entity["kind"] in {"Material", "PreservationFeature", "SurfaceFinish", "DecorationMotif"}:
+            return "shared"
+        if entity["kind"] == "HarnessRole":
+            return "harness"
+        if "scope_id" in entity:
+            return region(entity["scope_id"], visited)
+        if ident in categories:
+            return region(categories[ident], visited)
+        if "马具" in entity["label"]:
+            return "harness"
+        return "reference"
+
+    return {entity["id"]: region(entity["id"], set()) for entity in visible_entities}
+
+
 def project_presentation(dataset, snapshot, audience="internal"):
     """Filter one read-only snapshot, retaining source evidence and review states.
 
@@ -71,38 +100,13 @@ def project_presentation(dataset, snapshot, audience="internal"):
             entity["fact_review_summary"] = {status: sum(f["review_status"] == status for f in related)
                                                for status in ("pending", "confirmed", "disputed")}
 
-    # Browsing regions are display metadata, never new knowledge assertions.
-    categories = {f["subject_id"]: f["object_id"] for f in dataset["facts"]
-                  if f["predicate"] in {"INSTANCE_OF", "REFERS_TO_TYPE"}}
-    direct = {ident: region for region, ids in REGION_TYPES.items() for ident in ids}
-
-    def region(ident, visited=None):
-        visited = set() if visited is None else visited
-        if ident in direct:
-            return direct[ident]
-        if ident in visited or ident not in index:
-            return "reference"
-        visited.add(ident)
-        entity = index[ident]
-        if entity["kind"] in {"Material", "PreservationFeature", "SurfaceFinish", "DecorationMotif"}:
-            return "shared"
-        if entity["kind"] == "HarnessRole":
-            return "harness"
-        if "scope_id" in entity:
-            return region(entity["scope_id"], visited)
-        if ident in categories:
-            return region(categories[ident], visited)
-        if "马具" in entity["label"]:
-            return "harness"
-        return "reference"
-
     edges = [f for f in result["facts"] if "object_id" in f]
     result["presentation"] = {
         "audience": audience,
         "groups": [{"id": key, "label": label, "public": public,
                     "fact_ids": [f["id"] for f in edges if group(f) == key]}
                    for key, label, public, _ in RELATION_GROUPS if audience == "internal" or public],
-        "regions": {e["id"]: region(e["id"]) for e in result["entities"]} if audience == "public" else {},
+        "regions": browsing_regions(dataset, result["entities"]) if audience == "public" else {},
         "note": "本地展示筛选，不是登录或权限控制；复原推测和审核状态保持原样。",
     }
     return result
